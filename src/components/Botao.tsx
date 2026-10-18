@@ -34,7 +34,7 @@ export default function Botao({
   href,
   target,
   rel,
-  largura = "326px",
+  largura = "327px",
   altura = "70px",
   type = "button",
 }: BotaoProps) {
