@@ -54,7 +54,9 @@ export default function ServicosPage() {
           color="#FDD5A5"
           className="bottom-10 right-[8%] rotate-45"
         />
-        <Cloud position="bottom" />
+        <div className="mt-[155]">
+          <Cloud position="bottom" />
+        </div>
       </section>
 
       <ServiceCardGrid services={SERVICOS} />

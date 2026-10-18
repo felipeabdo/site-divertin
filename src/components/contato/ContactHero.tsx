@@ -62,7 +62,9 @@ export default function ContactHero() {
         className="pointer-events-none absolute bottom-[7%] right-[4%] z-[6] hidden w-[220px] drop-shadow-[0_16px_24px_rgba(0,0,0,.22)] lg:block xl:w-[280px]"
       />
 
-      <Cloud position="bottom" imageUrl="/cloud (6).png" />
+      <div className="mt-[57]">
+        <Cloud position="bottom" imageUrl="/cloud (6).png" />
+      </div>
     </section>
   );
 }

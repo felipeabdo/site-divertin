@@ -39,7 +39,7 @@ export default function Home() {
         </div>
 
         <div className="absolute bottom-0 left-0 z-10 h-[30px] w-full translate-y-[50%] md:h-[70px]">
-          <div className="h-full w-full bg-repeat-x bg-contain bg-bottom" style={{ backgroundImage: `url('/cloud (1).png')` }} aria-label="Divisor de seção" />
+          <div className="h-full w-full bg-repeat-x bg-contain bg-bottom mt-[18]" style={{ backgroundImage: `url('/cloud (1).png')` }} aria-label="Divisor de seção" />
         </div>
       </section>
 
