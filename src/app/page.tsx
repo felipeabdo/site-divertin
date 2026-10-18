@@ -71,19 +71,19 @@ export default function Home() {
 
         
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 w-full mt-8'>
-          <div className='flex flex-col items-center text-center p-4'>
+          <div className='flex flex-col items-center text-center p-4 xl:w-[406] xl:text-justify xl:[text-align-last:center]'>
             <img src="/Group 1.svg" alt="Ícone avaliação" className='mb-6 h-20 w-auto'/>
-            <h3 className='font-bold text-lg mb-2 text-gray-800'>Avaliação e Atividades Personalizadas</h3>
+            <h3 className='font-bold text-lg mb-2 text-gray-800'>Avaliação e Plano Terapêutico Personalizados</h3>
             <p className='text-gray-600 text-sm leading-relaxed'>Cada criança é única — por isso, criamos planos de desenvolvimento individualizados, com atividades lúdicas que estimulam linguagem, comunicação e socialização de forma divertida.</p>
           </div>
           
-          <div className='flex flex-col items-center text-center p-4'>
+          <div className='flex flex-col items-center text-center p-4 xl:w-[368] xl:ml-[25] xl:text-justify xl:[text-align-last:center]'>
             <img src="/Group 1 (1).svg" alt="Ícone desenvolvimento" className='mb-6 h-20 w-auto'/>
             <h3 className='font-bold text-lg mb-2 text-gray-800'>Desenvolvimento na Primeira Infância</h3>
             <p className='text-gray-600 text-sm leading-relaxed'>Nossa abordagem é focada nas fases iniciais da vida. Trabalhamos com estratégias que fortalecem a comunicação, o brincar e o aprendizado desde os primeiros anos.</p>
           </div>
           
-          <div className='flex flex-col items-center text-center p-4'>
+          <div className='flex flex-col items-center text-center p-4 xk:w-[406] xl:text-justify xl:[text-align-last:center]'>
             <img src="/Group 1 (2).svg" alt="Ícone equipe" className='mb-6 h-20 w-auto'/>
             <h3 className='font-bold text-lg mb-2 text-gray-800'>Equipe Especializada e Afetuosa</h3>
             <p className='text-gray-600 text-sm leading-relaxed'>Contamos com profissionais experientes em distúrbios da comunicação infantil, oferecendo acolhimento, escuta ativa e um acompanhamento terapêutico de confiança.</p>

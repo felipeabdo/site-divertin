@@ -27,7 +27,7 @@ export const SERVICOS: Service[] = [
     eyebrow: 'Fala • linguagem • comunicação',
     description:
       'Avaliação e acompanhamento fonoaudiológico para crianças de 2 a 14 anos, com estratégias individualizadas, acolhedoras e adequadas a cada fase do desenvolvimento.',
-    audience: 'Crianças de 2 a 14 anos',
+    audience: 'Crianças de 1 a 14 anos',
     heroImage: '/Jessica.jpeg',
     accent: '#D684BF',
     softAccent: '#F4CFE7',
