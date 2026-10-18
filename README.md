@@ -81,4 +81,5 @@ O layout conserva o identificador `G-14VEB6PD4R` que já existia no fonte recebi
 - Verificação de resolução dos imports locais.
 - Inspeção de imports sem uso e de dependências/arquivos duplicados.
 
-Não foi possível executar um build real do Next.js nem testar o site visualmente porque faltam os arquivos de dependências/configuração e `public/`. Consulte `RELATORIO_DE_REVISAO.md` para os resultados objetivos e os próximos passos.
+Não foi possível executar um build real do Next.js nem testar o site visualmente porque faltam os arquivos de dependências/configuração e `public/`. Consulte `RELATORIO_DE_REVISAO.md` para os resultados objetivos e os próximos passos. =
+x   
