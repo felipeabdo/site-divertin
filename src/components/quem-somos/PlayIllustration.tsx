@@ -3,7 +3,7 @@ import { PAL } from './data';
 
 const STACK: [string, number][] = [[PAL.green, 48], [PAL.lime, 66], [PAL.orange, 82], [PAL.pink, 98]];
 
-/** Ilustração de brinquedos (bola colorida, estrelinha e pilha de argolas) da faixa "Cuidar também pode ser divertido". */
+
 export default function PlayIllustration() {
   return (
     <div className="relative mx-auto h-[240px] w-full max-w-[350px]" aria-hidden>

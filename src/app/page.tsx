@@ -6,31 +6,31 @@ import { CONTATO } from '@/data/contatoData';
 export default function Home() {
   return (
     <div className="overflow-x-hidden min-h-screen bg-white">
-      {/* HERO SECTION */}
+      
       <section className="relative w-full min-h-[550px] md:min-h-[600px] lg:min-h-[920px] bg-[url(/bg-hero.png)] bg-cover bg-top bg-no-repeat pt-6 pb-20 flex flex-col justify-start items-start">
         
-        {/* HEADER UNIFICADO */}
+        
         <header className="w-full px-6 flex justify-between items-center h-24 relative z-20 min-[1301px]:justify-center">
           
-          {/* Logo Mobile / Tablet (< 1300px) */}
+          
           <div className="min-[1301px]:hidden mt-49">
             <img src="/logo (1).png" alt="Logo Divertin" className="w-48 h-auto object-contain"/>
           </div>
 
-          {/* Wrapper da NavBar */}
+          
           <div className="min-[1301px]:absolute min-[1301px]:left-1/2 min-[1301px]:-translate-x-1/2 min-[1301px]:top-8 ">
             <NavBar />
           </div>
         </header>
 
-        {/* CONTEÚDO ALINHADO À ESQUERDA */}
-        {/* Adicionado pt-12 no mobile e md:pt-24 no tablet/notebook menor para centralizar verticalmente o bloco ao lado da menina */}
+        
+        
         <div className="w-full px-6  flex flex-col items-start text-left pt-12 md:pt-24 min-[1301px]:pt-0 z-10 mt-25">
           
-          {/* CONTÊINER RESPONSIVO DO TEXTO */}
+          
           <div className="w-full max-w-[250px] md:w-1/2 md:max-w-none lg:w-[45%] min-[1301px]:max-w-[500px] min-[1301px]:absolute min-[1301px]:top-15">
             
-            {/* Logo Desktop integrada no fluxo dos textos */}
+            
             <img src="/logo (1).png" alt="Logo Divertin" className="w-48 lg:w-60 h-auto hidden min-[1301px]:block mb-6 object-contain"/>
             
             <h1 className="text-white font-black font-avenir leading-tight max-[640px]:w-40 text-[26px] sm:text-[32px] md:text-[36px] lg:text-[40px] min-[1301px]:text-[44px] min-[1301px]:w-120 mb-4">
@@ -49,15 +49,15 @@ export default function Home() {
           </div>
         </div>
 
-        {/* DIVISOR DE NUVEM SUPERIOR ANCORADO NO BOTTOM */}
+        
         <div className="absolute bottom-0 left-0 w-full h-[30px] md:h-[70px] translate-y-[50%] z-10">
           <div className="w-full h-full bg-repeat-x bg-contain bg-bottom" style={{ backgroundImage: `url('/cloud (1).png')` }} aria-label="Divisor de seção" />
         </div>
       </section>
 
-      {/* CONTEÚDO PRINCIPAL */}
+      
       <section className="w-full flex flex-col items-center px-6 py-12 max-w-7xl mx-auto gap-6 mt-6 md:mt-12">
-        {/* Bloco Jessica */}
+        
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 w-full">
           <img src="/Jessica.jpeg" alt="Jéssica Del Corso" className='w-full max-w-sm rounded-4xl h-auto object-cover shadow-md'/>
           
@@ -77,7 +77,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Grid de Cards de Recursos */}
+        
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 w-full mt-8'>
           <div className='flex flex-col items-center text-center p-4'>
             <img src="/Group 1.svg" alt="Ícone avaliação" className='mb-6 h-20 w-auto'/>

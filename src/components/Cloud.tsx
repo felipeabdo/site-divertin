@@ -3,21 +3,17 @@ import type { CSSProperties } from 'react';
 interface CloudProps {
   position: 'top' | 'bottom';
   color?: string;
-  imageUrl?: string; // 👈 Nova prop opcional para trocar a imagem
+  imageUrl?: string; 
 }
 
-/**
- * Divisor de nuvem. Sem `color`, a nuvem é branca.
- * Com `color`, a nuvem é pintada dessa cor (usa a imagem como máscara).
- * `imageUrl` permite customizar a imagem utilizada (padrão: '/cloud (1).png').
- */
+
 export default function Cloud({ 
   position, 
   color, 
-  imageUrl = '/cloud (1).png' // 👈 Valor padrão caso não seja enviado
+  imageUrl = '/cloud (1).png' 
 }: CloudProps) {
   
-  // Dynamic URL baseada na prop imageUrl
+  
   const url = `url('${imageUrl}')`; 
   
   const style: CSSProperties = color

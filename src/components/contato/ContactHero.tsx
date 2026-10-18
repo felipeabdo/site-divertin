@@ -47,7 +47,7 @@ export default function ContactHero() {
               href={CONTATO.whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              largura="240px"
+              largura="261px"
             >
               Falar pelo WhatsApp <Arrow />
             </Botao>

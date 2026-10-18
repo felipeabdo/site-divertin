@@ -1,6 +1,6 @@
 import { PAL } from './data';
 
-/** Ilustração de reserva para quando a profissional ainda não tem foto nem ícone. */
+
 export default function Avatar({ tone }: { tone: string }) {
   return (
     <svg viewBox="0 0 300 200" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMax slice" aria-hidden>

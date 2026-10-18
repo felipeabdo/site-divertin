@@ -16,7 +16,7 @@ export default function WhatsAppCard() {
       </p>
       <div className="mt-6">
         <Botao
-          largura="205px"
+          largura="226px"
           cor="laranja_escuro"
           href={CONTATO.whatsappUrl}
           target="_blank"

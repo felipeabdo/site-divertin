@@ -8,7 +8,7 @@ const STACK: [string, number][] = [
   [PAL.pink, 98],
 ];
 
-/** Ilustração de brinquedos (bola colorida, estrelinha e pilha de argolas) da faixa "Cuidar também pode ser divertido". */
+
 export default function PlayIllustration() {
   return (
     <div

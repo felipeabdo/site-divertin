@@ -1,7 +1,7 @@
 import Avatar from './Avatar';
 import { CARD_JA_TEM_NOME, type TeamMember } from './data';
 
-/** Card da profissional: foto no topo e nome + cargo abaixo, em fundo creme. */
+
 export default function TeamCard({ member }: { member: TeamMember }) {
   if (member.src && CARD_JA_TEM_NOME) {
     return (

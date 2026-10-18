@@ -3,7 +3,7 @@ import { Dashes } from "./Decor";
 import PlayIllustration from "./PlayIllustration";
 import { H2, PAL } from "./data";
 
-/** Faixa laranja "Cuidar também pode ser divertido", emendada ao hero e à página por nuvens. */
+
 export default function CuidarSection() {
   return (
     <section

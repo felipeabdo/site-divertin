@@ -1,6 +1,7 @@
 import Arrow from '../quem-somos/Arrow';
 import SectionDashes from './SectionDashes';
 import { CONTATO } from '@/data/contatoData';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
 
 export default function ServiceCTA({ accent }: { accent: string }) {
   return (
@@ -26,7 +27,7 @@ export default function ServiceCTA({ accent }: { accent: string }) {
           className="mt-7 inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-black text-white shadow-sm transition-opacity hover:opacity-90"
           style={{ backgroundColor: accent }}
         >
-          Quero agendar uma avaliação <Arrow />
+          <WhatsAppIcon /> Quero agendar uma avaliação <Arrow />
         </a>
       </div>
     </section>

@@ -1,5 +1,5 @@
 
-/** Seta padronizada para os botões do site. */
+
 export default function Arrow() {
   return (
     <img

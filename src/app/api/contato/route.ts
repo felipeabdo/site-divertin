@@ -3,22 +3,18 @@ import { CONTATO } from '@/data/contatoData';
 
 export const runtime = 'nodejs';
 
-/** Validação simples de formato para o e-mail informado no formulário. */
+
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-/** Converte valores do formulário para texto e remove espaços nas extremidades. */
+
 function readTextField(body: Record<string, unknown>, field: string): string {
   const value = body[field];
   return value == null ? '' : String(value).trim();
 }
 
-/**
- * Endpoint de contato.
- * Importante: a integração com um provedor de e-mail ainda não está configurada;
- * por isso, os dados são validados e a resposta final permanece HTTP 501.
- */
+
 export async function POST(request: Request) {
   let payload: unknown;
 
@@ -60,9 +56,9 @@ export async function POST(request: Request) {
       );
     }
 
-    // Ponto de integração futuro: conectar aqui um serviço transacional, por exemplo
-    // Resend ou Nodemailer, usando CONTATO.email como destinatário.
-    // Estes campos já estão normalizados e disponíveis para montar a mensagem.
+    
+    
+    
     void telefone;
     void assunto;
     void CONTATO.email;

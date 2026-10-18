@@ -1,8 +1,4 @@
-/**
- * Dados de contato em um único lugar.
- * Páginas, botões e o endpoint de contato importam esta constante para evitar
- * que telefone, endereço e horário fiquem divergentes entre componentes.
- */
+
 export const CONTATO = {
   phoneDisplay: '+55 (61) 99500-5162',
   phoneDigits: '5561995005162',

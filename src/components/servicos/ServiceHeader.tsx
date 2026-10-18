@@ -1,6 +1,6 @@
 import NavBar from "@/components/NavBar";
 
-/** Cabeçalho compartilhado visualmente com as demais páginas internas. */
+
 export default function ServiceHeader() {
   return (
     <header className="absolute inset-x-0 top-[25px] z-30 h-24 px-6">

@@ -6,7 +6,7 @@ import ImageModal from "./ImageModal";
 import Photo from "./Photo";
 import { CLINIC_GALLERY, CLINIC_MAIN, H2, PAL, type ClinicPhoto } from "./data";
 
-/** Fotos que realmente existem (as sem `src` mostram só o placeholder e não abrem modal). */
+
 const VIEWABLE = [CLINIC_MAIN, ...CLINIC_GALLERY].filter(
   (p): p is ClinicPhoto & { src: string } => Boolean(p.src),
 );

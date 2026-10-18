@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 
-/** Enfeites decorativos da página (todos aria-hidden e sem interação). */
+
 
 export function Blob({ color, radius, className = '' }: { color: string; radius: string; className?: string }) {
   return <div aria-hidden className={`pointer-events-none absolute ${className}`} style={{ background: color, borderRadius: radius }} />;

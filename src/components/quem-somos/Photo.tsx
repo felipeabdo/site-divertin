@@ -8,11 +8,11 @@ type Props = {
   style?: CSSProperties;
   tone?: string;
   icon?: string;
-  /** Se informado (e houver foto), a imagem vira um botão que dispara essa ação. */
+  
   onClick?: () => void;
 };
 
-/** Foto com fundo em degradê; sem `src`, mostra um placeholder com emoji. */
+
 export default function Photo({ src, alt, className = '', style, tone = PAL.orangeSoft, icon = '🧸', onClick }: Props) {
   const boxStyle: CSSProperties = { ...style, background: `linear-gradient(135deg, ${tone}, #fff)` };
 

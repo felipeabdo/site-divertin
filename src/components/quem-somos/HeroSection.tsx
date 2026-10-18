@@ -8,7 +8,7 @@ import { CONTATO } from "@/data/contatoData";
 export default function HeroSection() {
   return (
     <section className="relative min-h-[580px] w-full overflow-hidden lg:min-h-[650px]">
-      {/* fundo: a foto da home desfocada e tingida, para a Jéssica se destacar */}
+      
       <div aria-hidden className="absolute inset-0 overflow-hidden">
         <div className="absolute -inset-6 bg-[url(/bg-hero.png)] bg-cover bg-top bg-no-repeat blur-md" />
         <div
@@ -57,37 +57,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <figure className="relative flex items-end justify-center lg:h-[650px] lg:justify-end">
-          {/* Em telas menores, mantemos o retrato compacto para não competir com o texto. */}
-          <div
-            className="relative mt-6 aspect-square w-full max-w-[240px] overflow-hidden shadow-xl sm:max-w-[280px] lg:hidden"
-            style={{
-              borderRadius: "70px 120px 80px 110px / 70px 90px 100px 80px",
-            }}
-          >
-            <img
-              src="/Jessica.jpeg"
-              alt="Jéssica Del Corso, CEO e fundadora"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-
-          <figcaption className="mt-3 text-center text-white lg:absolute lg:bottom-8 lg:left-auto lg:right-[78%] lg:mt-0 lg:translate-x-0 lg:whitespace-nowrap lg:text-left">
-            <strong className="block text-xl font-black leading-tight sm:text-2xl">
-              Jéssica Del Corso
-            </strong>
-            <span className="text-sm font-semibold text-white/90 sm:text-base">
-              CEO e fundadora
-            </span>
-          </figcaption>
-
-          {/* A imagem de corpo inteiro fica limitada à mesma altura da hero em desktop. */}
-          <img
-            src="/jessica-full.png"
-            alt="Jéssica Del Corso, CEO e fundadora"
-            className="hidden h-full w-auto max-w-none object-contain object-bottom drop-shadow-[0_14px_22px_rgba(0,0,0,.28)] lg:block"
-          />
-        </figure>
+?
       </div>
 
       <Cloud position="bottom" color={PAL.orangeSoft} />

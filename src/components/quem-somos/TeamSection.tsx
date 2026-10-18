@@ -5,12 +5,7 @@ import { H2, PAL, TEAM } from "./data";
 export default function TeamSection() {
   return (
     <section className="relative mx-auto mt-24 max-w-6xl px-6">
-      {/* <Dashes
-        color={PAL.pink}
-        className="-left-2 -top-3 hidden md:block"
-        size={34}
-        rotate={-30}
-      /> */}
+      
       <h2 className={`${H2} text-center md:text-left`}>Nossa equipe</h2>
 
       <div className="relative mt-10 grid gap-8 sm:grid-cols-3">

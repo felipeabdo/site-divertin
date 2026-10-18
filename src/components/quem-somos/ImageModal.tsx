@@ -8,16 +8,13 @@ export type ModalImage = { src: string; alt: string };
 
 type Props = {
   images: ModalImage[];
-  /** Índice da imagem aberta; null = modal fechado. */
+  
   index: number | null;
   onClose: () => void;
   onChange: (index: number) => void;
 };
 
-/**
- * Modal com a foto completa, no visual do site (fundo roxo da paleta, moldura branca,
- * detalhes coloridos). Fecha com Esc, clique fora ou no X; setas do teclado trocam de foto.
- */
+
 export default function ImageModal({ images, index, onClose, onChange }: Props) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const isOpen = index !== null;
@@ -34,18 +31,18 @@ export default function ImageModal({ images, index, onClose, onChange }: Props) 
   useEffect(() => {
   if (!isOpen) return;
 
-  // 1. Salva a posição exata atual do scroll da página
+  
   const scrollY = window.scrollY;
   const previousOverflow = document.body.style.overflow;
   const previousPaddingRight = document.body.style.paddingRight;
 
-  // 2. Calcula a largura da barra de rolagem para compensar o espaço dela
+  
   const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
-  // 3. Aplica as travas sem usar position: fixed (evita o pulo para o topo)
+  
   document.body.style.overflow = 'hidden';
   if (scrollbarWidth > 0) {
-    // Adiciona um padding invisível idêntico ao tamanho da barra que sumiu
+    
     document.body.style.paddingRight = `${scrollbarWidth}px`;
   }
 
@@ -59,7 +56,7 @@ export default function ImageModal({ images, index, onClose, onChange }: Props) 
   window.addEventListener('keydown', onKey);
 
   return () => {
-    // 4. Restaura tudo exatamente como estava, na mesma altura
+    
     document.body.style.overflow = previousOverflow;
     document.body.style.paddingRight = previousPaddingRight;
     window.scrollTo(0, scrollY);
@@ -71,7 +68,7 @@ export default function ImageModal({ images, index, onClose, onChange }: Props) 
 
   if (index === null) return null;
   const img = images[index];
-  // Se a galeria mudar enquanto o modal estiver aberto, evita acessar uma foto inexistente.
+  
   if (!img) return null;
 
   return (
@@ -80,7 +77,7 @@ export default function ImageModal({ images, index, onClose, onChange }: Props) 
       aria-modal="true"
       aria-label={img.alt}
       className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10"
-      // style={{ background: 'rgba(128,44,106,.8)', backdropFilter: 'blur(6px)' }} esse era o antigo
+      
       style={{ background: 'rgba(8,8,8,.28)', backdropFilter: 'blur(6px)' }}
       onClick={onClose}
     >

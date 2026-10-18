@@ -29,7 +29,7 @@ export default function CtaSection() {
           criança.
         </p>
         <div className="flex w-full justify-center [&>*]:mx-0">
-          <Botao largura="230px" cor="laranja_escuro" href={CONTATO.whatsappUrl} target="_blank" rel="noreferrer">
+          <Botao largura="245px" cor="laranja_escuro" href={CONTATO.whatsappUrl} target="_blank" rel="noreferrer">
             Agendar avaliação <Arrow />
           </Botao>
         </div>

@@ -12,11 +12,11 @@ interface NavLink {
   label: string;
   href: string;
   hoverColor: string;
-  /** Ícone exibido no menu mobile */
+  
   icon?: IconName;
-  /** Cor de fundo da "pílula" no menu mobile */
+  
   bg?: string;
-  /** Cor do círculo do ícone e da seta no menu mobile */
+  
   accent?: string;
 }
 
@@ -31,54 +31,49 @@ const defaultLinks: NavLink[] = [
   { label: 'CONTATO', href: '/contato', hoverColor: '#b7db00', icon: 'chat', bg: '#ebdcf4', accent: '#9b63b8' },
 ];
 
-/** Tempo máximo (ms) que o menu espera uma página carregar antes de fechar sozinho */
+
 const NAVIGATION_TIMEOUT = 10000;
 
-/**
- * Deslocamento vertical (px) do botão inteiro (hambúrguer + brilho + X).
- * Os três ficam sempre exatamente no mesmo ponto; só este valor move o conjunto.
- * 36 = a posição do seu hambúrguer original (antigo "mt-18").
- * Use 0 para subir tudo para o topo do container.
- */
+
 const BTN_OFFSET_Y = 36;
 
-/** Quanto o pincel "sobra" para cada lado do texto (px) */
+
 const BRUSH_OVERHANG = 6;
 
-/** Rolagem (px) a partir da qual a barra fixa do desktop aparece */
+
 const SCROLL_SHOW_AT = 60;
-/** Rolagem (px) abaixo da qual a barra fixa some (quase no topo) */
+
 const SCROLL_HIDE_AT = 10;
 
-/** Os 3 risquinhos: posição fechada (hambúrguer) e aberta (raios do brilho) */
+
 const bars = [0, 1, 2].map((i) => ({
   closed: { x: 24, y: 24 + (i - 1) * 8, a: 0 },
   open: [
-    { x: 5.9, y: 9.8, a: 38 }, // raio de cima
-    { x: 1, y: 24, a: 0 }, // raio do meio
-    { x: 5.9, y: 38.2, a: -38 }, // raio de baixo
+    { x: 5.9, y: 9.8, a: 38 }, 
+    { x: 1, y: 24, a: 0 }, 
+    { x: 5.9, y: 38.2, a: -38 }, 
   ][i],
 }));
 
-/** Remove query, hash e barra final para comparar rotas */
+
 const normalizePath = (p: string) => p.split(/[?#]/)[0].replace(/\/+$/, '') || '/';
 
-/** Verifica se o link corresponde à rota atual (a Home só casa exatamente) */
+
 const isActiveRoute = (href: string, pathname: string) => {
   const h = normalizePath(href);
   const p = normalizePath(pathname);
   return h === '/' ? p === '/' : p === h || p.startsWith(h + '/');
 };
 
-/* ------------------------------------------------------------------ */
-/* "Passagem de bastão" do menu entre páginas                          */
-/*                                                                     */
-/* Se o NavBar for desmontado e montado de novo na troca de rota       */
-/* (ex.: ele está dentro de cada página), o estado "aberto" se perderia */
-/* e o menu sumiria de uma vez. Para evitar isso, ao clicar num link   */
-/* guardamos um aviso no sessionStorage; o NavBar da página nova lê o  */
-/* aviso, já nasce aberto (sem animação) e então desliza para fechar.  */
-/* ------------------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
 
 const HANDOFF_KEY = 'navbar-menu-handoff';
 
@@ -94,7 +89,7 @@ const clearHandoff = () => {
   } catch {}
 };
 
-/** Lê e apaga o aviso. Só vale se for recente. */
+
 const consumeHandoff = () => {
   try {
     const t = Number(sessionStorage.getItem(HANDOFF_KEY));
@@ -105,12 +100,12 @@ const consumeHandoff = () => {
   }
 };
 
-// useLayoutEffect roda antes da pintura (sem "piscada"); no servidor usamos useEffect
+
 const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-/* ------------------------------------------------------------------ */
-/* Ícones (SVG em código)                                              */
-/* ------------------------------------------------------------------ */
+
+
+
 
 function MenuIcon({ name }: { name: IconName }) {
   const common = {
@@ -175,15 +170,15 @@ function ArrowIcon() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Decorações de fundo (SVG em código)                                 */
-/* Cada uma é ancorada num canto e escala proporcionalmente à largura. */
-/* ------------------------------------------------------------------ */
+
+
+
+
 
 function DrawerDecorations() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      {/* Topo esquerdo: blob rosa + 3 traços amarelos */}
+      
       <svg
         viewBox="0 0 380 270"
         className="absolute top-0 left-0 block"
@@ -200,7 +195,7 @@ function DrawerDecorations() {
         </g>
       </svg>
 
-      {/* Direita, meio: 3 traços amarelos */}
+      
       <svg
         viewBox="0 0 80 150"
         className="absolute right-0 block"
@@ -213,7 +208,7 @@ function DrawerDecorations() {
         </g>
       </svg>
 
-      {/* Base esquerda: blob amarelo */}
+      
       <svg
         viewBox="0 0 430 232"
         className="absolute bottom-0 left-0 block"
@@ -225,7 +220,7 @@ function DrawerDecorations() {
         />
       </svg>
 
-      {/* Base direita: blob rosa + 3 traços verdes */}
+      
       <svg
         viewBox="0 -80 551 322"
         className="absolute bottom-0 right-0 block"
@@ -245,10 +240,10 @@ function DrawerDecorations() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Menu desktop (links + pincel). Usado na posição original e na barra */
-/* fixa que aparece ao rolar; cada instância tem o próprio pincel.     */
-/* ------------------------------------------------------------------ */
+
+
+
+
 
 interface DesktopMenuProps {
   links: NavLink[];
@@ -263,24 +258,24 @@ function DesktopMenu({ links, pathname, className = '', style }: DesktopMenuProp
   const [brushRect, setBrushRect] = useState<{ left: number; top: number; width: number } | null>(
     null,
   );
-  /** só anima depois da primeira posição, para o pincel não "voar" ao carregar */
+  
   const [brushAnimated, setBrushAnimated] = useState(false);
 
   const activeIndex = links.findIndex((l) => isActiveRoute(l.href, pathname));
-  // o pincel vai para o item em hover; sem hover, volta para a página ativa
+  
   const targetIndex = hoveredIndex ?? (activeIndex >= 0 ? activeIndex : null);
 
   useIsoLayoutEffect(() => {
     let cancelled = false;
 
     const measure = () => {
-      // Fontes podem terminar de carregar depois da troca de item ou desmontagem.
+      
       if (cancelled) return;
       const el = targetIndex !== null ? itemRefs.current[targetIndex] : null;
       if (!el) return;
       setBrushRect({
         left: el.offsetLeft - BRUSH_OVERHANG,
-        // Logo abaixo do texto (funciona com ou sem padding no container).
+        
         top: el.offsetTop + el.offsetHeight - 1,
         width: el.offsetWidth + BRUSH_OVERHANG * 2,
       });
@@ -288,7 +283,7 @@ function DesktopMenu({ links, pathname, className = '', style }: DesktopMenuProp
 
     measure();
     window.addEventListener('resize', measure);
-    // Recalcula quando a fonte customizada termina de carregar (muda a largura do texto).
+    
     document.fonts?.ready.then(measure);
 
     return () => {
@@ -305,7 +300,7 @@ function DesktopMenu({ links, pathname, className = '', style }: DesktopMenuProp
 
   return (
     <ul className={`relative ${className}`} style={style} onMouseLeave={() => setHoveredIndex(null)}>
-      {/* Traço de pincel que desliza entre os itens */}
+      
       {brushRect && targetIndex !== null && (
         <span
           aria-hidden
@@ -322,7 +317,7 @@ function DesktopMenu({ links, pathname, className = '', style }: DesktopMenuProp
               : 'none',
           }}
         >
-          {/* a key reinicia o "rabisco" a cada troca de item */}
+          
           <svg
             key={targetIndex}
             viewBox="0 0 100 12"
@@ -364,33 +359,33 @@ function DesktopMenu({ links, pathname, className = '', style }: DesktopMenuProp
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* NavBar                                                              */
-/* ------------------------------------------------------------------ */
+
+
+
 
 export default function NavBar({ links = defaultLinks }: NavBarProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  /** true = aplica o estado visual na hora, sem animar (usado só na passagem de bastão) */
+  
   const [instant, setInstant] = useState(false);
-  /** href da página que está carregando (o menu fica aberto enquanto isso) */
+  
   const [pendingHref, setPendingHref] = useState<string | null>(null);
 
   const prevPathname = useRef(pathname);
   const handoffChecked = useRef(false);
   const handoffActive = useRef(false);
 
-  /* ---------- Barra fixa do desktop ---------- */
-  /** true = página rolada: a barra fixa com fundo aparece */
+  
+  
   const [scrolled, setScrolled] = useState(false);
-  /** o portal só existe no navegador (evita erro de hidratação) */
+  
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const update = () => {
       const y = window.scrollY;
-      // histerese: aparece depois de SCROLL_SHOW_AT, só some perto do topo
+      
       setScrolled((prev) => (prev ? y > SCROLL_HIDE_AT : y > SCROLL_SHOW_AT));
     };
     update();
@@ -398,9 +393,9 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
     return () => window.removeEventListener('scroll', update);
   }, []);
 
-  // PASSAGEM DE BASTÃO: este NavBar acabou de montar numa página nova logo
-  // depois de um clique no menu. Ele nasce aberto (idêntico ao menu da página
-  // anterior, sem animação) e, quando a página já está pronta, desliza para fechar.
+  
+  
+  
   useIsoLayoutEffect(() => {
     if (!handoffChecked.current) {
       handoffChecked.current = true;
@@ -436,11 +431,11 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
     clearHandoff();
   };
 
-  // Clique num link do menu:
-  // - mesma página: fecha o menu na hora
-  // - outra página: mantém o menu aberto até a rota mudar
+  
+  
+  
   const handleLinkClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
-    // cliques com ctrl/cmd/shift (nova aba/janela) não devem prender o menu
+    
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
 
     if (normalizePath(href) === normalizePath(pathname)) {
@@ -451,25 +446,25 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
     setHandoff();
   };
 
-  // A rota mudou e este NavBar continua montado (ex.: está no layout):
-  // a nova página já carregou, então o menu desliza de volta.
-  // (Na montagem inicial não faz nada, para não atropelar a passagem de bastão.)
+  
+  
+  
   useEffect(() => {
     if (prevPathname.current === pathname) return;
     prevPathname.current = pathname;
     closeMenu();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [pathname]);
 
-  // Segurança: se a navegação demorar demais ou falhar, o menu não fica preso
+  
   useEffect(() => {
     if (!pendingHref) return;
     const t = setTimeout(closeMenu, NAVIGATION_TIMEOUT);
     return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [pendingHref]);
 
-  // Trava o scroll do body e permite fechar com ESC
+  
   useEffect(() => {
     if (!isOpen) return;
     const prev = document.body.style.overflow;
@@ -482,12 +477,12 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
       document.body.style.overflow = prev;
       window.removeEventListener('keydown', onKey);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [isOpen]);
 
   return (
     <div className="relative">
-      {/* BOTÃO ÚNICO ANIMADO: hambúrguer -> brilho -> X (todos no mesmo ponto) */}
+      
       <style>{`
         @keyframes navx-glow {
           0%   { transform: scale(.2); opacity: 0; }
@@ -514,10 +509,9 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
               </filter>
             </defs>
 
-            {/* Tudo dentro deste grupo compartilha o mesmo centro (24, 24) */}
+            
             <g transform={`translate(0 ${BTN_OFFSET_Y})`}>
-              {/* MOLDURA do hambúrguer (só com o menu fechado): botão branco com borda rosa
-                  e traços amarelos. Ao abrir, "estoura" e vira o brilho; ao fechar, volta com um quique. */}
+              
               <g
                 style={{
                   transformOrigin: '24px 24px',
@@ -552,10 +546,10 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
                 />
               </g>
 
-              {/* área de clique */}
+              
               <rect x="8" y="6" width="32" height="36" fill="transparent" />
 
-              {/* clarão que ilumina o X */}
+              
               <circle
                 cx="24"
                 cy="24"
@@ -569,7 +563,7 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
                 }}
               />
 
-              {/* X que fecha o menu */}
+              
               <g
                 stroke="#e6007e"
                 strokeWidth="4"
@@ -588,7 +582,7 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
                 <path d="M16 16 32 32M32 16 16 32" />
               </g>
 
-              {/* 3 risquinhos: viram o brilho */}
+              
               {bars.map((b, i) => {
                 const p = isOpen ? b.open : b.closed;
                 const delay = isOpen ? i * 60 : (2 - i) * 40;
@@ -626,7 +620,7 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
         </button>
       </div>
 
-      {/* 1. MENU DESKTOP (> 1300px) */}
+      
       <style>{`
         @keyframes brush-wobble {
           0%   { transform: scaleY(.55) skewX(-14deg); }
@@ -636,7 +630,7 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
         }
       `}</style>
 
-      {/* Menu na posição original: some quando a barra fixa assume */}
+      
       <DesktopMenu
         links={links}
         pathname={pathname}
@@ -648,8 +642,7 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
         }}
       />
 
-      {/* Barra fixa (pílula) que aparece ao rolar e some ao voltar ao topo.
-          Vai para o <body> por um portal, assim nenhum container da página a prende. */}
+      
       {mounted &&
         createPortal(
           <div
@@ -669,15 +662,15 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
               style={{
                 padding: '12px 44px 18px',
                 background: 'rgba(8, 8, 8, 0.28)', 
-                // background: 'rgba(52, 24, 56, 0.88)' - esse era o anterior
-                // background: 'rgba(8, 8, 8, 0.28)' - esse é o de agora
+                
+                
                 backdropFilter: 'blur(10px)',
                 WebkitBackdropFilter: 'blur(10px)',
                 border: '2px solid rgba(255,255,255,0.14)',
                 boxShadow: '0 10px 30px -8px rgba(40,10,40,0.5)',
               }}
             >
-              {/* traços amarelos, como nas decorações do site */}
+              
               <svg
                 viewBox="0 0 40 24"
                 className="absolute -top-4 right-9 block w-9 h-5"
@@ -702,7 +695,7 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
           document.body,
         )}
 
-      {/* 2. GAVETA MOBILE/TABLET (<= 1300px) */}
+      
       <nav
         aria-hidden={!isOpen}
         className={`
@@ -713,15 +706,15 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
         `}
         style={{
           backgroundColor: '#faf8f4',
-          // Altura da pílula: acompanha largura E altura da tela
+          
           ['--pill-h' as string]: 'clamp(52px, min(15.7vw, 11.5vh), 112px)',
-          // Na passagem de bastão a gaveta já nasce aberta, sem animar
+          
           transition: instant ? 'none' : undefined,
         }}
       >
         <DrawerDecorations />
 
-        {/* Área de conteúdo: centraliza na vertical; se faltar altura, rola */}
+        
         <div className="relative z-10 min-h-full flex flex-col items-center py-6">
           <ul
             className="m-auto flex flex-col items-stretch list-none p-0"
@@ -750,7 +743,7 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
                       opacity: pendingHref && !isPending ? 0.6 : 1,
                     }}
                   >
-                    {/* Círculo com ícone */}
+                    
                     <span
                       className="shrink-0 rounded-full flex items-center justify-center"
                       style={{
@@ -763,7 +756,7 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
                       {link.icon && <MenuIcon name={link.icon} />}
                     </span>
 
-                    {/* Texto: só a primeira letra maiúscula, como no design */}
+                    
                     <span
                       className="flex-1 min-w-0 truncate"
                       style={{
@@ -779,7 +772,7 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
                       </span>
                     </span>
 
-                    {/* Seta (pulsa enquanto a página carrega) */}
+                    
                     <span
                       className={`shrink-0 ${isPending ? 'animate-pulse' : ''}`}
                       style={{
