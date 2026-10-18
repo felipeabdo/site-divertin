@@ -14,7 +14,7 @@ export default function Home() {
           </div>
         </header>
 
-        <div className="relative z-10 mx-auto flex min-h-[580px] w-full max-w-6xl items-end px-6 pb-20 pt-36 lg:min-h-[650px] lg:pb-24">
+        <div className="relative z-10 mx-auto flex min-h-[580px] w-full max-w-6xl items-end px-6 pb-20 pt-36 lg:min-h-[650px] lg:pb-24 mb-[20]">
           <div className="max-w-2xl text-white">
             <img
               src="/logo (1).png"
@@ -38,8 +38,12 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 z-10 h-[30px] w-full translate-y-[50%] md:h-[70px]">
-          <div className="h-full w-full bg-repeat-x bg-contain bg-bottom mt-[18]" style={{ backgroundImage: `url('/cloud (1).png')` }} aria-label="Divisor de seção" />
+        <div className="absolute bottom-0 mb-[20] left-0 z-20 h-[55px] w-full translate-y-0 md:h-[70px] md:translate-y-[20%]]">
+          <div
+            className="h-full w-full bg-repeat-x bg-bottom bg-[length:auto_100%]  mt-[57]"
+            style={{ backgroundImage: "url('/cloud (1).png')" }}
+            aria-hidden="true"
+          />
         </div>
       </section>
 
