@@ -28,7 +28,7 @@ export default function Home() {
         <div className="w-full px-6  flex flex-col items-start text-left pt-12 md:pt-24 min-[1301px]:pt-0 z-10 mt-25">
           
           
-          <div className="w-full max-w-[250px] md:w-1/2 md:max-w-none lg:w-[45%] min-[1301px]:max-w-[500px] min-[1301px]:absolute min-[1301px]:top-15">
+          <div className="w-full max-w-[250px] md:w-1/2 md:max-w-none lg:w-[45%] min-[1301px]:max-w-[500px] min-[1301px]:absolute min-[1301px]:top-36 min-[1301px]:left-45">
             
             
             <img src="/logo (1).png" alt="Logo Divertin" className="w-48 lg:w-60 h-auto hidden min-[1301px]:block mb-6 object-contain"/>

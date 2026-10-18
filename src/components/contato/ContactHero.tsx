@@ -34,7 +34,7 @@ export default function ContactHero() {
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#FDD5A5]">
             Atendimento e agendamento
           </p>
-          <h1 className="mt-4 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 text-4xl font-black font-avenir leading-tight sm:text-5xl lg:text-6xl">
             Vamos conversar?
           </h1>
           <p className="mt-5 max-w-xl text-base font-semibold leading-relaxed text-white/90 sm:text-lg">

@@ -40,7 +40,7 @@ export default function ServicosPage() {
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#FDD5A5]">
               Cuidado infantil especializado
             </p>
-            <h1 className="mt-4 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 text-4xl font-avenir font-black leading-tight sm:text-5xl lg:text-6xl">
               Especialidades
             </h1>
             <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-white/90 sm:text-lg">
