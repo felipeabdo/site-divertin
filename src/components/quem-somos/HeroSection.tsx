@@ -26,7 +26,7 @@ export default function HeroSection() {
         </div>
       </header>
 
-      <div className="relative mt-[-60] z-10 mx-auto grid min-h-[580px] w-full max-w-6xl grid-cols-1 items-end gap-4 px-6 pb-20 pt-36 lg:min-h-[650px] lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-8 lg:pb-24">
+      <div className="relative z-10 mx-auto grid min-h-[580px] w-full max-w-6xl grid-cols-1 items-end gap-4 px-6 pb-20 pt-36 lg:min-h-[650px] lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-8 lg:pb-24">
         <div className="max-w-2xl pb-2 text-white lg:pb-0">
           <img
             src="/logo (1).png"

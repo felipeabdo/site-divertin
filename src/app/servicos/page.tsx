@@ -31,7 +31,7 @@ export default function ServicosPage() {
         <ServiceHeader />
 
         <div className="relative z-10 mx-auto flex min-h-[580px] w-full max-w-6xl items-end px-6 pb-20 pt-36 lg:min-h-[650px] lg:pb-24">
-          <div className="max-w-3xl text-white">
+          <div className="mt-0 max-w-3xl text-white">
             <img
               src="/logo (1).png"
               alt="Logo Divertin"
