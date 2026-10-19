@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Avatar from './Avatar';
 import { CARD_JA_TEM_NOME, type TeamMember } from './data';
 
@@ -6,7 +7,7 @@ export default function TeamCard({ member }: { member: TeamMember }) {
   if (member.src && CARD_JA_TEM_NOME) {
     return (
       <article>
-        <img src={member.src} alt={`${member.name}, ${member.role.toLowerCase()}`} className="h-auto w-full" />
+        <img src={member.src} alt={`${member.name}, ${member.role.toLowerCase()}`} loading="lazy" decoding="async" className="h-auto w-full" />
       </article>
     );
   }
@@ -18,7 +19,13 @@ export default function TeamCard({ member }: { member: TeamMember }) {
         style={{ background: `linear-gradient(135deg, ${member.tone}, #fff)` }}
       >
         {member.src ? (
-          <img src={member.src} alt={member.name} className="absolute inset-0 h-full w-full object-cover object-top" />
+          <Image
+            src={member.src}
+            alt={member.name}
+            fill
+            sizes="(max-width: 639px) 100vw, 33vw"
+            className="object-cover object-top"
+          />
         ) : member.icon ? (
           <span aria-hidden className="absolute inset-0 grid place-items-center text-6xl opacity-60">{member.icon}</span>
         ) : (

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Botao from "@/components/Botao";
 import NavBar from "@/components/NavBar";
 import Arrow from "./Arrow";
@@ -10,7 +11,16 @@ export default function HeroSection() {
     <section className="relative min-h-[580px] w-full overflow-hidden lg:min-h-[650px]">
       
       <div aria-hidden className="absolute inset-0 overflow-hidden">
-        <div className="absolute -inset-6 bg-[url(/bg-hero.png)] bg-cover bg-top bg-no-repeat blur-md" />
+        <div className="absolute -inset-6">
+          <Image
+            src="/bg-hero.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-top blur-md"
+          />
+        </div>
         <div
           className="absolute inset-0"
           style={{
@@ -31,6 +41,7 @@ export default function HeroSection() {
           <img
             src="/logo (1).png"
             alt="Logo Divertin"
+            decoding="async"
             className="mb-6 h-auto w-44 object-contain sm:w-52 lg:w-60"
           />
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#FDD5A5]">
@@ -56,8 +67,6 @@ export default function HeroSection() {
             </Botao>
           </div>
         </div>
-
-?
       </div>
 
       <Cloud position="bottom" color={PAL.orangeSoft} />

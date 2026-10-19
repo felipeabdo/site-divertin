@@ -9,11 +9,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Clínica Divertin | Fonoaudiologia Infantil",
   description:
-    "Pacotes e condições especiais para acompanhamento terapêutico infantil com horários fixos.",
+    "Fonoaudiologia infantil e acompanhamento especializado para crianças, com cuidado individualizado, acolhimento e parceria com a família.",
   openGraph: {
     title: "Clínica Divertin | Fonoaudiologia Infantil",
     description:
-      "Acompanhamento terapêutico lúdico e especializado para crianças.",
+      "Fonoaudiologia infantil com atendimento acolhedor, lúdico e individualizado para crianças e suas famílias.",
     
     images: ["/logo-compartilhamento.png"],
   },

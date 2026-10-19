@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Service } from '@/data/servicosData';
 import Arrow from '../quem-somos/Arrow';
@@ -6,10 +7,12 @@ export default function ServiceCard({ service }: { service: Service }) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[34px] bg-white shadow-[0_18px_50px_rgba(61,42,56,.10)] ring-1 ring-black/5 transition-transform duration-300 hover:-translate-y-1">
       <div className="relative h-60 overflow-hidden sm:h-72">
-        <img
+        <Image
           src={service.heroImage}
           alt={service.shortTitle}
-          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+          fill
+          sizes="(max-width: 1023px) calc(100vw - 3rem), 45vw"
+          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
         />
         <div
           className="absolute inset-0"

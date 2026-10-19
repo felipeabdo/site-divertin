@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Botao from '@/components/Botao';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
@@ -7,7 +8,17 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden min-h-screen bg-white">
       
-      <section className="relative min-h-[580px] w-full overflow-hidden bg-[url(/bg-hero.png)] bg-cover bg-top bg-no-repeat lg:min-h-[650px]">
+      <section className="relative min-h-[580px] w-full overflow-hidden lg:min-h-[650px]">
+        <div aria-hidden="true" className="absolute inset-0">
+          <Image
+            src="/bg-hero.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-top"
+          />
+        </div>
         <header className="absolute inset-x-0 top-[25px] z-30 h-24 px-6">
           <div className="min-[1301px]:absolute min-[1301px]:left-1/2 min-[1301px]:top-8 min-[1301px]:-translate-x-1/2">
             <NavBar />
@@ -19,6 +30,7 @@ export default function Home() {
             <img
               src="/logo (1).png"
               alt="Logo Divertin"
+              decoding="async"
               className="mb-6 h-auto w-44 object-contain sm:w-52 lg:w-60"
             />
 
@@ -32,7 +44,7 @@ export default function Home() {
 
             <div className="mt-7 w-full sm:w-auto">
               <Botao cor="rosinha" href={CONTATO.whatsappUrl} target="_blank" rel="noreferrer">
-                Quero agendar uma avaliação <img src="/arrow_forward.svg" alt="Seta do botão" className="inline ml-2" />
+                Quero agendar uma avaliação <img src="/arrow_forward.svg" alt="" aria-hidden="true" decoding="async" className="inline ml-2" />
               </Botao>
             </div>
           </div>
@@ -51,7 +63,7 @@ export default function Home() {
       <section className="w-full flex flex-col items-center px-6 py-12 max-w-7xl mx-auto gap-6 mt-6 md:mt-12">
         
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 w-full">
-          <img src="/Jessica.jpeg" alt="Jéssica Del Corso" className='w-full max-w-sm rounded-4xl h-auto object-cover shadow-md'/>
+          <img src="/Jessica.jpeg" alt="Jéssica Del Corso" loading="lazy" decoding="async" className='w-full max-w-sm rounded-4xl h-auto object-cover shadow-md'/>
           
           <div className='flex flex-col items-center lg:items-start gap-6 text-center lg:text-left max-w-2xl'>
             <h2 className='text-3xl md:text-4xl font-medium leading-tight text-gray-800'>
@@ -64,7 +76,7 @@ export default function Home() {
               Na Divertin, realizamos avaliação, diagnóstico e intervenção especializada, com abordagem lúdica, empática e eficiente.
             </p>
             <Botao cor='laranja_escuro' href={CONTATO.whatsappUrl} target="_blank" rel="noreferrer">
-              Quero agendar uma avaliação <img src="/arrow_forward.svg" alt="Seta do botão" className='inline ml-2'/>
+              Quero agendar uma avaliação <img src="/arrow_forward.svg" alt="" aria-hidden="true" decoding="async" className='inline ml-2'/>
             </Botao>
           </div>
         </div>
@@ -72,19 +84,19 @@ export default function Home() {
         
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 w-full mt-8'>
           <div className='flex flex-col items-center text-center p-4 xl:w-[406] xl:text-justify xl:[text-align-last:center]'>
-            <img src="/Group 1.svg" alt="Ícone avaliação" className='mb-6 h-20 w-auto'/>
+            <img src="/Group 1.svg" alt="Ícone avaliação" loading="lazy" decoding="async" className='mb-6 h-20 w-auto'/>
             <h3 className='font-bold text-lg mb-2 text-gray-800'>Avaliação e Plano Terapêutico Personalizados</h3>
             <p className='text-gray-600 text-sm leading-relaxed'>Cada criança é única — por isso, criamos planos de desenvolvimento individualizados, com atividades lúdicas que estimulam linguagem, comunicação e socialização de forma divertida.</p>
           </div>
           
           <div className='flex flex-col items-center text-center p-4 xl:w-[368] xl:ml-[25] xl:text-justify xl:[text-align-last:center]'>
-            <img src="/Group 1 (1).svg" alt="Ícone desenvolvimento" className='mb-6 h-20 w-auto'/>
+            <img src="/Group 1 (1).svg" alt="Ícone desenvolvimento" loading="lazy" decoding="async" className='mb-6 h-20 w-auto'/>
             <h3 className='font-bold text-lg mb-2 text-gray-800'>Desenvolvimento na Primeira Infância</h3>
             <p className='text-gray-600 text-sm leading-relaxed'>Nossa abordagem é focada nas fases iniciais da vida. Trabalhamos com estratégias que fortalecem a comunicação, o brincar e o aprendizado desde os primeiros anos.</p>
           </div>
           
           <div className='flex flex-col items-center text-center p-4 xk:w-[406] xl:text-justify xl:[text-align-last:center]'>
-            <img src="/Group 1 (2).svg" alt="Ícone equipe" className='mb-6 h-20 w-auto'/>
+            <img src="/Group 1 (2).svg" alt="Ícone equipe" loading="lazy" decoding="async" className='mb-6 h-20 w-auto'/>
             <h3 className='font-bold text-lg mb-2 text-gray-800'>Equipe Especializada e Afetuosa</h3>
             <p className='text-gray-600 text-sm leading-relaxed'>Contamos com profissionais experientes em distúrbios da comunicação infantil, oferecendo acolhimento, escuta ativa e um acompanhamento terapêutico de confiança.</p>
           </div>

@@ -159,7 +159,9 @@ export default function ScreenSaver({
     };
     let timer: ReturnType<typeof setTimeout> | undefined;
     const schedule = () => {
-      timer = setTimeout(prefetch, 2000);
+      // A tela de descanso é opcional durante a maior parte da visita; adie a
+      // transferência para não competir com imagens e recursos da primeira dobra.
+      timer = setTimeout(prefetch, 12000);
     };
     const onLoad = () => schedule();
 

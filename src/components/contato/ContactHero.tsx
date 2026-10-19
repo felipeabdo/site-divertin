@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Botao from "@/components/Botao";
 import NavBar from "@/components/NavBar";
 import Cloud from "@/components/Cloud";
@@ -8,7 +9,16 @@ export default function ContactHero() {
   return (
     <section className="relative min-h-[580px] overflow-hidden lg:min-h-[650px]">
       <div aria-hidden className="absolute inset-0">
-        <div className="absolute -inset-6 bg-[url('/bg-hero.png')] bg-cover bg-top bg-no-repeat blur-md" />
+        <div className="absolute -inset-6">
+          <Image
+            src="/bg-hero.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-top blur-md"
+          />
+        </div>
         <div
           className="absolute inset-0"
           style={{
@@ -29,6 +39,7 @@ export default function ContactHero() {
           <img
             src="/logo (1).png"
             alt="Logo Divertin"
+            decoding="async"
             className="mb-6 h-auto w-44 object-contain sm:w-52 lg:w-60"
           />
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#FDD5A5]">
@@ -59,6 +70,8 @@ export default function ContactHero() {
         src="/mascote-divertin-contato.png"
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="pointer-events-none absolute bottom-[7%] right-[4%] z-[6] hidden w-[220px] drop-shadow-[0_16px_24px_rgba(0,0,0,.22)] lg:block xl:w-[280px]"
       />
 

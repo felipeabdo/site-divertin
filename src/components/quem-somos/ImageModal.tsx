@@ -90,6 +90,7 @@ export default function ImageModal({ images, index, onClose, onChange }: Props) 
             key={img.src}
             src={img.src}
             alt={img.alt}
+            decoding="async"
             className="mx-auto block max-h-[74vh] w-auto max-w-full rounded-[22px] object-contain"
           />
           <p className="mt-3 text-center text-sm font-semibold text-gray-600">

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { CSSProperties } from 'react';
 import { PAL } from './data';
 
@@ -17,7 +18,13 @@ export default function Photo({ src, alt, className = '', style, tone = PAL.oran
   const boxStyle: CSSProperties = { ...style, background: `linear-gradient(135deg, ${tone}, #fff)` };
 
   const content = src ? (
-    <img src={src} alt={onClick ? '' : alt} className="absolute inset-0 h-full w-full object-cover" />
+    <Image
+      src={src}
+      alt={onClick ? '' : alt}
+      fill
+      sizes="(max-width: 1023px) 100vw, 50vw"
+      className="object-cover"
+    />
   ) : (
     <span aria-hidden className="absolute inset-0 grid place-items-center text-6xl opacity-60">{icon}</span>
   );

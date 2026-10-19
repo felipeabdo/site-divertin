@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Service } from '@/data/servicosData';
 import ServiceHeader from './ServiceHeader';
@@ -7,7 +8,16 @@ export default function ServiceDetailHero({ service }: { service: Service }) {
   return (
     <section className="relative min-h-[720px] overflow-hidden lg:min-h-[760px]">
       <div aria-hidden className="absolute inset-0">
-        <div className="absolute -inset-6 bg-[url('/bg-hero.png')] bg-cover bg-top bg-no-repeat blur-md" />
+        <div className="absolute -inset-6">
+          <Image
+            src="/bg-hero.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-top blur-md"
+          />
+        </div>
         <div
           className="absolute inset-0"
           style={{
@@ -52,9 +62,12 @@ export default function ServiceDetailHero({ service }: { service: Service }) {
           />
           <div className="relative overflow-hidden rounded-[36px] bg-white p-3 shadow-2xl">
             <div className="overflow-hidden rounded-[28px]">
-              <img
+              <Image
                 src={service.heroImage}
                 alt=""
+                width={600}
+                height={750}
+                sizes="(max-width: 1023px) 90vw, 470px"
                 className="aspect-[4/5] w-full object-cover object-top"
               />
             </div>

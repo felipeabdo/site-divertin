@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+
+
+@theme {
+  --color-divertin-rosa: #f4a261; 
+  --color-divertin-rosa-escuro: #D95F80; 
+  --color-divertin-laranja-escuro: #fc5d00; 
+  --color-divertin-verde: #2a9d8f; 
+  --color-divertin-azul: #4a90e2; 
+  --color-divertin-amarelo: #e9c46a; 
+  --color-divertin-fundo: #fdfbf7; 
+
+  
+  --font-avenir: "Avenir", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+}
+
+
+body {
+  background-color: var(--color-divertin-fundo);
+  color: #333333; 
+}
+
