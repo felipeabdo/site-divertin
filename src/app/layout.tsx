@@ -7,15 +7,20 @@ import "./globals.css";
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://site-divertin.vercel.app"),
   title: "Clínica Divertin | Fonoaudiologia Infantil",
   description:
     "Fonoaudiologia infantil e acompanhamento especializado para crianças, com cuidado individualizado, acolhimento e parceria com a família.",
   openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: "Clínica Divertin",
+    url: "/",
     title: "Clínica Divertin | Fonoaudiologia Infantil",
     description:
       "Fonoaudiologia infantil com atendimento acolhedor, lúdico e individualizado para crianças e suas famílias.",
-    
-    images: ["/logo-compartilhamento.png"],
+    // O arquivo anterior não consta no inventário de public/ enviado; use um logo existente.
+    images: [{ url: "/logo%20(1).png", alt: "Logo da Clínica Divertin" }],
   },
 };
 

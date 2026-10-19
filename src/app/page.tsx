@@ -14,7 +14,7 @@ export default function Home() {
             src="/bg-hero.png"
             alt=""
             fill
-            priority
+            preload
             sizes="100vw"
             className="object-cover object-top"
           />

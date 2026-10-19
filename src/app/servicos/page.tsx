@@ -24,7 +24,7 @@ export default function ServicosPage() {
               src="/bg-hero.png"
               alt=""
               fill
-              priority
+              preload
               sizes="100vw"
               className="object-cover object-top blur-md"
             />

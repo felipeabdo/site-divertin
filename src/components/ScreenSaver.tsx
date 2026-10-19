@@ -149,34 +149,8 @@ export default function ScreenSaver({
 
   
   
-  useEffect(() => {
-    let cancelled = false;
-    const prefetch = () => {
-      if (cancelled) return;
-      const img = new Image();
-      img.fetchPriority = 'low';
-      img.src = src;
-    };
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    const schedule = () => {
-      // A tela de descanso é opcional durante a maior parte da visita; adie a
-      // transferência para não competir com imagens e recursos da primeira dobra.
-      timer = setTimeout(prefetch, 12000);
-    };
-    const onLoad = () => schedule();
-
-    if (document.readyState === 'complete') {
-      schedule();
-    } else {
-      window.addEventListener('load', onLoad, { once: true });
-    }
-
-    return () => {
-      cancelled = true;
-      window.removeEventListener('load', onLoad);
-      if (timer) clearTimeout(timer);
-    };
-  }, [src]);
+  // A imagem é carregada somente quando a tela de descanso é exibida.
+  // Isso evita baixar o GIF de 3,5 MB para visitantes que continuam navegando.
 
   if (phase === 'idle') return null;
 
