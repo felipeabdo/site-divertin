@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { GoogleAnalytics } from "@next/third-parties/google";
-
+import DeferredAnalytics from "@/components/DeferredAnalytics";
 import ScreenSaver from "@/components/ScreenSaver";
 import "./globals.css";
 
@@ -32,9 +31,9 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="flex min-h-full flex-col">
         
-        <ScreenSaver src="/descanso.gif" idleMinutes={0.5} width={220} />
+        <ScreenSaver src="/descanso.webp" idleMinutes={0.5} width={220} />
         {children}
-        <GoogleAnalytics gaId="G-14VEB6PD4R" />
+        <DeferredAnalytics gaId="G-14VEB6PD4R" />
       </body>
     </html>
   );

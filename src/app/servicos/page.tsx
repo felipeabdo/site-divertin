@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import Cloud from "@/components/Cloud";
+import Logo from "@/components/Logo";
 import ServiceCardGrid from "@/components/servicos/ServiceCardGrid";
 import ServiceHeader from "@/components/servicos/ServiceHeader";
 import ServicePrinciples from "@/components/servicos/ServicePrinciples";
@@ -42,12 +43,7 @@ export default function ServicosPage() {
 
         <div className="relative z-10 mx-auto flex min-h-[580px] w-full max-w-6xl items-end px-6 pb-20 pt-36 lg:min-h-[650px] lg:pb-24">
           <div className="mt-0 max-w-3xl text-white">
-            <img
-              src="/logo (1).png"
-              alt="Logo Divertin"
-              decoding="async"
-              className="mb-6 h-auto w-44 object-contain sm:w-52 lg:w-60"
-            />
+            <Logo />
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#FDD5A5]">
               Cuidado infantil especializado
             </p>

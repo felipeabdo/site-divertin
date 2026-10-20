@@ -33,7 +33,7 @@ export default function ServicePrinciples() {
 
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-3xl">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#D684BF]">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#C1459E]">
             Nosso jeito de cuidar
           </p>
           <h2 className="mt-3 text-3xl font-black leading-tight text-gray-800 sm:text-4xl">

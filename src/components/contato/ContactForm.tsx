@@ -66,7 +66,7 @@ export default function ContactForm() {
       </div>
       <div className="mx-auto w-full max-w-4xl px-6">
         <div className="mb-10 text-center">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#D684BF]">Fale conosco</p>
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#C1459E]">Fale conosco</p>
           <h2 className="mt-3 text-3xl font-black leading-tight text-gray-800 sm:text-4xl">
             Envie uma mensagem
           </h2>
@@ -148,7 +148,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="rounded-full bg-[#FC5D00] px-7 py-4 text-sm font-black text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+              className="rounded-full bg-[#CC4B00] px-7 py-4 text-sm font-black text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === 'sending' ? (
                 'Enviando...'

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Botao from "@/components/Botao";
 import NavBar from "@/components/NavBar";
 import Arrow from "./Arrow";
+import Logo from "@/components/Logo";
 import Cloud from "../Cloud";
 import { PAL } from "./data";
 import { CONTATO } from "@/data/contatoData";
@@ -38,12 +39,7 @@ export default function HeroSection() {
 
       <div className="relative z-10 mx-auto grid min-h-[580px] w-full max-w-6xl grid-cols-1 items-end gap-4 px-6 pb-20 pt-36 lg:min-h-[650px] lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-8 lg:pb-24">
         <div className="max-w-2xl pb-2 text-white lg:pb-0">
-          <img
-            src="/logo (1).png"
-            alt="Logo Divertin"
-            decoding="async"
-            className="mb-6 h-auto w-44 object-contain sm:w-52 lg:w-60"
-          />
+          <Logo />
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#FDD5A5]">
             A clínica onde brincar também é cuidar
           </p>

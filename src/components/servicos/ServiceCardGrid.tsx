@@ -10,7 +10,7 @@ export default function ServiceCardGrid({ services }: { services: Service[] }) {
       <section className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
         <SectionDashes color="#D684BF" className="left-3 top-10 -rotate-12 md:top-16" />
         <div className="max-w-3xl">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#F7931E]">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#B06206]">
             Especialidades
           </p>
           <h2 className="mt-3 text-3xl font-black leading-tight text-gray-800 sm:text-4xl md:text-5xl">

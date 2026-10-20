@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar";
 import Cloud from "@/components/Cloud";
 import { CONTATO } from "@/data/contatoData";
 import Arrow from "../quem-somos/Arrow";
+import Logo from "@/components/Logo";
 
 export default function ContactHero() {
   return (
@@ -36,12 +37,7 @@ export default function ContactHero() {
 
       <div className="relative z-10 mx-auto flex min-h-[580px] w-full max-w-6xl items-end px-6 pb-20 pt-36 lg:min-h-[650px] lg:pb-24">
         <div className="max-w-2xl text-white">
-          <img
-            src="/logo (1).png"
-            alt="Logo Divertin"
-            decoding="async"
-            className="mb-6 h-auto w-44 object-contain sm:w-52 lg:w-60"
-          />
+          <Logo />
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#FDD5A5]">
             Atendimento e agendamento
           </p>
@@ -66,13 +62,14 @@ export default function ContactHero() {
         </div>
       </div>
 
-      <img
+      <Image
         src="/mascote-divertin-contato.png"
         alt=""
         aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-        className="pointer-events-none absolute bottom-[7%] right-[4%] z-[6] hidden w-[220px] drop-shadow-[0_16px_24px_rgba(0,0,0,.22)] lg:block xl:w-[280px]"
+        width={560}
+        height={560}
+        sizes="(min-width: 1280px) 280px, 220px"
+        className="pointer-events-none absolute bottom-[7%] right-[4%] z-[6] hidden h-auto w-[220px] drop-shadow-[0_16px_24px_rgba(0,0,0,.22)] lg:block xl:w-[280px]"
       />
 
       <div className="mt-[57]">
