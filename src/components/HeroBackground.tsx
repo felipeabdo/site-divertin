@@ -22,7 +22,7 @@ export default function HeroBackground() {
   const { props: desktop } = getImageProps({ ...shared, src: '/bg-hero.png' });
   const { props: mobile } = getImageProps({
     ...shared,
-    src: '/backgroud hero section mobile.png',
+    src: '/bg-hero.png',
   });
 
   return (
