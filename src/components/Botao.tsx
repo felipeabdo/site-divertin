@@ -1,7 +1,6 @@
 import type { AnchorHTMLAttributes, CSSProperties, ReactNode } from "react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 
-
 const CORES_DISPONIVEIS = {
   rosinha: "bg-divertin-rosa-escuro text-white hover:bg-divertin-rosa-escuro/90",
   rosa: "bg-divertin-rosa text-white hover:bg-divertin-rosa/90",
@@ -19,14 +18,11 @@ interface BotaoProps {
   href?: string;
   target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
   rel?: string;
-  
   largura?: CSSProperties["width"];
-  
   altura?: CSSProperties["height"];
-  
+  sombra?: CSSProperties["boxShadow"];
   type?: ButtonType;
 }
-
 
 export default function Botao({
   children,
@@ -36,6 +32,7 @@ export default function Botao({
   rel,
   largura = "327px",
   altura = "70px",
+  sombra = "0px 4px 10px rgba(0,0,0,0.3)",
   type = "button",
 }: BotaoProps) {
   const estiloBase =
@@ -43,14 +40,14 @@ export default function Botao({
   const className = `${estiloBase} ${CORES_DISPONIVEIS[cor]}`;
   const direcionaParaWhatsApp = Boolean(href && /(?:wa\.me|whatsapp\.com|api\.whatsapp)/i.test(href));
 
+  // CORRIGIDO: Agora a sombra é mapeada e o código da altura foi simplificado
   const estiloDimensoes: CSSProperties = {
     width: largura,
-    ...(altura ? { height: altura } : {}),
+    height: altura,
+    boxShadow: sombra,
   };
 
   if (href) {
-    
-    
     const relSeguro =
       target === "_blank"
         ? [...new Set([...(rel ?? "noreferrer").split(/\s+/), "noopener"])].join(" ")
@@ -60,7 +57,6 @@ export default function Botao({
       <a
         href={href}
         target={target}
-        
         rel={relSeguro}
         className={className}
         style={estiloDimensoes}
