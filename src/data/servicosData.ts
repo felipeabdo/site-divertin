@@ -35,11 +35,13 @@ export const SERVICOS: Service[] = [
     accent: '#D684BF',
     softAccent: '#F4CFE7',
     education: [
-    "Graduada em Fonoaudiologia",
-    "Especialista em Desenvolvimento Infantil",
-    "Aprimoramento em Linguagem e Fala"
+    "Fonoaudióloga graduada pela Universidade de Brasília (UnB)",
+    "Especialista em Autismo com formações pelo CBI of Miami e MIND Institute (Modelo Denver)",
+    "Capacitada em ABA, estratégias naturalistas e alfabetização no Transtorno do Espectro Autista",
+    "Treinamento em Apraxia de fala na infância pelo Método Multigestos e Abrapraxia",
+    "Atendimento clínico e domiciliar focado no desenvolvimento da linguagem oral e escrita"
     ],
-    translateY: 150,
+    translateY: 270,
     areas: [
       {
         title: 'Linguagem',
