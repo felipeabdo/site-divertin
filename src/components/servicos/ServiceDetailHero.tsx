@@ -83,9 +83,11 @@ export default function ServiceDetailHero({ service }: { service: Service }) {
           />
           <SectionDashes color="#FDD5A5" className="-right-8 -top-8 rotate-45" />
 
-          {/* CONTAINER DO NOME E DA FORMAÇÃO DA PROFISSIONAL */}
-          {/* Fica posicionado de forma absoluta, centralizado logo abaixo da foto */}
-          <div className="absolute left-1/2 bottom-0 z-50 w-full -translate-x-1/2 translate-y-[250px] text-center px-4">
+          {/* CONTAINER DO NOME E DA FORMAÇÃO DA PROFISSIONAL CORRIGIDO */}
+          <div 
+            className="absolute left-1/2 bottom-0 z-50 w-full text-center px-4" 
+            style={{ transform: `translate(-50%, ${service.translateY ?? 64}px)` }}
+          >
             {/* Nome Dinâmico */}
             <h2 className="text-xl font-black uppercase tracking-wider text-white whitespace-nowrap">
               {service.professionalName}
@@ -110,3 +112,4 @@ export default function ServiceDetailHero({ service }: { service: Service }) {
     </section>
   );
 }
+

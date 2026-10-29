@@ -16,8 +16,9 @@ export type Service = {
   eyebrow: string;
   professionalName:string;
   professionalBio:string;
-  education: string[],
+  education: string[];
   areas: ServiceArea[];
+   translateY?: number;
 };
 
 export const SERVICOS: Service[] = [
@@ -38,6 +39,7 @@ export const SERVICOS: Service[] = [
     "Especialista em Desenvolvimento Infantil",
     "Aprimoramento em Linguagem e Fala"
     ],
+    translateY: 150,
     areas: [
       {
         title: 'Linguagem',
@@ -143,14 +145,15 @@ export const SERVICOS: Service[] = [
     accent: '#F7931E',
     softAccent: '#FDD5A5',
     professionalName: "FERNANDA LIMA",
-  professionalBio: "Texto personalizado para a pediatria focado no acompanhamento do crescimento e bem-estar integral da criança desde os primeiros dias de vida.",
-  education: [
-    "Médica - graduada pelo Centro Universitário de Brasília (UniCEUB)",
-    "MR2 de Pediatria - residência médica em Pediatria pelo Hospital Universitário de Brasília (HUB/UnB)",
-    "Atendimento ambulatorial em Pediatria",
-    "Atenção à pessoa com Síndrome de Down, com Transtorno do Espectro Autista,  com doenças raras e Puericultura geral",
-    "Promoção, prevenção e atenção integral à saúde de crianças e adolescentes"
+    professionalBio: "Texto personalizado para a pediatria focado no acompanhamento do crescimento e bem-estar integral da criança desde os primeiros dias de vida.",
+    education: [
+      "Médica - graduada pelo Centro Universitário de Brasília (UniCEUB)",
+      "MR2 de Pediatria - residência médica em Pediatria pelo Hospital Universitário de Brasília (HUB/UnB)",
+      "Atendimento ambulatorial em Pediatria",
+      "Atenção à pessoa com Síndrome de Down, com Transtorno do Espectro Autista,  com doenças raras e Puericultura geral",
+      "Promoção, prevenção e atenção integral à saúde de crianças e adolescentes"
     ],
+    translateY: 250,
     areas: [
       {
         title: 'Acompanhamento do desenvolvimento',
