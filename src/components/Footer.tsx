@@ -15,6 +15,12 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-8 md:gap-12 mb-10 opacity-85 hover:opacity-100 transition-opacity duration-300">
           
           {/* Certificação 1: MultiGestos (.webm em loop como se fosse GIF) */}
+          <div className="h-12 md:h-12 flex items-center justify-center">
+              <img 
+                src="/unb-fce.png" 
+                alt="Logo da Universidade de Brasília, Campus Ceilândia." 
+                className="h-full w-auto object-contain select-none"
+              />
           <div className="h-30 md:h-30 flex items-center justify-center">
             <img 
               src="/multigestos.webp" 
@@ -22,12 +28,6 @@ export default function Footer() {
               className="h-full w-auto object-contain select-none"
             />
           </div>
-          <div className="h-12 md:h-12 flex items-center justify-center">
-            <img 
-              src="/unb-fce.png" 
-              alt="Logo da Universidade de Brasília, Campus Ceilândia." 
-              className="h-full w-auto object-contain select-none"
-            />
           </div>
 
           {/* Certificação 2: PROMPT Institute (.png) */}
