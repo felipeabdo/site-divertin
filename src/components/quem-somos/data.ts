@@ -6,7 +6,7 @@ export const CARD_JA_TEM_NOME = false;
 export const IMG: Record<string, string | undefined> = {
   ana: '/card_ana.png',
   rafaela: '/card_rafaela.png',
-  fernanda: '/card_fernanda.png',
+  fernanda: '/Fernanda.png',
   clinicaGrande: '/img1.png',
   clinica1: '/img2.png',
   clinica2: '/img3.png',
