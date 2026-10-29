@@ -20,16 +20,15 @@ export default function Footer() {
                 src="/unb-fce.png" 
                 alt="Logo da Universidade de Brasília, Campus Ceilândia." 
                 className="h-full w-auto object-contain select-none"
-              />
+                />
+          </div>
           <div className="h-30 md:h-30 flex items-center justify-center">
             <img 
               src="/multigestos.webp" 
-              alt="Logo da Certificação PROMPT Institute" 
+              alt="Logo da Certificação mULTIGESTOS" 
               className="h-full w-auto object-contain select-none"
             />
           </div>
-          </div>
-
           {/* Certificação 2: PROMPT Institute (.png) */}
           <div className="h-14 md:h-18 flex items-center justify-center">
             <img 
