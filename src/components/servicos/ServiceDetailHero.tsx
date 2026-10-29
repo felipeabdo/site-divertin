@@ -6,7 +6,7 @@ import SectionDashes from './SectionDashes';
 
 export default function ServiceDetailHero({ service }: { service: Service }) {
   return (
-    <section className="relative min-h-[720px] overflow-hidden lg:min-h-[1000px]">
+    <section className="relative min-h-[1400px] overflow-hidden lg:min-h-[1000px]">
       <div aria-hidden className="absolute inset-0">
         <div className="absolute -inset-6">
           <Image
