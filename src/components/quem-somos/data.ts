@@ -7,7 +7,7 @@ export const IMG: Record<string, string | undefined> = {
   ana: '/card_ana.png',
   rafaela: '/card_rafaela.png',
   fernanda: '/Fernanda.png',
-  clinicaGrande: '/img1.png',
+  clinicaGrande: '/img1.webp',
   clinica1: '/img2.png',
   clinica2: '/img3.png',
   clinica3: '/img4.png',
