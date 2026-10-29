@@ -19,6 +19,10 @@ export type Service = {
   education: string[];
   areas: ServiceArea[];
    translateY?: number;
+  /** Altura mínima do hero em celulares, configurada individualmente por serviço. */
+  heroMobileMinHeight?: number;
+  /** Altura mínima do hero em telas grandes, configurada individualmente por serviço. */
+  heroDesktopMinHeight?: number;
 };
 
 export const SERVICOS: Service[] = [
@@ -42,6 +46,8 @@ export const SERVICOS: Service[] = [
     "Atendimento clínico focado no desenvolvimento da linguagem oral e escrita"
     ],
     translateY: 270,
+    heroMobileMinHeight: 1400,
+    heroDesktopMinHeight: 1000,
     areas: [
       {
         title: 'Linguagem',
@@ -156,6 +162,8 @@ export const SERVICOS: Service[] = [
       "Promoção, prevenção e atenção integral à saúde de crianças e adolescentes"
     ],
     translateY: 250,
+    heroMobileMinHeight: 1280,
+    heroDesktopMinHeight: 1000,
     areas: [
       {
         title: 'Acompanhamento do desenvolvimento',

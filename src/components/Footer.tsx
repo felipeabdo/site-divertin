@@ -22,7 +22,7 @@ export default function Footer() {
               className="h-full w-auto object-contain select-none"
             />
           </div>
-          <div className="h-18 md:h-18 flex items-center justify-center">
+          <div className="h-12 md:h-12 flex items-center justify-center">
             <img 
               src="/unb-fce.png" 
               alt="Logo da Universidade de Brasília, Campus Ceilândia." 

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import type { Service } from '@/data/servicosData';
 import ServiceHeader from './ServiceHeader';
@@ -6,7 +7,15 @@ import SectionDashes from './SectionDashes';
 
 export default function ServiceDetailHero({ service }: { service: Service }) {
   return (
-    <section className="relative min-h-[1400px] overflow-hidden lg:min-h-[1000px]">
+    <section
+      className="relative min-h-[var(--hero-mobile-min-height)] overflow-hidden lg:min-h-[var(--hero-desktop-min-height)]"
+      style={
+        {
+          '--hero-mobile-min-height': `${service.heroMobileMinHeight ?? 1400}px`,
+          '--hero-desktop-min-height': `${service.heroDesktopMinHeight ?? 1000}px`,
+        } as CSSProperties
+      }
+    >
       <div aria-hidden className="absolute inset-0">
         <div className="absolute -inset-6">
           <Image
