@@ -18,7 +18,14 @@ export default function Footer() {
           <div className="h-30 md:h-30 flex items-center justify-center">
             <img 
               src="/multigestos.webp" 
-              alt="Certificação PROMPT Institute" 
+              alt="Logo da Certificação PROMPT Institute" 
+              className="h-full w-auto object-contain select-none"
+            />
+          </div>
+          <div className="h-18 md:h-18 flex items-center justify-center">
+            <img 
+              src="/unb-fce.png" 
+              alt="Logo da Universidade de Brasília, Campus Ceilândia." 
               className="h-full w-auto object-contain select-none"
             />
           </div>
@@ -27,7 +34,7 @@ export default function Footer() {
           <div className="h-14 md:h-18 flex items-center justify-center">
             <img 
               src="/prompt-institute.png" 
-              alt="Certificação PROMPT Institute" 
+              alt="Logo da Certificação PROMPT Institute" 
               className="h-full w-auto object-contain select-none"
             />
           </div>
