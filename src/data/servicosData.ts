@@ -39,7 +39,7 @@ export const SERVICOS: Service[] = [
     "Especialista em Autismo com formações pelo CBI of Miami e MIND Institute (Modelo Denver)",
     "Capacitada em ABA, estratégias naturalistas e alfabetização no Transtorno do Espectro Autista",
     "Treinamento em Apraxia de fala na infância pelo Método Multigestos e Abrapraxia",
-    "Atendimento clínico e domiciliar focado no desenvolvimento da linguagem oral e escrita"
+    "Atendimento clínico focado no desenvolvimento da linguagem oral e escrita"
     ],
     translateY: 270,
     areas: [
