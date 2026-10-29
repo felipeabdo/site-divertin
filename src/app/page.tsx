@@ -54,7 +54,7 @@ export default function Home() {
       <section className="w-full flex flex-col items-center px-6 py-12 max-w-7xl mx-auto gap-6 mt-6 md:mt-12">
         
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 w-full">
-          <Image src="/Jessica.jpeg" alt="Jéssica Del Corso" width={640} height={640} sizes="(min-width: 640px) 384px, calc(100vw - 48px)" className='w-full max-w-sm rounded-4xl h-auto object-cover shadow-md'/>
+          <Image src="/Jessica.png" alt="Jéssica Del Corso" width={640} height={640} sizes="(min-width: 640px) 384px, calc(100vw - 48px)" className='w-full max-w-sm rounded-4xl h-auto object-cover shadow-md'/>
           
           <div className='flex flex-col items-center lg:items-start gap-6 text-center lg:text-left max-w-2xl'>
             <h2 className='text-3xl md:text-4xl font-medium leading-tight text-gray-800'>
