@@ -10,7 +10,7 @@ export const CONTATO = {
   routeUrl:
     'https://www.google.com/maps/dir//Cl%C3%ADnica+Divertin,+SRTVS+qd+701+Multiempresarial,+bloco+O+sala+203+-+Asa+Sul,+Bras%C3%ADlia+-+DF,+70340-000/@-15.8430724,-48.0307621,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x935a3b5645ebeeed:0x8a4f6a14e6ceb4f7!2m2!1d-47.8948851!2d-15.797877?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D',
   hours: [
-    { day: 'Segunda a sexta', time: '09:00 às 18:00' },
+    { day: 'Segunda a sexta', time: '08:00 às 19:00' },
     { day: 'Sábado', time: '09:00 às 12:00' },
     { day: 'Domingo', time: 'Fechado' },
   ],
