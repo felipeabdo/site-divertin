@@ -15,7 +15,7 @@ export default function AreaGrid({ service }: { service: Service }) {
           {service.shortTitle} com objetivos claros e adequados à criança
         </h2>
         <p className="mt-5 text-base leading-relaxed text-gray-600 sm:text-lg">
-          As demandas abaixo não são etapas prontas: elas são pontos de partida para uma avaliação que considera a história, a rotina e as necessidades de cada criança.
+          Abaixo as principais buscas da clínicas que não são etapas prontas: elas são pontos de partida para uma avaliação que considera a história, a rotina e as necessidades de cada criança.
         </p>
       </div>
 

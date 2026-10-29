@@ -88,8 +88,8 @@ export default function Home() {
           
           <div className='flex flex-col items-center text-center p-4 xk:w-[406] xl:text-justify xl:[text-align-last:center]'>
             <Image src="/Group 1 (2).svg" alt="Ícone equipe" width={80} height={80} className='mb-6 h-20 w-auto'/>
-            <h3 className='font-bold text-lg mb-2 text-gray-800'>Equipe Especializada e Afetuosa</h3>
-            <p className='text-gray-600 text-sm leading-relaxed'>Contamos com profissionais experientes em distúrbios da comunicação infantil, oferecendo acolhimento, escuta ativa e um acompanhamento terapêutico de confiança.</p>
+            <h3 className='font-bold text-lg mb-2 text-gray-800'>Equipe Experiente e Especializada</h3>
+            <p className='text-gray-600 text-sm leading-relaxed'>Contamos com profissionais experientes em distúrbios da comunicação infantil, sempre com raciocínio clínico assertivo, oferecendo acolhimento, escuta ativa e um acompanhamento terapêutico de confiança.</p>
           </div>
         </div>
       </section>
