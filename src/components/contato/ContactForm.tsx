@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import type { FormEvent } from 'react';
+import type { FormEvent, ChangeEvent } from 'react';
 import { CONTATO } from '@/data/contatoData';
 import Arrow from '../quem-somos/Arrow';
-
 
 const initialForm = {
   nome: '',
@@ -15,27 +14,45 @@ const initialForm = {
 };
 
 export default function ContactForm() {
-  
   const [form, setForm] = useState(initialForm);
+  const [arquivo, setArquivo] = useState<File | null>(null);
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [feedback, setFeedback] = useState('');
 
-  
   function updateField(field: keyof typeof initialForm, value: string) {
     setForm((current) => ({ ...current, [field]: value }));
   }
 
-  
+  function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
+    if (event.target.files && event.target.files[0]) {
+      setArquivo(event.target.files[0]);
+    } else {
+      setArquivo(null);
+    }
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus('sending');
     setFeedback('');
 
     try {
+      // Usando FormData para permitir o envio do arquivo binário
+      const formData = new FormData();
+      formData.append('nome', form.nome);
+      formData.append('email', form.email);
+      formData.append('telefone', form.telefone);
+      formData.append('assunto', form.assunto);
+      formData.append('mensagem', form.mensagem);
+      
+      if (arquivo) {
+        formData.append('curriculo', arquivo);
+      }
+
       const response = await fetch('/api/contato', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        // O browser define o Content-Type automaticamente como multipart/form-data quando usamos FormData
+        body: formData,
       });
 
       const data = await response.json();
@@ -47,6 +64,12 @@ export default function ContactForm() {
       setStatus('success');
       setFeedback(data.message || 'Mensagem enviada com sucesso.');
       setForm(initialForm);
+      setArquivo(null);
+      
+      // Reseta o campo de input de arquivo visualmente
+      const fileInput = event.currentTarget.querySelector('input[type="file"]') as HTMLInputElement;
+      if (fileInput) fileInput.value = '';
+      
     } catch (error) {
       setStatus('error');
       setFeedback(error instanceof Error ? error.message : 'Não foi possível enviar a mensagem.');
@@ -71,7 +94,7 @@ export default function ContactForm() {
             Envie uma mensagem
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-gray-600">
-            Deixe seus dados e uma mensagem. A estrutura de envio já está preparada para ser conectada ao e-mail da clínica.
+            Envie uma mensagem para elogios, reclamações e dúvidas. Sempre preencha todos os campos. Se quiser <strong>trabalhar conosco</strong>, conte um pouco da sua <b>experiência profissional</b> no campo Mensagem e <b>anexe seu currículo</b>. Entraremos em contato o mais breve possível.   
           </p>
         </div>
 
@@ -124,6 +147,26 @@ export default function ContactForm() {
                 onChange={(event) => updateField('assunto', event.target.value)}
                 className={`${inputClass} mt-2`}
                 placeholder="Agendamento, dúvida..."
+              />
+            </label>
+          </div>
+
+          {/* Campo de Anexo adicionado */}
+          <div className="mt-5">
+            <label className="text-sm font-bold text-gray-700">
+              Anexar Currículo (Opcional)
+              <input
+                type="file"
+                name="curriculo"
+                accept=".pdf,.doc,.docx"
+                onChange={handleFileChange}
+                className="mt-2 block w-full text-sm text-gray-500
+                  file:mr-4 file:py-2.5 file:px-4
+                  file:rounded-full file:border-0
+                  file:text-xs file:font-black file:uppercase
+                  file:bg-[#D684BF]/10 file:text-[#C1459E]
+                  hover:file:bg-[#D684BF]/20
+                  cursor-pointer file:cursor-pointer"
               />
             </label>
           </div>

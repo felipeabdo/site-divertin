@@ -6,6 +6,7 @@ import Logo from '@/components/Logo';
 import HeroBackground from '@/components/HeroBackground';
 import Arrow from '@/components/quem-somos/Arrow';
 import { CONTATO } from '@/data/contatoData';
+import ReviewsSection from '@/components/home/ReviewsSection';
 
 export default function Home() {
   return (
@@ -94,6 +95,8 @@ export default function Home() {
         </div>
       </section>
      
+      {/* <ReviewsSection /> */}
+
       <Footer></Footer>
 
     </div>
