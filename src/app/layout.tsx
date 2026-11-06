@@ -31,7 +31,16 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="flex min-h-full flex-col">
         
-        <ScreenSaver src="/descanso.webp" idleMinutes={0.5} width={220} />
+        <ScreenSaver
+          src={[
+            '/descanso.webp',
+            '/descanso2.webp',
+            '/descanso3.webm',
+          ]}
+          idleMinutes={0.1}
+          width={220}
+          fadeDuration={600}
+        />
         {children}
         <DeferredAnalytics gaId="G-14VEB6PD4R" />
       </body>
