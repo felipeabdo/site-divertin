@@ -6,6 +6,7 @@ import Logo from '@/components/Logo';
 import HeroBackground from '@/components/HeroBackground';
 import Arrow from '@/components/quem-somos/Arrow';
 import { CONTATO } from '@/data/contatoData';
+import StaticGoogleReviewsSection from '@/components/home/StaticGoogleReviewsSection';
 // import ReviewsSection from '@/components/home/ReviewsSection';
 
 export default function Home() {
@@ -52,7 +53,7 @@ export default function Home() {
       </section>
 
       
-      <section className="w-full flex flex-col items-center px-6 py-12 max-w-7xl mx-auto gap-6 mt-6 md:mt-12 h-[1500px]">
+      <section className="w-full flex flex-col items-center px-6 py-12 max-w-7xl mx-auto gap-6 mt-6 md:mt-12 h-[2000px] md:h-[900px]">
         
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 w-full">
           <Image src="/Jessica.png" alt="Jéssica Del Corso" width={640} height={640} sizes="(min-width: 640px) 384px, calc(100vw - 48px)" className='w-full max-w-sm rounded-4xl h-auto object-cover shadow-md'/>
@@ -95,6 +96,8 @@ export default function Home() {
         </div>
       </section>
      
+      <StaticGoogleReviewsSection />
+
       {/* <ReviewsSection /> */}
 
       <Footer></Footer>
