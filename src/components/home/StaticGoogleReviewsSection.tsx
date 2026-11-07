@@ -216,7 +216,7 @@ export default function StaticGoogleReviewsSection() {
                   5,0
                 </span>
 
-                <span className="pb-1 text-sm text-gray-500">/ 5</span>
+                <span className="shrink-0 whitespace-nowrap pb-1 text-sm text-gray-500"> / 5 </span>
               </div>
 
               <div className="mt-2">
@@ -237,14 +237,26 @@ export default function StaticGoogleReviewsSection() {
             </div>
           </div>
 
-          <a
-            href={GOOGLE_REVIEWS_PUBLIC_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center justify-center rounded-full border border-[#CC4B00] px-5 py-3 text-sm font-bold text-[#A64B28] transition hover:bg-[#FFF2E7] focus:outline-none focus:ring-2 focus:ring-[#CC4B00] focus:ring-offset-2"
+        <a
+          href={GOOGLE_REVIEWS_PUBLIC_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex shrink-0 self-start ml-[115px] sm:self-auto sm:ml-0 items-center justify-center gap-2 rounded-full border border-[#CC4B00] px-5 py-3 text-sm font-bold text-[#A64B28] transition hover:bg-[#FFF2E7] focus:outline-none focus:ring-2 focus:ring-[#CC4B00] focus:ring-offset-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 48 48"
+            className="h-[18px] w-[18px]"
+            aria-hidden="true"
           >
-            Ver no Google ↗
-          </a>
+            <path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11c-.5 2.5-2 4.6-4.2 6l6.4 5C41.1 35.3 43.6 30.3 43.6 24.5z"/>
+            <path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.4-4.8l-6.4-5c-1.8 1.2-4.1 2-7 2-5.4 0-10-3.6-11.6-8.5l-6.6 5.1C9.1 39.4 16 44 24 44z"/>
+            <path fill="#FBBC05" d="M12.4 27.7c-.4-1.2-.7-2.4-.7-3.7s.2-2.5.7-3.7l-6.6-5.1C4.6 18 3.5 20.8 3.5 24s1.1 6 2.3 8.8l6.6-5.1z"/>
+            <path fill="#EA4335" d="M24 9.5c3 0 5.7 1 7.8 3l5.8-5.8C34.1 3.5 29.5 2 24 2 16 2 9.1 6.6 5.8 13.2l6.6 5.1C14 13.1 18.6 9.5 24 9.5z"/>
+          </svg>
+
+          Ver no Google
+        </a>
         </div>
 
         {/* Carrossel */}
