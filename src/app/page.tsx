@@ -53,7 +53,7 @@ export default function Home() {
       </section>
 
       
-      <section className="w-full flex flex-col items-center px-6 py-12 max-w-7xl mx-auto gap-6 mt-6 md:mt-12 h-[2000px] md:h-[900px]">
+      <section className="w-full flex flex-col items-center px-6 py-12 max-w-7xl mx-auto gap-6 mt-6 md:mt-12 h-[1600px] md:h-[900px]">
         
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 w-full">
           

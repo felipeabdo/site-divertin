@@ -8,7 +8,7 @@ export default function TeamSection() {
       
       <h2 className={`${H2} text-center md:text-left`}>Nossa equipe</h2>
 
-      <div className="relative mt-10 grid gap-8 sm:grid-cols-3">
+      <div className="relative mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         <Dashes
           color={PAL.orange}
           className="-left-15 top-[40%] hidden xl:block"

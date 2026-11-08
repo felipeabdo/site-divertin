@@ -4,6 +4,7 @@
 export const CARD_JA_TEM_NOME = false;
 
 export const IMG: Record<string, string | undefined> = {
+  jessica: '/Jessica.png',
   ana: '/card_ana.png',
   rafaela: '/card_rafaela.png',
   fernanda: '/Fernanda.png',
@@ -37,6 +38,7 @@ export type TeamMember = {
 
 
 export const TEAM: TeamMember[] = [
+  { name: 'Jéssica Del Corso', role: 'Fonoaudióloga', src: IMG.jessica, tone: PAL.pinkSoft },
   { name: 'Fernanda Lima', role: 'Pediatra', src: IMG.fernanda, tone: PAL.orangeSoft },
   { name: 'Rafaela', role: 'Fonoaudióloga', src: IMG.rafaela, tone: PAL.greenSoft, icon: '🦖' },
   { name: 'Ana Luiza', role: 'Fonoaudióloga', src: IMG.ana, tone: PAL.pinkSoft, icon: '🦖' },
