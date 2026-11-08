@@ -337,9 +337,6 @@ export default function StaticGoogleReviewsSection() {
           </div>
         </div>
 
-        <p className="mt-7 text-center text-[11px] leading-relaxed text-[#9B8B7D]">
-          Versão estática temporária transcrita da gravação enviada. Algumas avaliações aparecem recolhidas pelo Google e foram mantidas somente até o trecho visível no vídeo.
-        </p>
       </div>
 
       {/* POPUP DE AVALIAÇÃO COMPLETA */}

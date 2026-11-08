@@ -80,7 +80,7 @@ export default function ContactForm() {
     'w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-[#D684BF] focus:ring-2 focus:ring-[#D684BF]/20';
 
   return (
-    <section className="relative overflow-hidden bg-[#F6F1E8] py-20 md:py-24" style={{ height: '1200px' }}>
+    <section className="relative overflow-hidden bg-[#F6F1E8] py-20 md:py-24" style={{ height: '1300px' }}>
       <div className="absolute inset-x-0 top-0 z-10 h-[30px] -translate-y-1/2 md:h-[70px]" aria-hidden>
         <div
           className="h-full w-full bg-contain bg-bottom bg-repeat-x"

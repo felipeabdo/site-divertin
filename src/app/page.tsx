@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden min-h-screen bg-white">
       
-      <section className="relative min-h-[580px] w-full overflow-hidden lg:min-h-[650px]">
+      <section className="relative min-h-[1000px] w-full overflow-hidden lg:min-h-[1050px]">
         <div aria-hidden="true" className="absolute inset-0">
           <HeroBackground />
         </div>

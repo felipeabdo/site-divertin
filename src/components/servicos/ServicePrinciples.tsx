@@ -23,7 +23,7 @@ const PRINCIPLES = [
 
 export default function ServicePrinciples() {
   return (
-    <section className="relative overflow-hidden bg-[#FFF0DE] py-20 md:py-24 h-[800px]">
+    <section className="relative overflow-hidden bg-[#FFF0DE] py-20 md:py-24 h-[1200px] md:h-[700px]">
       
       <SectionDashes
         color="#6FBF9F"
