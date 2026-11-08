@@ -1,14 +1,5 @@
 import { getImageProps } from 'next/image';
 
-/**
- * Fundo do hero da home (imagem do LCP).
- *
- * - Direção de arte: no mobile usa a imagem própria para celular
- *   ("backgroud hero section mobile.png"); no desktop usa bg-hero.png.
- * - fetchPriority="high" + loading="eager": o relatório mobile apontava que
- *   a imagem do LCP não tinha prioridade alta.
- * - Continua sendo servida pelo otimizador do Next (WebP/AVIF no tamanho certo).
- */
 export default function HeroBackground() {
   const shared = {
     alt: '',
@@ -16,20 +7,28 @@ export default function HeroBackground() {
     sizes: '100vw',
     loading: 'eager' as const,
     fetchPriority: 'high' as const,
-    className: 'object-cover object-top',
   };
 
-  const { props: desktop } = getImageProps({ ...shared, src: '/bg-hero.png' });
+  const { props: desktop } = getImageProps({
+    ...shared,
+    src: '/bg-hero.png',
+    className: 'object-cover object-top hidden md:block',
+  });
+
   const { props: mobile } = getImageProps({
     ...shared,
     src: '/bg-hero.png',
+    // Ajuste fino: mude o valor de 75% para mais (ex: 80%) ou menos (ex: 70%) 
+    // se quiser mover a imagem para a esquerda ou direita milimetricamente.
+    className: 'object-cover object-[55%_top] block md:hidden',
   });
 
   return (
-    <picture>
-      <source media="(max-width: 767px)" srcSet={mobile.srcSet} sizes="100vw" />
+    <div className="absolute inset-0 overflow-hidden">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img {...mobile} alt="" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img {...desktop} alt="" />
-    </picture>
+    </div>
   );
 }
