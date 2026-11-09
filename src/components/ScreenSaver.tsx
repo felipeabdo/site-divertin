@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 
 /** Estrutura de ajustes personalizados por arquivo/animação */
 export interface ScreenSaverOverride {
-  /** Fator de escala extra (ex: 1.3 para aumentar 30%, 0.8 para diminuir 20%) */
+  /** Zoom adicional opcional. Valores abaixo de 1 são limitados a 1 para evitar bordas vazias. */
   scale?: number;
   /** Deslocamento horizontal em pixels (positivo para direita, negativo para esquerda) */
   translateX?: number;
@@ -16,9 +16,6 @@ interface ScreenSaverProps {
   sources?: string[];
   src?: string;
   idleMinutes?: number;
-  width?: number | string;
-  height?: number | string;
-  maxWidth?: string;
   alt?: string;
   backgroundColor?: string;
   fadeDuration?: number;
@@ -68,11 +65,8 @@ export default function ScreenSaver({
   sources,
   src,
   idleMinutes = 1,
-  width = 220,
-  height,
-  maxWidth = '80vw',
   alt = 'Descanso de tela',
-  backgroundColor = '#ffffff',
+  backgroundColor = 'rgba(253, 251, 247, 0.28)',
   fadeDuration = 600,
   overrides = {}, // Recebe as regras customizadas
 }: ScreenSaverProps) {
@@ -181,21 +175,19 @@ export default function ScreenSaver({
 
   if (phase === 'idle' || !currentSrc) return null;
 
-  // Busca regras customizadas para o arquivo atual (se houver)
+  // Preserva os pequenos ajustes de enquadramento, mas nunca reduz a arte
+  // a ponto de deixar faixas vazias nas bordas do viewport.
   const currentOverride = overrides[currentSrc] || {};
-  
-  // Cálculo de dimensões base com suporte ao redimensionamento customizado
-  const baseWidth = typeof width === 'number' ? width : parseFloat(width) || 220;
-  const finalWidth = currentOverride.scale ? baseWidth * currentOverride.scale : width;
+  const scale = Math.max(1.04, currentOverride.scale ?? 1);
 
-  // Monta propriedades de transformação CSS para os deslocamentos em pixels
   const transformParts: string[] = [];
   if (currentOverride.translateX !== undefined) {
-    transformParts.push(`translateX(${currentOverride.translateX}px)`);
+    transformParts.push(`translateX(clamp(-3vw, ${currentOverride.translateX}px, 3vw))`);
   }
   if (currentOverride.translateY !== undefined) {
-    transformParts.push(`translateY(${currentOverride.translateY}px)`);
+    transformParts.push(`translateY(clamp(-3vh, ${currentOverride.translateY}px, 3vh))`);
   }
+  if (scale !== 1) transformParts.push(`scale(${scale})`);
   const finalTransform = transformParts.length > 0 ? transformParts.join(' ') : undefined;
 
   return (
@@ -203,26 +195,50 @@ export default function ScreenSaver({
       id="screen-saver"
       role="status"
       aria-label={alt}
-      className="fixed inset-0 z-[9990] flex items-center justify-center"
+      className="fixed inset-0 z-[9990] isolate overflow-hidden"
       style={{
+        // O fundo translúcido permite que o backdrop-filter borre a página real
+        // que já estava aberta, em vez de substituí-la por uma tela sólida.
         backgroundColor,
+        backdropFilter: 'blur(20px) saturate(1.12)',
+        WebkitBackdropFilter: 'blur(20px) saturate(1.12)',
         opacity: phase === 'visible' ? 1 : 0,
         transition: `opacity ${fadeDuration}ms ease`,
+        minHeight: '100svh',
+        height: '100dvh',
       }}
     >
+      {/* Reflexos sutis dão unidade ao vidro sem esconder a página por trás. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background: 'radial-gradient(ellipse at 18% 14%, rgba(42,157,143,0.12), transparent 48%), radial-gradient(ellipse at 84% 88%, rgba(214,132,191,0.12), transparent 46%)',
+        }}
+      />
       <img
         key={currentSrc}
         src={currentSrc}
         alt={alt}
         draggable={false}
         decoding="async"
+        fetchPriority="high"
         style={{
-          width: typeof finalWidth === 'number' ? `${finalWidth}px` : finalWidth,
-          height: height === undefined ? 'auto' : typeof height === 'number' ? `${height}px` : height,
-          maxWidth,
-          objectFit: 'contain',
+          position: 'absolute',
+          inset: 0,
+          zIndex: 1,
+          display: 'block',
+          width: '100%',
+          height: '100%',
+          maxWidth: 'none',
+          maxHeight: 'none',
+          objectFit: 'cover',
+          objectPosition: 'center center',
           userSelect: 'none',
-          transform: finalTransform, // Aplica o deslocamento x/y de forma fluida
+          pointerEvents: 'none',
+          transform: finalTransform,
+          transformOrigin: 'center center',
+          willChange: 'transform',
         }}
       />
     </div>

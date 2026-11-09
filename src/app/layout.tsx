@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import DeferredAnalytics from "@/components/DeferredAnalytics";
 import DeferredScreenSaver from "@/components/DeferredScreenSaver";
+import OfflineExperience from "@/components/offline/OfflineExperience";
 import "./globals.css";
 
 
@@ -31,28 +32,30 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="flex min-h-full flex-col">
         
-      <DeferredScreenSaver
-        sources={[
-          '/descanso.webp',
-          '/descanso2.webp',
-          '/descanso3.webp',
-          '/descanso4.webp'
-        ]}
-        idleMinutes={1}
-        overrides={{
-          '/descanso3.webp': {
-            scale: 1.2,
-            translateX: 30,
-            translateY: -80,
-          },
-          '/descanso2.webp': {
-            scale: 0.9, 
-            translateX: 15, 
-          }
-        }}
-      />
+      <OfflineExperience>
+        <DeferredScreenSaver
+          sources={[
+            '/descanso.webp',
+            '/descanso2.webp',
+            '/descanso3.webp',
+            '/descanso4.webp'
+          ]}
+          idleMinutes={1}
+          overrides={{
+            '/descanso3.webp': {
+              scale: 1.2,
+              translateX: 30,
+              translateY: -80,
+            },
+            '/descanso2.webp': {
+              scale: 0.9,
+              translateX: 15,
+            }
+          }}
+        />
         {children}
         <DeferredAnalytics gaId="G-14VEB6PD4R" />
+      </OfflineExperience>
       </body>
     </html>
   );
