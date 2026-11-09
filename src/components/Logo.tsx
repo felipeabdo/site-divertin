@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import SantaHat from '@/components/SantaHat';
 
 /**
  * Logo da Divertin usado nos heros.
@@ -10,14 +11,17 @@ import Image from 'next/image';
  */
 export default function Logo({ className = '' }: { className?: string }) {
   return (
-    <Image
-      src="/logo (1).png"
-      alt="Logo Divertin"
-      width={1096}
-      height={1003}
-      sizes="(min-width: 1024px) 240px, (min-width: 640px) 208px, 176px"
-      loading="eager"
-      className={`mb-6 h-auto w-44 object-contain sm:w-52 lg:w-60 ${className}`.trim()}
-    />
+    <span className={`divertin-mascot-art divertin-mascot-art--logo mb-6 ${className}`.trim()}>
+      <Image
+        src="/logo (1).png"
+        alt="Logo Divertin"
+        width={1096}
+        height={1003}
+        sizes="(min-width: 1024px) 240px, (min-width: 640px) 208px, 176px"
+        loading="eager"
+        className="block h-auto w-44 object-contain sm:w-52 lg:w-60"
+      />
+      <SantaHat className="divertin-santa-hat--logo" />
+    </span>
   );
 }

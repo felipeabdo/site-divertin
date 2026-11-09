@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/components/auth/SiteExperienceProvider';
+import SantaHat from '@/components/SantaHat';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -44,8 +45,9 @@ export default function LoginPage() {
       <div className="divertin-auth-decoration divertin-auth-decoration--two" aria-hidden="true" />
       <Link href="/" className="divertin-auth-back">← Voltar ao site</Link>
       <section className="divertin-auth-card">
-        <Link href="/" className="divertin-auth-logo" aria-label="Voltar à página inicial">
+        <Link href="/" className="divertin-auth-logo divertin-mascot-art divertin-mascot-art--logo" aria-label="Voltar à página inicial">
           <Image src="/logo (1).png" alt="Clínica Divertin" width={1096} height={1003} priority />
+          <SantaHat className="divertin-santa-hat--logo" />
         </Link>
         <div className="divertin-auth-kicker">Área exclusiva</div>
         <h1>Que bom ter você por aqui!</h1>

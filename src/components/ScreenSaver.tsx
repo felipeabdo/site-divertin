@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import SantaHat from '@/components/SantaHat';
 
 interface ScreenSaverProps {
   sources?: string[];
@@ -157,6 +158,8 @@ export default function ScreenSaver({
 
   if (phase === 'idle' || !currentSrc) return null;
 
+  const screenSaverVariant = currentSrc.split('/').pop()?.replace(/\.[^.]+$/, '') ?? '';
+
   return (
     <div
       id="screen-saver"
@@ -171,19 +174,22 @@ export default function ScreenSaver({
         height: '100dvh',
       }}
     >
-      <img
-        key={currentSrc}
-        src={currentSrc}
-        alt={alt}
-        draggable={false}
-        decoding="async"
-        fetchPriority="high"
-        className="screen-saver__animation"
-        style={{
-          userSelect: 'none',
-          pointerEvents: 'none',
-        }}
-      />
+      <div className={`screen-saver__frame screen-saver__frame--${screenSaverVariant}`}>
+        <img
+          key={currentSrc}
+          src={currentSrc}
+          alt={alt}
+          draggable={false}
+          decoding="async"
+          fetchPriority="high"
+          className="screen-saver__animation"
+          style={{
+            userSelect: 'none',
+            pointerEvents: 'none',
+          }}
+        />
+        <SantaHat className={`divertin-santa-hat--${screenSaverVariant}`} />
+      </div>
     </div>
   );
 }

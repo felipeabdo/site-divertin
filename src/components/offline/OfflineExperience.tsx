@@ -20,6 +20,7 @@ import {
   submitContactPayload,
 } from '@/lib/offlineQueue';
 import type { ContactPayload, QueuedContact } from '@/lib/offlineQueue';
+import SantaHat from '@/components/SantaHat';
 
 type OfflineContextValue = {
   isOffline: boolean;
@@ -396,6 +397,7 @@ export default function OfflineExperience({ children }: { children: ReactNode })
                 unoptimized
                 className="divertin-network-overlay__image divertin-network-overlay__image--offline"
               />
+              <SantaHat className="divertin-santa-hat--offline" />
             </div>
             <section className="divertin-network-overlay__copy divertin-network-overlay__copy--offline">
               <div className="divertin-network-overlay__eyebrow divertin-network-overlay__eyebrow--offline">
@@ -452,6 +454,7 @@ export default function OfflineExperience({ children }: { children: ReactNode })
                 unoptimized
                 className="divertin-network-overlay__image divertin-network-overlay__image--online"
               />
+              <SantaHat className="divertin-santa-hat--online" />
             </div>
           </div>
         </div>

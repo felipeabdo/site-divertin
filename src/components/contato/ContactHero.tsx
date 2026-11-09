@@ -5,6 +5,7 @@ import Cloud from "@/components/Cloud";
 import { CONTATO } from "@/data/contatoData";
 import Arrow from "../quem-somos/Arrow";
 import Logo from "@/components/Logo";
+import SantaHat from "@/components/SantaHat";
 
 export default function ContactHero() {
   return (
@@ -62,15 +63,18 @@ export default function ContactHero() {
         </div>
       </div>
 
-      <Image
-        src="/mascote-divertin-contato.png"
-        alt=""
-        aria-hidden="true"
-        width={560}
-        height={560}
-        sizes="(min-width: 1280px) 280px, 220px"
-        className="pointer-events-none absolute bottom-[7%] right-[4%] z-[6] hidden h-auto w-[220px] drop-shadow-[0_16px_24px_rgba(0,0,0,.22)] lg:block xl:w-[280px]"
-      />
+      <div className="divertin-mascot-art divertin-mascot-art--contact pointer-events-none absolute bottom-[7%] right-[4%] z-[6] hidden w-[220px] lg:block xl:w-[280px]">
+        <Image
+          src="/mascote-divertin-contato.png"
+          alt=""
+          aria-hidden="true"
+          width={560}
+          height={560}
+          sizes="(min-width: 1280px) 280px, 220px"
+          className="block h-auto w-full drop-shadow-[0_16px_24px_rgba(0,0,0,.22)]"
+        />
+        <SantaHat className="divertin-santa-hat--contact" />
+      </div>
 
       <div className="mt-[57]">
         <Cloud position="bottom" imageUrl="/cloud (6).png" />

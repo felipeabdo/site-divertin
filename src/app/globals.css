@@ -1115,3 +1115,88 @@ html[data-site-theme="natal"] .divertin-christmas-hero-tint {
     display: none !important;
   }
 }
+
+/* Gorro de Papai Noel do mascote: oculto por padrão e ativado só no tema Natal. */
+.divertin-mascot-art--logo {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  vertical-align: middle;
+}
+.divertin-santa-hat {
+  position: absolute;
+  z-index: 5;
+  display: none;
+  aspect-ratio: 180 / 130;
+  background: url('/santa-hat.svg') center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+html[data-site-theme="natal"] .divertin-santa-hat {
+  display: block;
+}
+
+/* Logo (heros e login). */
+.divertin-santa-hat--logo {
+  top: -0.5%;
+  left: 43.5%;
+  width: 24%;
+}
+
+/* Mascote isolado no hero de contato. */
+.divertin-santa-hat--contact {
+  top: -2.5%;
+  left: 38%;
+  width: 36%;
+}
+
+/* Ilustrações de queda e retorno de conexão. */
+.divertin-network-overlay__art .divertin-santa-hat--offline {
+  top: 7%;
+  left: 26%;
+  width: 30%;
+}
+.divertin-network-overlay__art .divertin-santa-hat--online {
+  top: -5%;
+  left: 39%;
+  width: 34%;
+}
+
+/* O gorro acompanha a área do desenho em cada uma das quatro animações. */
+.screen-saver__frame {
+  position: relative;
+  display: inline-block;
+  width: max-content;
+  max-width: 100%;
+  line-height: 0;
+}
+.screen-saver__frame .screen-saver__animation {
+  display: block;
+}
+.screen-saver__frame .divertin-santa-hat {
+  z-index: 2;
+}
+.screen-saver__frame--descanso .divertin-santa-hat {
+  top: 18%;
+  left: 38%;
+  width: 31%;
+}
+.screen-saver__frame--descanso2 .divertin-santa-hat {
+  top: 17%;
+  left: 37%;
+  width: 31%;
+}
+.screen-saver__frame--descanso3 .divertin-santa-hat {
+  top: 35%;
+  left: 19%;
+  width: 30%;
+}
+.screen-saver__frame--descanso4 .divertin-santa-hat {
+  top: 16%;
+  left: 35%;
+  width: 32%;
+}
+
+/* O link do logo na tela de login precisa continuar ocupando o card inteiro. */
+.divertin-auth-logo.divertin-mascot-art--logo {
+  display: block;
+}
