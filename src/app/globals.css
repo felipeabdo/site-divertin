@@ -1171,9 +1171,9 @@ html[data-site-theme="natal"] .divertin-santa-hat {
 
 /* Telas de conexão: controles manuais separados para offline e online. */
 .divertin-santa-hat--offline {
-  --gorro-topo: 12%;
-  --gorro-esquerda: 6%;
-  --gorro-largura: 40%;
+  --gorro-topo: 6%;
+  --gorro-esquerda: -5%;
+  --gorro-largura: 43%;
   --gorro-rotacao: 0deg;
 
   top: var(--gorro-topo);
