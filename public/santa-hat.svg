@@ -1,8 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 130" fill="none">
-  <path d="M15 91C31 64 60 30 101 19c15-4 28 1 33 11-5 15 3 25 27 30-29 24-73 39-115 42-14 1-25-2-31-11Z" fill="#C92D3D" stroke="#171717" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M45 65c22-24 48-38 73-40" stroke="#F27B7D" stroke-width="5" stroke-linecap="round" opacity=".8"/>
-  <path d="M12 84c38 10 94-4 136-26 9 2 16 10 19 19-46 27-106 41-151 28-6-5-8-13-4-21Z" fill="#FFF9F0" stroke="#171717" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M27 96c36 6 80-2 113-18" stroke="#E9E0D7" stroke-width="4" stroke-linecap="round"/>
-  <path d="M153 57c-1-9 5-17 14-17 9 0 14 7 12 16-1 9-7 15-15 14-7-1-11-6-11-13Z" fill="#FFF9F0" stroke="#171717" stroke-width="6" stroke-linejoin="round"/>
-  <path d="M160 47c3-2 7-1 9 2" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" fill="none">
+  <defs>
+    <linearGradient id="cap" x1="205" y1="278" x2="450" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A91F2C"/>
+      <stop offset=".42" stop-color="#C92835"/>
+      <stop offset="1" stop-color="#E4474B"/>
+    </linearGradient>
+    <linearGradient id="fur" x1="235" y1="190" x2="370" y2="292" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDF8"/>
+      <stop offset=".72" stop-color="#F7F5F0"/>
+      <stop offset="1" stop-color="#D8D8D5"/>
+    </linearGradient>
+    <linearGradient id="pom" x1="98" y1="304" x2="165" y2="397" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E9E8E4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Corpo do gorro: caída para trás, como na referência. -->
+  <path d="M158 304
+    C183 266 185 220 192 169
+    C199 116 243 88 287 59
+    C328 32 352 6 395 15
+    C448 25 494 62 516 105
+    C512 126 494 146 466 158
+    C416 173 366 198 315 229
+    C259 262 210 297 176 326
+    C158 327 148 319 158 304Z"
+    fill="url(#cap)" stroke="#111111" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M197 246 C211 195 202 143 252 110 C288 86 329 59 364 37 C402 14 449 42 475 70
+    C422 52 391 45 359 63 C315 88 286 116 256 147 C226 180 230 222 197 246Z"
+    fill="#EF5559" opacity=".62"/>
+  <path d="M205 270 C235 224 241 165 287 129" stroke="#7D1722" stroke-width="8" stroke-linecap="round" opacity=".56"/>
+  <path d="M465 84 C478 88 489 96 497 107" stroke="#F27A79" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+  <circle cx="440" cy="61" r="6" fill="#F7A0A0" opacity=".9"/>
+
+  <!-- Pompom preso à ponta traseira do gorro. -->
+  <path d="M166 302 C153 315 145 328 139 342" stroke="#111111" stroke-width="10" stroke-linecap="round"/>
+  <path d="M132 307
+    C149 305 165 317 173 334
+    C184 355 174 381 158 397
+    C142 413 116 414 97 399
+    C76 383 76 356 88 336
+    C97 319 113 308 132 307Z"
+    fill="url(#pom)" stroke="#111111" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M99 340 C106 326 118 320 132 321 C125 330 122 338 124 346 C114 344 107 348 102 357
+    C96 365 96 376 101 385 C87 379 86 356 99 340Z" fill="#FFFFFF" opacity=".95"/>
+  <path d="M143 324 C160 332 168 347 165 362 C158 354 151 353 144 358 C144 345 139 336 130 331Z" fill="#FFFFFF" opacity=".9"/>
+  <path d="M112 392 C126 402 146 399 157 385 C154 400 140 408 125 407" stroke="#D4D3D0" stroke-width="7" stroke-linecap="round" opacity=".9"/>
+
+  <!-- Faixa de pelo branco sobre a testa, com volume e borda felpuda. -->
+  <path d="M151 285
+    C177 251 219 229 265 207
+    C314 184 369 156 429 141
+    C466 132 495 137 512 154
+    C526 169 522 190 508 204
+    C497 217 480 219 466 213
+    C455 231 438 236 421 228
+    C407 245 388 249 370 238
+    C355 255 335 260 316 249
+    C298 266 278 271 259 259
+    C242 277 222 282 203 269
+    C185 286 167 292 151 285Z"
+    fill="url(#fur)" stroke="#111111" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M163 283 C198 257 244 238 286 218 C335 194 391 166 449 153 C473 148 494 153 503 169
+    C489 163 473 165 458 170 C407 184 355 212 311 232 C264 253 217 277 185 293Z"
+    fill="#FFFFFF" opacity=".97"/>
+  <path d="M177 285 C191 273 202 265 214 260 C209 273 211 283 220 289 C207 296 192 298 177 285Z" fill="#FFFFFF"/>
+  <path d="M225 265 C239 251 251 246 265 241 C256 254 258 267 269 276 C252 283 237 280 225 265Z" fill="#FFFFFF"/>
+  <path d="M277 245 C290 231 306 224 321 217 C312 233 318 246 330 252 C309 262 292 258 277 245Z" fill="#FFFFFF"/>
+  <path d="M337 218 C351 202 369 194 386 185 C379 200 383 215 397 220 C377 232 353 231 337 218Z" fill="#FFFFFF"/>
+  <path d="M397 190 C411 176 432 165 449 160 C444 175 451 187 465 190 C447 204 418 205 397 190Z" fill="#FFFFFF"/>
+  <path d="M455 172 C468 161 485 159 496 167 C502 178 497 191 486 197 C480 184 468 178 455 172Z" fill="#FFFFFF"/>
+  <path d="M169 284 C211 286 259 266 307 243 C360 218 421 187 470 177" stroke="#D9D8D4" stroke-width="7" stroke-linecap="round" opacity=".8"/>
+  <path d="M188 265 C192 254 198 246 206 239 M246 241 C252 228 264 218 277 211 M319 213 C329 202 344 195 357 189 M395 186 C405 175 420 169 434 165" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" opacity=".96"/>
 </svg>

@@ -12,6 +12,7 @@ import {
 } from 'react';
 import type { MouseEvent, ReactNode } from 'react';
 import { OFFLINE_CONFIG } from '@/lib/offlineConfig';
+import { useSiteTheme } from '@/components/auth/SiteExperienceProvider';
 import {
   getTabSessionId,
   loadQueuedContacts,
@@ -20,7 +21,6 @@ import {
   submitContactPayload,
 } from '@/lib/offlineQueue';
 import type { ContactPayload, QueuedContact } from '@/lib/offlineQueue';
-import SantaHat from '@/components/SantaHat';
 
 type OfflineContextValue = {
   isOffline: boolean;
@@ -80,6 +80,8 @@ function CloseIcon() {
 }
 
 export default function OfflineExperience({ children }: { children: ReactNode }) {
+  const { settings } = useSiteTheme();
+  const isChristmasTheme = settings.theme === 'natal';
   const [isOffline, setIsOffline] = useState(false);
   const [overlay, setOverlay] = useState<OverlayMode>(null);
   const [pendingItems, setPendingItems] = useState<QueuedContact[]>([]);
@@ -389,7 +391,7 @@ export default function OfflineExperience({ children }: { children: ReactNode })
             <div className="divertin-network-overlay__art divertin-network-overlay__art--offline">
               <span className="divertin-network-overlay__orbit divertin-network-overlay__orbit--offline" aria-hidden="true" />
               <Image
-                src="/mascote-offline-glass.webp"
+                src={isChristmasTheme ? '/mascote-offline-glass-natal.webp' : '/mascote-offline-glass.webp'}
                 alt="Mascote da Divertin tentando encontrar o sinal de internet"
                 width={1065}
                 height={800}
@@ -397,7 +399,6 @@ export default function OfflineExperience({ children }: { children: ReactNode })
                 unoptimized
                 className="divertin-network-overlay__image divertin-network-overlay__image--offline"
               />
-              <SantaHat className="divertin-santa-hat--offline" />
             </div>
             <section className="divertin-network-overlay__copy divertin-network-overlay__copy--offline">
               <div className="divertin-network-overlay__eyebrow divertin-network-overlay__eyebrow--offline">
@@ -446,7 +447,7 @@ export default function OfflineExperience({ children }: { children: ReactNode })
             <div className="divertin-network-overlay__art divertin-network-overlay__art--online">
               <span className="divertin-network-overlay__orbit divertin-network-overlay__orbit--online" aria-hidden="true" />
               <Image
-                src="/mascote-online-glass.webp"
+                src={isChristmasTheme ? '/mascote-online-glass-natal.webp' : '/mascote-online-glass.webp'}
                 alt="Mascote da Divertin comemorando a volta da conexão"
                 width={253}
                 height={338}
@@ -454,7 +455,6 @@ export default function OfflineExperience({ children }: { children: ReactNode })
                 unoptimized
                 className="divertin-network-overlay__image divertin-network-overlay__image--online"
               />
-              <SantaHat className="divertin-santa-hat--online" />
             </div>
           </div>
         </div>

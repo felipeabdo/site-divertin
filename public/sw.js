@@ -1,5 +1,5 @@
 /* Divertin — cache offline da aplicação. Atualize CACHE_VERSION quando mudar a estratégia. */
-const CACHE_VERSION = 'divertin-offline-v4';
+const CACHE_VERSION = 'divertin-offline-v5';
 const APP_CACHE = `${CACHE_VERSION}-app`;
 const ASSET_CACHE = `${CACHE_VERSION}-assets`;
 
@@ -13,6 +13,12 @@ const CORE_URLS = [
   '/offline-fallback.html',
   '/mascote-offline-glass.webp',
   '/mascote-online-glass.webp',
+  '/mascote-offline-glass-natal.webp',
+  '/mascote-online-glass-natal.webp',
+  '/descanso-natal.webp',
+  '/descanso2-natal.webp',
+  '/descanso3-natal.webp',
+  '/descanso4-natal.webp',
   '/santa-hat.svg',
 ];
 

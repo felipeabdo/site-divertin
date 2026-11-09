@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import SantaHat from '@/components/SantaHat';
+import { useSiteTheme } from '@/components/auth/SiteExperienceProvider';
 
 interface ScreenSaverProps {
   sources?: string[];
@@ -55,6 +55,8 @@ export default function ScreenSaver({
 }: ScreenSaverProps) {
   const [phase, setPhase] = useState<Phase>('idle');
   const [currentSrc, setCurrentSrc] = useState<string>('');
+  const { settings } = useSiteTheme();
+  const isChristmasTheme = settings.theme === 'natal';
 
   const lastActivity = useRef(0);
 
@@ -159,6 +161,10 @@ export default function ScreenSaver({
   if (phase === 'idle' || !currentSrc) return null;
 
   const screenSaverVariant = currentSrc.split('/').pop()?.replace(/\.[^.]+$/, '') ?? '';
+  // Cada arquivo natalino já contém o gorro em todos os quadros da animação.
+  const displaySrc = isChristmasTheme && /\.webp$/i.test(currentSrc)
+    ? currentSrc.replace(/\.webp$/i, '-natal.webp')
+    : currentSrc;
 
   return (
     <div
@@ -176,8 +182,8 @@ export default function ScreenSaver({
     >
       <div className={`screen-saver__frame screen-saver__frame--${screenSaverVariant}`}>
         <img
-          key={currentSrc}
-          src={currentSrc}
+          key={displaySrc}
+          src={displaySrc}
           alt={alt}
           draggable={false}
           decoding="async"
@@ -188,7 +194,6 @@ export default function ScreenSaver({
             pointerEvents: 'none',
           }}
         />
-        <SantaHat className={`divertin-santa-hat--${screenSaverVariant}`} />
       </div>
     </div>
   );
