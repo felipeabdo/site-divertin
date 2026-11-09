@@ -37,6 +37,8 @@ type OverlayMode = 'offline' | 'reconnected' | null;
 
 // Persiste apenas nesta aba: a navegação offline recarrega o documento para usar o cache do SW.
 const OFFLINE_PROMPT_DISMISSED_KEY = 'divertin:offline-prompt-dismissed';
+// Mantém o estado offline entre recargas completas feitas pelo service worker.
+const OFFLINE_STATE_KEY = 'divertin:connection-offline';
 
 const OfflineContext = createContext<OfflineContextValue | null>(null);
 
@@ -97,20 +99,24 @@ export default function OfflineExperience({ children }: { children: ReactNode })
   }, []);
 
   const markOffline = useCallback(() => {
-    const wasOffline = isOfflineRef.current === true;
     isOfflineRef.current = true;
     setIsOffline(true);
     flushAttemptedRef.current = false;
 
-    if (!wasOffline) {
-      let promptWasDismissed = false;
-      try {
-        promptWasDismissed = window.sessionStorage.getItem(OFFLINE_PROMPT_DISMISSED_KEY) === '1';
-      } catch {
-        // Se o armazenamento da sessão estiver bloqueado, o aviso continua disponível.
-      }
-      if (!promptWasDismissed) setOverlay('offline');
+    try {
+      // A navegação offline usa recargas completas; este sinal sobrevive a elas.
+      window.sessionStorage.setItem(OFFLINE_STATE_KEY, '1');
+    } catch {
+      // A detecção por navigator.onLine e pelo teste de conectividade continua ativa.
     }
+
+    let promptWasDismissed = false;
+    try {
+      promptWasDismissed = window.sessionStorage.getItem(OFFLINE_PROMPT_DISMISSED_KEY) === '1';
+    } catch {
+      // Se o armazenamento da sessão estiver bloqueado, o aviso continua disponível.
+    }
+    if (!promptWasDismissed) setOverlay('offline');
   }, []);
 
   const verifyConnection = useCallback(async () => {
@@ -140,8 +146,10 @@ export default function OfflineExperience({ children }: { children: ReactNode })
       if (wasOffline) {
         flushAttemptedRef.current = false;
         try {
-          // Uma próxima queda de conexão poderá mostrar novamente o aviso inicial.
+          // A próxima queda poderá mostrar novamente o aviso inicial e o indicador
+          // só reaparecerá quando uma nova perda de conexão for detectada.
           window.sessionStorage.removeItem(OFFLINE_PROMPT_DISMISSED_KEY);
+          window.sessionStorage.removeItem(OFFLINE_STATE_KEY);
         } catch {
           // A experiência não depende de sessionStorage para continuar funcionando.
         }
@@ -158,6 +166,17 @@ export default function OfflineExperience({ children }: { children: ReactNode })
 
   useEffect(() => {
     sessionIdRef.current = getTabSessionId();
+
+    // Restaura o estado conhecido antes do primeiro teste de rede, evitando que
+    // o indicador desapareça durante a recarga de uma página aberta offline.
+    try {
+      if (window.sessionStorage.getItem(OFFLINE_STATE_KEY) === '1') {
+        isOfflineRef.current = true;
+        setIsOffline(true);
+      }
+    } catch {
+      // O teste ativo de conectividade abaixo continua sendo a fonte alternativa.
+    }
 
     let active = true;
     loadQueuedContacts(sessionIdRef.current)
@@ -329,6 +348,7 @@ export default function OfflineExperience({ children }: { children: ReactNode })
           aria-live="polite"
           aria-label={`Você está navegando offline${pendingItems.length > 0 ? `, ${pendingItems.length} envio(s) pendente(s)` : ''}`}
         >
+          <span className="divertin-offline-indicator__dot" aria-hidden="true" />
           <WifiOffIcon className="h-4 w-4 shrink-0" />
           <span>Navegação offline</span>
           {pendingItems.length > 0 && <span className="divertin-offline-indicator__count">{pendingItems.length}</span>}
