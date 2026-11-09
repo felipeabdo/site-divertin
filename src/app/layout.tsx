@@ -42,7 +42,7 @@ export default function RootLayout({
             '/descanso3.webp',
             '/descanso4.webp'
           ]}
-          idleMinutes={3}
+          idleMinutes={0.05}
         />
         {children}
         <DeferredAnalytics gaId="G-14VEB6PD4R" />

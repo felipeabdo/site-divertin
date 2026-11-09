@@ -1,5 +1,5 @@
 /* Divertin — cache offline da aplicação. Atualize CACHE_VERSION quando mudar a estratégia. */
-const CACHE_VERSION = 'divertin-offline-v5';
+const CACHE_VERSION = 'divertin-offline-v6';
 const APP_CACHE = `${CACHE_VERSION}-app`;
 const ASSET_CACHE = `${CACHE_VERSION}-assets`;
 
