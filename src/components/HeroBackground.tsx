@@ -20,6 +20,7 @@ export default function HeroBackground() {
       {/* getImageProps aplica o pipeline de otimização do Next ao srcset. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img {...props} alt="" />
+      <div className="divertin-christmas-hero-tint" />
     </div>
   );
 }

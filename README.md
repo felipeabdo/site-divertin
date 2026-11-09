@@ -83,3 +83,37 @@ O layout conserva o identificador `G-14VEB6PD4R` que já existia no fonte recebi
 
 Não foi possível executar um build real do Next.js nem testar o site visualmente porque faltam os arquivos de dependências/configuração e `public/`. Consulte `RELATORIO_DE_REVISAO.md` para os resultados objetivos e os próximos passos. =
 x   
+## Login, painel de configurações e temas
+
+O projeto agora inclui autenticação de usuários e administradores, painel em `/configuracoes` e tela de acesso em `/login`. A persistência usa o **mesmo Upstash Redis REST** já utilizado pelo cache das avaliações do Google; não foi criado armazenamento local de servidor, que seria volátil em ambientes serverless.
+
+### Variáveis obrigatórias para ativar o login
+
+Configure no ambiente de produção (por exemplo, em Vercel → Settings → Environment Variables) e também no `.env.local` durante desenvolvimento:
+
+- `UPSTASH_REDIS_REST_URL` e `UPSTASH_REDIS_REST_TOKEN`: credenciais do Redis Upstash já usado pelo projeto.
+- `AUTH_SESSION_SECRET`: segredo aleatório com pelo menos 32 caracteres. Gere um novo segredo, não use o texto de exemplo (por exemplo: `openssl rand -base64 48`).
+- `DIVERTIN_ADMIN_EMAIL`: e-mail do primeiro administrador. O padrão já está definido como `jehdelcorso@gmail.com`.
+- `DIVERTIN_ADMIN_PASSWORD`: senha inicial do administrador definida pelo responsável do projeto. Cadastre-a diretamente nas variáveis de ambiente, nunca no código nem em um repositório Git.
+
+Ao primeiro acesso ao endpoint de login, o sistema cria automaticamente o administrador inicial no Redis caso ele ainda não exista. Se o e-mail já estiver cadastrado, a conta é garantida como administradora sem redefinir sua senha. Depois de fazer o primeiro acesso, altere a senha na seção **Minha conta**.
+
+**Atenção:** sem as variáveis de ambiente acima, o site público continua navegável, mas o login não será ativado. O ZIP não contém credenciais privadas nem arquivos `.env` de produção. Para não expor a senha de administrador, ela precisa ser inserida no ambiente de hospedagem pelo proprietário do projeto.
+
+### Recursos incluídos
+
+- Login/logout com cookie de sessão HttpOnly, assinatura HMAC, validade de sete dias e proteção contra excesso de tentativas.
+- Senhas armazenadas como hash `scrypt` com salt individual; a senha nunca é enviada de volta à interface.
+- Perfis `admin` e `user`; apenas administradores podem criar contas, promover outros administradores, alterar o status de acesso ou gerenciar o tema global.
+- Proteção para que o último administrador ativo não seja removido/suspenso e para que um administrador não suspenda o próprio acesso pela interface.
+- Usuários podem atualizar nome e senha; administradores podem gerenciar contas em `/configuracoes`.
+- Tema **Padrão** e tema **Natal**. O tema Padrão continua selecionado por padrão; Natal só entra em vigor quando um administrador o aplica. A configuração é global e armazenada no Redis, sendo exibida também a visitantes não autenticados.
+- A estrutura do site e os assets originais foram preservados. O tema Natal usa decoração CSS sazonal e mantém os mesmos textos, imagens de conteúdo e organização de páginas; não substitui fotos institucionais ou logotipos.
+
+### Rotas novas
+
+- `/login` — acesso à conta.
+- `/configuracoes` — perfil pessoal e, para administradores, usuários e temas.
+- `/api/auth/*` — autenticação e perfil.
+- `/api/admin/users` — gestão de usuários, restrita a administradores.
+- `/api/site-settings` — leitura pública e alteração administrativa das configurações visuais.

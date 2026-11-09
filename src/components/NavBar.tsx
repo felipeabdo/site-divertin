@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { CSSProperties, MouseEvent } from 'react';
 import { createPortal } from 'react-dom';
+import AccountAction from '@/components/auth/AccountAction';
 
 type IconName = 'home' | 'face' | 'star' | 'chat';
 
@@ -790,6 +791,8 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
           </ul>
         </div>
       </nav>
+
+      <AccountAction />
     </div>
   );
 }

@@ -759,3 +759,219 @@ body {
     max-height: 33dvh;
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/* Área de acesso, configurações e temas sazonais da Divertin                  */
+/* -------------------------------------------------------------------------- */
+
+.divertin-account-action {
+  position: fixed;
+  z-index: 55;
+  top: 1.5rem;
+  right: 5.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  min-width: 3rem;
+  height: 3rem;
+  padding: 0 .85rem;
+  border: 1.5px solid rgba(255,255,255,.85);
+  border-radius: 999px;
+  background: rgba(255,255,255,.94);
+  color: #a83b78;
+  box-shadow: 0 7px 22px rgba(52,33,47,.16);
+  font: 800 .82rem/1 'Avenir', sans-serif;
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.divertin-account-action:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(52,33,47,.2); }
+@media (min-width: 1301px) {
+  .divertin-account-action { right: 1.75rem; }
+}
+@media (max-width: 420px) {
+  .divertin-account-action { right: 4.75rem; width: 2.8rem; height: 2.8rem; padding: 0; }
+  .divertin-account-action span { display: none; }
+}
+
+.divertin-auth-page {
+  position: relative;
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  overflow: hidden;
+  padding: 5.5rem 1.25rem 2rem;
+  background: radial-gradient(circle at 12% 15%, rgba(232,64,138,.13), transparent 31%), radial-gradient(circle at 88% 86%, rgba(61,189,138,.14), transparent 32%), #fdfbf7;
+  color: #333;
+  font-family: var(--font-avenir, 'Avenir', sans-serif);
+}
+.divertin-auth-back { position: absolute; top: 1.5rem; left: clamp(1rem, 4vw, 3rem); z-index: 2; color: #8e3971; font-size: .9rem; font-weight: 800; text-decoration: none; }
+.divertin-auth-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 470px);
+  padding: clamp(1.6rem, 5vw, 2.65rem);
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 32px;
+  background: rgba(255,255,255,.91);
+  box-shadow: 0 24px 80px rgba(85,55,77,.14);
+  backdrop-filter: blur(18px);
+}
+.divertin-auth-logo { display: block; width: 112px; height: 94px; margin: 0 auto 1rem; }
+.divertin-auth-logo img { width: 100%; height: 100%; object-fit: contain; }
+.divertin-auth-kicker { display: inline-flex; align-items: center; justify-content: center; padding: .45rem .8rem; border-radius: 99px; background: #fce5f0; color: #b13d79; font-size: .68rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.divertin-auth-card h1 { margin: .9rem 0 .45rem; color: #53324d; font-size: clamp(1.65rem, 5vw, 2.05rem); font-weight: 900; line-height: 1.12; text-align: center; }
+.divertin-auth-subtitle { margin: 0 auto 1.7rem; max-width: 340px; color: #77717a; font-size: .92rem; line-height: 1.6; text-align: center; }
+.divertin-auth-form, .divertin-settings-form { display: flex; flex-direction: column; gap: .55rem; }
+.divertin-auth-form label, .divertin-settings-form label { margin-top: .4rem; color: #51464f; font-size: .82rem; font-weight: 850; }
+.divertin-auth-form input, .divertin-settings-form input, .divertin-settings-form select {
+  width: 100%; min-height: 48px; padding: .8rem .95rem; border: 1px solid #e9dfe7; border-radius: 14px; outline: none; background: #fff; color: #302b30; font-family: inherit; font-size: .92rem; font-weight: 600; line-height: 1.3; transition: border-color .2s ease, box-shadow .2s ease;
+}
+.divertin-auth-form input:focus, .divertin-settings-form input:focus, .divertin-settings-form select:focus { border-color: #cb6a9f; box-shadow: 0 0 0 3px rgba(203,106,159,.13); }
+.divertin-auth-form input:disabled, .divertin-settings-form input:disabled { background: #f5f2f4; color: #817b82; }
+.divertin-auth-submit, .divertin-settings-primary {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 50px; margin-top: .8rem; padding: .8rem 1.25rem; border: 0; border-radius: 999px; background: linear-gradient(100deg, #d13f86, #a74687); color: #fff; font-size: .9rem; font-weight: 900; box-shadow: 0 9px 22px rgba(177,61,121,.2); cursor: pointer; transition: transform .2s ease, filter .2s ease;
+}
+.divertin-auth-submit:hover, .divertin-settings-primary:hover { filter: brightness(1.04); transform: translateY(-1px); }
+.divertin-auth-submit:disabled, .divertin-settings-primary:disabled { cursor: not-allowed; opacity: .55; transform: none; }
+.divertin-auth-error { margin: .4rem 0 0; color: #b42336; font-size: .83rem; font-weight: 750; }
+.divertin-auth-alert { margin: 0 0 1rem; padding: .85rem 1rem; border: 1px solid #f1d28c; border-radius: 14px; background: #fff8e8; color: #79531b; font-size: .8rem; line-height: 1.5; }
+.divertin-auth-footnote { margin: 1.2rem 0 0; color: #99919a; font-size: .72rem; line-height: 1.55; text-align: center; }
+.divertin-auth-decoration { position: absolute; width: 24rem; height: 24rem; border-radius: 50%; filter: blur(1px); opacity: .48; pointer-events: none; }
+.divertin-auth-decoration--one { top: -13rem; right: -7rem; background: #f8c8df; }
+.divertin-auth-decoration--two { bottom: -16rem; left: -8rem; background: #c8ead9; }
+
+.divertin-settings-page { min-height: 100dvh; padding-bottom: 4rem; background: #fbf9f6; color: #39333a; font-family: var(--font-avenir, 'Avenir', sans-serif); }
+.divertin-settings-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem clamp(1rem, 4vw, 3rem); border-bottom: 1px solid #eee6ed; background: rgba(255,255,255,.88); }
+.divertin-settings-back, .divertin-settings-logout { border: 0; background: transparent; color: #91416f; font-size: .82rem; font-weight: 850; text-decoration: none; cursor: pointer; }
+.divertin-settings-brand { display: flex; align-items: center; gap: .5rem; color: #62405e; font-size: 1.05rem; font-weight: 950; }
+.divertin-settings-brand-mark { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 50% 50% 50% 12%; background: #db6b9f; color: #fff; }
+.divertin-settings-container { width: min(100% - 2rem, 880px); margin: 0 auto; }
+.divertin-settings-intro { padding: 2.4rem 0 1.5rem; }
+.divertin-settings-intro h1 { margin: .65rem 0 .25rem; color: #543c50; font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 950; letter-spacing: -.04em; }
+.divertin-settings-intro p { margin: 0; color: #817781; font-size: .96rem; line-height: 1.55; }
+.divertin-settings-card { margin: 0 0 1.25rem; padding: clamp(1.2rem, 3.5vw, 2rem); border: 1px solid #eee6ed; border-radius: 25px; background: #fff; box-shadow: 0 12px 34px rgba(67,45,64,.055); }
+.divertin-settings-section-heading { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.35rem; }
+.divertin-settings-icon { display: grid; width: 2.8rem; height: 2.8rem; flex: 0 0 auto; place-items: center; border-radius: 15px; background: #fae8f0; color: #b24881; font-size: 1.45rem; font-weight: 900; }
+.divertin-settings-section-heading h2 { margin: 0; color: #4f3b4d; font-size: 1.15rem; font-weight: 950; }
+.divertin-settings-section-heading p { margin: .15rem 0 0; color: #928992; font-size: .78rem; line-height: 1.5; }
+.divertin-settings-form { max-width: 600px; }
+.divertin-settings-form h3, .divertin-user-list-heading h3 { margin: .2rem 0 0; color: #584653; font-size: .98rem; font-weight: 900; }
+.divertin-settings-help { margin: 0; color: #8a8189; font-size: .79rem; line-height: 1.55; }
+.divertin-settings-divider { height: 1px; margin: 1rem 0 .35rem; background: #f0e9ef; }
+.divertin-settings-feedback { margin: 0 0 1rem; padding: .85rem 1rem; border-radius: 14px; font-size: .86rem; font-weight: 750; }
+.divertin-settings-feedback--success { border: 1px solid #cde9d8; background: #eef9f1; color: #236744; }
+.divertin-settings-feedback--error { border: 1px solid #f1cbd0; background: #fff1f2; color: #a52c3a; }
+.divertin-settings-loading { display: flex; min-height: 100dvh; align-items: center; justify-content: center; gap: .8rem; background: #fbf9f6; color: #76566e; font-weight: 800; }
+.divertin-auth-spinner { width: 1.3rem; height: 1.3rem; border: 2px solid #ead9e4; border-top-color: #b64e87; border-radius: 50%; animation: divertin-spin .7s linear infinite; }
+@keyframes divertin-spin { to { transform: rotate(360deg); } }
+.divertin-settings-logout { padding: .6rem .9rem; border: 1px solid #eadde7; border-radius: 999px; }
+.divertin-theme-options { display: grid; gap: .8rem; }
+.divertin-theme-option { position: relative; display: flex; align-items: center; gap: .9rem; padding: .8rem; border: 1.5px solid #eee6ed; border-radius: 17px; cursor: pointer; transition: border-color .2s ease, background .2s ease; }
+.divertin-theme-option.is-selected { border-color: #bf6193; background: #fff9fc; }
+.divertin-theme-option input { width: 1rem; height: 1rem; accent-color: #b64e87; }
+.divertin-theme-preview { display: flex; width: 4.2rem; height: 3.2rem; flex: 0 0 auto; align-items: center; justify-content: center; gap: .3rem; border-radius: 11px; }
+.divertin-theme-preview--default { background: linear-gradient(135deg,#fbdcea,#fce6c2 52%,#cbeadd); }
+.divertin-theme-preview--default i { width: .65rem; height: .65rem; border-radius: 50%; background: #d13f86; }
+.divertin-theme-preview--default i:nth-child(2) { background: #3dbd8a; transform: translateY(-.25rem); }
+.divertin-theme-preview--default i:nth-child(3) { background: #fba10f; }
+.divertin-theme-preview--christmas { background: linear-gradient(135deg,#0f503b,#b42136); color: #ffe6a0; font-size: 1rem; }
+.divertin-theme-option-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: .2rem; }
+.divertin-theme-option-copy strong { color: #51414e; font-size: .9rem; }
+.divertin-theme-option-copy small { color: #948a93; font-size: .74rem; line-height: 1.4; }
+.divertin-theme-selected { color: #ae4a80; font-size: .67rem; font-weight: 900; }
+.divertin-theme-coming { margin: .8rem 0 .2rem; color: #9c929b; font-size: .74rem; line-height: 1.5; }
+.divertin-admin-create-form { max-width: none; padding: 1.2rem; border: 1px dashed #e8dce6; border-radius: 18px; background: #fdfafd; }
+.divertin-admin-create-form .divertin-settings-primary { align-self: flex-start; }
+.divertin-user-list-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 1.5rem 0 .7rem; }
+.divertin-user-list-heading button { border: 0; background: transparent; color: #a2477a; font-size: .76rem; font-weight: 850; cursor: pointer; }
+.divertin-user-list { display: flex; flex-direction: column; gap: .6rem; }
+.divertin-user-row { display: flex; align-items: center; gap: .8rem; padding: .8rem; border: 1px solid #f0e9ef; border-radius: 16px; }
+.divertin-user-row.is-inactive { opacity: .58; }
+.divertin-user-avatar { display: grid; width: 2.4rem; height: 2.4rem; flex: 0 0 auto; place-items: center; border-radius: 50%; background: #e6f3ec; color: #277353; font-weight: 950; }
+.divertin-user-info { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: .12rem; }
+.divertin-user-info strong { color: #51414e; font-size: .82rem; }
+.divertin-user-info span, .divertin-user-info small { overflow-wrap: anywhere; color: #918792; font-size: .7rem; }
+.divertin-user-actions { display: flex; align-items: center; gap: .4rem; }
+.divertin-user-actions select, .divertin-user-actions button { max-width: 7rem; padding: .45rem .55rem; border: 1px solid #eadfe8; border-radius: 9px; background: white; color: #694f64; font-size: .68rem; font-weight: 800; }
+.divertin-user-actions button { cursor: pointer; }
+.divertin-user-actions :disabled { cursor: not-allowed; opacity: .4; }
+.divertin-settings-footer { padding: .8rem 0; color: #a59ba4; font-size: .72rem; text-align: center; }
+@media (max-width: 620px) {
+  .divertin-settings-header { padding: .8rem 1rem; }
+  .divertin-settings-back { font-size: .72rem; }
+  .divertin-settings-brand { font-size: .9rem; }
+  .divertin-settings-logout { font-size: .7rem; }
+  .divertin-user-row { align-items: flex-start; flex-wrap: wrap; }
+  .divertin-user-info { flex-basis: calc(100% - 3.5rem); }
+  .divertin-user-actions { width: 100%; padding-left: 3.2rem; }
+  .divertin-user-actions select, .divertin-user-actions button { max-width: none; flex: 1; }
+  .divertin-theme-selected { display: none; }
+}
+
+/* Tema sazonal: Natal. O tema padrão continua sendo o valor inicial e permanente. */
+html[data-site-theme="natal"] {
+  --color-divertin-rosa: #d9a441;
+  --color-divertin-rosa-escuro: #b52b3b;
+  --color-divertin-laranja-escuro: #a94424;
+  --color-divertin-verde: #176b4a;
+  --color-divertin-azul: #356e78;
+  --color-divertin-amarelo: #e7bd55;
+  --color-divertin-fundo: #fffdf7;
+}
+html[data-site-theme="natal"] body {
+  background-color: #fffdf7;
+  background-image: radial-gradient(ellipse at 10% 10%, rgba(190,45,57,.035), transparent 30%), radial-gradient(ellipse at 90% 80%, rgba(26,105,72,.045), transparent 32%);
+}
+html[data-site-theme="natal"] body::before {
+  content: "";
+  position: fixed;
+  z-index: 9990;
+  inset: 0 0 auto;
+  height: 4px;
+  pointer-events: none;
+  background: linear-gradient(90deg, #176b4a 0 34%, #c63843 34% 67%, #e4b94e 67% 100%);
+}
+html[data-site-theme="natal"] body::after {
+  content: "";
+  position: fixed;
+  z-index: 29;
+  inset: 0;
+  pointer-events: none;
+  opacity: .42;
+  background-image: radial-gradient(circle, rgba(255,255,255,.95) 0 1.3px, transparent 1.8px), radial-gradient(circle, rgba(216,178,91,.65) 0 1px, transparent 1.6px), radial-gradient(circle, rgba(255,255,255,.75) 0 1px, transparent 1.5px);
+  background-size: 97px 117px, 151px 173px, 211px 197px;
+  background-position: 0 0, 43px 68px, 89px 21px;
+  animation: divertin-christmas-snow 24s linear infinite;
+}
+@keyframes divertin-christmas-snow { from { background-position: 0 0, 43px 68px, 89px 21px; } to { background-position: 0 360px, 43px 428px, 89px 381px; } }
+html[data-site-theme="natal"] nav[aria-hidden] { background-color: #f7f5eb !important; }
+html[data-site-theme="natal"] nav[aria-hidden] a { background: linear-gradient(110deg, #e2efe5, #fff7e7) !important; color: #174d39 !important; }
+html[data-site-theme="natal"] nav[aria-hidden] li:nth-child(even) a { background: linear-gradient(110deg, #f8e1df, #fff7e7) !important; }
+html[data-site-theme="natal"] nav[aria-hidden] li:nth-child(odd) a > span:first-child { background-color: #176b4a !important; }
+html[data-site-theme="natal"] nav[aria-hidden] li:nth-child(even) a > span:first-child { background-color: #b52b3b !important; }
+html[data-site-theme="natal"] .divertin-account-action { color: #176b4a; border-color: rgba(230,205,143,.9); }
+html[data-site-theme="natal"] .divertin-auth-page { background: radial-gradient(circle at 12% 15%, rgba(181,43,59,.13), transparent 31%), radial-gradient(circle at 88% 86%, rgba(23,107,74,.15), transparent 32%), #fffdf7; }
+html[data-site-theme="natal"] .divertin-auth-kicker { background: #e6f0e7; color: #176b4a; }
+html[data-site-theme="natal"] .divertin-auth-card h1, html[data-site-theme="natal"] .divertin-settings-intro h1 { color: #174d39; }
+html[data-site-theme="natal"] .divertin-auth-back, html[data-site-theme="natal"] .divertin-settings-back, html[data-site-theme="natal"] .divertin-settings-logout { color: #176b4a; }
+html[data-site-theme="natal"] .divertin-auth-submit, html[data-site-theme="natal"] .divertin-settings-primary { background: linear-gradient(100deg, #176b4a, #b52b3b); box-shadow: 0 9px 22px rgba(23,107,74,.18); }
+html[data-site-theme="natal"] .divertin-settings-page { background: #f8f7ef; }
+html[data-site-theme="natal"] .divertin-settings-icon { background: #e7f0e7; color: #176b4a; }
+html[data-site-theme="natal"] .divertin-theme-option.is-selected { border-color: #b9984a; background: #fffaf0; }
+html[data-site-theme="natal"] .divertin-theme-option input { accent-color: #176b4a; }
+html[data-site-theme="natal"] .divertin-theme-selected { color: #176b4a; }
+html[data-site-theme="natal"] .divertin-user-avatar { background: #e6f0e7; color: #176b4a; }
+html[data-site-theme="natal"] [style*="rgba(78,31,68"] {
+  background: linear-gradient(90deg, rgba(12,65,48,.96), rgba(168,38,52,.72) 58%, rgba(214,171,83,.26)) !important;
+}
+.divertin-christmas-hero-tint { display: none; }
+html[data-site-theme="natal"] .divertin-christmas-hero-tint {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+  background: linear-gradient(110deg, rgba(12,65,48,.72), rgba(125,28,44,.27) 62%, rgba(229,190,103,.16));
+  mix-blend-mode: multiply;
+}

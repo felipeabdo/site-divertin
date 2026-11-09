@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import DeferredAnalytics from "@/components/DeferredAnalytics";
 import DeferredScreenSaver from "@/components/DeferredScreenSaver";
 import OfflineExperience from "@/components/offline/OfflineExperience";
+import SiteExperienceProvider from "@/components/auth/SiteExperienceProvider";
 import "./globals.css";
 
 
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="flex min-h-full flex-col">
         
+      <SiteExperienceProvider>
       <OfflineExperience>
         <DeferredScreenSaver
           sources={[
@@ -40,11 +42,12 @@ export default function RootLayout({
             '/descanso3.webp',
             '/descanso4.webp'
           ]}
-          idleMinutes={0.5}
+          idleMinutes={0.05}
         />
         {children}
         <DeferredAnalytics gaId="G-14VEB6PD4R" />
       </OfflineExperience>
+      </SiteExperienceProvider>
       </body>
     </html>
   );
