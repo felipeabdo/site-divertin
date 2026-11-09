@@ -11,7 +11,11 @@ type Props = {
 
 function Stars({ rating, size = 'text-base' }: { rating: number; size?: string }) {
   return (
-    <span className={`inline-flex items-center gap-0.5 ${size}`} aria-label={`${rating} de 5 estrelas`}>
+    <span
+      role="img"
+      aria-label={`${rating.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} de 5 estrelas`}
+      className={`inline-flex items-center gap-0.5 ${size}`}
+    >
       {Array.from({ length: 5 }, (_, index) => (
         <span key={index} aria-hidden="true" className={index < Math.round(rating) ? 'text-[#E99A26]' : 'text-[#D9D2C8]'}>
           ★

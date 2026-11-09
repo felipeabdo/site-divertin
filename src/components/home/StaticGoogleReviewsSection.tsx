@@ -7,7 +7,11 @@ import { GOOGLE_REVIEWS_PUBLIC_URL, STATIC_GOOGLE_REVIEWS } from "@/data/staticG
 
 function Stars() {
   return (
-    <span className="inline-flex items-center gap-0.5 text-lg leading-none text-[#E99A26]" aria-label="5 de 5 estrelas">
+    <span
+      role="img"
+      aria-label="5 de 5 estrelas"
+      className="inline-flex items-center gap-0.5 text-lg leading-none text-[#E99A26]"
+    >
       {Array.from({ length: 5 }, (_, index) => <span key={index} aria-hidden="true">★</span>)}
     </span>
   );
@@ -261,9 +265,10 @@ export default function StaticGoogleReviewsSection() {
 
         {/* Carrossel */}
         <div
-          className="relative"
+          role="group"
           aria-roledescription="carrossel"
           aria-label="Comentários de clientes da Clínica Divertin"
+          className="relative"
         >
           <div
             ref={trackRef}
