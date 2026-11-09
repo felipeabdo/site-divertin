@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import DeferredAnalytics from "@/components/DeferredAnalytics";
-import ScreenSaver from "@/components/ScreenSaver";
+import DeferredScreenSaver from "@/components/DeferredScreenSaver";
 import "./globals.css";
 
 
@@ -31,14 +31,14 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="flex min-h-full flex-col">
         
-      <ScreenSaver
+      <DeferredScreenSaver
         sources={[
           '/descanso.webp',
           '/descanso2.webp',
           '/descanso3.webp',
           '/descanso4.webp'
         ]}
-        idleMinutes={0.1}
+        idleMinutes={1}
         overrides={{
           '/descanso3.webp': {
             scale: 1.2,

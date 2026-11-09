@@ -31,7 +31,7 @@ function ReviewCard({
   return (
     <article
       aria-label={`Avaliação ${index + 1} de ${STATIC_GOOGLE_REVIEWS.length}, por ${review.name}`}
-      className="group flex h-full min-h-[330px] w-[min(84vw,390px)] shrink-0 snap-center flex-col rounded-[28px] border border-[#F2DCC5] bg-white p-6 shadow-[0_10px_28px_rgba(105,74,42,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_34px_rgba(105,74,42,0.13)] sm:w-[370px] md:min-h-[350px] md:p-7"
+      className="group flex h-full min-h-[330px] w-[min(84vw,390px)] shrink-0 snap-center flex-col rounded-[28px] border border-[#F2DCC5] bg-white p-6 shadow-[0_10px_28px_rgba(105,74,42,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_34px_rgba(105,74,42,0.13)] [content-visibility:auto] [contain-intrinsic-size:390px_350px] sm:w-[370px] md:min-h-[350px] md:p-7"
     >
       <div className="flex items-center gap-3">
         {review.avatar ? (

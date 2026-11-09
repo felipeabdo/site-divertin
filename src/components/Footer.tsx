@@ -20,20 +20,26 @@ export default function Footer() {
                 src="/unb-fce.png" 
                 alt="Logo da Universidade de Brasília, Campus Ceilândia." 
                 className="h-full w-auto object-contain select-none"
-                />
+                loading="lazy"
+                decoding="async"
+              />
           </div>
           <div className="h-14 md:h-14 flex items-center justify-center">
             <img 
               src="/lgpd.png" 
               alt="Logo da Universidade de Brasília, Campus Ceilândia." 
               className="h-full w-auto object-contain select-none"
-              />
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div className="h-30 md:h-30 flex items-center justify-center">
             <img 
               src="/multigestos.webp" 
               alt="Logo da Certificação mULTIGESTOS" 
               className="h-full w-auto object-contain select-none"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           {/* Certificação 2: PROMPT Institute (.png) */}
@@ -42,6 +48,8 @@ export default function Footer() {
               src="/prompt-institute.png" 
               alt="Logo da Certificação PROMPT Institute" 
               className="h-full w-auto object-contain select-none"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 

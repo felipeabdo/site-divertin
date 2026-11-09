@@ -6,7 +6,7 @@ import { CONTATO } from '@/data/contatoData';
 
 export default function CtaSection() {
   return (
-    <section className="mx-auto mt-24 max-w-6xl px-6 pb-20 h-[500px]">
+    <section className="mx-auto mt-24 max-w-6xl px-6 pb-20">
       <div
         className="relative px-8 py-12 text-center"
         style={{

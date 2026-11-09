@@ -643,7 +643,7 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
       />
 
       
-      {mounted &&
+      {mounted && scrolled &&
         createPortal(
           <div
             aria-hidden={!scrolled}

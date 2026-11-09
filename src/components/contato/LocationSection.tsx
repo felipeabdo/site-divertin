@@ -1,5 +1,6 @@
 import { CONTATO } from '@/data/contatoData';
 import Arrow from '../quem-somos/Arrow';
+import InteractiveMap from './InteractiveMap';
 
 const mapQuery = encodeURIComponent(`Clínica Divertin, ${CONTATO.address}`);
 const mapUrl = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
@@ -32,13 +33,7 @@ export default function LocationSection() {
         </div>
 
         <div className="overflow-hidden rounded-[38px] border-8 border-[#FDD5A5] bg-[#F6F1E8] shadow-sm">
-          <iframe
-            title="Mapa da Clínica Divertin"
-            src={mapUrl}
-            className="h-[380px] w-full md:h-[470px]"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          <InteractiveMap src={mapUrl} title="Mapa da Clínica Divertin" />
         </div>
       </div>
     </section>

@@ -23,7 +23,7 @@ export default function Home() {
           </div>
         </header>
 
-        <div className="relative z-10 mx-auto flex min-h-[580px] w-full max-w-6xl items-end px-6 pb-20 pt-36 lg:min-h-[650px] lg:pb-24 mb-[20]">
+        <div className="relative z-10 mx-auto mb-5 flex min-h-[580px] w-full max-w-6xl items-end px-6 pb-20 pt-36 lg:min-h-[650px] lg:pb-24">
           <div className="max-w-2xl text-white">
             <Logo />
 
@@ -43,9 +43,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-0 mb-[20] left-0 z-20 h-[55px] w-full translate-y-0 md:h-[70px] md:translate-y-[20%]]">
+        <div className="absolute bottom-0 left-0 z-20 h-[55px] w-full translate-y-0 md:h-[70px] md:translate-y-[20%]">
           <div
-            className="h-full w-full bg-repeat-x bg-bottom bg-[length:auto_100%]  mt-[57]"
+            className="mt-[57px] h-full w-full bg-repeat-x bg-bottom bg-[length:auto_100%]"
             style={{ backgroundImage: "url('/cloud (1).png')" }}
             aria-hidden="true"
           />
@@ -53,7 +53,7 @@ export default function Home() {
       </section>
 
       
-      <section className="w-full flex flex-col items-center px-6 py-12 max-w-7xl mx-auto gap-6 mt-6 md:mt-12 h-[1600px] md:h-[900px]">
+      <section className="mx-auto mt-6 flex w-full max-w-7xl flex-col items-center gap-6 px-6 py-12 md:mt-12 md:py-16">
         
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 w-full">
           
@@ -75,19 +75,19 @@ export default function Home() {
 
         
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 w-full mt-8'>
-          <div className='flex flex-col items-center text-center p-4 xl:w-[406] xl:text-justify xl:[text-align-last:center]'>
+          <div className='flex flex-col items-center text-center p-4 xl:w-[406px] xl:text-justify xl:[text-align-last:center]'>
             <Image src="/Group 1.svg" alt="Ícone avaliação" width={80} height={80} className='mb-6 h-20 w-auto'/>
             <h3 className='font-bold text-lg mb-2 text-gray-800'>Avaliação e Plano Terapêutico Personalizados</h3>
             <p className='text-gray-600 text-sm leading-relaxed'>Cada criança é única — por isso, criamos planos de desenvolvimento individualizados, com atividades lúdicas que estimulam linguagem, comunicação e socialização de forma divertida.</p>
           </div>
           
-          <div className='flex flex-col items-center text-center p-4 xl:w-[368] xl:ml-[25] xl:text-justify xl:[text-align-last:center]'>
+          <div className='flex flex-col items-center text-center p-4 xl:w-[368px] xl:ml-[25px] xl:text-justify xl:[text-align-last:center]'>
             <Image src="/Group 1 (1).svg" alt="Ícone desenvolvimento" width={80} height={80} className='mb-6 h-20 w-auto'/>
             <h3 className='font-bold text-lg mb-2 text-gray-800'>Desenvolvimento na Primeira Infância</h3>
             <p className='text-gray-600 text-sm leading-relaxed'>Nossa abordagem é focada nas fases iniciais da vida. Trabalhamos com estratégias que fortalecem a comunicação, o brincar e o aprendizado desde os primeiros anos.</p>
           </div>
           
-          <div className='flex flex-col items-center text-center p-4 xk:w-[406] xl:text-justify xl:[text-align-last:center]'>
+          <div className='flex flex-col items-center text-center p-4 xl:w-[406px] xl:text-justify xl:[text-align-last:center]'>
             <Image src="/Group 1 (2).svg" alt="Ícone equipe" width={80} height={80} className='mb-6 h-20 w-auto'/>
             <h3 className='font-bold text-lg mb-2 text-gray-800'>Equipe Experiente e Especializada</h3>
             <p className='text-gray-600 text-sm leading-relaxed'>Contamos com profissionais experientes em distúrbios da comunicação infantil, sempre com raciocínio clínico assertivo, oferecendo acolhimento, escuta ativa e um acompanhamento terapêutico de confiança.</p>
