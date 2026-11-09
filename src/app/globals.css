@@ -97,6 +97,7 @@ body {
 
 .divertin-network-overlay__art--online {
   min-height: min(78dvh, 800px);
+  transform: translateY(-85px);
 }
 
 .divertin-network-overlay__image {
