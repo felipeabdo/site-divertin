@@ -38,10 +38,9 @@ export default function RootLayout({
             '/descanso.webp',
             '/descanso2.webp',
             '/descanso3.webp',
-            '/descanso4.webp',
-            '/descanso5.webp'
+            '/descanso4.webp'
           ]}
-          idleMinutes={0.05}
+          idleMinutes={0.5}
         />
         {children}
         <DeferredAnalytics gaId="G-14VEB6PD4R" />
