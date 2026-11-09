@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import type { ScreenSaverOverride } from "./ScreenSaver";
 
 const ScreenSaver = dynamic(() => import("./ScreenSaver"), {
   ssr: false,
@@ -12,7 +11,6 @@ const ScreenSaver = dynamic(() => import("./ScreenSaver"), {
 type DeferredScreenSaverProps = {
   sources: string[];
   idleMinutes?: number;
-  overrides?: Record<string, ScreenSaverOverride>;
 };
 
 /**
@@ -22,7 +20,6 @@ type DeferredScreenSaverProps = {
 export default function DeferredScreenSaver({
   sources,
   idleMinutes = 1,
-  overrides,
 }: DeferredScreenSaverProps) {
   const [enabled, setEnabled] = useState(false);
 
@@ -37,7 +34,6 @@ export default function DeferredScreenSaver({
     <ScreenSaver
       sources={sources}
       idleMinutes={idleMinutes}
-      overrides={overrides}
     />
   );
 }

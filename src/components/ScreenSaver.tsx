@@ -2,29 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-/** Estrutura de ajustes personalizados por arquivo/animação */
-export interface ScreenSaverOverride {
-  /** Zoom adicional opcional. Valores abaixo de 1 são limitados a 1 para evitar bordas vazias. */
-  scale?: number;
-  /** Deslocamento horizontal em pixels (positivo para direita, negativo para esquerda) */
-  translateX?: number;
-  /** Deslocamento vertical em pixels (positivo para baixo, negativo para cima) */
-  translateY?: number;
-}
-
 interface ScreenSaverProps {
   sources?: string[];
   src?: string;
   idleMinutes?: number;
   alt?: string;
-  backgroundColor?: string;
   fadeDuration?: number;
   
-  /** 
-   * Novo objeto para configurar regras específicas por arquivo.
-   * Exemplo: { '/descanso3.webp': { scale: 1.3, translateX: -30, translateY: 20 } }
-   */
-  overrides?: Record<string, ScreenSaverOverride>;
 }
 
 type Phase = 'idle' | 'entering' | 'visible' | 'leaving';
@@ -66,9 +50,7 @@ export default function ScreenSaver({
   src,
   idleMinutes = 1,
   alt = 'Descanso de tela',
-  backgroundColor = 'rgba(253, 251, 247, 0.28)',
   fadeDuration = 600,
-  overrides = {}, // Recebe as regras customizadas
 }: ScreenSaverProps) {
   const [phase, setPhase] = useState<Phase>('idle');
   const [currentSrc, setCurrentSrc] = useState<string>('');
@@ -175,47 +157,20 @@ export default function ScreenSaver({
 
   if (phase === 'idle' || !currentSrc) return null;
 
-  // Preserva os pequenos ajustes de enquadramento, mas nunca reduz a arte
-  // a ponto de deixar faixas vazias nas bordas do viewport.
-  const currentOverride = overrides[currentSrc] || {};
-  const scale = Math.max(1.04, currentOverride.scale ?? 1);
-
-  const transformParts: string[] = [];
-  if (currentOverride.translateX !== undefined) {
-    transformParts.push(`translateX(clamp(-3vw, ${currentOverride.translateX}px, 3vw))`);
-  }
-  if (currentOverride.translateY !== undefined) {
-    transformParts.push(`translateY(clamp(-3vh, ${currentOverride.translateY}px, 3vh))`);
-  }
-  if (scale !== 1) transformParts.push(`scale(${scale})`);
-  const finalTransform = transformParts.length > 0 ? transformParts.join(' ') : undefined;
-
   return (
     <div
       id="screen-saver"
       role="status"
       aria-label={alt}
-      className="fixed inset-0 z-[9990] isolate overflow-hidden"
+      className="screen-saver fixed inset-0 z-[9990] isolate overflow-hidden"
       style={{
-        // O fundo translúcido permite que o backdrop-filter borre a página real
-        // que já estava aberta, em vez de substituí-la por uma tela sólida.
-        backgroundColor,
-        backdropFilter: 'blur(20px) saturate(1.12)',
-        WebkitBackdropFilter: 'blur(20px) saturate(1.12)',
+        backgroundColor: '#ffffff',
         opacity: phase === 'visible' ? 1 : 0,
         transition: `opacity ${fadeDuration}ms ease`,
         minHeight: '100svh',
         height: '100dvh',
       }}
     >
-      {/* Reflexos sutis dão unidade ao vidro sem esconder a página por trás. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background: 'radial-gradient(ellipse at 18% 14%, rgba(42,157,143,0.12), transparent 48%), radial-gradient(ellipse at 84% 88%, rgba(214,132,191,0.12), transparent 46%)',
-        }}
-      />
       <img
         key={currentSrc}
         src={currentSrc}
@@ -223,22 +178,10 @@ export default function ScreenSaver({
         draggable={false}
         decoding="async"
         fetchPriority="high"
+        className="screen-saver__animation"
         style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 1,
-          display: 'block',
-          width: '100%',
-          height: '100%',
-          maxWidth: 'none',
-          maxHeight: 'none',
-          objectFit: 'cover',
-          objectPosition: 'center center',
           userSelect: 'none',
           pointerEvents: 'none',
-          transform: finalTransform,
-          transformOrigin: 'center center',
-          willChange: 'transform',
         }}
       />
     </div>

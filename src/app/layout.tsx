@@ -38,20 +38,10 @@ export default function RootLayout({
             '/descanso.webp',
             '/descanso2.webp',
             '/descanso3.webp',
-            '/descanso4.webp'
+            '/descanso4.webp',
+            '/descanso5.webp'
           ]}
-          idleMinutes={1}
-          overrides={{
-            '/descanso3.webp': {
-              scale: 1.2,
-              translateX: 30,
-              translateY: -80,
-            },
-            '/descanso2.webp': {
-              scale: 0.9,
-              translateX: 15,
-            }
-          }}
+          idleMinutes={0.05}
         />
         {children}
         <DeferredAnalytics gaId="G-14VEB6PD4R" />
