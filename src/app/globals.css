@@ -761,38 +761,119 @@ body {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Área de acesso, configurações e temas sazonais da Divertin                  */
+/* Área de acesso e configurações - desktop e menu mobile                     */
 /* -------------------------------------------------------------------------- */
 
+/* Base do acesso no desktop: Entrar em formato de cápsula; logado, engrenagem. */
 .divertin-account-action {
   position: fixed;
   z-index: 55;
   top: 1.5rem;
-  right: 5.25rem;
+  right: 1.75rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: .55rem;
   min-width: 3rem;
   height: 3rem;
-  padding: 0 .85rem;
-  border: 1.5px solid rgba(255,255,255,.85);
+  padding: 0 1rem;
+  border: 1.5px solid rgba(255,255,255,.88);
   border-radius: 999px;
-  background: rgba(255,255,255,.94);
+  background: rgba(255,255,255,.95);
   color: #a83b78;
   box-shadow: 0 7px 22px rgba(52,33,47,.16);
-  font: 800 .82rem/1 'Avenir', sans-serif;
+  font: 800 .85rem/1 'Avenir', sans-serif;
   text-decoration: none;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
 }
-.divertin-account-action:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(52,33,47,.2); }
-@media (min-width: 1301px) {
-  .divertin-account-action { right: 1.75rem; }
+
+.divertin-account-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(52,33,47,.2);
 }
-@media (max-width: 420px) {
-  .divertin-account-action { right: 4.75rem; width: 2.8rem; height: 2.8rem; padding: 0; }
-  .divertin-account-action span { display: none; }
+
+.divertin-account-action:focus-visible {
+  outline: 3px solid rgba(168,59,120,.35);
+  outline-offset: 3px;
+}
+
+/* A versão desktop só acompanha a navegação desktop (breakpoint do NavBar). */
+.divertin-account-action--desktop {
+  display: inline-flex;
+}
+
+/* A versão mobile só aparece quando é inserida como item dentro da lista. */
+.divertin-account-action--mobile {
+  display: none;
+}
+
+@media (max-width: 1300px) {
+  .divertin-account-action--desktop {
+    display: none !important;
+  }
+
+  .divertin-account-action--mobile {
+    position: relative;
+    inset: auto;
+    z-index: auto;
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    height: var(--pill-h, 56px);
+    padding: 0 calc(var(--pill-h, 56px) * .22);
+    justify-content: flex-start;
+    gap: calc(var(--pill-h, 56px) * .26);
+    border: 0;
+    border-radius: 999px;
+    background: #ebdcf4;
+    color: #1f2a37;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    font-family: 'Quicksand', 'Nunito', ui-rounded, system-ui, sans-serif;
+    font-size: max(15px, calc(var(--pill-h, 56px) * .3));
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .divertin-account-action--mobile:hover {
+    transform: none;
+    box-shadow: none;
+    filter: brightness(.98);
+  }
+
+  .divertin-account-action--mobile:focus-visible {
+    outline: 3px solid rgba(155,99,184,.35);
+    outline-offset: 2px;
+  }
+
+  .divertin-account-action--mobile svg {
+    flex: 0 0 auto;
+    width: calc(var(--pill-h, 56px) * .68);
+    height: calc(var(--pill-h, 56px) * .68);
+    padding: calc(var(--pill-h, 56px) * .15);
+    border-radius: 50%;
+    background: #9b63b8;
+    color: #fff;
+  }
+
+  .divertin-account-action--mobile span {
+    display: block;
+    min-width: 0;
+    flex: 1;
+    text-transform: capitalize;
+  }
+
+  .divertin-account-action--mobile::after {
+    content: '›';
+    flex: 0 0 auto;
+    margin-left: auto;
+    color: #9b63b8;
+    font-size: 1.6rem;
+    line-height: 1;
+  }
 }
 
 .divertin-auth-page {
@@ -951,7 +1032,23 @@ html[data-site-theme="natal"] nav[aria-hidden] a { background: linear-gradient(1
 html[data-site-theme="natal"] nav[aria-hidden] li:nth-child(even) a { background: linear-gradient(110deg, #f8e1df, #fff7e7) !important; }
 html[data-site-theme="natal"] nav[aria-hidden] li:nth-child(odd) a > span:first-child { background-color: #176b4a !important; }
 html[data-site-theme="natal"] nav[aria-hidden] li:nth-child(even) a > span:first-child { background-color: #b52b3b !important; }
-html[data-site-theme="natal"] .divertin-account-action { color: #176b4a; border-color: rgba(230,205,143,.9); }
+html[data-site-theme="natal"] .divertin-account-action--desktop {
+  color: #176b4a;
+  border-color: rgba(230,205,143,.9);
+}
+@media (max-width: 1300px) {
+  html[data-site-theme="natal"] .divertin-account-action--mobile {
+    background: linear-gradient(110deg, #e2efe5, #fff7e7) !important;
+    color: #174d39;
+  }
+  html[data-site-theme="natal"] .divertin-account-action--mobile svg {
+    background: #176b4a;
+    color: #fff;
+  }
+  html[data-site-theme="natal"] .divertin-account-action--mobile::after {
+    color: #176b4a;
+  }
+}
 html[data-site-theme="natal"] .divertin-auth-page { background: radial-gradient(circle at 12% 15%, rgba(181,43,59,.13), transparent 31%), radial-gradient(circle at 88% 86%, rgba(23,107,74,.15), transparent 32%), #fffdf7; }
 html[data-site-theme="natal"] .divertin-auth-kicker { background: #e6f0e7; color: #176b4a; }
 html[data-site-theme="natal"] .divertin-auth-card h1, html[data-site-theme="natal"] .divertin-settings-intro h1 { color: #174d39; }
@@ -974,4 +1071,47 @@ html[data-site-theme="natal"] .divertin-christmas-hero-tint {
   pointer-events: none;
   background: linear-gradient(110deg, rgba(12,65,48,.72), rgba(125,28,44,.27) 62%, rgba(229,190,103,.16));
   mix-blend-mode: multiply;
+}
+
+
+/* ==========================================================
+   POSICIONAMENTO DEFINITIVO DO BOTÃO DE CONTA - DESKTOP
+   ========================================================== */
+
+@media (min-width: 1301px) {
+  .divertin-account-action--desktop {
+    position: fixed !important;
+
+    top: 3rem !important;
+    right: 2.5rem !important;
+    left: auto !important;
+    bottom: auto !important;
+
+    z-index: 9999 !important;
+
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    min-width: 3rem;
+    height: 2.8rem;
+
+    transform: none;
+  }
+
+  .divertin-account-action--desktop:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Quando logado, somente a engrenagem */
+  .divertin-account-action--desktop:has(svg) {
+    gap: 0;
+  }
+}
+
+@media (max-width: 1300px) {
+  .divertin-account-action--desktop {
+    display: none !important;
+  }
 }

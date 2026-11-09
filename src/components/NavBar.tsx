@@ -788,11 +788,16 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
                 </li>
               );
             })}
+
+            <li key="mob-account">
+              <AccountAction variant="mobile" />
+            </li>
+
           </ul>
         </div>
       </nav>
 
-      <AccountAction />
+      <AccountAction variant="desktop" />
     </div>
   );
 }
