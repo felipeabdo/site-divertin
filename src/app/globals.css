@@ -1212,3 +1212,336 @@ html[data-site-theme="natal"] .divertin-santa-hat {
 .divertin-auth-logo.divertin-mascot-art--logo {
   display: block;
 }
+
+
+/* -------------------------------------------------------------------------- */
+/* Ajustes visuais da área administrativa e do atalho de configurações        */
+/* -------------------------------------------------------------------------- */
+
+/* Estado deslogado: manter o acesso à página de login claramente identificável. */
+@media (min-width: 1301px) {
+  .divertin-account-action--login.divertin-account-action--desktop {
+    min-width: 6.1rem;
+    height: 2.9rem;
+    padding: 0 1.1rem;
+    border: 1.5px solid rgba(255, 255, 255, .94);
+    border-radius: 999px;
+    background: linear-gradient(110deg, #fff 0%, #fff1f7 100%);
+    color: #a83b78;
+    box-shadow: 0 7px 22px rgba(52, 33, 47, .16);
+    font-size: .88rem;
+    font-weight: 900;
+  }
+
+  .divertin-account-action--login.divertin-account-action--desktop:hover {
+    border-color: rgba(215, 151, 190, .72);
+    background: linear-gradient(110deg, #fff 0%, #ffe7f2 100%);
+  }
+}
+
+/* A engrenagem ganha presença no desktop, mantendo a paleta suave da marca. */
+@media (min-width: 1301px) {
+  .divertin-account-action--settings.divertin-account-action--desktop {
+    width: 4.35rem;
+    min-width: 4.35rem;
+    height: 4.35rem;
+    padding: .42rem;
+    border: 1.5px solid rgba(215, 151, 190, .48);
+    border-radius: 1.45rem;
+    background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(255,245,250,.97));
+    color: #b64e87;
+    box-shadow: 0 9px 26px rgba(92, 54, 82, .17), inset 0 1px 0 rgba(255,255,255,.95);
+  }
+
+  .divertin-account-action--settings.divertin-account-action--desktop .divertin-account-action__gear {
+    display: block;
+    width: 3.35rem;
+    height: 3.35rem;
+    flex: 0 0 auto;
+    overflow: visible;
+    transition: transform .28s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .divertin-account-action--settings.divertin-account-action--desktop:hover {
+    transform: translateY(-3px) rotate(-3deg);
+    border-color: rgba(196, 105, 157, .62);
+    background: linear-gradient(145deg, #fff, #ffedf6);
+    box-shadow: 0 13px 30px rgba(92, 54, 82, .22);
+  }
+
+  .divertin-account-action--settings.divertin-account-action--desktop:hover .divertin-account-action__gear {
+    transform: rotate(18deg);
+  }
+}
+
+/* No menu mobile o mesmo desenho acompanha a dimensão da linha do menu. */
+@media (max-width: 1300px) {
+  .divertin-account-action--settings.divertin-account-action--mobile .divertin-account-action__gear {
+    width: calc(var(--pill-h, 56px) * .72);
+    height: calc(var(--pill-h, 56px) * .72);
+    padding: calc(var(--pill-h, 56px) * .13);
+    stroke-width: 6.5;
+  }
+}
+
+.divertin-settings-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 4% 8%, rgba(251, 220, 234, .72), transparent 31rem),
+    radial-gradient(ellipse at 97% 42%, rgba(203, 235, 221, .48), transparent 29rem),
+    linear-gradient(180deg, #fffdfc 0%, #fbf9f6 48%, #fffdfa 100%);
+}
+
+.divertin-settings-page::before,
+.divertin-settings-page::after {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  border-radius: 50%;
+  content: '';
+  pointer-events: none;
+}
+
+.divertin-settings-page::before {
+  top: 13rem;
+  right: -13rem;
+  width: 29rem;
+  height: 29rem;
+  border: 1px solid rgba(155, 99, 184, .11);
+  box-shadow: 0 0 0 2.8rem rgba(155, 99, 184, .025), 0 0 0 5.8rem rgba(155, 99, 184, .018);
+}
+
+.divertin-settings-page::after {
+  bottom: 5rem;
+  left: -10rem;
+  width: 20rem;
+  height: 20rem;
+  background: radial-gradient(circle, rgba(241, 139, 31, .075), transparent 70%);
+}
+
+.divertin-settings-header {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  min-height: 6.1rem;
+  padding: .65rem clamp(1rem, 4vw, 3rem);
+  border-bottom: 1px solid rgba(238, 226, 235, .9);
+  background: rgba(255, 255, 255, .84);
+  box-shadow: 0 5px 22px rgba(78, 49, 73, .045);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.divertin-settings-back {
+  justify-self: start;
+  align-self: center;
+  padding: .68rem .95rem;
+  border-radius: 999px;
+  background: #fff2f8;
+  color: #91416f;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.divertin-settings-back:hover {
+  transform: translateX(-2px);
+  background: #fbe4f0;
+}
+
+.divertin-settings-brand-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.divertin-settings-brand-logo {
+  width: clamp(5rem, 7vw, 6.2rem);
+  margin: 0 !important;
+  vertical-align: middle;
+}
+
+.divertin-settings-brand-logo img {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 4.8rem;
+  object-fit: contain;
+}
+
+.divertin-settings-logout {
+  justify-self: end;
+  align-self: center;
+  padding: .68rem 1rem;
+  border-color: #eadde7;
+  background: rgba(255,255,255,.88);
+  color: #91416f;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.divertin-settings-logout:hover {
+  transform: translateY(-1px);
+  border-color: #dca8c7;
+  background: #fff5fa;
+}
+
+.divertin-settings-container {
+  position: relative;
+  z-index: 0;
+  width: min(100% - 2rem, 900px);
+}
+
+.divertin-settings-intro {
+  position: relative;
+  padding: clamp(2.3rem, 5vw, 3.4rem) 0 1.8rem;
+}
+
+.divertin-settings-intro .divertin-auth-kicker {
+  border: 1px solid rgba(213, 140, 181, .16);
+  background: linear-gradient(100deg, #fce4f0, #fff0e4);
+  color: #a8437d;
+  letter-spacing: .1em;
+}
+
+.divertin-settings-intro h1 {
+  margin-top: .9rem;
+  color: #51384f;
+  font-size: clamp(2.15rem, 5.5vw, 3.05rem);
+  line-height: 1.08;
+  letter-spacing: -.055em;
+}
+
+.divertin-settings-intro p {
+  max-width: 42rem;
+  margin-top: .55rem;
+  color: #7f727f;
+  font-size: clamp(.9rem, 1.8vw, 1rem);
+}
+
+.divertin-settings-card {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.35rem;
+  padding: clamp(1.25rem, 3.7vw, 2.15rem);
+  border: 1px solid rgba(236, 225, 235, .95);
+  border-radius: 1.65rem;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 14px 38px rgba(67, 45, 64, .065), 0 2px 8px rgba(67, 45, 64, .025);
+}
+
+.divertin-settings-card::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #e8408a 0%, #fba10f 34%, #3dbd8a 68%, #9b63b8 100%);
+  opacity: .8;
+  content: '';
+}
+
+.divertin-settings-section-heading {
+  gap: 1rem;
+  margin-bottom: 1.55rem;
+}
+
+.divertin-settings-icon {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(218, 151, 190, .16);
+  border-radius: 1.05rem;
+  background: linear-gradient(145deg, #fff0f7, #fce3ef);
+  color: #b24881;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.divertin-settings-section-heading h2 {
+  color: #513b50;
+  font-size: 1.2rem;
+}
+
+.divertin-settings-section-heading p {
+  color: #887d88;
+}
+
+.divertin-settings-form input,
+.divertin-settings-form select {
+  min-height: 2.9rem;
+  border-radius: .85rem;
+  border-color: #e9e0e8;
+  background-color: #fffdfd;
+}
+
+.divertin-settings-primary {
+  min-height: 2.85rem;
+  padding: .8rem 1.2rem;
+  border-radius: 999px;
+  background: linear-gradient(100deg, #c34f8b, #a45b9c);
+  box-shadow: 0 8px 20px rgba(177, 72, 129, .19);
+  font-size: .84rem;
+  font-weight: 900;
+}
+
+.divertin-settings-feedback {
+  border-radius: 1rem;
+  box-shadow: 0 5px 18px rgba(67, 45, 64, .04);
+}
+
+.divertin-settings-footer {
+  padding: 1.15rem 0 1.5rem;
+  color: #9a8d99;
+  letter-spacing: .02em;
+}
+
+html[data-site-theme="natal"] .divertin-account-action--settings.divertin-account-action--desktop {
+  background: linear-gradient(145deg, #fffdf7, #edf5ed);
+  color: #176b4a;
+  border-color: rgba(185, 152, 74, .55);
+}
+
+html[data-site-theme="natal"] .divertin-settings-card::before {
+  background: linear-gradient(90deg, #176b4a, #b52b3b 58%, #d6ab53);
+}
+
+@media (max-width: 620px) {
+  .divertin-settings-header {
+    min-height: 5rem;
+    gap: .4rem;
+    padding: .55rem .7rem;
+  }
+
+  .divertin-settings-back {
+    padding: .58rem .65rem;
+    font-size: .69rem;
+    white-space: nowrap;
+  }
+
+  .divertin-settings-brand-logo {
+    width: 4.7rem;
+  }
+
+  .divertin-settings-brand-logo img {
+    max-height: 4rem;
+  }
+
+  .divertin-settings-logout {
+    padding: .56rem .68rem;
+    font-size: .68rem;
+    white-space: nowrap;
+  }
+
+  .divertin-settings-container {
+    width: min(100% - 1.25rem, 900px);
+  }
+
+  .divertin-settings-intro {
+    padding-top: 2rem;
+  }
+
+  .divertin-settings-card {
+    border-radius: 1.3rem;
+  }
+}

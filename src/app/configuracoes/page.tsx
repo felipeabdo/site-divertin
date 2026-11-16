@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Logo from '@/components/Logo';
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/components/auth/SiteExperienceProvider';
@@ -131,7 +132,9 @@ export default function SettingsPage() {
     <main className="divertin-settings-page">
       <header className="divertin-settings-header">
         <Link href="/" className="divertin-settings-back">← Voltar ao site</Link>
-        <div className="divertin-settings-brand"><span className="divertin-settings-brand-mark">D</span><span>Divertin</span></div>
+        <Link href="/" className="divertin-settings-brand-link" aria-label="Voltar à página inicial da Divertin">
+          <Logo className="divertin-settings-brand-logo" />
+        </Link>
         <button type="button" onClick={handleLogout} className="divertin-settings-logout">Sair da conta</button>
       </header>
 
