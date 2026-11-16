@@ -1255,8 +1255,8 @@ html[data-site-theme="natal"] .divertin-santa-hat {
 
   .divertin-account-action--settings.divertin-account-action--desktop .divertin-account-action__gear {
     display: block;
-    width: 3.35rem;
-    height: 3.35rem;
+    width: 2.35rem;
+    height: 2.35rem;
     flex: 0 0 auto;
     overflow: visible;
     transition: transform .28s cubic-bezier(.2,.8,.2,1);
