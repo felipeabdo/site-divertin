@@ -39,7 +39,7 @@ export default function AccountAction({
         viewBox={user ? '0 0 100 100' : '0 0 24 24'}
         fill="none"
         stroke="currentColor"
-        strokeWidth={user ? 5.5 : 1.8}
+        strokeWidth={user ? 9.5 : 1.8}
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
