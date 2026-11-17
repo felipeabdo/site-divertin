@@ -897,7 +897,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.divertin-auth-logo { display: block; width: 112px; height: 94px; margin: 0 auto 1rem; }
+.divertin-auth-logo { display: block; width: 150px; height: 125,89px; margin: 0 auto 1rem; }
 .divertin-auth-logo img { width: 100%; height: 100%; object-fit: contain; }
 .divertin-auth-kicker { display: flex; width: 150px; align-items: center; justify-content: center; padding: .45rem .8rem; border-radius: 99px; background: #fce5f0; color: #b13d79; font-size: .68rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 .divertin-auth-card h1 { margin: .9rem 0 .45rem; color: #53324d; font-size: clamp(1.65rem, 5vw, 2.05rem); font-weight: 900; line-height: 1.12; text-align: center; }
@@ -905,7 +905,7 @@ body {
 .divertin-auth-form, .divertin-settings-form { display: flex; flex-direction: column; gap: .55rem; }
 .divertin-auth-form label, .divertin-settings-form label { margin-top: .4rem; color: #51464f; font-size: .82rem; font-weight: 850; }
 .divertin-auth-form input, .divertin-settings-form input, .divertin-settings-form select {
-  width: 100%; min-height: 48px; padding: .8rem .95rem; border: 1px solid #e9dfe7; border-radius: 14px; outline: none; background: #fff; color: #302b30; font-family: inherit; font-size: .92rem; font-weight: 600; line-height: 1.3; transition: border-color .2s ease, box-shadow .2s ease;
+  width: 100%; min-height: 48px; min-width: 360px; padding: .8rem .95rem; border: 1px solid #e9dfe7; border-radius: 14px; outline: none; background: #fff; color: #302b30; font-family: inherit; font-size: .92rem; font-weight: 600; line-height: 1.3; transition: border-color .2s ease, box-shadow .2s ease;
 }
 .divertin-auth-form input:focus, .divertin-settings-form input:focus, .divertin-settings-form select:focus { border-color: #cb6a9f; box-shadow: 0 0 0 3px rgba(203,106,159,.13); }
 .divertin-auth-form input:disabled, .divertin-settings-form input:disabled { background: #f5f2f4; color: #817b82; }
