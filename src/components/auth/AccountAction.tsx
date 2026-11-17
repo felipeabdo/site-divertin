@@ -43,7 +43,7 @@ export default function AccountAction({
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
-        className={user ? 'divertin-account-action__gear' : 'h-4 w-4 shrink-0'}
+        className={user ? 'divertin-account-action__gear' : 'h-5 w-5 shrink-0'}
       >
         {user ? (
           <>
