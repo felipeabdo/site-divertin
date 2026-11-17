@@ -1242,9 +1242,9 @@ html[data-site-theme="natal"] .divertin-santa-hat {
 /* A engrenagem ganha presença no desktop, mantendo a paleta suave da marca. */
 @media (min-width: 1301px) {
   .divertin-account-action--settings.divertin-account-action--desktop {
-    width: 4.35rem;
-    min-width: 4.35rem;
-    height: 4.35rem;
+    width: 2.35rem;
+    min-width: 2.35rem;
+    height: 2.35rem;
     padding: .42rem;
     border: 1.5px solid rgba(215, 151, 190, .48);
     border-radius: 1.45rem;
