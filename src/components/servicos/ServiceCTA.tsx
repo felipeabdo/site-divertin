@@ -29,7 +29,7 @@ export default function ServiceCTA({ accent }: { accent: string }) {
         </a>
       </div>
       </div>
-      <Cloud position="bottom" color="#ffb3d9" />
+      <Cloud position="bottom" color="#ffbdde" />
     </section>
   );
 }

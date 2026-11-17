@@ -461,7 +461,7 @@ export default function StaticGoogleReviewsSection() {
           </div>
         </div>
       )}
-      <Cloud position="bottom" color="#ffb3d9" />
+      <Cloud position="bottom" color="#ffbdde" />
     </section>
   );
 }

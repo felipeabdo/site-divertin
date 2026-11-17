@@ -29,7 +29,7 @@ export default async function ReviewsSection() {
 
         <ReviewsInteractive snapshot={snapshot} />
       </div>
-      <Cloud position="bottom" color="#ffb3d9" />
+      <Cloud position="bottom" color="#ffbdde" />
     </section>
   );
 }

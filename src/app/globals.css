@@ -2004,7 +2004,7 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
   background:
     radial-gradient(ellipse at 12% 35%, rgba(214,132,191,.14), transparent 30%),
     radial-gradient(ellipse at 88% 72%, rgba(111,191,159,.10), transparent 28%),
-    #ffb3d9;
+    #ffbdde;
 }
 
 /* Os cartões do carrossel de depoimentos não devem herdar a altura do
