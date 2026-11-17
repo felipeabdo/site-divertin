@@ -2,34 +2,34 @@ import Arrow from '../quem-somos/Arrow';
 import SectionDashes from './SectionDashes';
 import { CONTATO } from '@/data/contatoData';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
+import Cloud from '@/components/Cloud';
 
 export default function ServiceCTA({ accent }: { accent: string }) {
   return (
-    <section className="relative mx-auto max-w-6xl px-6 pb-24">
-      <div
-        className="relative overflow-hidden rounded-[34px] px-7 py-12 text-center shadow-sm sm:px-10 md:py-14"
-        style={{ backgroundColor: '#E6F08F' }}
-      >
+    <section className="relative w-full bg-[#FBF8F4] px-6 pb-28 pt-10 md:pb-32 md:pt-14">
+      <div className="mx-auto w-full max-w-6xl">
+      <div data-reveal="zoom" className="relative overflow-hidden rounded-[28px] border border-[#E7EBC7] bg-gradient-to-br from-[#F5F8DF] via-[#F8F7EB] to-[#FBEAF4] px-6 py-12 text-center shadow-[0_16px_40px_rgba(59,43,57,.07)] sm:px-10 md:py-14">
         <SectionDashes color="#D684BF" className="left-8 top-8 rotate-45" />
         <SectionDashes color="#F7931E" className="bottom-7 right-8 -rotate-90" />
-
-        <p className="text-sm font-black uppercase tracking-[0.18em] text-gray-700">Vamos conversar?</p>
-        <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-black leading-tight text-gray-800 sm:text-4xl">
+        <p className="site-eyebrow site-eyebrow--orange">Vamos conversar?</p>
+        <h2 className="site-section-title mx-auto mt-4 max-w-3xl">
           A melhor forma de começar é entender a necessidade da sua criança.
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-gray-700 sm:text-base">
+        <p className="site-section-copy mx-auto mt-4 max-w-2xl">
           Entre em contato com a Divertin para saber mais sobre avaliação, acompanhamento e disponibilidade de atendimento.
         </p>
         <a
           href={CONTATO.whatsappUrl}
           target="_blank"
           rel="noreferrer"
-          className="mt-7 inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-black text-white shadow-sm transition-opacity hover:opacity-90"
+          className="site-action mt-7 text-white shadow-md hover:-translate-y-0.5"
           style={{ backgroundColor: accent }}
         >
           <WhatsAppIcon /> Quero agendar uma avaliação <Arrow />
         </a>
       </div>
+      </div>
+      <Cloud position="bottom" color="#FFF5FA" />
     </section>
   );
 }

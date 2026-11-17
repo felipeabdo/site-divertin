@@ -4,29 +4,18 @@ import Arrow from '../quem-somos/Arrow';
 
 export default function WhatsAppCard() {
   return (
-    <article data-reveal="left" className="relative overflow-hidden rounded-[34px] bg-[#E6F08F] p-8 shadow-sm md:p-10">
-      <div className="mb-4 inline-flex rounded-full bg-white/80 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-gray-700">
-        Atendimento rápido
-      </div>
-      <h2 className="text-3xl font-black leading-tight text-gray-800 md:text-4xl">
-        Prefere falar com a gente?
-      </h2>
-      <p className="mt-4 max-w-xl text-base leading-relaxed text-gray-700">
+    <article data-reveal="left" className="site-contact-card site-contact-card--whatsapp">
+      <p className="site-eyebrow site-eyebrow--green">Atendimento rápido</p>
+      <h2 className="site-card-title mt-4">Prefere falar com a gente?</h2>
+      <p className="mt-4 max-w-xl text-base leading-[1.8] text-[#59635F]">
         O WhatsApp é o caminho mais direto para tirar dúvidas e verificar a disponibilidade de horários.
       </p>
-      <div className="mt-6">
-        <Botao
-          largura="226px"
-          cor="laranja_escuro"
-          href={CONTATO.whatsappUrl}
-          target="_blank"
-          rel="noreferrer"
-          
-        >
+      <div className="mt-7">
+        <Botao largura="auto" cor="laranja_escuro" href={CONTATO.whatsappUrl} target="_blank" rel="noreferrer">
           Abrir WhatsApp <Arrow />
         </Botao>
       </div>
-      <p className="mt-5 text-sm font-bold text-gray-700">{CONTATO.phoneDisplay}</p>
+      <p className="mt-5 text-sm font-extrabold tracking-[0.02em] text-[#43534D]">{CONTATO.phoneDisplay}</p>
     </article>
   );
 }

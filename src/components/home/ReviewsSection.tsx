@@ -10,7 +10,6 @@ export default async function ReviewsSection() {
       aria-labelledby="reviews-title"
       className="relative isolate overflow-hidden bg-[#FFF0DE] px-6 pb-24 pt-24 md:pb-28 md:pt-28"
     >
-      <Cloud position="top" color="#FFF0DE" />
 
       <div aria-hidden="true" className="pointer-events-none absolute left-[5%] top-24 hidden h-16 w-16 rounded-full bg-[#F4A261]/20 blur-2xl md:block" />
       <div aria-hidden="true" className="pointer-events-none absolute bottom-20 right-[7%] hidden h-24 w-24 rounded-full bg-[#D684BF]/20 blur-2xl md:block" />
@@ -30,6 +29,7 @@ export default async function ReviewsSection() {
 
         <ReviewsInteractive snapshot={snapshot} />
       </div>
+      <Cloud position="bottom" color="#FFF5FA" />
     </section>
   );
 }

@@ -6,23 +6,19 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function ServiceCardGrid({ services }: { services: Service[] }) {
   return (
-    <section className="relative">
-        <Cloud position="bottom" color="#FFF0DE" />
-      <section className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <SectionDashes color="#D684BF" className="left-3 top-10 -rotate-12 md:top-16" />
-        <ScrollReveal className="max-w-3xl">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#B06206]">
-            Especialidades
-          </p>
-          <h2 className="mt-3 text-3xl font-black leading-tight text-gray-800 sm:text-4xl md:text-5xl">
+    <section className="site-services-intro relative bg-white">
+      <section className="relative mx-auto w-full max-w-6xl px-6 pb-24 pt-20 md:pb-28 md:pt-24">
+        <SectionDashes color="#D684BF" className="left-3 top-12 -rotate-12 md:top-16" />
+        <ScrollReveal className="mx-auto max-w-3xl text-center">
+          <p className="site-eyebrow site-eyebrow--pink">Especialidades</p>
+          <h2 className="site-section-title mt-4">
             Cuidado especializado para cada fase do desenvolvimento
           </h2>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
-            Na Divertin, as especialidades trabalham com um olhar infantil,
-            individualizado e próximo da família.
+          <p className="site-section-copy mx-auto mt-5 max-w-[680px]">
+            Na Divertin, as especialidades trabalham com um olhar infantil, individualizado e próximo da família.
           </p>
         </ScrollReveal>
-        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+        <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-2 lg:gap-7">
           {services.map((service, index) => (
             <ScrollReveal key={service.slug} delay={index * 130}>
               <ServiceCard service={service} />
@@ -30,6 +26,7 @@ export default function ServiceCardGrid({ services }: { services: Service[] }) {
           ))}
         </div>
       </section>
+      <Cloud position="bottom" color="#FFF4E8" />
     </section>
   );
 }

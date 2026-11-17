@@ -15,15 +15,15 @@ export const metadata: Metadata = {
 
 export default function ContatoPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-white">
+    <div className="site-page min-h-screen overflow-x-hidden bg-white">
       <ContactHero />
 
-      <section className="relative bg-[#FDD5A5] py-20 md:py-24">
-        <div className="mx-auto grid w-full max-w-6xl gap-8 px-6 lg:grid-cols-[1.1fr_.9fr]">
+      <section className="site-contact-band relative bg-[#FFF4E8] pb-28 pt-20 md:pb-32 md:pt-24">
+        <div className="mx-auto grid w-full max-w-6xl gap-6 px-6 lg:grid-cols-2 lg:gap-7">
           <WhatsAppCard />
           <HoursCard />
         </div>
-        <Cloud position="bottom"/>
+        <Cloud position="bottom" color="#FFFFFF" />
       </section>
 
       <LocationSection />

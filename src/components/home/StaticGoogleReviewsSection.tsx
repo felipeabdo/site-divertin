@@ -5,14 +5,38 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Cloud from "@/components/Cloud";
 import { GOOGLE_REVIEWS_PUBLIC_URL, STATIC_GOOGLE_REVIEWS } from "@/data/staticGoogleReviews";
 
+function StarMark({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true" focusable="false">
+      <path d="m12 2.5 2.85 5.78 6.38.93-4.62 4.5 1.09 6.35L12 17.06l-5.7 3 1.09-6.35-4.62-4.5 6.38-.93L12 2.5Z" />
+    </svg>
+  );
+}
+
+function SparkleMark({ className = "h-3.5 w-3.5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true" focusable="false">
+      <path d="M12 1.8 14.4 9.6 22.2 12l-7.8 2.4L12 22.2l-2.4-7.8L1.8 12l7.8-2.4L12 1.8Z" />
+    </svg>
+  );
+}
+
+function ChevronMark({ direction = "right", className = "h-4 w-4" }: { direction?: "left" | "right"; className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      {direction === "left" ? <path d="m14.5 5-7 7 7 7" /> : <path d="m9.5 5 7 7-7 7" />}
+    </svg>
+  );
+}
+
 function Stars() {
   return (
     <span
       role="img"
       aria-label="5 de 5 estrelas"
-      className="inline-flex items-center gap-0.5 text-lg leading-none text-[#E99A26]"
+      className="inline-flex items-center gap-1 text-[#E99A26]"
     >
-      {Array.from({ length: 5 }, (_, index) => <span key={index} aria-hidden="true">★</span>)}
+      {Array.from({ length: 5 }, (_, index) => <StarMark key={index} className="h-[17px] w-[17px]" />)}
     </span>
   );
 }
@@ -35,7 +59,7 @@ function ReviewCard({
   return (
     <article
       aria-label={`Avaliação ${index + 1} de ${STATIC_GOOGLE_REVIEWS.length}, por ${review.name}`}
-      className="group flex h-full min-h-[330px] w-[min(84vw,390px)] shrink-0 snap-center flex-col rounded-[28px] border border-[#F2DCC5] bg-white p-6 shadow-[0_10px_28px_rgba(105,74,42,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_34px_rgba(105,74,42,0.13)] [content-visibility:auto] [contain-intrinsic-size:390px_350px] sm:w-[370px] md:min-h-[350px] md:p-7"
+      className="group flex h-full min-h-[330px] w-[min(84vw,390px)] shrink-0 snap-center flex-col rounded-[24px] border border-[#EFE4DB] bg-white p-6 shadow-[0_12px_30px_rgba(75,55,45,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(75,55,45,0.12)] [content-visibility:auto] [contain-intrinsic-size:390px_350px] sm:w-[370px] md:min-h-[350px] md:p-7"
     >
       <div className="flex items-center gap-3">
         {review.avatar ? (
@@ -87,7 +111,7 @@ function ReviewCard({
           className="mt-2 self-start rounded text-sm font-bold text-[#D66B24] transition hover:text-[#A64B28] hover:underline focus:outline-none focus:ring-2 focus:ring-[#CC4B00] focus:ring-offset-2"
           aria-label={`Ler comentário completo de ${review.name}`}
         >
-          Ler comentário completo →
+          <span className="inline-flex items-center gap-1.5">Ler comentário completo <ChevronMark className="h-4 w-4" /></span>
         </button>
       )}
 
@@ -98,7 +122,7 @@ function ReviewCard({
       )}
 
       <div className="mt-5 flex items-center gap-2 border-t border-[#F4E8DC] pt-4 text-xs font-bold text-[#D66B24]">
-        <span aria-hidden="true">✦</span> Carinho que faz a diferença
+        <SparkleMark /> Carinho que faz a diferença
       </div>
     </article>
   );
@@ -180,25 +204,23 @@ export default function StaticGoogleReviewsSection() {
   return (
     <section
       aria-labelledby="static-reviews-title"
-      className="relative isolate overflow-visible bg-[#FFF0DE] px-5 pb-20 pt-24 md:px-8 md:pb-28 md:pt-28"
+      className="relative isolate overflow-visible bg-[#FFF4E8] px-5 pb-20 pt-24 md:px-8 md:pb-28 md:pt-28"
     >
-      <Cloud position="top" color="#FFF0DE" />
-      <Cloud position="bottom" color="#FFF0DE" />
 
       <div aria-hidden="true" className="pointer-events-none absolute left-[5%] top-28 hidden h-20 w-20 rounded-full bg-[#F4A261]/20 blur-2xl md:block" />
       <div aria-hidden="true" className="pointer-events-none absolute bottom-24 right-[7%] hidden h-28 w-28 rounded-full bg-[#D684BF]/20 blur-2xl md:block" />
 
-      <div className="relative z-20 mx-auto max-w-7xl">
+      <div className="relative z-20 mx-auto max-w-6xl">
 
         {/* Cabeçalho */}
         <header data-reveal className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
-          <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-[#CC4B00]">
-            Carinho que vira conquista ✦
+          <p className="site-eyebrow site-eyebrow--orange mb-3">
+            Carinho que vira conquista
           </p>
 
           <h2
             id="static-reviews-title"
-            className="font-avenir text-3xl font-black leading-tight text-gray-800 md:text-4xl lg:text-5xl"
+            className="site-section-title font-avenir"
           >
             Histórias de quem{" "}
             <span className="text-[#E77B32]">
@@ -206,7 +228,7 @@ export default function StaticGoogleReviewsSection() {
             </span>
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-gray-600 md:text-lg">
+          <p className="site-section-copy mx-auto mt-4 max-w-2xl">
             Cada mensagem representa uma família, uma parceria e muitos passos importantes no desenvolvimento das crianças.
           </p>
         </header>
@@ -245,7 +267,7 @@ export default function StaticGoogleReviewsSection() {
           href={GOOGLE_REVIEWS_PUBLIC_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex shrink-0 self-start ml-[115px] sm:self-auto sm:ml-0 items-center justify-center gap-2 rounded-full border border-[#CC4B00] px-5 py-3 text-sm font-bold text-[#A64B28] transition hover:bg-[#FFF2E7] focus:outline-none focus:ring-2 focus:ring-[#CC4B00] focus:ring-offset-2"
+          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-[#A74712] px-5 py-3 text-sm font-extrabold text-[#8F3E16] transition hover:bg-[#FFF2E7] focus:outline-none focus:ring-2 focus:ring-[#A74712] focus:ring-offset-2"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -295,7 +317,7 @@ export default function StaticGoogleReviewsSection() {
           <div className="mt-2 flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-xs font-semibold text-[#8D8178]">
               Arraste para o lado ou use as setas para ver mais histórias{" "}
-              <span aria-hidden="true">→</span>
+              <ChevronMark className="inline-block h-3.5 w-3.5 align-[-2px]" />
             </p>
 
             <div className="flex items-center gap-3">
@@ -314,7 +336,7 @@ export default function StaticGoogleReviewsSection() {
                 aria-label="Avaliação anterior"
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E7CDB4] bg-white text-2xl leading-none text-[#A64B28] shadow-sm transition hover:-translate-y-0.5 hover:bg-[#FFF8F0] focus:outline-none focus:ring-2 focus:ring-[#CC4B00] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0"
               >
-                ‹
+                <ChevronMark direction="left" className="h-5 w-5" />
               </button>
 
               <button
@@ -324,7 +346,7 @@ export default function StaticGoogleReviewsSection() {
                 aria-label="Próxima avaliação"
                 className="flex h-11 w-11 items-center justify-center rounded-full bg-[#CC4B00] text-2xl leading-none text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#A83D00] focus:outline-none focus:ring-2 focus:ring-[#CC4B00] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0"
               >
-                ›
+                <ChevronMark className="h-5 w-5" />
               </button>
             </div>
           </div>
@@ -362,7 +384,7 @@ export default function StaticGoogleReviewsSection() {
             <div className="flex items-start justify-between gap-4 border-b border-[#F2E5D8] p-6">
               <div>
                 <span className="text-xs font-extrabold uppercase tracking-widest text-[#D66B24]">
-                  ✦ Avaliação Google
+                  <span className="inline-flex items-center gap-1.5"><SparkleMark /> Avaliação Google</span>
                 </span>
 
                 <h3
@@ -380,7 +402,7 @@ export default function StaticGoogleReviewsSection() {
                 aria-label="Fechar comentário"
                 className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#FCE8D7] text-xl font-bold text-[#A64B28] transition hover:rotate-90 hover:bg-[#F8D7BE] focus:outline-none focus:ring-2 focus:ring-[#CC4B00]"
               >
-                ×
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18" /></svg>
               </button>
             </div>
 
@@ -435,12 +457,13 @@ export default function StaticGoogleReviewsSection() {
             {/* Rodapé do popup */}
             <div className="border-t border-[#F2E5D8] bg-[#FFF7EF] px-6 py-4">
               <p className="text-center text-xs font-bold text-[#D66B24]">
-                ✦ Carinho que faz a diferença
+                <span className="inline-flex items-center justify-center gap-1.5"><SparkleMark /> Carinho que faz a diferença</span>
               </p>
             </div>
           </div>
         </div>
       )}
+      <Cloud position="bottom" color="#FFF5FA" />
     </section>
   );
 }

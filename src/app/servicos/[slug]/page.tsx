@@ -18,9 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const service = getServicoBySlug(slug);
 
-  if (!service) {
-    return { title: 'Especialidade não encontrada | Divertin' };
-  }
+  if (!service) return { title: 'Especialidade não encontrada | Divertin' };
 
   return {
     title: `${service.title} | Divertin`,
@@ -32,12 +30,10 @@ export default async function ServicoDetalhePage({ params }: PageProps) {
   const { slug } = await params;
   const service = getServicoBySlug(slug);
 
-  if (!service) {
-    notFound();
-  }
+  if (!service) notFound();
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-white">
+    <div className="site-page min-h-screen overflow-x-hidden bg-white">
       <ServiceDetailHero service={service} />
       <AreaGrid service={service} />
       <ServiceCTA accent={service.accent} />

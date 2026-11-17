@@ -635,7 +635,7 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
       <DesktopMenu
         links={links}
         pathname={pathname}
-        className="hidden min-[1301px]:flex min-[1301px]:flex-row min-[1301px]:gap-10 min-[1301px]:font-black min-[1301px]:text-[20px] text-white"
+        className="hidden min-[1301px]:flex min-[1301px]:flex-row min-[1301px]:items-center min-[1301px]:gap-8 min-[1301px]:rounded-full min-[1301px]:border min-[1301px]:border-[#F1E7EF] min-[1301px]:bg-white min-[1301px]:px-7 min-[1301px]:py-3 min-[1301px]:font-extrabold min-[1301px]:text-[15px] min-[1301px]:tracking-[0.08em] min-[1301px]:shadow-[0_10px_28px_rgba(53,36,58,.14)] text-[#5A4259]"
         style={{
           opacity: scrolled ? 0 : 1,
           visibility: scrolled ? 'hidden' : 'visible',
@@ -661,14 +661,12 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
             <div
               className="relative pointer-events-auto rounded-full"
               style={{
-                padding: '12px 44px 18px',
-                background: 'rgba(8, 8, 8, 0.28)', 
-                
-                
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
-                border: '2px solid rgba(255,255,255,0.14)',
-                boxShadow: '0 10px 30px -8px rgba(40,10,40,0.5)',
+                padding: '10px 30px 14px',
+                background: 'rgba(255, 255, 255, 0.58)',
+                backdropFilter: 'blur(22px) saturate(1.28)',
+                WebkitBackdropFilter: 'blur(22px) saturate(1.28)',
+                border: '1px solid rgba(255,255,255,0.72)',
+                boxShadow: '0 14px 34px rgba(53,36,58,0.12)',
               }}
             >
               
@@ -689,7 +687,7 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
               <DesktopMenu
                 links={links}
                 pathname={pathname}
-                className="flex flex-row gap-9 font-black text-[18px] text-white"
+                className="flex flex-row gap-8 font-extrabold text-[15px] tracking-[0.08em] text-[#5A4259]"
               />
             </div>
           </div>,

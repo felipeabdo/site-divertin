@@ -53,7 +53,7 @@ export default function Photo({
         type="button"
         onClick={onClick}
         aria-label={`Ampliar foto: ${alt}`}
-        className={`group relative block cursor-zoom-in overflow-hidden transition-transform duration-300 hover:scale-[1.02] focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-[#f7931e] ${className}`}
+        className={`group relative block cursor-zoom-in overflow-hidden transition-transform duration-300 hover:scale-[1.02] focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-[#A74712] ${className}`}
         style={boxStyle}
       >
         {content}

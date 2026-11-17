@@ -6,7 +6,7 @@ const CORES_DISPONIVEIS = {
   rosa: "bg-divertin-rosa text-white hover:bg-divertin-rosa/90",
   azul: "bg-divertin-azul text-white hover:bg-divertin-azul/90",
   verde: "bg-divertin-verde text-white hover:bg-divertin-verde/90",
-  amarelo: "bg-divertin-amarelo text-gray-800 hover:bg-divertin-amarelo/90",
+  amarelo: "bg-divertin-amarelo text-gray-900 hover:bg-divertin-amarelo/90",
   laranja_escuro: "bg-divertin-laranja-escuro text-white hover:bg-divertin-laranja-escuro/90",
 } as const;
 
@@ -30,20 +30,20 @@ export default function Botao({
   href,
   target,
   rel,
-  largura = "327px",
-  altura = "70px",
-  sombra = "0px 4px 10px rgba(0,0,0,0.3)",
+  largura = "auto",
+  altura = "auto",
+  sombra = "0 9px 24px rgba(75, 42, 68, .16)",
   type = "button",
 }: BotaoProps) {
   const estiloBase =
-    "flex cursor-pointer items-center justify-start gap-2 rounded-full px-6 py-6 text-left font-bold shadow-sm transition-all active:scale-95 md:px-6 md:py-6";
+    "inline-flex min-h-14 max-w-full cursor-pointer items-center justify-center gap-3 rounded-full px-6 py-4 text-center text-sm font-extrabold leading-snug shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:scale-[.98] focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-3 focus-visible:outline-[#D684BF] sm:px-7 sm:text-[15px]";
   const className = `${estiloBase} ${CORES_DISPONIVEIS[cor]}`;
   const direcionaParaWhatsApp = Boolean(href && /(?:wa\.me|whatsapp\.com|api\.whatsapp)/i.test(href));
 
-  // CORRIGIDO: Agora a sombra é mapeada e o código da altura foi simplificado
   const estiloDimensoes: CSSProperties = {
     width: largura,
-    height: altura,
+    minHeight: altura === "auto" ? "3.5rem" : altura,
+    height: altura === "auto" ? undefined : altura,
     boxShadow: sombra,
   };
 
@@ -54,13 +54,7 @@ export default function Botao({
         : rel;
 
     return (
-      <a
-        href={href}
-        target={target}
-        rel={relSeguro}
-        className={className}
-        style={estiloDimensoes}
-      >
+      <a href={href} target={target} rel={relSeguro} className={className} style={estiloDimensoes}>
         {direcionaParaWhatsApp && <WhatsAppIcon />}
         {children}
       </a>

@@ -1,47 +1,45 @@
 import type { Service } from '@/data/servicosData';
 import ServiceIcon from './Icon';
 import SectionDashes from './SectionDashes';
+import Cloud from '@/components/Cloud';
 
 export default function AreaGrid({ service }: { service: Service }) {
   return (
-    <section className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
+    <section className="relative mx-auto w-full max-w-6xl px-6 pb-28 pt-20 md:pb-32 md:pt-24">
       <SectionDashes color={service.accent} className="right-3 top-16 rotate-180" />
 
-      <div className="max-w-3xl">
-        <p className="text-sm font-black uppercase tracking-[0.18em]" style={{ color: service.accent }}>
+      <div data-reveal className="mx-auto max-w-3xl text-center">
+        <p className="site-eyebrow" style={{ color: service.accent }}>
           O que podemos acompanhar
         </p>
-        <h2 className="mt-3 text-3xl font-black leading-tight text-gray-800 sm:text-4xl md:text-5xl">
+        <h2 className="site-section-title mt-4">
           {service.shortTitle} com objetivos claros e adequados à criança
         </h2>
-        <p className="mt-5 text-base leading-relaxed text-gray-600 sm:text-lg">
-          Abaixo as principais buscas da clínicas que não são etapas prontas: elas são pontos de partida para uma avaliação que considera a história, a rotina e as necessidades de cada criança.
+        <p className="site-section-copy mx-auto mt-5 max-w-[700px]">
+          Estas são algumas das principais demandas que podem motivar uma avaliação. Elas são pontos de partida para um olhar que considera a história, a rotina e as necessidades de cada criança.
         </p>
       </div>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {service.areas.map((area, index) => (
           <article
             key={area.title}
-            className="relative rounded-[28px] border border-black/5 bg-white p-7 shadow-[0_14px_40px_rgba(61,42,56,.07)]"
+            data-reveal
+            data-reveal-delay={String((index % 3) * 70)}
+            className="site-area-card relative h-full rounded-[24px] border border-[#EEE7ED] bg-white p-6 shadow-[0_10px_28px_rgba(59,43,57,.055)] sm:p-7"
           >
-            <div
-              className="grid h-14 w-14 place-items-center rounded-2xl"
-              style={{ backgroundColor: `${service.softAccent}` }}
-            >
+            <div className="grid h-14 w-14 place-items-center rounded-[18px]" style={{ backgroundColor: service.softAccent }}>
               <ServiceIcon icon={area.icon} color={service.accent} />
             </div>
-            <span
-              className="absolute right-6 top-6 text-sm font-black"
-              style={{ color: `${service.accent}99` }}
-            >
-              0{index + 1}
+            <span className="absolute right-6 top-6 text-xs font-extrabold tracking-[0.08em]" style={{ color: `${service.accent}B0` }}>
+              {String(index + 1).padStart(2, '0')}
             </span>
-            <h3 className="mt-6 text-xl font-black leading-tight text-gray-800">{area.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-gray-600">{area.description}</p>
+            <h3 className="mt-5 text-lg font-extrabold leading-snug text-[#3F3544]">{area.title}</h3>
+            <p className="mt-3 text-sm leading-[1.8] text-[#706773]">{area.description}</p>
           </article>
         ))}
       </div>
+      <Cloud position="bottom" color="#FBF8F4" />
     </section>
   );
 }

@@ -7,6 +7,7 @@ import { useOfflineExperience } from '@/components/offline/OfflineExperience';
 import { submitContactPayload } from '@/lib/offlineQueue';
 import type { ContactPayload } from '@/lib/offlineQueue';
 import Arrow from '../quem-somos/Arrow';
+import Cloud from '@/components/Cloud';
 
 const initialForm = {
   nome: '',
@@ -99,30 +100,24 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    'w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-[#D684BF] focus:ring-2 focus:ring-[#D684BF]/20';
+    'w-full rounded-[14px] border border-[#E8E0E8] bg-white px-4 py-3.5 text-[15px] text-[#463D49] outline-none transition placeholder:text-[#A59BA7] focus:border-[#C36C9F] focus:ring-4 focus:ring-[#D684BF]/15';
 
   return (
-    <section className="relative overflow-hidden bg-[#F6F1E8] py-20 md:py-24">
-      <div className="absolute inset-x-0 top-0 z-10 h-[30px] -translate-y-1/2 md:h-[70px]" aria-hidden>
-        <div
-          className="h-full w-full bg-contain bg-bottom bg-repeat-x"
-          style={{ backgroundImage: "url('/cloud (1).webp')" }}
-        />
-      </div>
+    <section className="relative overflow-visible bg-[#FBF8F4] pb-28 pt-20 md:pb-32 md:pt-24">
       <div className="mx-auto w-full max-w-4xl px-6">
         <div data-reveal className="mb-10 text-center">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#C1459E]">Fale conosco</p>
-          <h2 className="mt-3 text-3xl font-black leading-tight text-gray-800 sm:text-4xl">
+          <p className="site-eyebrow site-eyebrow--pink">Fale conosco</p>
+          <h2 className="site-section-title mt-4">
             Envie uma mensagem
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-gray-600">
+          <p className="site-section-copy mx-auto mt-4 max-w-2xl">
             Envie uma mensagem para elogios, reclamações e dúvidas. Sempre preencha todos os campos. Se quiser <strong>trabalhar conosco</strong>, conte um pouco da sua <b>experiência profissional</b> no campo Mensagem e <b>anexe seu currículo</b>. Entraremos em contato o mais breve possível.
           </p>
         </div>
 
-        <form data-reveal onSubmit={handleSubmit} className="rounded-[36px] bg-white p-6 shadow-sm md:p-10">
+        <form data-reveal onSubmit={handleSubmit} className="mx-auto rounded-[26px] border border-[#EEE8EE] bg-white p-6 shadow-[0_16px_42px_rgba(59,43,57,.07)] md:p-10">
           <div className="grid gap-5 md:grid-cols-2">
-            <label className="text-sm font-bold text-gray-700">
+            <label className="block text-sm font-extrabold text-[#514956]">
               Nome
               <input
                 name="nome"
@@ -135,7 +130,7 @@ export default function ContactForm() {
               />
             </label>
 
-            <label className="text-sm font-bold text-gray-700">
+            <label className="block text-sm font-extrabold text-[#514956]">
               E-mail
               <input
                 name="email"
@@ -149,7 +144,7 @@ export default function ContactForm() {
               />
             </label>
 
-            <label className="text-sm font-bold text-gray-700">
+            <label className="block text-sm font-extrabold text-[#514956]">
               Telefone / WhatsApp
               <input
                 name="telefone"
@@ -161,7 +156,7 @@ export default function ContactForm() {
               />
             </label>
 
-            <label className="text-sm font-bold text-gray-700">
+            <label className="block text-sm font-extrabold text-[#514956]">
               Assunto
               <input
                 name="assunto"
@@ -174,14 +169,14 @@ export default function ContactForm() {
           </div>
 
           <div className="mt-5">
-            <label className="text-sm font-bold text-gray-700">
+            <label className="block text-sm font-extrabold text-[#514956]">
               Anexar Currículo (Opcional)
               <input
                 type="file"
                 name="curriculo"
                 accept=".pdf,.doc,.docx"
                 onChange={handleFileChange}
-                className="mt-2 block w-full text-sm text-gray-500
+                className="mt-3 block w-full text-sm text-gray-500
                   file:mr-4 file:py-2.5 file:px-4
                   file:rounded-full file:border-0
                   file:text-xs file:font-black file:uppercase
@@ -193,7 +188,7 @@ export default function ContactForm() {
             </label>
           </div>
 
-          <label className="mt-5 block text-sm font-bold text-gray-700">
+          <label className="mt-5 block text-sm font-extrabold text-[#514956]">
             Mensagem
             <textarea
               name="mensagem"
@@ -213,7 +208,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="rounded-full bg-[#CC4B00] px-7 py-4 text-sm font-black text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+              className="site-action bg-[#A84A15] text-white shadow-md hover:bg-[#923E11] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === 'sending' ? (
                 'Guardando...'
@@ -242,6 +237,7 @@ export default function ContactForm() {
           )}
         </form>
       </div>
+      <Cloud position="bottom" color="#FFF5FA" />
     </section>
   );
 }

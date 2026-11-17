@@ -14,12 +14,12 @@ function Stars({ rating, size = 'text-base' }: { rating: number; size?: string }
     <span
       role="img"
       aria-label={`${rating.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} de 5 estrelas`}
-      className={`inline-flex items-center gap-0.5 ${size}`}
+      className={`inline-flex items-center gap-1 ${size}`}
     >
       {Array.from({ length: 5 }, (_, index) => (
-        <span key={index} aria-hidden="true" className={index < Math.round(rating) ? 'text-[#E99A26]' : 'text-[#D9D2C8]'}>
-          ★
-        </span>
+        <svg key={index} viewBox="0 0 24 24" className="h-4 w-4" fill={index < Math.round(rating) ? '#E99A26' : '#D9D2C8'} aria-hidden="true" focusable="false">
+          <path d="m12 2.5 2.85 5.78 6.38.93-4.62 4.5 1.09 6.35L12 17.06l-5.7 3 1.09-6.35-4.62-4.5 6.38-.93L12 2.5Z" />
+        </svg>
       ))}
     </span>
   );
@@ -125,7 +125,7 @@ function ReviewsModal({
             aria-label="Fechar avaliações"
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F7E8DB] text-2xl leading-none text-[#704A36] transition hover:bg-[#F0D5C0] focus:outline-none focus:ring-2 focus:ring-[#CC4B00]"
           >
-            ×
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18" /></svg>
           </button>
         </header>
 
