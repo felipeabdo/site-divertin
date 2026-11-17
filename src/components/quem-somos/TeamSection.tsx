@@ -6,7 +6,7 @@ export default function TeamSection() {
   return (
     <section className="relative mx-auto mt-24 max-w-6xl px-6">
       
-      <h2 className={`${H2} text-center md:text-left`}>Nossa equipe</h2>
+      <h2 data-reveal className={`${H2} text-center md:text-left`}>Nossa equipe</h2>
 
       <div className="relative mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         <Dashes

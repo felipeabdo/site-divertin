@@ -9,7 +9,7 @@ export default function Footer() {
         backgroundSize: 'cover' 
       }}
     >
-      <div className="w-full max-w-4xl mx-auto flex flex-col items-center relative z-10">
+      <div data-reveal className="w-full max-w-4xl mx-auto flex flex-col items-center relative z-10">
         
         {/* Seção de Certificações / Selos */}
         <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-8 md:gap-12 mb-10 opacity-85 hover:opacity-100 transition-opacity duration-300">

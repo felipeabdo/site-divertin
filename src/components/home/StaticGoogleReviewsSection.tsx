@@ -191,7 +191,7 @@ export default function StaticGoogleReviewsSection() {
       <div className="relative z-20 mx-auto max-w-7xl">
 
         {/* Cabeçalho */}
-        <header className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
+        <header data-reveal className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
           <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-[#CC4B00]">
             Carinho que vira conquista ✦
           </p>
@@ -212,7 +212,7 @@ export default function StaticGoogleReviewsSection() {
         </header>
 
         {/* Resumo das avaliações */}
-        <div className="mb-8 flex flex-col items-center justify-between gap-5 rounded-[28px] border border-[#F2DCC5] bg-white/90 p-5 shadow-[0_10px_28px_rgba(105,74,42,0.06)] sm:flex-row sm:px-8">
+        <div data-reveal className="mb-8 flex flex-col items-center justify-between gap-5 rounded-[28px] border border-[#F2DCC5] bg-white/90 p-5 shadow-[0_10px_28px_rgba(105,74,42,0.06)] sm:flex-row sm:px-8">
           <div className="flex items-center gap-4 sm:gap-5">
             <div className="text-center sm:text-left">
               <div className="flex items-end justify-center gap-2 sm:justify-start">
@@ -265,6 +265,7 @@ export default function StaticGoogleReviewsSection() {
 
         {/* Carrossel */}
         <div
+          data-reveal
           role="group"
           aria-roledescription="carrossel"
           aria-label="Comentários de clientes da Clínica Divertin"

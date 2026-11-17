@@ -8,6 +8,7 @@ export default function CtaSection() {
   return (
     <section className="mx-auto mt-24 max-w-6xl px-6 pb-20">
       <div
+        data-reveal="zoom"
         className="relative px-8 py-12 text-center"
         style={{
           background: PAL.limeSoft,

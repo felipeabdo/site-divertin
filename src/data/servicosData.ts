@@ -37,7 +37,7 @@ export const SERVICOS: Service[] = [
     professionalBio:
       "Com objetivos claros e adequados à criança. Abaixo as principais buscas da clínica que não são etapas prontas: elas são pontos de partida para uma avaliação que considera a história, a rotina e as necessidades de cada criança.",
     audience: "Crianças de 1 a 14 anos",
-    heroImage: "/Jessica",
+    heroImage: "/Jessica.webp",
     accent: "#D684BF",
     softAccent: "#F4CFE7",
     education: [
@@ -151,7 +151,7 @@ export const SERVICOS: Service[] = [
     description:
       "Acompanhamento pediátrico com olhar atento ao crescimento, desenvolvimento e às necessidades individuais da criança e da família.",
     audience: "Atendimento infantil",
-    heroImage: "/Fernanda",
+    heroImage: "/Fernanda.webp",
     accent: "#F7931E",
     softAccent: "#FDD5A5",
     professionalName: "FERNANDA LIMA",

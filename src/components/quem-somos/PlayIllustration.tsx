@@ -6,7 +6,7 @@ const STACK: [string, number][] = [[PAL.green, 48], [PAL.lime, 66], [PAL.orange,
 
 export default function PlayIllustration() {
   return (
-    <div className="relative mx-auto h-[240px] w-full max-w-[350px]" aria-hidden>
+    <div data-reveal="right" className="relative mx-auto h-[240px] w-full max-w-[350px]" aria-hidden>
       <div className="absolute inset-0 bg-white/60" style={{ borderRadius: '58% 42% 52% 48% / 55% 58% 42% 45%' }} />
 
       <div

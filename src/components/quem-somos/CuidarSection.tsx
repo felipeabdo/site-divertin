@@ -24,7 +24,7 @@ export default function CuidarSection() {
       />
 
       <div className="relative z-20 mx-auto grid max-w-6xl items-center gap-10 px-6 md:grid-cols-[1.2fr_1fr]">
-        <div>
+        <div data-reveal="left">
           <h2 className={H2}>Cuidar também pode ser divertido</h2>
           <p className="mt-5 text-base leading-relaxed text-gray-700 md:text-lg">
             Na <strong className="text-gray-800">Divertin</strong>, o brincar é um recurso terapêutico. É brincando que a criança se engaja em atividades desafiadoras, experimenta, cria vínculos e encontra caminhos naturais para desenvolver comunicação, linguagem e autonomia. Cada atividade é pensada de forma individualizada, respeitando o ritmo, os interesses e as necessidades de cada criança.

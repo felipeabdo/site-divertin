@@ -6,14 +6,14 @@ import { CARD_JA_TEM_NOME, type TeamMember } from './data';
 export default function TeamCard({ member }: { member: TeamMember }) {
   if (member.src && CARD_JA_TEM_NOME) {
     return (
-      <article>
+      <article data-reveal>
         <img src={member.src} alt={`${member.name}, ${member.role.toLowerCase()}`} loading="lazy" decoding="async" className="h-auto w-full" />
       </article>
     );
   }
 
   return (
-    <article className="overflow-hidden rounded-[28px] shadow-md" style={{ background: '#fff7f0' }}>
+    <article data-reveal className="overflow-hidden rounded-[28px] shadow-md" style={{ background: '#fff7f0' }}>
       <div
         className="relative aspect-[16/10] w-full overflow-hidden"
         style={{ background: `linear-gradient(135deg, ${member.tone}, #fff)` }}

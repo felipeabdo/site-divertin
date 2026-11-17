@@ -110,7 +110,7 @@ export default function ContactForm() {
         />
       </div>
       <div className="mx-auto w-full max-w-4xl px-6">
-        <div className="mb-10 text-center">
+        <div data-reveal className="mb-10 text-center">
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#C1459E]">Fale conosco</p>
           <h2 className="mt-3 text-3xl font-black leading-tight text-gray-800 sm:text-4xl">
             Envie uma mensagem
@@ -120,7 +120,7 @@ export default function ContactForm() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="rounded-[36px] bg-white p-6 shadow-sm md:p-10">
+        <form data-reveal onSubmit={handleSubmit} className="rounded-[36px] bg-white p-6 shadow-sm md:p-10">
           <div className="grid gap-5 md:grid-cols-2">
             <label className="text-sm font-bold text-gray-700">
               Nome

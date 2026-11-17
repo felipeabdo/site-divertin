@@ -9,7 +9,7 @@ export default function ServiceCard({ service }: { service: Service }) {
       <div className="relative h-60 overflow-hidden sm:h-72">
         <Image
           src={service.heroImage}
-          alt={service.shortTitle}
+          alt={service.professionalName}
           fill
           sizes="(max-width: 1023px) calc(100vw - 3rem), 45vw"
           className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"

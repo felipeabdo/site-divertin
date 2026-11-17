@@ -24,7 +24,7 @@ export default function Home() {
         </header>
 
         <div className="relative z-10 mx-auto mb-5 flex min-h-[580px] w-full max-w-6xl items-end px-6 pb-20 pt-36 lg:min-h-[650px] lg:pb-24">
-          <div className="max-w-2xl text-white">
+          <div data-reveal-load className="max-w-2xl text-white">
             <Logo />
 
             <h1 className="mt-4 text-4xl font-black font-avenir leading-tight sm:text-5xl lg:text-6xl">
@@ -57,7 +57,7 @@ export default function Home() {
         
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 w-full">
           
-          <div className='flex flex-col items-center lg:items-start gap-6 text-center lg:text-left max-w-2xl'>
+          <div data-reveal className='flex flex-col items-center lg:items-start gap-6 text-center lg:text-left max-w-2xl'>
             <h2 className='text-3xl md:text-4xl font-medium leading-tight text-gray-800'>
               Seu filho apresenta dificuldades na fala, comunicação ou aprendizado?
             </h2>
@@ -75,19 +75,19 @@ export default function Home() {
 
         
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 w-full mt-8'>
-          <div className='flex flex-col items-center text-center p-4 xl:w-[406px] xl:text-justify xl:[text-align-last:center]'>
+          <div data-reveal className='flex flex-col items-center text-center p-4 xl:w-[406px] xl:text-justify xl:[text-align-last:center]'>
             <Image src="/Group 1.svg" alt="Ícone avaliação" width={80} height={80} className='mb-6 h-20 w-auto'/>
             <h3 className='font-bold text-lg mb-2 text-gray-800'>Avaliação e Plano Terapêutico Personalizados</h3>
             <p className='text-gray-600 text-sm leading-relaxed'>Cada criança é única — por isso, criamos planos de desenvolvimento individualizados, com atividades lúdicas que estimulam linguagem, comunicação e socialização de forma divertida.</p>
           </div>
           
-          <div className='flex flex-col items-center text-center p-4 xl:w-[368px] xl:ml-[25px] xl:text-justify xl:[text-align-last:center]'>
+          <div data-reveal className='flex flex-col items-center text-center p-4 xl:w-[368px] xl:ml-[25px] xl:text-justify xl:[text-align-last:center]'>
             <Image src="/Group 1 (1).svg" alt="Ícone desenvolvimento" width={80} height={80} className='mb-6 h-20 w-auto'/>
             <h3 className='font-bold text-lg mb-2 text-gray-800'>Desenvolvimento na Primeira Infância</h3>
             <p className='text-gray-600 text-sm leading-relaxed'>Nossa abordagem é focada nas fases iniciais da vida. Trabalhamos com estratégias que fortalecem a comunicação, o brincar e o aprendizado desde os primeiros anos.</p>
           </div>
           
-          <div className='flex flex-col items-center text-center p-4 xl:w-[406px] xl:text-justify xl:[text-align-last:center]'>
+          <div data-reveal className='flex flex-col items-center text-center p-4 xl:w-[406px] xl:text-justify xl:[text-align-last:center]'>
             <Image src="/Group 1 (2).svg" alt="Ícone equipe" width={80} height={80} className='mb-6 h-20 w-auto'/>
             <h3 className='font-bold text-lg mb-2 text-gray-800'>Equipe Experiente e Especializada</h3>
             <p className='text-gray-600 text-sm leading-relaxed'>Contamos com profissionais experientes em distúrbios da comunicação infantil, sempre com raciocínio clínico assertivo, oferecendo acolhimento, escuta ativa e um acompanhamento terapêutico de confiança.</p>

@@ -9,7 +9,7 @@ export default function LocationSection() {
   return (
     <section className="relative w-full bg-white py-20 md:py-24">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-[1.05fr_.95fr] lg:items-start">
-        <div>
+        <div data-reveal>
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#C1459E]">Onde estamos</p>
           <h2 className="mt-3 text-3xl font-black leading-tight text-gray-800 sm:text-4xl">
             Fácil de encontrar na Asa Sul
@@ -32,7 +32,7 @@ export default function LocationSection() {
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-[38px] border-8 border-[#FDD5A5] bg-[#F6F1E8] shadow-sm">
+        <div data-reveal className="overflow-hidden rounded-[38px] border-8 border-[#FDD5A5] bg-[#F6F1E8] shadow-sm">
           <InteractiveMap src={mapUrl} title="Mapa da Clínica Divertin" />
         </div>
       </div>

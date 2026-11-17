@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import DeferredAnalytics from "@/components/DeferredAnalytics";
 import DeferredScreenSaver from "@/components/DeferredScreenSaver";
 import OfflineExperience from "@/components/offline/OfflineExperience";
+import ScrollRevealController from "@/components/ScrollRevealController";
 import SiteExperienceProvider from "@/components/auth/SiteExperienceProvider";
 import "./globals.css";
 
@@ -45,6 +46,7 @@ export default function RootLayout({
           idleMinutes={5}
         />
         {children}
+        <ScrollRevealController />
         <DeferredAnalytics gaId="G-14VEB6PD4R" />
       </OfflineExperience>
       </SiteExperienceProvider>

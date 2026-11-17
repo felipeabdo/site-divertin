@@ -1,5 +1,5 @@
 /* Divertin — cache offline da aplicação. Atualize CACHE_VERSION quando mudar a estratégia. */
-const CACHE_VERSION = 'divertin-offline-v6';
+const CACHE_VERSION = 'divertin-offline-v7';
 const APP_CACHE = `${CACHE_VERSION}-app`;
 const ASSET_CACHE = `${CACHE_VERSION}-assets`;
 
@@ -125,6 +125,19 @@ async function networkFirstNavigation(request) {
   }
 }
 
+async function networkFirstAsset(request) {
+  const assetCache = await caches.open(ASSET_CACHE);
+  try {
+    const response = await fetch(request, { cache: 'no-cache' });
+    if (response && response.ok && response.type !== 'opaque') {
+      await assetCache.put(request, response.clone());
+    }
+    return response;
+  } catch {
+    return (await assetCache.match(request)) || Response.error();
+  }
+}
+
 async function cacheFirstAsset(request) {
   const assetCache = await caches.open(ASSET_CACHE);
   const cached = await assetCache.match(request);
@@ -153,9 +166,18 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  const isStaticAsset = url.pathname.startsWith('/_next/static/') ||
-    url.pathname.startsWith('/_next/image') ||
-    /\.(?:avif|css|eot|gif|ico|jpe?g|js|png|svg|webp|woff2?)$/i.test(url.pathname);
+  // Bundles JavaScript/CSS do Next precisam priorizar a versão de rede.
+  // Cache-first nesses arquivos pode misturar chunks de deploys diferentes
+  // e provocar erros de hidratação no React.
+  const isNextStatic = url.pathname.startsWith('/_next/static/');
+  const isAppCode = /\.(?:css|js)$/i.test(url.pathname);
+  if (isNextStatic || isAppCode) {
+    event.respondWith(networkFirstAsset(request));
+    return;
+  }
+
+  const isStaticAsset = url.pathname.startsWith('/_next/image') ||
+    /\.(?:avif|eot|gif|ico|jpe?g|png|svg|webp|woff2?)$/i.test(url.pathname);
 
   if (isStaticAsset) {
     event.respondWith(cacheFirstAsset(request));

@@ -37,7 +37,7 @@ export default function ContactHero() {
       </header>
 
       <div className="relative z-10 mx-auto flex min-h-[580px] w-full max-w-6xl items-end px-6 pb-20 pt-36 lg:min-h-[650px] lg:pb-24">
-        <div className="max-w-2xl text-white">
+        <div data-reveal-load className="max-w-2xl text-white">
           <Logo />
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#FDD5A5]">
             Atendimento e agendamento

@@ -7,6 +7,7 @@ import ServiceCardGrid from "@/components/servicos/ServiceCardGrid";
 import ServiceHeader from "@/components/servicos/ServiceHeader";
 import ServicePrinciples from "@/components/servicos/ServicePrinciples";
 import SectionDashes from "@/components/servicos/SectionDashes";
+import ScrollReveal from "@/components/servicos/ScrollReveal";
 import { SERVICOS } from "@/data/servicosData";
 
 export const metadata: Metadata = {
@@ -42,7 +43,7 @@ export default function ServicosPage() {
         <ServiceHeader />
 
         <div className="relative z-10 mx-auto flex min-h-[580px] w-full max-w-6xl items-end px-6 pb-20 pt-36 lg:min-h-[650px] lg:pb-24">
-          <div className="mt-0 max-w-3xl text-white">
+          <ScrollReveal className="mt-0 max-w-3xl text-white">
             <Logo />
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#FDD5A5]">
               Cuidado infantil especializado
@@ -54,7 +55,7 @@ export default function ServicosPage() {
               Duas especialidades, um mesmo propósito: cuidar da criança de
               forma próxima, individualizada e conectada com a família.
             </p>
-          </div>
+          </ScrollReveal>
         </div>
 
         <SectionDashes

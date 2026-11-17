@@ -40,7 +40,7 @@ export default function ClinicSection() {
       />
 
       <div className="grid gap-8 lg:grid-cols-[1.25fr_1fr]">
-        <div>
+        <div data-reveal>
           <h2 className={H2}>A clínica</h2>
           <p className="mt-1 text-xl font-semibold text-gray-700 md:text-2xl">
             Um espaço pensado para acolher
@@ -60,7 +60,7 @@ export default function ClinicSection() {
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div data-reveal className="grid grid-cols-2 gap-4">
           {CLINIC_GALLERY.map((photo) => (
             <Photo
               key={photo.alt}

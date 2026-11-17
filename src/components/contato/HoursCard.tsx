@@ -2,7 +2,7 @@ import { CONTATO } from '@/data/contatoData';
 
 export default function HoursCard() {
   return (
-    <article className="rounded-[34px] bg-white p-8 shadow-sm md:p-10">
+    <article data-reveal="right" className="rounded-[34px] bg-white p-8 shadow-sm md:p-10">
       <p className="text-sm font-black uppercase tracking-[0.14em] text-gray-700">Horário de atendimento</p>
       <h2 className="mt-3 text-3xl font-black leading-tight text-gray-800 md:text-4xl">
         Quando nos encontrar

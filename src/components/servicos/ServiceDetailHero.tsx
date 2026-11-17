@@ -77,7 +77,7 @@ export default function ServiceDetailHero({ service }: { service: Service }) {
             <div className="overflow-hidden rounded-[28px]">
               <Image
                 src={service.heroImage}
-                alt=""
+                alt={service.professionalName}
                 width={600}
                 height={750}
                 sizes="(max-width: 1023px) 90vw, 470px"

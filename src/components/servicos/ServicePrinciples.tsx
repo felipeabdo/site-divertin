@@ -1,4 +1,5 @@
 import SectionDashes from "./SectionDashes";
+import ScrollReveal from "./ScrollReveal";
 
 const PRINCIPLES = [
   {
@@ -32,38 +33,37 @@ export default function ServicePrinciples() {
       <SectionDashes color="#D684BF" className="right-[6%] top-10 rotate-45" />
 
       <div className="mx-auto max-w-6xl px-6">
-        <div className="max-w-3xl">
+        <ScrollReveal className="max-w-3xl">
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#C1459E]">
             Nosso jeito de cuidar
           </p>
           <h2 className="mt-3 text-3xl font-black leading-tight text-gray-800 sm:text-4xl">
             Especialidade sem deixar de enxergar a criança inteira
           </h2>
-        </div>
+        </ScrollReveal>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {PRINCIPLES.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-[28px] bg-white/80 p-7 shadow-sm"
-            >
-              <div
-                className="grid h-12 w-12 place-items-center rounded-2xl text-2xl font-black"
-                style={{
-                  backgroundColor: `${item.color}22`,
-                  color: item.color,
-                }}
-                aria-hidden
-              >
-                {item.icon}
-              </div>
-              <h3 className="mt-5 text-xl font-black text-gray-800">
-                {item.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                {item.text}
-              </p>
-            </article>
+          {PRINCIPLES.map((item, index) => (
+            <ScrollReveal key={item.title} delay={index * 110}>
+              <article className="rounded-[28px] bg-white/80 p-7 shadow-sm">
+                <div
+                  className="grid h-12 w-12 place-items-center rounded-2xl text-2xl font-black"
+                  style={{
+                    backgroundColor: `${item.color}22`,
+                    color: item.color,
+                  }}
+                  aria-hidden
+                >
+                  {item.icon}
+                </div>
+                <h3 className="mt-5 text-xl font-black text-gray-800">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                  {item.text}
+                </p>
+              </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>
