@@ -1359,17 +1359,13 @@ html[data-site-theme="natal"] .divertin-santa-hat {
 }
 
 .divertin-settings-brand-logo {
-  width: clamp(5rem, 7vw, 6.2rem);
-  margin: 0 !important;
-  vertical-align: middle;
-}
-
-.divertin-settings-brand-logo img {
   display: block;
-  width: 100% !important;
-  height: auto !important;
+  width: clamp(9rem, 15vw, 12.5rem);
+  height: auto;
   max-height: 4.8rem;
   object-fit: contain;
+  margin: 0 !important;
+  vertical-align: middle;
 }
 
 .divertin-settings-logout {
@@ -1520,11 +1516,8 @@ html[data-site-theme="natal"] .divertin-settings-card::before {
   }
 
   .divertin-settings-brand-logo {
-    width: 4.7rem;
-  }
-
-  .divertin-settings-brand-logo img {
-    max-height: 4rem;
+    width: clamp(6.6rem, 28vw, 8.2rem);
+    max-height: 3.5rem;
   }
 
   .divertin-settings-logout {
@@ -1545,3 +1538,58 @@ html[data-site-theme="natal"] .divertin-settings-card::before {
     border-radius: 1.3rem;
   }
 }
+
+
+/* Skeletons de carregamento: preservam a estrutura visual enquanto os dados chegam. */
+.divertin-settings-loading {
+  display: flex;
+  min-height: 100dvh;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  background: #fbf9f6;
+}
+.divertin-settings-skeleton { width: min(100%, 900px); }
+.divertin-skeleton-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 3rem; }
+.divertin-skeleton-header span { width: 7rem; height: 2.2rem; border-radius: 999px; }
+.divertin-skeleton-header i { width: 10rem; height: 3.2rem; border-radius: .6rem; }
+.divertin-skeleton-intro { display: grid; justify-items: center; gap: .8rem; margin: 0 auto 2rem; }
+.divertin-skeleton-intro span { width: 12rem; height: .8rem; border-radius: 1rem; }
+.divertin-skeleton-intro b { width: min(19rem, 70%); height: 2rem; border-radius: .5rem; }
+.divertin-skeleton-card { display: grid; gap: 1rem; padding: clamp(1.2rem, 4vw, 2rem); margin-bottom: 1.2rem; border: 1px solid #eee5eb; border-radius: 1.25rem; background: rgba(255,255,255,.9); box-shadow: 0 10px 30px rgba(78,49,73,.04); }
+.divertin-skeleton-heading { display: flex; align-items: center; gap: .9rem; margin-bottom: .4rem; }
+.divertin-skeleton-heading i { width: 2.8rem; height: 2.8rem; border-radius: .9rem; }
+.divertin-skeleton-heading div { display: grid; gap: .5rem; flex: 1; }
+.divertin-skeleton-heading b { width: 9rem; height: 1.1rem; border-radius: .3rem; }
+.divertin-skeleton-heading span { width: min(18rem, 80%); height: .65rem; border-radius: .3rem; }
+.divertin-skeleton-card > span { width: 100%; height: 2.7rem; border-radius: .55rem; }
+.divertin-skeleton-card > span.short { width: 65%; }
+.divertin-skeleton-card hr { width: 100%; border: 0; border-top: 1px solid #f0e9ef; }
+.divertin-skeleton-card .button { width: 11rem; height: 2.8rem; border-radius: 999px; }
+.divertin-skeleton-card.secondary { min-height: 10rem; }
+.divertin-skeleton-header span, .divertin-skeleton-header i, .divertin-skeleton-intro span, .divertin-skeleton-intro b, .divertin-skeleton-heading i, .divertin-skeleton-heading b, .divertin-skeleton-heading span, .divertin-skeleton-card > span, .divertin-skeleton-card .button { background: linear-gradient(90deg, #f0eaf0 25%, #faf6f9 42%, #f0eaf0 65%); background-size: 300% 100%; animation: divertin-skeleton-shimmer 1.45s ease-in-out infinite; }
+@keyframes divertin-skeleton-shimmer { to { background-position: -150% 0; } }
+@media (prefers-reduced-motion: reduce) { .divertin-skeleton-header span, .divertin-skeleton-header i, .divertin-skeleton-intro span, .divertin-skeleton-intro b, .divertin-skeleton-heading i, .divertin-skeleton-heading b, .divertin-skeleton-heading span, .divertin-skeleton-card > span, .divertin-skeleton-card .button { animation: none; } }
+
+/* Skeleton global do App Router durante a troca/carregamento de páginas. */
+.divertin-route-skeleton { min-height: 100dvh; padding: 1.2rem clamp(1rem, 5vw, 5rem) 4rem; background: #fffdfb; }
+.divertin-route-skeleton-inner { width: min(100%, 1200px); margin: 0 auto; }
+.divertin-route-skeleton-nav { display: flex; align-items: center; gap: clamp(.8rem, 3vw, 2.5rem); height: 5rem; margin-bottom: clamp(2rem, 6vw, 5rem); }
+.divertin-route-skeleton-nav i { width: 5rem; height: 3.5rem; border-radius: .8rem; margin-right: auto; }
+.divertin-route-skeleton-nav span { width: 5rem; height: .8rem; border-radius: 1rem; }
+.divertin-route-skeleton-nav b { width: 8rem; height: 2.6rem; border-radius: 999px; }
+.divertin-route-skeleton-hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(2rem, 7vw, 6rem); min-height: 24rem; }
+.divertin-route-skeleton-hero > div { display: grid; gap: 1rem; }
+.divertin-route-skeleton-hero i { width: 8rem; height: .8rem; border-radius: 1rem; }
+.divertin-route-skeleton-hero b { width: min(100%, 29rem); height: clamp(1.8rem, 4vw, 3rem); border-radius: .5rem; }
+.divertin-route-skeleton-hero span { width: min(100%, 25rem); height: .8rem; border-radius: 1rem; }
+.divertin-route-skeleton-hero em { width: 10rem; height: 3rem; margin-top: 1rem; border-radius: 999px; }
+.divertin-route-skeleton-hero aside { aspect-ratio: 1.25; border-radius: 2rem; }
+.divertin-route-skeleton-content { display: grid; justify-items: center; gap: 1rem; margin-top: 4rem; }
+.divertin-route-skeleton-content i { width: 8rem; height: .8rem; border-radius: 1rem; }
+.divertin-route-skeleton-content b { width: min(24rem, 80%); height: 2rem; border-radius: .5rem; }
+.divertin-route-skeleton-content div { display: flex; gap: 1rem; width: 100%; margin-top: 1rem; }
+.divertin-route-skeleton-content span { flex: 1; height: 8rem; border-radius: 1.2rem; }
+.divertin-route-skeleton-nav i, .divertin-route-skeleton-nav span, .divertin-route-skeleton-nav b, .divertin-route-skeleton-hero i, .divertin-route-skeleton-hero b, .divertin-route-skeleton-hero span, .divertin-route-skeleton-hero em, .divertin-route-skeleton-hero aside, .divertin-route-skeleton-content i, .divertin-route-skeleton-content b, .divertin-route-skeleton-content span { background: linear-gradient(90deg, #f0eaf0 25%, #faf6f9 42%, #f0eaf0 65%); background-size: 300% 100%; animation: divertin-skeleton-shimmer 1.45s ease-in-out infinite; }
+@media (max-width: 700px) { .divertin-route-skeleton-nav span { display: none; } .divertin-route-skeleton-hero { grid-template-columns: 1fr; min-height: 0; } .divertin-route-skeleton-hero aside { order: -1; max-height: 14rem; } .divertin-route-skeleton-content div { flex-direction: column; } .divertin-route-skeleton-content span { flex: none; height: 5rem; } }
+@media (prefers-reduced-motion: reduce) { .divertin-route-skeleton-nav i, .divertin-route-skeleton-nav span, .divertin-route-skeleton-nav b, .divertin-route-skeleton-hero i, .divertin-route-skeleton-hero b, .divertin-route-skeleton-hero span, .divertin-route-skeleton-hero em, .divertin-route-skeleton-hero aside, .divertin-route-skeleton-content i, .divertin-route-skeleton-content b, .divertin-route-skeleton-content span { animation: none; } }

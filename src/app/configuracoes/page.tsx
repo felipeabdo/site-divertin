@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import Logo from '@/components/Logo';
+import Image from 'next/image';
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/components/auth/SiteExperienceProvider';
@@ -125,7 +125,22 @@ export default function SettingsPage() {
   }
 
   if (loading || !user) {
-    return <main className="divertin-settings-loading"><span className="divertin-auth-spinner" />Carregando suas configurações...</main>;
+    return (
+      <main className="divertin-settings-loading" aria-busy="true" aria-label="Carregando configurações">
+        <div className="divertin-settings-skeleton" aria-hidden="true">
+          <div className="divertin-skeleton-header"><span /><i /><span /></div>
+          <div className="divertin-skeleton-intro"><span /><b /><span /></div>
+          <div className="divertin-skeleton-card">
+            <div className="divertin-skeleton-heading"><i /><div><b /><span /></div></div>
+            <span /><span /><span className="short" /><hr /><b className="button" />
+          </div>
+          <div className="divertin-skeleton-card secondary">
+            <div className="divertin-skeleton-heading"><i /><div><b /><span /></div></div>
+            <span /><span className="short" />
+          </div>
+        </div>
+      </main>
+    );
   }
 
   return (
@@ -133,7 +148,7 @@ export default function SettingsPage() {
       <header className="divertin-settings-header">
         <Link href="/" className="divertin-settings-back">← Voltar ao site</Link>
         <Link href="/" className="divertin-settings-brand-link" aria-label="Voltar à página inicial da Divertin">
-          <Logo className="divertin-settings-brand-logo" />
+          <Image src="/logo-divertin-horizontal.png" alt="Divertin Terapia Infantil" width={889} height={286} priority className="divertin-settings-brand-logo" />
         </Link>
         <button type="button" onClick={handleLogout} className="divertin-settings-logout">Sair da conta</button>
       </header>
