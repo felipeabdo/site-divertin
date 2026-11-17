@@ -31,7 +31,10 @@ export default function Footer() {
                 width={180}
                 height={90}
                 sizes="150px"
-                className={`max-h-[58px] h-auto w-auto object-contain ${credential.className}`}
+                style={{
+                maxHeight: credential.src === '/multigestos.webp' ? '120px' : '58px'
+                }}
+                className={`h-auto w-auto object-contain ${credential.className}`}
               />
             </div>
           ))}
