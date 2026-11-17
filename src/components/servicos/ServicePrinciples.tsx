@@ -75,7 +75,7 @@ export default function ServicePrinciples() {
           ))}
         </div>
       </div>
-      <Cloud position="bottom" color="#FFF5FA" />
+      <Cloud position="bottom" color="#ffb3d9" />
     </section>
   );
 }

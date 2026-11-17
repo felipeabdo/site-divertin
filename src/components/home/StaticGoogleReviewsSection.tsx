@@ -59,7 +59,7 @@ function ReviewCard({
   return (
     <article
       aria-label={`Avaliação ${index + 1} de ${STATIC_GOOGLE_REVIEWS.length}, por ${review.name}`}
-      className="group flex h-full min-h-[330px] w-[min(84vw,390px)] shrink-0 snap-center flex-col rounded-[24px] border border-[#EFE4DB] bg-white p-6 shadow-[0_12px_30px_rgba(75,55,45,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(75,55,45,0.12)] [content-visibility:auto] [contain-intrinsic-size:390px_350px] sm:w-[370px] md:min-h-[350px] md:p-7"
+      className="group flex h-auto min-h-0 w-[min(84vw,390px)] shrink-0 snap-center flex-col rounded-[24px] border border-[#EFE4DB] bg-white p-5 shadow-[0_12px_30px_rgba(75,55,45,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(75,55,45,0.12)] sm:w-[370px] md:h-full md:min-h-[350px] md:p-7"
     >
       <div className="flex items-center gap-3">
         {review.avatar ? (
@@ -95,10 +95,8 @@ function ReviewCard({
       </div>
 
       <p
-        className={`mt-4 flex-1 whitespace-pre-line break-words text-[14px] leading-[1.8] text-[#625850] md:text-[15px] ${
-          needsModal
-            ? "[display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:5] overflow-hidden"
-            : ""
+        className={`review-comment mt-4 whitespace-pre-line break-words text-[14px] leading-[1.7] text-[#625850] md:flex-1 md:text-[15px] md:leading-[1.8] ${
+          needsModal ? "review-comment--clamped" : ""
         }`}
       >
         “{review.comment}”
@@ -296,13 +294,13 @@ export default function StaticGoogleReviewsSection() {
           <div
             ref={trackRef}
             onScroll={updateActive}
-            className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-7 pt-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="flex items-start snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-7 pt-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:items-stretch"
           >
             {STATIC_GOOGLE_REVIEWS.map((review, index) => (
               <div
                 data-review-card
                 key={review.id}
-                className="h-auto shrink-0"
+                className="h-auto shrink-0 md:h-full"
               >
                 <ReviewCard
                   review={review}
@@ -463,7 +461,7 @@ export default function StaticGoogleReviewsSection() {
           </div>
         </div>
       )}
-      <Cloud position="bottom" color="#FFF5FA" />
+      <Cloud position="bottom" color="#ffb3d9" />
     </section>
   );
 }

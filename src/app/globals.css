@@ -2002,9 +2002,23 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 .site-action:focus-visible { outline: 3px solid rgba(168,61,120,.28); outline-offset: 3px; }
 .site-footer {
   background:
-    radial-gradient(ellipse at 12% 35%, rgba(214,132,191,.10), transparent 30%),
+    radial-gradient(ellipse at 12% 35%, rgba(214,132,191,.14), transparent 30%),
     radial-gradient(ellipse at 88% 72%, rgba(111,191,159,.10), transparent 28%),
-    #fff5fa;
+    #ffb3d9;
+}
+
+/* Os cartões do carrossel de depoimentos não devem herdar a altura do
+   comentário mais longo. No mobile, cada cartão acompanha seu próprio texto. */
+.review-comment {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.review-comment--clamped {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
 }
 
 /* Controles de conta continuam textuais, com uma única cápsula consistente. */
