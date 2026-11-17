@@ -46,7 +46,7 @@ export default function LoginPage() {
       <Link href="/" className="divertin-auth-back">Voltar ao site</Link>
       <section className="divertin-auth-card">
         <Link href="/" className="divertin-auth-logo divertin-mascot-art divertin-mascot-art--logo" aria-label="Voltar à página inicial">
-          <Image src="/logo (1).png" alt="Clínica Divertin" width={1096} height={1003} priority />
+          <Image src="/logo (2).png" alt="Clínica Divertin" width={1096} height={1003} priority />
           <SantaHat className="divertin-santa-hat--logo" />
         </Link>
         <div className="divertin-auth-kicker">Área exclusiva</div>
