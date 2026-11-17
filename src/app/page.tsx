@@ -46,7 +46,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 z-20 h-[55px] w-full translate-y-0 md:h-[70px] md:translate-y-[20%]">
           <div
             className="mt-[57px] h-full w-full bg-repeat-x bg-bottom bg-[length:auto_100%]"
-            style={{ backgroundImage: "url('/cloud (1).png')" }}
+            style={{ backgroundImage: "url('/cloud (1).webp')" }}
             aria-hidden="true"
           />
         </div>

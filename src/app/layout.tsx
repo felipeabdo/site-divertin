@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "Fonoaudiologia infantil com atendimento acolhedor, lúdico e individualizado para crianças e suas famílias.",
     // O arquivo anterior não consta no inventário de public/ enviado; use um logo existente.
-    images: [{ url: "/logo%20(1).png", alt: "Logo da Clínica Divertin" }],
+    images: [{ url: "/logo%20(1).webp", alt: "Logo da Clínica Divertin" }],
   },
 };
 

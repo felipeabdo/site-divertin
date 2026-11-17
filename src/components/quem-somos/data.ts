@@ -4,15 +4,15 @@
 export const CARD_JA_TEM_NOME = false;
 
 export const IMG: Record<string, string | undefined> = {
-  jessica: '/Jessica.png',
-  ana: '/card_ana.png',
-  rafaela: '/card_rafaela.png',
-  fernanda: '/Fernanda.png',
+  jessica: '/Jessica.webp',
+  ana: '/card_ana.webp',
+  rafaela: '/card_rafaela.webp',
+  fernanda: '/Fernanda.webp',
   clinicaGrande: '/img1.webp',
-  clinica1: '/img2.png',
-  clinica2: '/img3.png',
-  clinica3: '/img4.png',
-  clinica4: '/img5.png',
+  clinica1: '/img2.webp',
+  clinica2: '/img3.webp',
+  clinica3: '/img4.webp',
+  clinica4: '/img5.webp',
 };
 
 

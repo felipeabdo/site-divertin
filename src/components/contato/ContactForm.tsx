@@ -106,7 +106,7 @@ export default function ContactForm() {
       <div className="absolute inset-x-0 top-0 z-10 h-[30px] -translate-y-1/2 md:h-[70px]" aria-hidden>
         <div
           className="h-full w-full bg-contain bg-bottom bg-repeat-x"
-          style={{ backgroundImage: "url('/cloud (1).png')" }}
+          style={{ backgroundImage: "url('/cloud (1).webp')" }}
         />
       </div>
       <div className="mx-auto w-full max-w-4xl px-6">

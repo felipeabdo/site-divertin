@@ -14,7 +14,7 @@ export default function HeroSection() {
       <div aria-hidden className="absolute inset-0 overflow-hidden">
         <div className="absolute -inset-6">
           <Image
-            src="/bg-hero.png"
+            src="/bg-hero.webp"
             alt=""
             fill
             preload

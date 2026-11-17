@@ -13,7 +13,7 @@ export default function Logo({ className = '' }: { className?: string }) {
   return (
     <span className={`divertin-mascot-art divertin-mascot-art--logo mb-6 ${className}`.trim()}>
       <Image
-        src="/logo (1).png"
+        src="/logo (1).webp"
         alt="Logo Divertin"
         width={1096}
         height={1003}

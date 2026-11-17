@@ -22,7 +22,7 @@ export default function ServicosPage() {
         <div aria-hidden className="absolute inset-0">
           <div className="absolute -inset-6">
             <Image
-              src="/bg-hero.png"
+              src="/bg-hero.webp"
               alt=""
               fill
               preload

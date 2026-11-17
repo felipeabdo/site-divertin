@@ -10,7 +10,7 @@ interface CloudProps {
 export default function Cloud({ 
   position, 
   color, 
-  imageUrl = '/cloud (1).png' 
+  imageUrl = '/cloud (1).webp' 
 }: CloudProps) {
   
   

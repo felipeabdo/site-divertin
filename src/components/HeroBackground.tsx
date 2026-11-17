@@ -6,7 +6,7 @@ import { getImageProps } from "next/image";
  */
 export default function HeroBackground() {
   const { props } = getImageProps({
-    src: "/bg-hero.png",
+    src: "/bg-hero.webp",
     alt: "",
     fill: true,
     sizes: "100vw",

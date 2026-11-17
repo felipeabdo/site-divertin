@@ -13,7 +13,7 @@ export default function ContactHero() {
       <div aria-hidden className="absolute inset-0">
         <div className="absolute -inset-6">
           <Image
-            src="/bg-hero.png"
+            src="/bg-hero.webp"
             alt=""
             fill
             preload
@@ -65,7 +65,7 @@ export default function ContactHero() {
 
       <div className="divertin-mascot-art divertin-mascot-art--contact pointer-events-none absolute bottom-[7%] right-[4%] z-[6] hidden w-[220px] lg:block xl:w-[280px]">
         <Image
-          src="/mascote-divertin-contato.png"
+          src="/mascote-divertin-contato.webp"
           alt=""
           aria-hidden="true"
           width={560}
@@ -77,7 +77,7 @@ export default function ContactHero() {
       </div>
 
       <div className="mt-[57]">
-        <Cloud position="bottom" imageUrl="/cloud (6).png" />
+        <Cloud position="bottom" imageUrl="/cloud (6).webp" />
       </div>
     </section>
   );

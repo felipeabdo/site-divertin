@@ -5,7 +5,7 @@ export default function Footer() {
     <footer 
       className="w-full relative mt-[-70px] bg-top bg-repeat-x flex flex-col justify-center items-center pt-[150px] md:pt-[240px] pb-20 px-6" 
       style={{ 
-        backgroundImage: `url('/cloud bottom.png')`, 
+        backgroundImage: `url('/cloud bottom.webp')`, 
         backgroundSize: 'cover' 
       }}
     >
@@ -17,7 +17,7 @@ export default function Footer() {
           {/* Certificação 1: MultiGestos (.webm em loop como se fosse GIF) */}
           <div className="h-12 md:h-12 flex items-center justify-center">
               <img 
-                src="/unb-fce.png" 
+                src="/unb-fce.webp" 
                 alt="Logo da Universidade de Brasília, Campus Ceilândia." 
                 className="h-full w-auto object-contain select-none"
                 loading="lazy"
@@ -26,7 +26,7 @@ export default function Footer() {
           </div>
           <div className="h-14 md:h-14 flex items-center justify-center">
             <img 
-              src="/lgpd.png" 
+              src="/lgpd.webp" 
               alt="Logo da Universidade de Brasília, Campus Ceilândia." 
               className="h-full w-auto object-contain select-none"
               loading="lazy"
@@ -42,10 +42,10 @@ export default function Footer() {
               decoding="async"
             />
           </div>
-          {/* Certificação 2: PROMPT Institute (.png) */}
+          {/* Certificação 2: PROMPT Institute (.webp) */}
           <div className="h-14 md:h-18 flex items-center justify-center">
             <img 
-              src="/prompt-institute.png" 
+              src="/prompt-institute.webp" 
               alt="Logo da Certificação PROMPT Institute" 
               className="h-full w-auto object-contain select-none"
               loading="lazy"

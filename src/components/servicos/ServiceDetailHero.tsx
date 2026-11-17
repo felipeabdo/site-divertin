@@ -19,7 +19,7 @@ export default function ServiceDetailHero({ service }: { service: Service }) {
       <div aria-hidden className="absolute inset-0">
         <div className="absolute -inset-6">
           <Image
-            src="/bg-hero.png"
+            src="/bg-hero.webp"
             alt=""
             fill
             priority // Alterado de preload para priority (padrão correto do Next.js)

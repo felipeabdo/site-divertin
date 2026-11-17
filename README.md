@@ -67,9 +67,9 @@ Para habilitar o envio real, será necessário escolher e configurar um provedor
 
 ### Imagens e arquivos públicos
 
-O código referencia imagens e GIFs como `/bg-hero.png`, `/logo (1).png`, `/Jessica.png`, `/cloud (1).png`, `/descanso.gif` e outras. Esses arquivos devem existir no diretório `public/` do projeto original. Como não vieram no ZIP, não foram inventados nem substituídos. A varredura encontrou estas referências a assets:
+O código referencia imagens e GIFs como `/bg-hero.webp`, `/logo (1).webp`, `/Jessica.webp`, `/cloud (1).webp`, `/descanso.gif` e outras. Esses arquivos devem existir no diretório `public/` do projeto original. Como não vieram no ZIP, não foram inventados nem substituídos. A varredura encontrou estas referências a assets:
 
-`/arrow_forward.svg`, `/bg-hero.png`, `/card_ana.png`, `/Fernanda.png`, `/card_rafaela.png`, `/cloud (1).png`, `/cloud (6).png`, `/cloud bottom.png`, `/descanso.gif`, `/Group 1.svg`, `/Group 1 (1).svg`, `/Group 1 (2).svg`, `/img1.webp` a `/img5.png`, `/Jessica.jpeg`, `/jessica-full.png`, `/loading.gif`, `/logo (1).png`, `/logo-compartilhamento.png` e `/mascote-divertin-contato.png`. O caminho `/equipe/ana.jpg` aparece em uma instrução de comentário para cadastrar fotos da equipe, não como imagem ativa nesta configuração.
+`/arrow_forward.svg`, `/bg-hero.webp`, `/card_ana.webp`, `/Fernanda.webp`, `/card_rafaela.webp`, `/cloud (1).webp`, `/cloud (6).webp`, `/cloud bottom.webp`, `/descanso.gif`, `/Group 1.svg`, `/Group 1 (1).svg`, `/Group 1 (2).svg`, `/img1.webp` a `/img5.webp`, `/Jessica.jpeg`, `/jessica-full.webp`, `/loading.gif`, `/logo (1).webp`, `/logo-compartilhamento.webp` e `/mascote-divertin-contato.webp`. O caminho `/equipe/ana.jpg` aparece em uma instrução de comentário para cadastrar fotos da equipe, não como imagem ativa nesta configuração.
 
 ### Google Analytics
 
