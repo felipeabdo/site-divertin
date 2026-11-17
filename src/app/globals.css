@@ -1244,7 +1244,7 @@ html[data-site-theme="natal"] .divertin-santa-hat {
   .divertin-account-action--settings.divertin-account-action--desktop {
     width: 3.35rem;
     min-width: 3.35rem;
-    height: 2.35rem;
+    height: 3.35rem;
     padding: .42rem;
     border: 1.5px solid rgba(215, 151, 190, .48);
     border-radius: 1.45rem;
@@ -1277,9 +1277,9 @@ html[data-site-theme="natal"] .divertin-santa-hat {
 /* No menu mobile o mesmo desenho acompanha a dimensão da linha do menu. */
 @media (max-width: 1300px) {
   .divertin-account-action--settings.divertin-account-action--mobile .divertin-account-action__gear {
-    width: calc(var(--pill-h, 50px) * .72);
-    height: calc(var(--pill-h, 50px) * .72);
-    padding: calc(var(--pill-h, 50px) * .13);
+    width: calc(var(--pill-h, 30px) * .72);
+    height: calc(var(--pill-h, 30px) * .72);
+    padding: calc(var(--pill-h, 30px) * .13);
     stroke-width: 6.5;
   }
 }
