@@ -1627,3 +1627,70 @@ html[data-site-theme="natal"] .divertin-settings-card::before {
 @media(max-width:480px){.ds-hero-copy--home .ds-brand-mark,.ds-brand-mark{width:8rem}.ds-title-lines .ds-bar{height:1.55rem}.ds-paragraph{gap:.55rem}.ds-paragraph .ds-bar{height:.58rem}.ds-cta{height:2.8rem}.ds-contact-card{padding:1.3rem;border-radius:1.5rem}.ds-team-grid{grid-template-columns:1fr 1fr}.ds-team-photo{aspect-ratio:3/4}.ds-auth-top>.ds-bar{width:4rem}.ds-settings-card-title div span:last-child{max-width:12rem}}
 @media(max-height:620px) and (min-width:801px){.ds-hero,.ds-hero--home,.ds-hero--about{min-height:44rem}.ds-hero-copy,.ds-hero-copy--home,.ds-hero-copy--services,.ds-hero-copy--contact{min-height:44rem;padding-top:7rem;padding-bottom:4rem}.ds-header{top:1rem}}
 @media(prefers-reduced-motion:reduce){.ds-bar,.ds-heading-line{animation:none}}
+
+
+/* Ajustes solicitados: skeleton sem marcas, cor única, raio consistente e rolagem natural. */
+.divertin-page-skeleton {
+  --ds-base: #e6e6e6;
+  --ds-hi: #e6e6e6;
+  min-height: 100dvh;
+  height: auto;
+  overflow: visible;
+  background: #fff;
+}
+.ds-shimmer-layer { min-height: 100dvh; height: auto; overflow: visible; }
+.ds-nav-logo, .ds-brand-mark, .ds-home-art, .ds-cloud-edge { display: none !important; }
+.ds-hero--home, .ds-hero--photo, .ds-hero--about, .ds-contact-band, .ds-auth-page { background: #fff !important; }
+.ds-hero--home::before { display: none !important; }
+.ds-bar, .ds-heading-line, .ds-feature-icon, .ds-feature-title,
+.ds-review-stars, .ds-service-image, .ds-hours-row, .ds-address-card,
+.ds-map, .ds-input, .ds-about-photo, .ds-team-photo, .ds-mascot-placeholder,
+.ds-nav-links .ds-bar, .ds-nav-action, .ds-mobile-menu, .ds-mobile-menu i,
+.ds-cta, .ds-eyebrow, .ds-title-lines .ds-bar, .ds-paragraph .ds-bar,
+.ds-field-label, .ds-settings-card-title > span, .ds-settings-card-title div span {
+  background: #e6e6e6 !important;
+  background-image: none !important;
+  border-radius: 12px !important;
+  animation: ds-neutral-pulse 1.35s ease-in-out infinite !important;
+  opacity: 1;
+}
+.ds-mascot-placeholder { border: 0 !important; }
+.ds-map { border: 0 !important; }
+.ds-input { border: 0 !important; }
+.ds-contact-card, .ds-contact-card.lime, .ds-settings-card, .ds-login-card,
+.ds-service-grid article, .ds-review-grid > div { background: transparent !important; box-shadow: none !important; border-color: transparent !important; }
+.ds-loading-status { background: #e6e6e6 !important; color: #777 !important; border: 0 !important; }
+@keyframes ds-neutral-pulse { 0%, 100% { opacity: .72; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .ds-bar, .ds-heading-line, .ds-feature-icon, .ds-feature-title,
+  .ds-review-stars, .ds-service-image, .ds-hours-row, .ds-address-card,
+  .ds-map, .ds-input, .ds-about-photo, .ds-team-photo, .ds-mascot-placeholder,
+  .ds-nav-links .ds-bar, .ds-nav-action, .ds-mobile-menu, .ds-mobile-menu i,
+  .ds-cta, .ds-eyebrow, .ds-title-lines .ds-bar, .ds-paragraph .ds-bar,
+  .ds-field-label, .ds-settings-card-title > span, .ds-settings-card-title div span {
+    animation: none !important; opacity: 1;
+  }
+}
+
+/* Atalho de conta passa a ser exclusivamente textual, inclusive quando autenticado. */
+.divertin-account-action { gap: 0 !important; }
+.divertin-account-action--login svg { display: none !important; }
+.divertin-auth-back::before, .divertin-settings-back::before { content: none !important; }
+
+/* Mesmo padrão visual para o skeleton interno das configurações. */
+.divertin-settings-loading { overflow: visible !important; min-height: 100dvh; height: auto !important; }
+.divertin-skeleton-header span, .divertin-skeleton-header i,
+.divertin-skeleton-intro span, .divertin-skeleton-intro b,
+.divertin-skeleton-heading i, .divertin-skeleton-heading b,
+.divertin-skeleton-heading span, .divertin-skeleton-card > span,
+.divertin-skeleton-card .button {
+  background: #e6e6e6 !important; background-image: none !important;
+  border-radius: 12px !important; animation: ds-neutral-pulse 1.35s ease-in-out infinite !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .divertin-skeleton-header span, .divertin-skeleton-header i,
+  .divertin-skeleton-intro span, .divertin-skeleton-intro b,
+  .divertin-skeleton-heading i, .divertin-skeleton-heading b,
+  .divertin-skeleton-heading span, .divertin-skeleton-card > span,
+  .divertin-skeleton-card .button { animation: none !important; opacity: 1; }
+}

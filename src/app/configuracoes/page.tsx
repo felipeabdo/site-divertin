@@ -146,7 +146,7 @@ export default function SettingsPage() {
   return (
     <main className="divertin-settings-page">
       <header className="divertin-settings-header">
-        <Link href="/" className="divertin-settings-back">← Voltar ao site</Link>
+        <Link href="/" className="divertin-settings-back">Voltar ao site</Link>
         <Link href="/" className="divertin-settings-brand-link" aria-label="Voltar à página inicial da Divertin">
           <Image src="/logo-divertin-horizontal.png" alt="Divertin Terapia Infantil" width={889} height={286} priority className="divertin-settings-brand-logo" />
         </Link>

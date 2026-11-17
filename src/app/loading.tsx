@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 function Bar({ className = '' }: { className?: string }) {
@@ -10,7 +9,6 @@ function Bar({ className = '' }: { className?: string }) {
 function BrandHeader({ dark = false }: { dark?: boolean }) {
   return (
     <div className={`ds-header ${dark ? 'ds-header--dark' : ''}`}>
-      <div className="ds-nav-logo"><Image src="/logo-divertin-horizontal.png" alt="" width={889} height={286} priority /></div>
       <div className="ds-nav-links" aria-hidden="true"><Bar /><Bar /><Bar /><Bar /></div>
       <Bar className="ds-nav-action" />
       <div className="ds-mobile-menu"><i /><i /><i /></div>
@@ -21,7 +19,6 @@ function BrandHeader({ dark = false }: { dark?: boolean }) {
 function HeroCopy({ variant = 'home' }: { variant?: 'home' | 'services' | 'contact' | 'about' }) {
   return (
     <div className={`ds-hero-copy ds-hero-copy--${variant}`}>
-      <div className="ds-brand-mark"><Image src="/logo-divertin-horizontal.png" alt="" width={889} height={286} priority /></div>
       <Bar className="ds-eyebrow" />
       <div className="ds-title-lines"><Bar /><Bar /><Bar className="ds-title-short" /></div>
       <div className="ds-paragraph"><Bar /><Bar /><Bar className="ds-line-short" /></div>
@@ -71,7 +68,7 @@ function AboutSkeleton() {
 }
 
 function AuthSkeleton({ settings = false }: { settings?: boolean }) {
-  return <main className={`ds-auth-page ${settings ? 'ds-auth-page--settings' : ''}`}><div className="ds-auth-top"><Bar/><div className="ds-brand-mark"><Image src="/logo-divertin-horizontal.png" alt="" width={889} height={286}/></div><Bar/></div>{settings ? <><div className="ds-settings-intro"><Bar className="ds-eyebrow"/><Bar className="ds-heading-line"/><Bar className="ds-line-short"/></div><div className="ds-settings-card"><div className="ds-settings-card-title"><Bar/><div><Bar/><Bar className="ds-line-short"/></div></div>{[0,1,2,3].map(n=><Bar key={n} className="ds-input"/>)}<Bar className="ds-cta"/></div><div className="ds-settings-card compact"><Bar className="ds-heading-line short"/><Bar/></div></> : <div className="ds-login-card"><div className="ds-brand-mark"><Image src="/logo-divertin-horizontal.png" alt="" width={889} height={286}/></div><Bar className="ds-eyebrow"/><Bar className="ds-heading-line"/><div className="ds-paragraph"><Bar/><Bar/></div><Bar className="ds-field-label"/><Bar className="ds-input"/><Bar className="ds-field-label"/><Bar className="ds-input"/><Bar className="ds-cta full"/></div>}</main>;
+  return <main className={`ds-auth-page ${settings ? 'ds-auth-page--settings' : ''}`}><div className="ds-auth-top"><Bar/>{settings && <Bar/>}</div>{settings ? <><div className="ds-settings-intro"><Bar className="ds-eyebrow"/><Bar className="ds-heading-line"/><Bar className="ds-line-short"/></div><div className="ds-settings-card"><div className="ds-settings-card-title"><Bar/><div><Bar/><Bar className="ds-line-short"/></div></div>{[0,1,2,3].map(n=><Bar key={n} className="ds-input"/>)}<Bar className="ds-cta"/></div><div className="ds-settings-card compact"><Bar className="ds-heading-line short"/><Bar/></div></> : <div className="ds-login-card"><Bar className="ds-eyebrow"/><Bar className="ds-heading-line"/><div className="ds-paragraph"><Bar/><Bar/></div><Bar className="ds-field-label"/><Bar className="ds-input"/><Bar className="ds-field-label"/><Bar className="ds-input"/><Bar className="ds-cta full"/></div>}</main>;
 }
 
 export default function Loading() {
