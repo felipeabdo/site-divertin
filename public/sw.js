@@ -1,5 +1,5 @@
 /* Divertin — cache offline da aplicação. Atualize CACHE_VERSION quando mudar a estratégia. */
-const CACHE_VERSION = 'divertin-offline-v8';
+const CACHE_VERSION = 'divertin-offline-v9';
 const APP_CACHE = `${CACHE_VERSION}-app`;
 const ASSET_CACHE = `${CACHE_VERSION}-assets`;
 
@@ -20,6 +20,7 @@ const CORE_URLS = [
   '/descanso3-natal.webp',
   '/descanso4-natal.webp',
   '/santa-hat.svg',
+  '/cloud-divider.svg',
 ];
 
 self.addEventListener('install', (event) => {
