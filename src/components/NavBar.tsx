@@ -789,7 +789,10 @@ export default function NavBar({ links = defaultLinks }: NavBarProps) {
 
             <li
               key="mob-account"
-              className="mt-[clamp(15px,1vh,12px)] border-t border-[#E6D7E2] pt-[clamp(12px,1.7vh,20px)]"
+              style={{
+                marginTop: 'calc(20px - clamp(12px, 2.7vh, 34px))'
+              }}
+              className="border-t border-[#E6D7E2] pt-[clamp(20px,1.7vh,20px)]"
             >
               <AccountAction variant="mobile" />
             </li>
