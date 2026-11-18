@@ -18,14 +18,26 @@ const initialForm = {
   mensagem: '',
 };
 
+const MAX_TOTAL_ATTACHMENT_SIZE = 17 * 1024 * 1024;
+const MAX_ATTACHMENTS = 10;
+const ALLOWED_EXTENSIONS = new Set(['pdf', 'doc', 'docx']);
+
 type FormStatus = 'idle' | 'sending' | 'success' | 'queued' | 'error';
+
+function formatFileSize(bytes: number): string {
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toLocaleString('pt-BR', { maximumFractionDigits: 0 })} KB`;
+  return `${(bytes / (1024 * 1024)).toLocaleString('pt-BR', { maximumFractionDigits: 2 })} MB`;
+}
 
 export default function ContactForm() {
   const [form, setForm] = useState(initialForm);
-  const [arquivo, setArquivo] = useState<File | null>(null);
+  const [arquivos, setArquivos] = useState<File[]>([]);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [feedback, setFeedback] = useState('');
+  const [startedAt, setStartedAt] = useState(() => Date.now());
   const { isOffline, queueContact, reportConnectionLost } = useOfflineExperience();
+
+  const totalAttachmentSize = arquivos.reduce((total, file) => total + file.size, 0);
 
   function updateField(field: keyof typeof initialForm, value: string) {
     setForm((current) => ({ ...current, [field]: value }));
@@ -36,24 +48,69 @@ export default function ContactForm() {
   }
 
   function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
-    if (event.target.files && event.target.files[0]) {
-      setArquivo(event.target.files[0]);
-    } else {
-      setArquivo(null);
+    const selected = Array.from(event.target.files || []);
+    event.target.value = '';
+    if (selected.length === 0) return;
+
+    const nextFiles = [...arquivos];
+    for (const file of selected) {
+      const extension = file.name.split('.').pop()?.toLowerCase() || '';
+      if (!ALLOWED_EXTENSIONS.has(extension)) {
+        setStatus('error');
+        setFeedback(`O arquivo "${file.name}" não é permitido. Utilize PDF, DOC ou DOCX.`);
+        return;
+      }
+      if (file.size <= 0) {
+        setStatus('error');
+        setFeedback(`O arquivo "${file.name}" está vazio.`);
+        return;
+      }
+      if (nextFiles.length >= MAX_ATTACHMENTS) {
+        setStatus('error');
+        setFeedback(`É possível anexar até ${MAX_ATTACHMENTS} arquivos por mensagem.`);
+        return;
+      }
+      nextFiles.push(file);
     }
+
+    const nextTotal = nextFiles.reduce((total, file) => total + file.size, 0);
+    if (nextTotal > MAX_TOTAL_ATTACHMENT_SIZE) {
+      setStatus('error');
+      setFeedback('A soma dos anexos ultrapassa o limite de 17 MB. Remova algum arquivo para continuar.');
+      return;
+    }
+
+    setArquivos(nextFiles);
+    setStatus('idle');
+    setFeedback('');
+  }
+
+  function removeFile(index: number) {
+    setArquivos((current) => current.filter((_, fileIndex) => fileIndex !== index));
+    setStatus('idle');
+    setFeedback('');
   }
 
   function clearForm(formElement: HTMLFormElement) {
     setForm(initialForm);
-    setArquivo(null);
+    setArquivos([]);
+    setStartedAt(Date.now());
     const fileInput = formElement.querySelector('input[type="file"]') as HTMLInputElement | null;
     if (fileInput) fileInput.value = '';
+    const honeypot = formElement.elements.namedItem('website') as HTMLInputElement | null;
+    if (honeypot) honeypot.value = '';
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formElement = event.currentTarget;
-    const payload: ContactPayload = { ...form, curriculo: arquivo };
+    const honeypot = formElement.elements.namedItem('website') as HTMLInputElement | null;
+    const payload: ContactPayload = {
+      ...form,
+      arquivos,
+      website: honeypot?.value || '',
+      formStartedAt: startedAt,
+    };
     setFeedback('');
 
     if (isOffline || !navigator.onLine) {
@@ -117,6 +174,11 @@ export default function ContactForm() {
         </div>
 
         <form data-reveal onSubmit={handleSubmit} className="mx-auto rounded-[26px] border border-[#EEE8EE] bg-white p-6 shadow-[0_16px_42px_rgba(59,43,57,.07)] md:p-10">
+          <div className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+            <label htmlFor="contact-website">Não preencha este campo</label>
+            <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+          </div>
+
           <div className="grid gap-5 md:grid-cols-2">
             <label className="block text-sm font-extrabold text-[#514956]">
               Nome
@@ -124,6 +186,7 @@ export default function ContactForm() {
                 name="nome"
                 autoComplete="name"
                 required
+                maxLength={120}
                 value={form.nome}
                 onChange={(event) => updateField('nome', event.target.value)}
                 className={`${inputClass} mt-2`}
@@ -138,6 +201,7 @@ export default function ContactForm() {
                 autoComplete="email"
                 required
                 type="email"
+                maxLength={254}
                 value={form.email}
                 onChange={(event) => updateField('email', event.target.value)}
                 className={`${inputClass} mt-2`}
@@ -150,6 +214,7 @@ export default function ContactForm() {
               <input
                 name="telefone"
                 autoComplete="tel"
+                maxLength={50}
                 value={form.telefone}
                 onChange={(event) => updateField('telefone', event.target.value)}
                 className={`${inputClass} mt-2`}
@@ -161,6 +226,7 @@ export default function ContactForm() {
               Assunto
               <input
                 name="assunto"
+                maxLength={160}
                 value={form.assunto}
                 onChange={(event) => updateField('assunto', event.target.value)}
                 className={`${inputClass} mt-2`}
@@ -170,23 +236,52 @@ export default function ContactForm() {
           </div>
 
           <div className="mt-5">
-            <label className="block text-sm font-extrabold text-[#514956]">
-              Anexar Currículo (Opcional)
-              <input
-                type="file"
-                name="curriculo"
-                accept=".pdf,.doc,.docx"
-                onChange={handleFileChange}
-                className="mt-3 block w-full text-sm text-gray-500
-                  file:mr-4 file:py-2.5 file:px-4
-                  file:rounded-full file:border-0
-                  file:text-xs file:font-black file:uppercase
-                  file:bg-[#D684BF]/10 file:text-[#C1459E]
-                  hover:file:bg-[#D684BF]/20
-                  cursor-pointer file:cursor-pointer"
-              />
-              {arquivo && <p className="mt-2 text-xs font-semibold text-gray-500">Arquivo selecionado: {arquivo.name}</p>}
+            <label className="block text-sm font-extrabold text-[#514956]" htmlFor="contact-attachments">
+              Anexar currículo ou documentos (opcional)
             </label>
+            <input
+              id="contact-attachments"
+              type="file"
+              name="anexos"
+              accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              multiple
+              onChange={handleFileChange}
+              className="mt-3 block w-full text-sm text-gray-500
+                file:mr-4 file:py-2.5 file:px-4
+                file:rounded-full file:border-0
+                file:text-xs file:font-black file:uppercase
+                file:bg-[#D684BF]/10 file:text-[#C1459E]
+                hover:file:bg-[#D684BF]/20
+                cursor-pointer file:cursor-pointer"
+            />
+            <p className="mt-2 text-xs leading-relaxed text-gray-500">
+              PDF, DOC ou DOCX. Até {MAX_ATTACHMENTS} arquivos, com limite total de 17 MB.
+            </p>
+
+            {arquivos.length > 0 && (
+              <div className="mt-3 rounded-xl border border-[#EEE8EE] bg-[#FBF8F4] p-3">
+                <ul className="space-y-2">
+                  {arquivos.map((file, index) => (
+                    <li key={`${file.name}-${file.lastModified}-${index}`} className="flex items-center justify-between gap-3 text-xs text-[#514956]">
+                      <span className="min-w-0 break-all">{file.name} <span className="text-gray-500">({formatFileSize(file.size)})</span></span>
+                      <button
+                        type="button"
+                        onClick={() => removeFile(index)}
+                        disabled={status === 'sending'}
+                        aria-label={`Remover ${file.name}`}
+                        className="shrink-0 rounded-full px-2 py-1 font-bold text-[#A84A15] hover:bg-[#A84A15]/10 disabled:opacity-50"
+                      >
+                        Remover
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-3 flex items-center justify-between border-t border-[#E8E0E8] pt-2 text-xs font-extrabold text-[#514956]">
+                  <span>Total selecionado</span>
+                  <span>{formatFileSize(totalAttachmentSize)} / 17 MB</span>
+                </div>
+              </div>
+            )}
           </div>
 
           <label className="mt-5 block text-sm font-extrabold text-[#514956]">
@@ -195,6 +290,7 @@ export default function ContactForm() {
               name="mensagem"
               required
               rows={6}
+              maxLength={10_000}
               value={form.mensagem}
               onChange={(event) => updateField('mensagem', event.target.value)}
               className={`${inputClass} mt-2 resize-y`}
@@ -212,7 +308,7 @@ export default function ContactForm() {
               className="site-action bg-[#A84A15] text-white shadow-md hover:bg-[#923E11] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === 'sending' ? (
-                'Guardando...'
+                'Enviando...'
               ) : status === 'queued' ? (
                 'Guardado offline'
               ) : (

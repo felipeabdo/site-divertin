@@ -1,10 +1,17 @@
+import { upload } from '@vercel/blob/client';
+
 export type ContactPayload = {
   nome: string;
   email: string;
   telefone: string;
   assunto: string;
   mensagem: string;
-  curriculo: File | null;
+  /** New multi-file field. */
+  arquivos?: File[];
+  /** Legacy field retained so forms already queued in IndexedDB remain sendable. */
+  curriculo?: File | null;
+  website?: string;
+  formStartedAt?: number;
 };
 
 export type QueuedContact = {
@@ -17,16 +24,23 @@ export type QueuedContact = {
 const DB_NAME = 'divertin-offline';
 const DB_VERSION = 1;
 const STORE_NAME = 'pending-contact';
+const MAX_TOTAL_ATTACHMENT_SIZE = 17 * 1024 * 1024;
+const MAX_ATTACHMENTS = 10;
+
+const ALLOWED_TYPES: Record<string, string> = {
+  pdf: 'application/pdf',
+  doc: 'application/msword',
+  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+};
 
 function openQueueDatabase(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
     if (typeof window === 'undefined' || !('indexedDB' in window)) {
-      reject(new Error('Este navegador não oferece armazenamento offline.'));
+      reject(new Error('Este navegador não permite guardar formulários offline.'));
       return;
     }
 
     const request = window.indexedDB.open(DB_NAME, DB_VERSION);
-
     request.onupgradeneeded = () => {
       const database = request.result;
       if (!database.objectStoreNames.contains(STORE_NAME)) {
@@ -97,25 +111,102 @@ export async function removeQueuedContact(id: string): Promise<void> {
   database.close();
 }
 
-export function contactPayloadToFormData(payload: ContactPayload): FormData {
-  const formData = new FormData();
-  formData.append('nome', payload.nome);
-  formData.append('email', payload.email);
-  formData.append('telefone', payload.telefone);
-  formData.append('assunto', payload.assunto);
-  formData.append('mensagem', payload.mensagem);
+function filesFromPayload(payload: ContactPayload): File[] {
+  if (Array.isArray(payload.arquivos)) return payload.arquivos.filter((file): file is File => file instanceof File);
+  return payload.curriculo instanceof File ? [payload.curriculo] : [];
+}
 
-  if (payload.curriculo) {
-    formData.append('curriculo', payload.curriculo, payload.curriculo.name);
+function safeUploadFilename(filename: string): string {
+  return filename.normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\\/]/g, '_')
+    .replace(/[^A-Za-z0-9._-]/g, '_')
+    .slice(0, 100) || 'anexo';
+}
+
+function fileMimeType(file: File): string {
+  const extension = file.name.split('.').pop()?.toLowerCase() || '';
+  const mimeType = ALLOWED_TYPES[extension];
+  if (!mimeType) throw new Error('Anexe somente arquivos PDF, DOC ou DOCX.');
+  return mimeType;
+}
+
+async function uploadContactAttachments(files: File[]): Promise<Array<{ pathname: string; name: string; size: number; type: string }>> {
+  if (files.length === 0) return [];
+
+  if (files.length > MAX_ATTACHMENTS) {
+    throw new Error(`É possível anexar até ${MAX_ATTACHMENTS} arquivos por mensagem.`);
   }
 
-  return formData;
+  const totalSize = files.reduce((total, file) => total + file.size, 0);
+  if (totalSize > MAX_TOTAL_ATTACHMENT_SIZE) {
+    throw new Error('A soma dos anexos ultrapassa o limite de 17 MB. Remova algum arquivo para continuar.');
+  }
+
+  for (const file of files) {
+    fileMimeType(file);
+    if (file.size <= 0 || file.size > MAX_TOTAL_ATTACHMENT_SIZE) {
+      throw new Error(`O arquivo "${file.name}" está vazio ou ultrapassa o limite permitido.`);
+    }
+  }
+
+  const sessionResponse = await fetch('/api/contato/upload-session', {
+    method: 'GET',
+    cache: 'no-store',
+  });
+  const sessionData = await sessionResponse.json().catch(() => ({})) as { message?: string };
+  if (!sessionResponse.ok) {
+    throw new Error(sessionData.message || 'Não foi possível preparar o envio dos anexos. Atualize a página e tente novamente.');
+  }
+
+  const makeBatchId = () => {
+    if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) return crypto.randomUUID();
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (char) => {
+      const random = Math.floor(Math.random() * 16);
+      return (char === 'x' ? random : (random & 0x3) | 0x8).toString(16);
+    });
+  };
+  const batchId = makeBatchId();
+
+  const uploaded: Array<{ pathname: string; name: string; size: number; type: string }> = [];
+  for (const file of files) {
+    const pathname = `contact-attachments/${batchId}/${safeUploadFilename(file.name)}`;
+    const mimeType = fileMimeType(file);
+    const blob = await upload(pathname, file, {
+      access: 'private',
+      handleUploadUrl: '/api/contato/upload',
+      contentType: mimeType,
+      multipart: file.size > 5 * 1024 * 1024,
+      clientPayload: JSON.stringify({ batchId, size: file.size }),
+    });
+    uploaded.push({
+      pathname: blob.pathname,
+      name: file.name,
+      size: file.size,
+      type: mimeType,
+    });
+  }
+
+  return uploaded;
 }
 
 export async function submitContactPayload(payload: ContactPayload): Promise<string> {
+  const files = filesFromPayload(payload);
+  const attachments = await uploadContactAttachments(files);
+
   const response = await fetch('/api/contato', {
     method: 'POST',
-    body: contactPayloadToFormData(payload),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      nome: payload.nome,
+      email: payload.email,
+      telefone: payload.telefone,
+      assunto: payload.assunto,
+      mensagem: payload.mensagem,
+      website: payload.website || '',
+      formStartedAt: payload.formStartedAt || 0,
+      attachments,
+    }),
     cache: 'no-store',
   });
 
