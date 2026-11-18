@@ -8,7 +8,8 @@ import Cloud from '@/components/Cloud';
 import Arrow from '@/components/quem-somos/Arrow';
 import { CONTATO } from '@/data/contatoData';
 import StaticGoogleReviewsSection from '@/components/home/StaticGoogleReviewsSection';
-import { SeasonalHeroMoment, SeasonalSectionMoment } from '@/components/seasonal/SeasonalMoments';
+import { SeasonalSectionMoment } from '@/components/seasonal/SeasonalMoments';
+import SeasonalHeroBackdrop from '@/components/seasonal/SeasonalHeroBackdrop';
 
 const FEATURES = [
   {
@@ -38,10 +39,11 @@ export default function Home() {
   return (
     <div className="site-page min-h-screen overflow-x-hidden bg-white">
       <section className="site-hero site-hero--home relative min-h-[760px] w-full lg:min-h-[820px]">
-        <div aria-hidden="true" className="absolute inset-0">
+        <div className="absolute inset-0">
           <HeroBackground />
           <div className="absolute inset-0 bg-gradient-to-r from-[#35243A]/90 via-[#4B2B45]/64 to-[#4B2B45]/12" />
           <div className="site-hero-glow absolute inset-0" />
+          <SeasonalHeroBackdrop placement="home" />
         </div>
 
         <header className="absolute inset-x-0 top-5 z-30 h-24 px-5 sm:px-7">
@@ -68,7 +70,6 @@ export default function Home() {
           </div>
         </div>
 
-        <SeasonalHeroMoment />
         <Cloud position="bottom" color="#FFFFFF" />
       </section>
 

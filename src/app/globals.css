@@ -2576,3 +2576,112 @@ html[data-site-theme="pascoa"] .seasonal-moment--hero { border-color: rgba(255,2
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Seasonal hero photos: replace the original static hero artwork only while
+   Carnaval/Páscoa is active. The layer stays inside each page's hero section. */
+.seasonal-hero-backdrop {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  background: #463248;
+}
+.seasonal-hero-backdrop__image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  transform: scale(1.015);
+  animation: seasonal-hero-photo-in .8s ease both;
+  filter: saturate(1.08) contrast(1.02);
+}
+.seasonal-hero-backdrop__shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(44,27,49,.91) 0%, rgba(57,31,54,.72) 43%, rgba(58,35,55,.34) 100%), linear-gradient(0deg, rgba(39,25,43,.46), transparent 48%);
+}
+.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__shade {
+  background: linear-gradient(90deg, rgba(49,22,54,.91) 0%, rgba(73,31,66,.71) 43%, rgba(79,38,67,.27) 100%), linear-gradient(0deg, rgba(45,24,48,.48), transparent 52%);
+}
+.seasonal-hero-backdrop--pascoa .seasonal-hero-backdrop__shade {
+  background: linear-gradient(90deg, rgba(50,37,57,.88) 0%, rgba(75,53,74,.67) 44%, rgba(77,60,78,.28) 100%), linear-gradient(0deg, rgba(45,35,52,.42), transparent 54%);
+}
+.seasonal-hero-backdrop__accent {
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  right: 7%;
+  width: clamp(100px, 15vw, 210px);
+  height: clamp(100px, 15vw, 210px);
+  opacity: .92;
+  transition: transform .55s ease;
+}
+.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i {
+  position: absolute;
+  display: block;
+  width: 5px;
+  height: 34px;
+  border-radius: 99px;
+  background: #f6c64e;
+  box-shadow: 0 0 14px rgba(255,255,255,.18);
+}
+.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i:nth-child(1) { top: 9%; left: 50%; transform: rotate(35deg); }
+.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i:nth-child(2) { top: 34%; left: 72%; background: #e95a9e; transform: rotate(78deg); }
+.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i:nth-child(3) { top: 60%; left: 53%; background: #4bc09e; transform: rotate(-24deg); }
+.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i:nth-child(4) { top: 18%; left: 23%; background: #e95a9e; transform: rotate(-46deg); }
+.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i:nth-child(5) { top: 72%; left: 18%; background: #fff0ad; transform: rotate(48deg); }
+.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i:nth-child(6) { top: 45%; left: 5%; height: 23px; background: #4bc09e; transform: rotate(92deg); }
+.seasonal-hero-backdrop--pascoa .seasonal-hero-backdrop__accent i {
+  position: absolute;
+  display: block;
+  width: 27px;
+  height: 36px;
+  border: 2px solid rgba(255,255,255,.86);
+  border-radius: 50% 50% 48% 48% / 58% 58% 42% 42%;
+  background: linear-gradient(145deg, #f9d7e7, #f1d98e 55%, #b8dec8);
+  box-shadow: 0 8px 18px rgba(40,24,47,.2);
+}
+.seasonal-hero-backdrop--pascoa .seasonal-hero-backdrop__accent i:nth-child(1) { top: 16%; left: 42%; transform: rotate(-18deg) scale(1.08); }
+.seasonal-hero-backdrop--pascoa .seasonal-hero-backdrop__accent i:nth-child(2) { top: 48%; left: 66%; background: linear-gradient(145deg,#e6d9f4,#f8e7b1 58%,#f2bfd2); transform: rotate(17deg); }
+.seasonal-hero-backdrop--pascoa .seasonal-hero-backdrop__accent i:nth-child(3) { top: 58%; left: 20%; background: linear-gradient(145deg,#c5e5d1,#fff0b9 58%,#e9c4da); transform: rotate(-9deg) scale(.86); }
+.seasonal-hero-backdrop__credit {
+  position: absolute;
+  z-index: 3;
+  right: 1.2rem;
+  bottom: 1.1rem;
+  max-width: calc(100% - 2.4rem);
+  padding: .35rem .65rem;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 999px;
+  background: rgba(34,25,39,.4);
+  color: rgba(255,255,255,.94);
+  font-size: .62rem;
+  font-weight: 750;
+  line-height: 1.3;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  pointer-events: auto;
+}
+.seasonal-hero-backdrop__credit:hover { background: rgba(34,25,39,.72); }
+@keyframes seasonal-hero-photo-in {
+  from { opacity: .72; transform: scale(1.06); }
+  to { opacity: 1; transform: scale(1.015); }
+}
+html[data-site-theme="carnaval"] .site-hero-eyebrow { color: #ffe7a0; }
+html[data-site-theme="pascoa"] .site-hero-eyebrow { color: #fff0c8; }
+@media (max-width: 760px) {
+  .seasonal-hero-backdrop__image { object-position: center; }
+  .seasonal-hero-backdrop__shade { background: linear-gradient(90deg, rgba(44,27,49,.87), rgba(57,31,54,.49)), linear-gradient(0deg, rgba(39,25,43,.34), transparent 55%); }
+  .seasonal-hero-backdrop__accent { top: 15%; right: 3%; transform: scale(.72); transform-origin: top right; }
+  .seasonal-hero-backdrop__credit { right: .7rem; bottom: .75rem; font-size: .54rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .seasonal-hero-backdrop__image { animation: none; }
+}

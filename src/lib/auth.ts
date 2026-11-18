@@ -237,21 +237,28 @@ export function clearSessionCookie(response: NextResponse) {
 }
 
 export async function getSiteSettings(): Promise<SiteSettings> {
+  // Uma chave ausente significa que o site ainda usa o tema padrão.
+  // Falha de rede/Redis deve ser propagada: nunca podemos fingir que o tema
+  // salvo é 'padrao', pois isso faz Carnaval/Páscoa desaparecerem sem aviso.
+  const raw = await redisCommand<string | null>('GET', SETTINGS_KEY);
+  if (!raw) return DEFAULT_SETTINGS;
+
+  let saved: Partial<SiteSettings>;
   try {
-    const raw = await redisCommand<string | null>('GET', SETTINGS_KEY);
-    if (!raw) return DEFAULT_SETTINGS;
-    const saved = JSON.parse(raw) as Partial<SiteSettings>;
-    return {
-      theme: saved.theme === 'natal' || saved.theme === 'carnaval' || saved.theme === 'pascoa' ? saved.theme : 'padrao',
-      announcement: {
-        enabled: Boolean(saved.announcement?.enabled),
-        title: String(saved.announcement?.title || '').slice(0, 90),
-        message: String(saved.announcement?.message || '').slice(0, 300),
-      },
-    };
-  } catch {
+    saved = JSON.parse(raw) as Partial<SiteSettings>;
+  } catch (error) {
+    console.error('[Divertin] Configurações do site inválidas no Redis; usando o tema padrão.', error);
     return DEFAULT_SETTINGS;
   }
+
+  return {
+    theme: saved.theme === 'natal' || saved.theme === 'carnaval' || saved.theme === 'pascoa' ? saved.theme : 'padrao',
+    announcement: {
+      enabled: Boolean(saved.announcement?.enabled),
+      title: String(saved.announcement?.title || '').slice(0, 90),
+      message: String(saved.announcement?.message || '').slice(0, 300),
+    },
+  };
 }
 
 export async function saveSiteSettings(settings: SiteSettings) {

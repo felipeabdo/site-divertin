@@ -211,7 +211,9 @@ export default function OfflineExperience({ children }: { children: ReactNode })
     window.addEventListener('online', handleOnline);
 
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {
+      navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' }).then((registration) => {
+        void registration.update().catch(() => undefined);
+      }).catch(() => {
         // A experiência de conexão continua funcional mesmo quando o SW não pode ser instalado.
       });
     }

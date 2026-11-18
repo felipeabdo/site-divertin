@@ -21,7 +21,7 @@ const CARNIVAL_COPY: Record<Placement, Copy> = {
     eyebrow: 'Carnaval brasileiro',
     title: 'A alegria também está no caminho.',
     description: 'Um tema que celebra movimento, encontros e cada pequena conquista.',
-    photo: 'https://images.pexels.com/photos/31022399/pexels-photo-31022399.jpeg?auto=compress&cs=tinysrgb&w=1500',
+    photo: 'https://images.pexels.com/photos/31022399/pexels-photo-31022399/free-photo-of-vibrant-carnival-celebration-in-brasilia-streets.jpeg?auto=compress&dpr=1&h=750&w=1260',
     photoAlt: 'Foliões dançando em um bloco de Carnaval nas ruas de Brasília.',
     credit: 'Mendez · Pexels',
     photoHref: 'https://www.pexels.com/photo/vibrant-carnival-celebration-in-brasilia-streets-31022399/',
@@ -30,7 +30,7 @@ const CARNIVAL_COPY: Record<Placement, Copy> = {
     eyebrow: 'Nossa bateria de conquistas',
     title: 'Cada avanço merece aplausos.',
     description: 'No ritmo de cada criança, celebramos os passos que fazem a diferença.',
-    photo: 'https://images.pexels.com/photos/15372412/pexels-photo-15372412.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    photo: 'https://images.pexels.com/photos/15372412/pexels-photo-15372412/free-photo-of-dancers-dancing-samba-at-parade.jpeg?auto=compress&dpr=1&h=750&w=1260',
     photoAlt: 'Desfile de Carnaval com dançarinos e fantasias coloridas em movimento.',
     credit: 'Joel Garcia · Pexels',
     photoHref: 'https://www.pexels.com/photo/dancers-dancing-samba-at-parade-15372412/',
@@ -39,10 +39,10 @@ const CARNIVAL_COPY: Record<Placement, Copy> = {
     eyebrow: 'Todo mundo no mesmo compasso',
     title: 'Uma equipe, muitos talentos.',
     description: 'Como em um bom bloco, cada pessoa contribui com seu jeito único de fazer acontecer.',
-    photo: 'https://images.pexels.com/photos/13395748/pexels-photo-13395748.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    photo: 'https://images.pexels.com/photos/36203648/pexels-photo-36203648/free-photo-of-vibrant-carnival-celebration-with-musicians.jpeg?auto=compress&dpr=1&h=750&w=1260',
     photoAlt: 'Grupo em desfile de rua com fantasias coloridas e bandeira brasileira.',
     credit: 'Olavi Anttila · Pexels',
-    photoHref: 'https://www.pexels.com/photo/people-in-costumes-holding-a-brazilian-flag-and-celebrating-on-the-city-street-13395748/',
+    photoHref: 'https://www.pexels.com/photo/vibrant-carnival-celebration-with-musicians-36203648/',
   },
   principles: {
     eyebrow: 'No ritmo de cada criança',
@@ -57,10 +57,10 @@ const CARNIVAL_COPY: Record<Placement, Copy> = {
     eyebrow: 'Chegue mais, a casa é sua',
     title: 'Todo encontro pode começar com alegria.',
     description: 'Um primeiro contato acolhedor é o convite para construirmos uma nova história juntos.',
-    photo: 'https://images.pexels.com/photos/36231519/pexels-photo-36231519/free-photo-of-vibrant-brazilian-carnival-celebration-in-foz-do-iguacu.jpeg?auto=compress&dpr=1&h=750&w=1260',
+    photo: 'https://images.pexels.com/photos/31022399/pexels-photo-31022399/free-photo-of-vibrant-carnival-celebration-in-brasilia-streets.jpeg?auto=compress&dpr=1&h=750&w=1260',
     photoAlt: 'Foliã em fantasia tradicional durante uma celebração de Carnaval em Foz do Iguaçu.',
     credit: 'Kaká Souza · Pexels',
-    photoHref: 'https://www.pexels.com/photo/vibrant-brazilian-carnival-celebration-in-foz-do-iguacu-36231519/',
+    photoHref: 'https://www.pexels.com/photo/vibrant-carnival-celebration-in-brasilia-streets-31022399/',
   },
   reviews: {
     eyebrow: 'Uma festa de boas histórias',
@@ -87,7 +87,7 @@ const EASTER_COPY: Record<Placement, Copy> = {
     eyebrow: 'Tradição de Páscoa: a caça aos ovos',
     title: 'Pequenas descobertas, grandes alegrias.',
     description: 'Os ovos simbolizam vida nova. Escondemos um carinho por aqui: encontre os três ovinhos ao longo das páginas.',
-    photo: 'https://images.pexels.com/photos/36616829/pexels-photo-36616829.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    photo: 'https://images.pexels.com/photos/36616829/pexels-photo-36616829/free-photo-of-colorful-easter-egg-basket-with-flowers.jpeg?auto=compress&dpr=1&h=750&w=1260',
     photoAlt: 'Cesta de Páscoa com ovos decorados e flores da estação.',
     credit: 'TLK GentooExpressions · Pexels',
     photoHref: 'https://www.pexels.com/photo/colorful-easter-egg-basket-with-flowers-36616829/',
@@ -105,10 +105,10 @@ const EASTER_COPY: Record<Placement, Copy> = {
     eyebrow: 'Um novo começo a cada encontro',
     title: 'Crescer também é descobrir.',
     description: 'O coelhinho, os ovos e as flores lembram a renovação. Nosso cuidado respeita o tempo de cada criança.',
-    photo: 'https://images.pexels.com/photos/4108593/pexels-photo-4108593.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    photo: 'https://images.pexels.com/photos/4108593/pexels-photo-4108593.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=750&w=1260',
     photoAlt: 'Cesta com ovos de Páscoa e coelho de chocolate em uma mesa clara.',
     credit: 'Polina Zimmerman · Pexels',
-    photoHref: 'https://www.pexels.com/photo/easter-eggs-in-basket-and-chocolate-bunny-4108593/',
+    photoHref: 'https://www.pexels.com/photo/pastel-colored-easter-eggs-and-chocolate-rabbit-4108593/',
   },
   contact: {
     eyebrow: 'Compartilhar também é celebrar',
@@ -187,8 +187,8 @@ function EasterProgress() {
 }
 
 function SeasonalMomentCard({ placement }: { placement: Placement }) {
-  const { settings, settingsLoading } = useSiteTheme();
-  if (settingsLoading || (settings.theme !== 'carnaval' && settings.theme !== 'pascoa')) return null;
+  const { settings } = useSiteTheme();
+  if (settings.theme !== 'carnaval' && settings.theme !== 'pascoa') return null;
 
   const isCarnival = settings.theme === 'carnaval';
   const copy = (isCarnival ? CARNIVAL_COPY : EASTER_COPY)[placement];
@@ -210,6 +210,14 @@ function SeasonalMomentCard({ placement }: { placement: Placement }) {
           decoding="async"
           width="1200"
           height="800"
+          onError={(event) => {
+            const image = event.currentTarget;
+            if (image.dataset.fallbackApplied === 'true') return;
+            image.dataset.fallbackApplied = 'true';
+            image.src = isCarnival
+              ? 'https://images.pexels.com/photos/30757849/pexels-photo-30757849/free-photo-of-vibrant-street-carnival-drummers-in-action.jpeg?auto=compress&dpr=1&h=750&w=1260'
+              : 'https://images.pexels.com/photos/2072163/pexels-photo-2072163.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=750&w=1260';
+          }}
         />
         <a className="seasonal-moment__photo-credit" href={copy.photoHref} target="_blank" rel="noreferrer" aria-label={`Ver fotografia de ${copy.credit}`}>
           {copy.credit}

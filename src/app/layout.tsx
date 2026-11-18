@@ -6,8 +6,11 @@ import OfflineExperience from "@/components/offline/OfflineExperience";
 import ScrollRevealController from "@/components/ScrollRevealController";
 import SeasonalExperienceProvider from "@/components/seasonal/SeasonalExperienceProvider";
 import SiteExperienceProvider from "@/components/auth/SiteExperienceProvider";
+import { getSiteSettings, type SiteSettings } from "@/lib/auth";
 import "./globals.css";
 
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://site-divertin.vercel.app"),
@@ -28,14 +31,25 @@ export const metadata: Metadata = {
 };
 
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
+  let initialSettings: SiteSettings = {
+    theme: "padrao",
+    announcement: { enabled: false, title: "", message: "" },
+  };
+  try {
+    initialSettings = await getSiteSettings();
+  } catch (error) {
+    // O site continua acessível, mas o tema conhecido não é substituído por um falso sucesso.
+    console.error("[Divertin] Não foi possível carregar as configurações do site no servidor.", error);
+  }
+
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" data-site-theme={initialSettings.theme}>
       <body className="flex min-h-full flex-col">
         
-      <SiteExperienceProvider>
+      <SiteExperienceProvider initialSettings={initialSettings}>
       <SeasonalExperienceProvider>
       <OfflineExperience>
         <DeferredScreenSaver

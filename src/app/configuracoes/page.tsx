@@ -20,7 +20,7 @@ async function apiRequest<T>(url: string, init?: RequestInit): Promise<T> {
 export default function SettingsPage() {
   const router = useRouter();
   const { user, loading, refreshUser, logout } = useAuth();
-  const { settings, refreshSettings } = useSiteTheme();
+  const { settings, updateSettings } = useSiteTheme();
   const [nameDraft, setNameDraft] = useState<string | null>(null);
   const name = nameDraft ?? user?.name ?? '';
   const [currentPassword, setCurrentPassword] = useState('');
@@ -77,20 +77,35 @@ export default function SettingsPage() {
     }
   }
 
-  async function saveTheme() {
+  async function saveTheme(nextTheme: SiteTheme) {
+    const previousSettings = settings;
+    const optimisticSettings = { ...settings, theme: nextTheme };
+    updateSettings(optimisticSettings);
+    if (typeof document !== 'undefined') document.documentElement.dataset.siteTheme = nextTheme;
     setThemeBusy(true);
     setFeedback(null);
     try {
-      await apiRequest('/api/site-settings', { method: 'PUT', body: JSON.stringify({ theme }) });
-      await refreshSettings();
+      const data = await apiRequest<{ settings: { theme: SiteTheme; announcement: { enabled: boolean; title: string; message: string } } }>(
+        '/api/site-settings',
+        { method: 'PUT', body: JSON.stringify({ theme: nextTheme }) },
+      );
+      updateSettings(data.settings);
       setThemeDraft(null);
-      const themeLabel = theme === 'natal' ? 'de Natal' : theme === 'carnaval' ? 'de Carnaval' : theme === 'pascoa' ? 'de Páscoa' : null;
-      setFeedback({ tone: 'success', message: themeLabel ? `Tema ${themeLabel} aplicado ao site.` : 'Tema padrão restaurado.' });
+      const themeLabel = nextTheme === 'natal' ? 'de Natal' : nextTheme === 'carnaval' ? 'de Carnaval' : nextTheme === 'pascoa' ? 'de Páscoa' : null;
+      setFeedback({ tone: 'success', message: themeLabel ? `Tema ${themeLabel} aplicado ao site para todos os visitantes.` : 'Tema padrão restaurado.' });
     } catch (error) {
+      updateSettings(previousSettings);
+      if (typeof document !== 'undefined') document.documentElement.dataset.siteTheme = previousSettings.theme;
+      setThemeDraft(null);
       setFeedback({ tone: 'error', message: error instanceof Error ? error.message : 'Não foi possível aplicar o tema.' });
     } finally {
       setThemeBusy(false);
     }
+  }
+
+  function chooseTheme(nextTheme: SiteTheme) {
+    setThemeDraft(nextTheme);
+    void saveTheme(nextTheme);
   }
 
   async function createAccount(event: FormEvent<HTMLFormElement>) {
@@ -187,32 +202,31 @@ export default function SettingsPage() {
               <div className="divertin-settings-section-heading"><span className="divertin-settings-icon">✦</span><div><h2>Temas do site</h2><p>Escolha a decoração visual que será exibida para todos os visitantes.</p></div></div>
               <div className="divertin-theme-options">
                 <label className={`divertin-theme-option ${theme === 'padrao' ? 'is-selected' : ''}`}>
-                  <input type="radio" name="site-theme" value="padrao" checked={theme === 'padrao'} onChange={() => setThemeDraft('padrao')} />
+                  <input type="radio" name="site-theme" value="padrao" checked={theme === 'padrao'} disabled={themeBusy} onChange={() => chooseTheme('padrao')} />
                   <span className="divertin-theme-preview divertin-theme-preview--default"><i /><i /><i /></span>
                   <span className="divertin-theme-option-copy"><strong>Tema padrão</strong><small>Visual original da Divertin</small></span>
                   {theme === 'padrao' && <span className="divertin-theme-selected">Selecionado</span>}
                 </label>
                 <label className={`divertin-theme-option ${theme === 'natal' ? 'is-selected' : ''}`}>
-                  <input type="radio" name="site-theme" value="natal" checked={theme === 'natal'} onChange={() => setThemeDraft('natal')} />
+                  <input type="radio" name="site-theme" value="natal" checked={theme === 'natal'} disabled={themeBusy} onChange={() => chooseTheme('natal')} />
                   <span className="divertin-theme-preview divertin-theme-preview--christmas"><i>✦</i><i>❄</i><i>✧</i></span>
                   <span className="divertin-theme-option-copy"><strong>Natal</strong><small>Verde pinheiro, vermelho e dourado, com neve delicada</small></span>
                   {theme === 'natal' && <span className="divertin-theme-selected">Selecionado</span>}
                 </label>
                 <label className={`divertin-theme-option ${theme === 'carnaval' ? 'is-selected' : ''}`}>
-                  <input type="radio" name="site-theme" value="carnaval" checked={theme === 'carnaval'} onChange={() => setThemeDraft('carnaval')} />
+                  <input type="radio" name="site-theme" value="carnaval" checked={theme === 'carnaval'} disabled={themeBusy} onChange={() => chooseTheme('carnaval')} />
                   <span className="divertin-theme-preview divertin-theme-preview--carnival"><i>🎭</i><i>🎊</i><i>🎺</i></span>
                   <span className="divertin-theme-option-copy"><strong>Carnaval</strong><small>Fotografias reais, referências à bateria e confetes acionados nas seções</small></span>
                   {theme === 'carnaval' && <span className="divertin-theme-selected">Selecionado</span>}
                 </label>
                 <label className={`divertin-theme-option ${theme === 'pascoa' ? 'is-selected' : ''}`}>
-                  <input type="radio" name="site-theme" value="pascoa" checked={theme === 'pascoa'} onChange={() => setThemeDraft('pascoa')} />
+                  <input type="radio" name="site-theme" value="pascoa" checked={theme === 'pascoa'} disabled={themeBusy} onChange={() => chooseTheme('pascoa')} />
                   <span className="divertin-theme-preview divertin-theme-preview--easter"><i>🐰</i><i>🥚</i><i>🍫</i></span>
                   <span className="divertin-theme-option-copy"><strong>Páscoa</strong><small>Fotografias reais, símbolos de renovação e caça aos ovos pelas seções</small></span>
                   {theme === 'pascoa' && <span className="divertin-theme-selected">Selecionado</span>}
                 </label>
               </div>
-              <div className="divertin-theme-coming">A decoração escolhida aparece para todos os visitantes e pode ser trocada a qualquer momento.</div>
-              <button type="button" onClick={saveTheme} disabled={themeBusy || theme === settings.theme} className="divertin-settings-primary">{themeBusy ? 'Aplicando...' : 'Aplicar tema escolhido'}</button>
+              <div className="divertin-theme-coming">Ao selecionar uma opção, o tema é salvo e aplicado automaticamente para todos os visitantes.</div>
             </section>
 
             <section className="divertin-settings-card">

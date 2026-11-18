@@ -4,16 +4,18 @@ import type { Service } from '@/data/servicosData';
 import ServiceHeader from './ServiceHeader';
 import SectionDashes from './SectionDashes';
 import Cloud from '@/components/Cloud';
+import SeasonalHeroBackdrop from '@/components/seasonal/SeasonalHeroBackdrop';
 
 export default function ServiceDetailHero({ service }: { service: Service }) {
   return (
     <section className="site-hero relative overflow-visible">
-      <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -inset-6">
           <Image src="/bg-hero.webp" alt="" fill priority sizes="100vw" className="object-cover object-top blur-sm" />
         </div>
         <div className="absolute inset-0" style={{ background: `linear-gradient(112deg, rgba(53,36,58,.95) 0%, ${service.accent}C7 58%, ${service.accent}65 100%)` }} />
         <div className="site-hero-glow absolute inset-0" />
+        <SeasonalHeroBackdrop placement="services" />
       </div>
 
       <ServiceHeader />

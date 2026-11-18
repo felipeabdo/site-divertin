@@ -3,7 +3,15 @@ import { AuthError, getSessionUser, getSiteSettings, saveSiteSettings, type Site
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 export async function GET() {
-  return NextResponse.json({ settings: await getSiteSettings() }, { headers: { 'Cache-Control': 'no-store' } });
+  try {
+    return NextResponse.json({ settings: await getSiteSettings() }, { headers: { 'Cache-Control': 'no-store' } });
+  } catch (error) {
+    const status = error instanceof AuthError ? error.status : 503;
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Não foi possível carregar as configurações do site.' },
+      { status, headers: { 'Cache-Control': 'no-store' } },
+    );
+  }
 }
 export async function PUT(request: NextRequest) {
   try {
@@ -22,7 +30,7 @@ export async function PUT(request: NextRequest) {
     await saveSiteSettings(settings);
     return NextResponse.json({ settings });
   } catch (error) {
-    const status = error instanceof AuthError ? error.status : 500;
+    const status = error instanceof AuthError ? error.status : 503;
     return NextResponse.json({ error: error instanceof Error ? error.message : 'Não foi possível salvar as configurações.' }, { status });
   }
 }
