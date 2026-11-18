@@ -84,7 +84,8 @@ export default function SettingsPage() {
       await apiRequest('/api/site-settings', { method: 'PUT', body: JSON.stringify({ theme }) });
       await refreshSettings();
       setThemeDraft(null);
-      setFeedback({ tone: 'success', message: theme === 'natal' ? 'Tema de Natal aplicado ao site.' : 'Tema padrão restaurado.' });
+      const themeLabel = theme === 'natal' ? 'de Natal' : theme === 'carnaval' ? 'de Carnaval' : theme === 'pascoa' ? 'de Páscoa' : null;
+      setFeedback({ tone: 'success', message: themeLabel ? `Tema ${themeLabel} aplicado ao site.` : 'Tema padrão restaurado.' });
     } catch (error) {
       setFeedback({ tone: 'error', message: error instanceof Error ? error.message : 'Não foi possível aplicar o tema.' });
     } finally {
@@ -197,8 +198,20 @@ export default function SettingsPage() {
                   <span className="divertin-theme-option-copy"><strong>Natal</strong><small>Verde pinheiro, vermelho e dourado, com neve delicada</small></span>
                   {theme === 'natal' && <span className="divertin-theme-selected">Selecionado</span>}
                 </label>
+                <label className={`divertin-theme-option ${theme === 'carnaval' ? 'is-selected' : ''}`}>
+                  <input type="radio" name="site-theme" value="carnaval" checked={theme === 'carnaval'} onChange={() => setThemeDraft('carnaval')} />
+                  <span className="divertin-theme-preview divertin-theme-preview--carnival"><i>🎭</i><i>🎊</i><i>🎺</i></span>
+                  <span className="divertin-theme-option-copy"><strong>Carnaval</strong><small>Confetes, serpentinas e instrumentos em uma festa de cores</small></span>
+                  {theme === 'carnaval' && <span className="divertin-theme-selected">Selecionado</span>}
+                </label>
+                <label className={`divertin-theme-option ${theme === 'pascoa' ? 'is-selected' : ''}`}>
+                  <input type="radio" name="site-theme" value="pascoa" checked={theme === 'pascoa'} onChange={() => setThemeDraft('pascoa')} />
+                  <span className="divertin-theme-preview divertin-theme-preview--easter"><i>🐰</i><i>🥚</i><i>🍫</i></span>
+                  <span className="divertin-theme-option-copy"><strong>Páscoa</strong><small>Coelhinhos, ovos decorados e detalhes de chocolate</small></span>
+                  {theme === 'pascoa' && <span className="divertin-theme-selected">Selecionado</span>}
+                </label>
               </div>
-              <div className="divertin-theme-coming">Mais temas sazonais, como Páscoa e Carnaval, poderão ser adicionados a esta biblioteca.</div>
+              <div className="divertin-theme-coming">A decoração escolhida aparece para todos os visitantes e pode ser trocada a qualquer momento.</div>
               <button type="button" onClick={saveTheme} disabled={themeBusy || theme === settings.theme} className="divertin-settings-primary">{themeBusy ? 'Aplicando...' : 'Aplicar tema escolhido'}</button>
             </section>
 

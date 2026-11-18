@@ -11,7 +11,7 @@ export type PublicUser = {
   createdAt: string;
 };
 type StoredUser = PublicUser & { passwordHash: string; updatedAt: string };
-export type SiteTheme = 'padrao' | 'natal';
+export type SiteTheme = 'padrao' | 'natal' | 'carnaval' | 'pascoa';
 export type SiteSettings = {
   theme: SiteTheme;
   announcement: { enabled: boolean; title: string; message: string };
@@ -242,7 +242,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
     if (!raw) return DEFAULT_SETTINGS;
     const saved = JSON.parse(raw) as Partial<SiteSettings>;
     return {
-      theme: saved.theme === 'natal' ? 'natal' : 'padrao',
+      theme: saved.theme === 'natal' || saved.theme === 'carnaval' || saved.theme === 'pascoa' ? saved.theme : 'padrao',
       announcement: {
         enabled: Boolean(saved.announcement?.enabled),
         title: String(saved.announcement?.title || '').slice(0, 90),

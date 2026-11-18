@@ -2121,3 +2121,261 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
     stroke: currentColor;
   }
 }
+
+/* Pré-visualizações dos novos temas na área de configurações. */
+.divertin-theme-preview--carnival {
+  background: linear-gradient(135deg, #f8d2e5 0%, #f6d77d 48%, #c9e9df 100%);
+  color: #71418e;
+  font-size: 1.22rem;
+}
+.divertin-theme-preview--carnival i:nth-child(1) { transform: rotate(-12deg) translateY(-.12rem); }
+.divertin-theme-preview--carnival i:nth-child(2) { transform: translateY(.28rem); }
+.divertin-theme-preview--carnival i:nth-child(3) { transform: rotate(12deg) translateY(-.1rem); }
+.divertin-theme-preview--easter {
+  background: linear-gradient(135deg, #f6d9e5 0%, #e4e1f6 48%, #d3ecdc 100%);
+  font-size: 1.15rem;
+}
+.divertin-theme-preview--easter i:nth-child(1) { transform: rotate(-10deg) translateY(-.12rem); }
+.divertin-theme-preview--easter i:nth-child(2) { transform: translateY(.2rem); }
+.divertin-theme-preview--easter i:nth-child(3) { transform: rotate(10deg) translateY(-.12rem); }
+
+/* Ilustrações leves nas bordas: acompanham todas as páginas sem cobrir os controles. */
+.divertin-seasonal-decorations {
+  position: fixed;
+  z-index: 4;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint;
+}
+.divertin-seasonal-art {
+  position: absolute;
+  display: block;
+  height: auto;
+  opacity: .76;
+  filter: drop-shadow(0 7px 12px rgba(67, 45, 64, .12));
+  transform-origin: center;
+  animation: divertin-seasonal-float 8s ease-in-out infinite;
+}
+.divertin-seasonal-art--mask {
+  top: 12%;
+  left: -1.25rem;
+  width: clamp(6.8rem, 10vw, 10.5rem);
+  transform: rotate(-13deg);
+}
+.divertin-seasonal-art--tambourine {
+  top: 31%;
+  right: -1.8rem;
+  width: clamp(5.6rem, 8vw, 8.2rem);
+  animation-delay: -2.2s;
+}
+.divertin-seasonal-art--trumpet {
+  bottom: 17%;
+  left: -1.6rem;
+  width: clamp(7rem, 10vw, 10rem);
+  animation-delay: -4.1s;
+}
+.divertin-seasonal-art--streamer {
+  right: -1.4rem;
+  bottom: 3%;
+  width: clamp(7rem, 10vw, 10rem);
+  animation-delay: -1.3s;
+}
+.divertin-seasonal-confetti {
+  position: absolute;
+  inset: 0;
+}
+.divertin-seasonal-confetti i {
+  position: absolute;
+  display: block;
+  width: 7px;
+  height: 15px;
+  border-radius: 5px;
+  opacity: .58;
+  animation: divertin-confetti-drift 12s ease-in-out infinite;
+}
+.divertin-seasonal-confetti i:nth-child(1) { top: 10%; left: 21%; background: #e84b9b; transform: rotate(34deg); }
+.divertin-seasonal-confetti i:nth-child(2) { top: 25%; left: 8%; background: #f5be43; transform: rotate(-28deg); }
+.divertin-seasonal-confetti i:nth-child(3) { top: 18%; right: 18%; background: #2aae9b; transform: rotate(52deg); }
+.divertin-seasonal-confetti i:nth-child(4) { top: 43%; right: 7%; background: #9b63b8; transform: rotate(-42deg); }
+.divertin-seasonal-confetti i:nth-child(5) { top: 56%; left: 13%; background: #f5be43; transform: rotate(68deg); }
+.divertin-seasonal-confetti i:nth-child(6) { top: 70%; right: 20%; background: #e84b9b; transform: rotate(23deg); }
+.divertin-seasonal-confetti i:nth-child(7) { top: 83%; left: 29%; background: #2aae9b; transform: rotate(-53deg); }
+.divertin-seasonal-confetti i:nth-child(8) { top: 91%; right: 35%; background: #9b63b8; transform: rotate(37deg); }
+.divertin-seasonal-confetti i:nth-child(9) { top: 7%; right: 41%; width: 6px; height: 6px; border-radius: 50%; background: #f5be43; }
+.divertin-seasonal-confetti i:nth-child(10) { top: 36%; left: 30%; width: 6px; height: 6px; border-radius: 50%; background: #e84b9b; }
+.divertin-seasonal-confetti i:nth-child(11) { top: 64%; left: 5%; width: 6px; height: 6px; border-radius: 50%; background: #9b63b8; }
+.divertin-seasonal-confetti i:nth-child(12) { top: 77%; right: 8%; width: 6px; height: 6px; border-radius: 50%; background: #2aae9b; }
+.divertin-seasonal-confetti i:nth-child(13) { top: 30%; left: 49%; background: #2aae9b; transform: rotate(78deg); }
+.divertin-seasonal-confetti i:nth-child(14) { top: 49%; right: 29%; background: #f5be43; transform: rotate(-15deg); }
+.divertin-seasonal-confetti i:nth-child(15) { top: 88%; left: 8%; background: #e84b9b; transform: rotate(45deg); }
+.divertin-seasonal-confetti i:nth-child(16) { top: 13%; left: 70%; width: 6px; height: 6px; border-radius: 50%; background: #9b63b8; }
+.divertin-seasonal-confetti i:nth-child(17) { top: 58%; right: 46%; background: #e84b9b; transform: rotate(15deg); }
+.divertin-seasonal-confetti i:nth-child(18) { top: 94%; right: 17%; width: 6px; height: 6px; border-radius: 50%; background: #f5be43; }
+
+.divertin-seasonal-art--bunny {
+  bottom: 7%;
+  left: -1.65rem;
+  width: clamp(6.3rem, 8.5vw, 9rem);
+  animation-delay: -2.4s;
+}
+.divertin-seasonal-art--egg-one {
+  top: 17%;
+  right: -1.1rem;
+  width: clamp(4.1rem, 5.5vw, 5.7rem);
+  transform: rotate(13deg);
+}
+.divertin-seasonal-art--egg-two {
+  right: 1.8%;
+  bottom: 31%;
+  width: clamp(3.8rem, 5vw, 5.1rem);
+  transform: rotate(-16deg);
+  animation-delay: -3.6s;
+}
+.divertin-seasonal-art--chocolate {
+  top: 56%;
+  left: -2.15rem;
+  width: clamp(6.4rem, 8vw, 8.5rem);
+  transform: rotate(-13deg);
+  animation-delay: -1.8s;
+}
+.divertin-seasonal-art--carrot {
+  top: 38%;
+  right: -1.3rem;
+  width: clamp(3.7rem, 5vw, 5.2rem);
+  transform: rotate(15deg);
+  animation-delay: -4.5s;
+}
+@keyframes divertin-seasonal-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+@keyframes divertin-confetti-drift {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: 13px; }
+}
+
+/* Tema sazonal: Carnaval — alegre e vibrante, mantendo o fundo acolhedor da Divertin. */
+html[data-site-theme="carnaval"] {
+  --color-divertin-rosa: #e74791;
+  --color-divertin-rosa-escuro: #b82d78;
+  --color-divertin-laranja-escuro: #bd5a22;
+  --color-divertin-verde: #168b78;
+  --color-divertin-azul: #5969bd;
+  --color-divertin-amarelo: #f2b93b;
+  --color-divertin-fundo: #fffcf7;
+}
+html[data-site-theme="carnaval"] body {
+  background-color: #fffcf7;
+  background-image: radial-gradient(ellipse at 7% 13%, rgba(232,75,155,.085), transparent 28%), radial-gradient(ellipse at 92% 30%, rgba(42,174,155,.075), transparent 26%), radial-gradient(ellipse at 72% 92%, rgba(245,190,67,.09), transparent 30%);
+}
+html[data-site-theme="carnaval"] body::before {
+  content: "";
+  position: fixed;
+  z-index: 9990;
+  inset: 0 0 auto;
+  height: 5px;
+  pointer-events: none;
+  background: linear-gradient(90deg, #e84b9b 0 24%, #f5be43 24% 49%, #2aae9b 49% 74%, #9b63b8 74% 100%);
+}
+html[data-site-theme="carnaval"] nav[aria-hidden] { background-color: #fff9f5 !important; }
+html[data-site-theme="carnaval"] nav[aria-hidden] a { background: linear-gradient(110deg, #f8dce9, #fff0d7) !important; color: #583b63 !important; }
+html[data-site-theme="carnaval"] nav[aria-hidden] li:nth-child(even) a { background: linear-gradient(110deg, #dff2e9, #f5e8fa) !important; }
+html[data-site-theme="carnaval"] nav[aria-hidden] li:nth-child(odd) a > span:first-child { background-color: #e74791 !important; }
+html[data-site-theme="carnaval"] nav[aria-hidden] li:nth-child(even) a > span:first-child { background-color: #168b78 !important; }
+html[data-site-theme="carnaval"] .divertin-account-action--desktop { color: #a63b7c; border-color: rgba(232,75,155,.3); }
+@media (max-width: 1300px) {
+  html[data-site-theme="carnaval"] .divertin-account-action--mobile { background: linear-gradient(110deg, #f8dce9, #fff0d7) !important; color: #583b63; }
+  html[data-site-theme="carnaval"] .divertin-account-action--mobile .divertin-account-action__icon-wrap { background: #e74791 !important; }
+  html[data-site-theme="carnaval"] .divertin-account-action--mobile .divertin-account-action__menu-icon { background: transparent !important; color: #fff !important; }
+  html[data-site-theme="carnaval"] .divertin-account-action--mobile .divertin-account-action__menu-arrow { background: transparent !important; color: #a63b7c !important; }
+  html[data-site-theme="carnaval"] .divertin-account-action--mobile::after { color: #a63b7c; }
+}
+html[data-site-theme="carnaval"] .divertin-auth-page { background: radial-gradient(circle at 12% 15%, rgba(232,75,155,.16), transparent 31%), radial-gradient(circle at 88% 86%, rgba(42,174,155,.16), transparent 32%), #fffcf7; }
+html[data-site-theme="carnaval"] .divertin-auth-kicker { background: #fce1ed; color: #a63b7c; }
+html[data-site-theme="carnaval"] .divertin-auth-card h1,
+html[data-site-theme="carnaval"] .divertin-settings-intro h1 { color: #633d70; }
+html[data-site-theme="carnaval"] .divertin-auth-back,
+html[data-site-theme="carnaval"] .divertin-settings-back,
+html[data-site-theme="carnaval"] .divertin-settings-logout { color: #a63b7c; }
+html[data-site-theme="carnaval"] .divertin-auth-submit,
+html[data-site-theme="carnaval"] .divertin-settings-primary { background: linear-gradient(100deg, #e74791, #9b63b8 58%, #168b78); box-shadow: 0 9px 22px rgba(183,65,139,.2); }
+html[data-site-theme="carnaval"] .divertin-settings-page { background: linear-gradient(145deg, #fffaf7, #f8f5fc 54%, #f3fbf6); }
+html[data-site-theme="carnaval"] .divertin-settings-icon { background: linear-gradient(145deg, #fce1ed, #e4f4ec); color: #a63b7c; }
+html[data-site-theme="carnaval"] .divertin-settings-card::before { background: linear-gradient(90deg, #e84b9b, #f5be43 34%, #2aae9b 68%, #9b63b8); }
+html[data-site-theme="carnaval"] .divertin-theme-option.is-selected { border-color: #d66a9e; background: #fff7fb; }
+html[data-site-theme="carnaval"] .divertin-theme-option input { accent-color: #cf4b91; }
+html[data-site-theme="carnaval"] .divertin-theme-selected { color: #a63b7c; }
+html[data-site-theme="carnaval"] .divertin-user-avatar { background: #e0f2e9; color: #168b78; }
+html[data-site-theme="carnaval"] [style*="rgba(78,31,68"] { background: linear-gradient(100deg, rgba(83,47,105,.96), rgba(214,76,143,.82) 58%, rgba(245,190,67,.48)), #8b4f93 !important; }
+
+/* Tema sazonal: Páscoa — tons de confeitaria, natureza e pequenos achados ilustrados. */
+html[data-site-theme="pascoa"] {
+  --color-divertin-rosa: #d780a6;
+  --color-divertin-rosa-escuro: #a94c77;
+  --color-divertin-laranja-escuro: #a66a3a;
+  --color-divertin-verde: #78a98e;
+  --color-divertin-azul: #7b9fc1;
+  --color-divertin-amarelo: #eec96c;
+  --color-divertin-fundo: #fffcf6;
+}
+html[data-site-theme="pascoa"] body {
+  background-color: #fffcf6;
+  background-image: radial-gradient(ellipse at 8% 12%, rgba(233,183,205,.13), transparent 29%), radial-gradient(ellipse at 92% 36%, rgba(199,229,212,.16), transparent 29%), radial-gradient(ellipse at 70% 94%, rgba(238,201,108,.11), transparent 32%);
+}
+html[data-site-theme="pascoa"] body::before {
+  content: "";
+  position: fixed;
+  z-index: 9990;
+  inset: 0 0 auto;
+  height: 5px;
+  pointer-events: none;
+  background: linear-gradient(90deg, #e9b7cd 0 25%, #c7e5d4 25% 50%, #e2def5 50% 75%, #f0ce79 75% 100%);
+}
+html[data-site-theme="pascoa"] nav[aria-hidden] { background-color: #fffaf5 !important; }
+html[data-site-theme="pascoa"] nav[aria-hidden] a { background: linear-gradient(110deg, #f7e5ec, #fff4d9) !important; color: #59465f !important; }
+html[data-site-theme="pascoa"] nav[aria-hidden] li:nth-child(even) a { background: linear-gradient(110deg, #e5f2e9, #eeeafa) !important; }
+html[data-site-theme="pascoa"] nav[aria-hidden] li:nth-child(odd) a > span:first-child { background-color: #d780a6 !important; }
+html[data-site-theme="pascoa"] nav[aria-hidden] li:nth-child(even) a > span:first-child { background-color: #78a98e !important; }
+html[data-site-theme="pascoa"] .divertin-account-action--desktop { color: #a45a80; border-color: rgba(215,128,166,.36); }
+@media (max-width: 1300px) {
+  html[data-site-theme="pascoa"] .divertin-account-action--mobile { background: linear-gradient(110deg, #f7e5ec, #fff4d9) !important; color: #59465f; }
+  html[data-site-theme="pascoa"] .divertin-account-action--mobile .divertin-account-action__icon-wrap { background: #d780a6 !important; }
+  html[data-site-theme="pascoa"] .divertin-account-action--mobile .divertin-account-action__menu-icon { background: transparent !important; color: #fff !important; }
+  html[data-site-theme="pascoa"] .divertin-account-action--mobile .divertin-account-action__menu-arrow { background: transparent !important; color: #a45a80 !important; }
+  html[data-site-theme="pascoa"] .divertin-account-action--mobile::after { color: #a45a80; }
+}
+html[data-site-theme="pascoa"] .divertin-auth-page { background: radial-gradient(circle at 12% 15%, rgba(233,183,205,.2), transparent 31%), radial-gradient(circle at 88% 86%, rgba(199,229,212,.23), transparent 32%), #fffcf6; }
+html[data-site-theme="pascoa"] .divertin-auth-kicker { background: #f6e2eb; color: #a45a80; }
+html[data-site-theme="pascoa"] .divertin-auth-card h1,
+html[data-site-theme="pascoa"] .divertin-settings-intro h1 { color: #735b7b; }
+html[data-site-theme="pascoa"] .divertin-auth-back,
+html[data-site-theme="pascoa"] .divertin-settings-back,
+html[data-site-theme="pascoa"] .divertin-settings-logout { color: #a45a80; }
+html[data-site-theme="pascoa"] .divertin-auth-submit,
+html[data-site-theme="pascoa"] .divertin-settings-primary { background: linear-gradient(100deg, #d780a6, #a89bcf 58%, #78a98e); box-shadow: 0 9px 22px rgba(161,111,151,.18); }
+html[data-site-theme="pascoa"] .divertin-settings-page { background: linear-gradient(145deg, #fffaf7, #faf7fc 52%, #f5fbf6); }
+html[data-site-theme="pascoa"] .divertin-settings-icon { background: linear-gradient(145deg, #f7e5ed, #e5f2e9); color: #a45a80; }
+html[data-site-theme="pascoa"] .divertin-settings-card::before { background: linear-gradient(90deg, #e9b7cd, #c7e5d4 34%, #e2def5 68%, #f0ce79); }
+html[data-site-theme="pascoa"] .divertin-theme-option.is-selected { border-color: #c68daa; background: #fff9fb; }
+html[data-site-theme="pascoa"] .divertin-theme-option input { accent-color: #bb7094; }
+html[data-site-theme="pascoa"] .divertin-theme-selected { color: #a45a80; }
+html[data-site-theme="pascoa"] .divertin-user-avatar { background: #e4f1e8; color: #659779; }
+html[data-site-theme="pascoa"] [style*="rgba(78,31,68"] { background: linear-gradient(100deg, rgba(112,91,130,.94), rgba(215,128,166,.72) 58%, rgba(199,229,212,.5)), #8e779f !important; }
+
+@media (max-width: 680px) {
+  .divertin-seasonal-art--mask { top: 15%; left: -2.6rem; width: 5.9rem; opacity: .48; }
+  .divertin-seasonal-art--tambourine { top: 35%; right: -2.7rem; width: 4.8rem; opacity: .46; }
+  .divertin-seasonal-art--trumpet { bottom: 18%; left: -2.7rem; width: 6.2rem; opacity: .48; }
+  .divertin-seasonal-art--streamer { right: -2.8rem; bottom: 4%; width: 6.4rem; opacity: .46; }
+  .divertin-seasonal-art--bunny { bottom: 6%; left: -2.8rem; width: 5.6rem; opacity: .52; }
+  .divertin-seasonal-art--egg-one { top: 18%; right: -1.9rem; width: 3.8rem; opacity: .48; }
+  .divertin-seasonal-art--egg-two { right: -1.35rem; bottom: 30%; width: 3.3rem; opacity: .48; }
+  .divertin-seasonal-art--chocolate { top: 56%; left: -3.1rem; width: 5.7rem; opacity: .48; }
+  .divertin-seasonal-art--carrot { top: 39%; right: -2rem; width: 3.3rem; opacity: .46; }
+  .divertin-seasonal-confetti i:nth-child(n+9) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .divertin-seasonal-art,
+  .divertin-seasonal-confetti i { animation: none !important; }
+}

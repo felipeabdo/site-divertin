@@ -4,6 +4,7 @@ import DeferredAnalytics from "@/components/DeferredAnalytics";
 import DeferredScreenSaver from "@/components/DeferredScreenSaver";
 import OfflineExperience from "@/components/offline/OfflineExperience";
 import ScrollRevealController from "@/components/ScrollRevealController";
+import SeasonalDecorations from "@/components/SeasonalDecorations";
 import SiteExperienceProvider from "@/components/auth/SiteExperienceProvider";
 import "./globals.css";
 
@@ -46,6 +47,7 @@ export default function RootLayout({
           idleMinutes={5}
         />
         {children}
+        <SeasonalDecorations />
         <ScrollRevealController />
         <DeferredAnalytics gaId="G-14VEB6PD4R" />
       </OfflineExperience>

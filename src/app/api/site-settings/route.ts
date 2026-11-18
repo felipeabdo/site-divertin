@@ -11,7 +11,7 @@ export async function PUT(request: NextRequest) {
     if (!actor || actor.role !== 'admin') throw new AuthError('Acesso restrito a administradores.', 403);
     const body = await request.json() as Partial<SiteSettings>;
     const previous = await getSiteSettings();
-    const theme = body.theme === 'natal' ? 'natal' : body.theme === 'padrao' ? 'padrao' : previous.theme;
+    const theme = body.theme === 'padrao' || body.theme === 'natal' || body.theme === 'carnaval' || body.theme === 'pascoa' ? body.theme : previous.theme;
     const announcement = body.announcement ? {
       enabled: Boolean(body.announcement.enabled),
       title: String(body.announcement.title || '').trim().slice(0, 90),

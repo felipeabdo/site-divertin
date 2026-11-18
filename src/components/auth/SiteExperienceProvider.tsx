@@ -87,7 +87,7 @@ export default function SiteExperienceProvider({ children }: { children: ReactNo
   }, [refreshSettings, refreshUser]);
 
   useEffect(() => {
-    document.documentElement.dataset.siteTheme = settings.theme === 'natal' ? 'natal' : 'padrao';
+    document.documentElement.dataset.siteTheme = settings.theme;
   }, [settings.theme]);
 
   const authValue = useMemo(() => ({ user, loading, configured, refreshUser, logout }), [user, loading, configured, refreshUser, logout]);
