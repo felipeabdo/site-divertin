@@ -12,7 +12,7 @@ import "./globals.css";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://site-divertin.vercel.app"),
+  metadataBase: new URL("https://clinicadivertin.com.br"),
   title: "Clínica Divertin | Fonoaudiologia Infantil",
   description:
     "Fonoaudiologia infantil e acompanhamento especializado para crianças, com cuidado individualizado, acolhimento e parceria com a família.",
