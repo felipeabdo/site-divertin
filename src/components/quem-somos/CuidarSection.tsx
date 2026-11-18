@@ -2,10 +2,11 @@ import Cloud from "../Cloud";
 import { Dashes } from "./Decor";
 import PlayIllustration from "./PlayIllustration";
 import { H2, PAL } from "./data";
+import EasterSectionDecor from "@/components/seasonal/EasterSectionDecor";
 
 export default function CuidarSection() {
   return (
-    <section className="relative bg-[#FFF4E8] pb-24 pt-24 md:pb-28 md:pt-28">
+    <section data-carnival-section="about-care" className="relative isolate bg-[#FFF4E8] pb-24 pt-24 md:pb-28 md:pt-28">
       <Dashes color={PAL.pink} className="left-[5%] top-14 hidden md:block" size={38} rotate={-15} />
       <Dashes color={PAL.green} className="bottom-16 right-[6%] hidden md:block" size={38} rotate={170} />
 
@@ -22,6 +23,7 @@ export default function CuidarSection() {
         </div>
       </div>
 
+      <EasterSectionDecor placement="about-care" />
       <Cloud position="bottom" color="#FFFFFF" />
     </section>
   );

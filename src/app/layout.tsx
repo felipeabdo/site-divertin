@@ -4,7 +4,6 @@ import DeferredAnalytics from "@/components/DeferredAnalytics";
 import DeferredScreenSaver from "@/components/DeferredScreenSaver";
 import OfflineExperience from "@/components/offline/OfflineExperience";
 import ScrollRevealController from "@/components/ScrollRevealController";
-import SeasonalExperienceProvider from "@/components/seasonal/SeasonalExperienceProvider";
 import SiteExperienceProvider from "@/components/auth/SiteExperienceProvider";
 import { getSiteSettings, type SiteSettings } from "@/lib/auth";
 import "./globals.css";
@@ -50,7 +49,6 @@ export default async function RootLayout({
       <body className="flex min-h-full flex-col">
         
       <SiteExperienceProvider initialSettings={initialSettings}>
-      <SeasonalExperienceProvider>
       <OfflineExperience>
         <DeferredScreenSaver
           sources={[
@@ -65,7 +63,6 @@ export default async function RootLayout({
         <ScrollRevealController />
         <DeferredAnalytics gaId="G-14VEB6PD4R" />
       </OfflineExperience>
-      </SeasonalExperienceProvider>
       </SiteExperienceProvider>
       </body>
     </html>

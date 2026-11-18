@@ -10,7 +10,7 @@ const CREDENTIALS = [
 
 export default function Footer() {
   return (
-    <footer className="site-footer relative mt-0 w-full overflow-visible px-6 pb-10 pt-28 md:mt-0 md:pt-32">
+    <footer data-carnival-section="site-footer" className="site-footer relative isolate mt-0 w-full overflow-visible px-6 pb-10 pt-28 md:mt-0 md:pt-32">
 
       <div data-reveal className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center">
         <Image

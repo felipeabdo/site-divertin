@@ -8,8 +8,8 @@ import Cloud from '@/components/Cloud';
 import Arrow from '@/components/quem-somos/Arrow';
 import { CONTATO } from '@/data/contatoData';
 import StaticGoogleReviewsSection from '@/components/home/StaticGoogleReviewsSection';
-import { SeasonalSectionMoment } from '@/components/seasonal/SeasonalMoments';
-import SeasonalHeroBackdrop from '@/components/seasonal/SeasonalHeroBackdrop';
+import EasterSectionDecor from '@/components/seasonal/EasterSectionDecor';
+import CarnivalScrollDecorations from '@/components/seasonal/CarnivalScrollDecorations';
 
 const FEATURES = [
   {
@@ -37,13 +37,12 @@ const FEATURES = [
 
 export default function Home() {
   return (
-    <div className="site-page min-h-screen overflow-x-hidden bg-white">
-      <section className="site-hero site-hero--home relative min-h-[760px] w-full lg:min-h-[820px]">
+    <div className="site-page relative isolate min-h-screen overflow-x-hidden bg-white">
+      <section data-carnival-section="home-hero" className="site-hero site-hero--home relative isolate min-h-[760px] w-full lg:min-h-[820px]">
         <div className="absolute inset-0">
           <HeroBackground />
           <div className="absolute inset-0 bg-gradient-to-r from-[#35243A]/90 via-[#4B2B45]/64 to-[#4B2B45]/12" />
           <div className="site-hero-glow absolute inset-0" />
-          <SeasonalHeroBackdrop placement="home" />
         </div>
 
         <header className="absolute inset-x-0 top-5 z-30 h-24 px-5 sm:px-7">
@@ -53,7 +52,7 @@ export default function Home() {
         </header>
 
         <div className="site-hero-inner relative z-10 mx-auto flex min-h-[760px] w-full max-w-6xl items-end px-6 pb-28 pt-36 lg:min-h-[820px] lg:pb-32">
-          <div data-reveal-load className="site-hero-copy max-w-[720px] text-white">
+          <div data-reveal-load className="site-hero-copy relative z-10 max-w-[720px] text-white">
             <Logo className="mb-7" />
             <p className="site-hero-eyebrow">Fonoaudiologia infantil e pediatria</p>
             <h1 className="site-hero-title mt-4 font-avenir">
@@ -70,11 +69,12 @@ export default function Home() {
           </div>
         </div>
 
+        <EasterSectionDecor placement="home-hero" />
         <Cloud position="bottom" color="#FFFFFF" />
       </section>
 
-      <section className="site-section relative mx-auto w-full max-w-6xl px-6 pb-28 pt-16 md:pb-32 md:pt-20">
-        <div data-reveal className="mx-auto max-w-3xl text-center">
+      <section data-carnival-section="home-features" className="site-section relative isolate mx-auto w-full max-w-6xl px-6 pb-28 pt-16 md:pb-32 md:pt-20">
+        <div data-reveal className="relative z-10 mx-auto max-w-3xl text-center">
           <p className="site-eyebrow site-eyebrow--pink">Cuidado que acompanha cada descoberta</p>
           <h2 className="site-section-title mt-4">
             Seu filho apresenta dificuldades na fala, comunicação ou aprendizado?
@@ -92,13 +92,13 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <div className="relative z-10 mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {FEATURES.map((feature, index) => (
             <article
               key={feature.title}
               data-reveal
               data-reveal-delay={String(index * 100)}
-              className="site-feature-card flex h-full flex-col items-center text-center"
+              className="site-feature-card relative z-10 flex h-full flex-col items-center text-center"
             >
               <div className={`site-feature-icon ${feature.tone}`}>
                 <Image src={feature.icon} alt={feature.alt} width={80} height={80} className="h-12 w-12 object-contain" />
@@ -112,15 +112,17 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <SeasonalSectionMoment placement="home-features" />
+        <EasterSectionDecor placement="home-intro" />
+        <EasterSectionDecor placement="home-features" />
         <Cloud position="bottom" color="#FFF4E8" />
       </section>
 
-      <div className="seasonal-reviews-slot">
-        <SeasonalSectionMoment placement="reviews" />
-      </div>
-      <StaticGoogleReviewsSection />
+      <section data-carnival-section="home-reviews" className="relative isolate">
+        <EasterSectionDecor placement="reviews" />
+        <div className="relative z-10"><StaticGoogleReviewsSection /></div>
+      </section>
       <Footer />
+      <CarnivalScrollDecorations />
     </div>
   );
 }

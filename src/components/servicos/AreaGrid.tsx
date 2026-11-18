@@ -2,13 +2,14 @@ import type { Service } from '@/data/servicosData';
 import ServiceIcon from './Icon';
 import SectionDashes from './SectionDashes';
 import Cloud from '@/components/Cloud';
+import EasterSectionDecor from '@/components/seasonal/EasterSectionDecor';
 
 export default function AreaGrid({ service }: { service: Service }) {
   return (
-    <section className="relative mx-auto w-full max-w-6xl px-6 pb-28 pt-20 md:pb-32 md:pt-24">
+    <section data-carnival-section="service-areas" className="relative isolate mx-auto w-full max-w-6xl px-6 pb-28 pt-20 md:pb-32 md:pt-24">
       <SectionDashes color={service.accent} className="right-3 top-16 rotate-180" />
 
-      <div data-reveal className="mx-auto max-w-3xl text-center">
+      <div data-reveal className="relative z-10 mx-auto max-w-3xl text-center">
         <p className="site-eyebrow" style={{ color: service.accent }}>
           O que podemos acompanhar
         </p>
@@ -20,7 +21,7 @@ export default function AreaGrid({ service }: { service: Service }) {
         </p>
       </div>
 
-      <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="relative z-10 mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {service.areas.map((area, index) => (
           <article
             key={area.title}
@@ -39,6 +40,7 @@ export default function AreaGrid({ service }: { service: Service }) {
           </article>
         ))}
       </div>
+      <EasterSectionDecor placement="service-detail" />
       <Cloud position="bottom" color="#FBF8F4" />
     </section>
   );

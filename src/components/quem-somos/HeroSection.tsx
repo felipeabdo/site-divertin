@@ -5,18 +5,17 @@ import Arrow from "./Arrow";
 import Logo from "@/components/Logo";
 import Cloud from "../Cloud";
 import { CONTATO } from "@/data/contatoData";
-import SeasonalHeroBackdrop from "@/components/seasonal/SeasonalHeroBackdrop";
+import EasterSectionDecor from "@/components/seasonal/EasterSectionDecor";
 
 export default function HeroSection() {
   return (
-    <section className="site-hero relative min-h-[700px] w-full overflow-visible lg:min-h-[760px]">
+    <section data-carnival-section="about-hero" className="site-hero relative isolate min-h-[700px] w-full overflow-visible lg:min-h-[760px]">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -inset-6">
           <Image src="/bg-hero.webp" alt="" fill preload sizes="100vw" className="object-cover object-top blur-sm" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#35243A]/92 via-[#4B2B45]/72 to-[#4B2B45]/24" />
         <div className="site-hero-glow absolute inset-0" />
-        <SeasonalHeroBackdrop placement="about" />
       </div>
 
       <header className="absolute inset-x-0 top-5 z-30 h-24 px-5 sm:px-7">
@@ -41,6 +40,7 @@ export default function HeroSection() {
         </div>
       </div>
 
+      <EasterSectionDecor placement="about-hero" />
       <Cloud position="bottom" color="#FFF4E8" />
     </section>
   );

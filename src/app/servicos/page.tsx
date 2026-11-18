@@ -9,7 +9,8 @@ import ServicePrinciples from "@/components/servicos/ServicePrinciples";
 import SectionDashes from "@/components/servicos/SectionDashes";
 import ScrollReveal from "@/components/servicos/ScrollReveal";
 import { SERVICOS } from "@/data/servicosData";
-import SeasonalHeroBackdrop from "@/components/seasonal/SeasonalHeroBackdrop";
+import EasterSectionDecor from "@/components/seasonal/EasterSectionDecor";
+import CarnivalScrollDecorations from "@/components/seasonal/CarnivalScrollDecorations";
 
 export const metadata: Metadata = {
   title: "Especialidades | Divertin",
@@ -19,15 +20,14 @@ export const metadata: Metadata = {
 
 export default function ServicosPage() {
   return (
-    <div className="site-page min-h-screen overflow-x-hidden bg-white">
-      <section className="site-hero relative min-h-[700px] overflow-visible lg:min-h-[760px]">
+    <div className="site-page relative isolate min-h-screen overflow-x-hidden bg-white">
+      <section data-carnival-section="services-hero" className="site-hero relative isolate min-h-[700px] overflow-visible lg:min-h-[760px]">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -inset-6">
             <Image src="/bg-hero.webp" alt="" fill preload sizes="100vw" className="object-cover object-top blur-sm" />
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-[#35243A]/94 via-[#5B3657]/80 to-[#D684BF]/35" />
           <div className="site-hero-glow absolute inset-0" />
-          <SeasonalHeroBackdrop placement="services" />
         </div>
 
         <ServiceHeader />
@@ -44,12 +44,14 @@ export default function ServicosPage() {
         </div>
 
         <SectionDashes color="#FDD5A5" className="bottom-20 right-[8%] rotate-45" />
+        <EasterSectionDecor placement="services-hero" />
         <Cloud position="bottom" color="#FFFFFF" />
       </section>
 
       <ServiceCardGrid services={SERVICOS} />
       <ServicePrinciples />
       <Footer />
+      <CarnivalScrollDecorations />
     </div>
   );
 }

@@ -4,11 +4,12 @@ import Arrow from "./Arrow";
 import { Heart, StarShape } from "./Decor";
 import { H2, PAL } from "./data";
 import { CONTATO } from "@/data/contatoData";
+import EasterSectionDecor from "@/components/seasonal/EasterSectionDecor";
 
 export default function CtaSection() {
   return (
-    <section className="relative mt-0 w-full bg-white px-6 pb-28 pt-10 md:pb-32 md:pt-14">
-      <div className="mx-auto w-full max-w-6xl">
+    <section data-carnival-section="about-cta" className="relative isolate mt-0 w-full bg-white px-6 pb-28 pt-10 md:pb-32 md:pt-14">
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
       <div data-reveal="zoom" className="relative overflow-hidden rounded-[30px] border border-[#E9EBC4] bg-gradient-to-br from-[#F6F8DF] via-[#F8F6E7] to-[#FBEAF4] px-6 py-14 text-center shadow-[0_18px_44px_rgba(74,60,61,.07)] sm:px-10 md:py-16">
         <Heart color={PAL.pink} className="left-[7%] top-[34%] hidden h-10 w-10 md:block" />
         <StarShape color={PAL.orange} className="bottom-[17%] right-[8%] hidden h-9 w-9 md:block" />
@@ -24,6 +25,7 @@ export default function CtaSection() {
         </div>
       </div>
       </div>
+      <EasterSectionDecor placement="cta" />
       <Cloud position="bottom" color="#ffbdde" />
     </section>
   );

@@ -2,12 +2,12 @@ import { Dashes } from "./Decor";
 import TeamCard from "./TeamCard";
 import { H2, PAL, TEAM } from "./data";
 import Cloud from "@/components/Cloud";
-import { SeasonalSectionMoment } from "@/components/seasonal/SeasonalMoments";
+import EasterSectionDecor from "@/components/seasonal/EasterSectionDecor";
 
 export default function TeamSection() {
   return (
-    <section className="relative mt-20 w-full bg-white px-6 pb-28 pt-4 md:mt-24 md:pb-32">
-      <div className="mx-auto w-full max-w-6xl">
+    <section data-carnival-section="about-team" className="relative isolate mt-20 w-full bg-white px-6 pb-28 pt-4 md:mt-24 md:pb-32">
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
       <div data-reveal className="mx-auto max-w-3xl text-center">
         <p className="site-eyebrow site-eyebrow--pink">Quem acompanha cada conquista</p>
         <h2 className={`${H2} site-section-title mt-4`}>Nossa equipe</h2>
@@ -22,7 +22,7 @@ export default function TeamSection() {
         {TEAM.map((member) => <TeamCard key={member.name} member={member} />)}
       </div>
       </div>
-      <SeasonalSectionMoment placement="team" />
+      <EasterSectionDecor placement="team" />
       <Cloud position="bottom" color="#FFF9FC" />
     </section>
   );

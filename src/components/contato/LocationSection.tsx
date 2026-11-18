@@ -2,14 +2,15 @@ import { CONTATO } from '@/data/contatoData';
 import Arrow from '../quem-somos/Arrow';
 import InteractiveMap from './InteractiveMap';
 import Cloud from '@/components/Cloud';
+import EasterSectionDecor from '@/components/seasonal/EasterSectionDecor';
 
 const mapQuery = encodeURIComponent(`Clínica Divertin, ${CONTATO.address}`);
 const mapUrl = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 
 export default function LocationSection() {
   return (
-    <section className="relative w-full bg-white pb-28 pt-20 md:pb-32 md:pt-24">
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-9 px-6 lg:grid-cols-[.95fr_1.05fr] lg:gap-12">
+    <section data-carnival-section="contact-location" className="relative isolate w-full bg-white pb-28 pt-20 md:pb-32 md:pt-24">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-9 px-6 lg:grid-cols-[.95fr_1.05fr] lg:gap-12">
         <div data-reveal className="max-w-[520px]">
           <p className="site-eyebrow site-eyebrow--pink">Onde estamos</p>
           <h2 className="site-section-title mt-4">Fácil de encontrar na Asa Sul</h2>
@@ -37,6 +38,7 @@ export default function LocationSection() {
           </div>
         </div>
       </div>
+      <EasterSectionDecor placement="location" />
       <Cloud position="bottom" color="#FBF8F4" />
     </section>
   );

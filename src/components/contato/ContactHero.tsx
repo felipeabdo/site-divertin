@@ -6,18 +6,17 @@ import { CONTATO } from "@/data/contatoData";
 import Arrow from "../quem-somos/Arrow";
 import Logo from "@/components/Logo";
 import SantaHat from "@/components/SantaHat";
-import SeasonalHeroBackdrop from "@/components/seasonal/SeasonalHeroBackdrop";
+import EasterSectionDecor from "@/components/seasonal/EasterSectionDecor";
 
 export default function ContactHero() {
   return (
-    <section className="site-hero relative min-h-[700px] overflow-visible lg:min-h-[760px]">
+    <section data-carnival-section="contact-hero" className="site-hero relative isolate min-h-[700px] overflow-visible lg:min-h-[760px]">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -inset-6">
           <Image src="/bg-hero.webp" alt="" fill preload sizes="100vw" className="object-cover object-top blur-sm" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#35243A]/92 via-[#4B2B45]/72 to-[#4B2B45]/24" />
         <div className="site-hero-glow absolute inset-0" />
-        <SeasonalHeroBackdrop placement="contact" />
       </div>
 
       <header className="absolute inset-x-0 top-5 z-30 h-24 px-5 sm:px-7">
@@ -55,6 +54,7 @@ export default function ContactHero() {
         <SantaHat className="divertin-santa-hat--contact" />
       </div>
 
+      <EasterSectionDecor placement="contact-hero" />
       <Cloud position="bottom" color="#FFF4E8" />
     </section>
   );

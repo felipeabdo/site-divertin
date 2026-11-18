@@ -8,6 +8,7 @@ import { submitContactPayload } from '@/lib/offlineQueue';
 import type { ContactPayload } from '@/lib/offlineQueue';
 import Arrow from '../quem-somos/Arrow';
 import Cloud from '@/components/Cloud';
+import EasterSectionDecor from '@/components/seasonal/EasterSectionDecor';
 
 const initialForm = {
   nome: '',
@@ -103,8 +104,8 @@ export default function ContactForm() {
     'w-full rounded-[14px] border border-[#E8E0E8] bg-white px-4 py-3.5 text-[15px] text-[#463D49] outline-none transition placeholder:text-[#A59BA7] focus:border-[#C36C9F] focus:ring-4 focus:ring-[#D684BF]/15';
 
   return (
-    <section className="relative overflow-visible bg-[#FBF8F4] pb-28 pt-20 md:pb-32 md:pt-24">
-      <div className="mx-auto w-full max-w-4xl px-6">
+    <section data-carnival-section="contact-form" className="relative isolate overflow-visible bg-[#FBF8F4] pb-28 pt-20 md:pb-32 md:pt-24">
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-6">
         <div data-reveal className="mb-10 text-center">
           <p className="site-eyebrow site-eyebrow--pink">Fale conosco</p>
           <h2 className="site-section-title mt-4">
@@ -237,6 +238,7 @@ export default function ContactForm() {
           )}
         </form>
       </div>
+      <EasterSectionDecor placement="contact-form" />
       <Cloud position="bottom" color="#ffbdde" />
     </section>
   );

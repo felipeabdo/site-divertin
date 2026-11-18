@@ -3,11 +3,12 @@ import ServiceCard from "./ServiceCard";
 import SectionDashes from "./SectionDashes";
 import Cloud from "@/components/Cloud";
 import ScrollReveal from "./ScrollReveal";
+import EasterSectionDecor from "@/components/seasonal/EasterSectionDecor";
 
 export default function ServiceCardGrid({ services }: { services: Service[] }) {
   return (
-    <section className="site-services-intro relative bg-white">
-      <section className="relative mx-auto w-full max-w-6xl px-6 pb-24 pt-20 md:pb-28 md:pt-24">
+    <section data-carnival-section="services-grid" className="site-services-intro relative isolate bg-white">
+      <section className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-24 pt-20 md:pb-28 md:pt-24">
         <SectionDashes color="#D684BF" className="left-3 top-12 -rotate-12 md:top-16" />
         <ScrollReveal className="mx-auto max-w-3xl text-center">
           <p className="site-eyebrow site-eyebrow--pink">Especialidades</p>
@@ -26,6 +27,7 @@ export default function ServiceCardGrid({ services }: { services: Service[] }) {
           ))}
         </div>
       </section>
+      <EasterSectionDecor placement="services-grid" />
       <Cloud position="bottom" color="#FFF4E8" />
     </section>
   );

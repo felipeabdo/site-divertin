@@ -5,6 +5,7 @@ import AreaGrid from '@/components/servicos/AreaGrid';
 import ServiceCTA from '@/components/servicos/ServiceCTA';
 import ServiceDetailHero from '@/components/servicos/ServiceDetailHero';
 import { SERVICOS, getServicoBySlug } from '@/data/servicosData';
+import CarnivalScrollDecorations from '@/components/seasonal/CarnivalScrollDecorations';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -33,11 +34,12 @@ export default async function ServicoDetalhePage({ params }: PageProps) {
   if (!service) notFound();
 
   return (
-    <div className="site-page min-h-screen overflow-x-hidden bg-white">
+    <div className="site-page relative isolate min-h-screen overflow-x-hidden bg-white">
       <ServiceDetailHero service={service} />
       <AreaGrid service={service} />
       <ServiceCTA accent={service.accent} />
       <Footer />
+      <CarnivalScrollDecorations />
     </div>
   );
 }

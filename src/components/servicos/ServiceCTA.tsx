@@ -3,11 +3,12 @@ import SectionDashes from './SectionDashes';
 import { CONTATO } from '@/data/contatoData';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
 import Cloud from '@/components/Cloud';
+import EasterSectionDecor from '@/components/seasonal/EasterSectionDecor';
 
 export default function ServiceCTA({ accent }: { accent: string }) {
   return (
-    <section className="relative w-full bg-[#FBF8F4] px-6 pb-28 pt-10 md:pb-32 md:pt-14">
-      <div className="mx-auto w-full max-w-6xl">
+    <section data-carnival-section="service-cta" className="relative isolate w-full bg-[#FBF8F4] px-6 pb-28 pt-10 md:pb-32 md:pt-14">
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
       <div data-reveal="zoom" className="relative overflow-hidden rounded-[28px] border border-[#E7EBC7] bg-gradient-to-br from-[#F5F8DF] via-[#F8F7EB] to-[#FBEAF4] px-6 py-12 text-center shadow-[0_16px_40px_rgba(59,43,57,.07)] sm:px-10 md:py-14">
         <SectionDashes color="#D684BF" className="left-8 top-8 rotate-45" />
         <SectionDashes color="#F7931E" className="bottom-7 right-8 -rotate-90" />
@@ -29,6 +30,7 @@ export default function ServiceCTA({ accent }: { accent: string }) {
         </a>
       </div>
       </div>
+      <EasterSectionDecor placement="cta" />
       <Cloud position="bottom" color="#ffbdde" />
     </section>
   );

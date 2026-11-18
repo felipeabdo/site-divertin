@@ -6,6 +6,7 @@ import Cloud from "@/components/Cloud";
 import ImageModal from "./ImageModal";
 import Photo from "./Photo";
 import { CLINIC_GALLERY, CLINIC_MAIN, H2, PAL, type ClinicPhoto } from "./data";
+import EasterSectionDecor from "@/components/seasonal/EasterSectionDecor";
 
 const VIEWABLE = [CLINIC_MAIN, ...CLINIC_GALLERY].filter(
   (p): p is ClinicPhoto & { src: string } => Boolean(p.src),
@@ -21,8 +22,8 @@ export default function ClinicSection() {
   };
 
   return (
-    <section className="relative mt-0 w-full bg-[#FFF9FC] px-6 pb-28 pt-10 md:pb-32 md:pt-14">
-      <div className="relative mx-auto w-full max-w-6xl">
+    <section data-carnival-section="about-clinic" className="relative isolate mt-0 w-full bg-[#FFF9FC] px-6 pb-28 pt-10 md:pb-32 md:pt-14">
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
       <Blob color={PAL.lime} radius="50%" className="-right-3 -top-3 hidden h-12 w-12 lg:block" />
       <Blob color={PAL.greenSoft} radius="50%" className="-left-4 top-[290px] hidden h-9 w-9 lg:block" />
       <Dashes color={PAL.green} className="-right-2 bottom-8 hidden lg:block" size={32} rotate={200} />
@@ -64,6 +65,7 @@ export default function ClinicSection() {
 
       <ImageModal images={VIEWABLE} index={openIndex} onClose={close} onChange={setOpenIndex} />
       </div>
+      <EasterSectionDecor placement="clinic" />
       <Cloud position="bottom" color="#FFFFFF" />
     </section>
   );

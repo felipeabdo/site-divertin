@@ -1,7 +1,7 @@
 import SectionDashes from "./SectionDashes";
 import ScrollReveal from "./ScrollReveal";
 import Cloud from "@/components/Cloud";
-import { SeasonalSectionMoment } from "@/components/seasonal/SeasonalMoments";
+import EasterSectionDecor from "@/components/seasonal/EasterSectionDecor";
 
 const PRINCIPLES = [
   {
@@ -50,7 +50,7 @@ function PrincipleIcon({ name, color }: { name: (typeof PRINCIPLES)[number]['ico
 
 export default function ServicePrinciples() {
   return (
-    <section className="site-principles relative overflow-visible bg-[#FFF4E8] pb-28 pt-20 md:pb-32 md:pt-24">
+    <section data-carnival-section="services-principles" className="site-principles relative isolate overflow-visible bg-[#FFF4E8] pb-28 pt-20 md:pb-32 md:pt-24">
       <SectionDashes color="#6FBF9F" className="bottom-12 left-[6%] rotate-180" />
       <SectionDashes color="#D684BF" className="right-[6%] top-12 rotate-45" />
 
@@ -75,7 +75,7 @@ export default function ServicePrinciples() {
             </ScrollReveal>
           ))}
         </div>
-        <SeasonalSectionMoment placement="principles" />
+        <EasterSectionDecor placement="principles" />
       </div>
       <Cloud position="bottom" color="#ffbdde" />
     </section>

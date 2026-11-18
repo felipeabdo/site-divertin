@@ -2233,455 +2233,208 @@ html[data-site-theme="pascoa"] [style*="rgba(78,31,68"] { background: linear-gra
 
 
 /* --------------------------------------------------------------------------
-   Seasonal experience: contextual, section-bound moments (no fixed layer).
-   Photos are licensed stock photographs hosted by Pexels; credits are in
-   public/seasonal/credits.md.
+   Seasonal decoration: assets from public-domain illustration libraries.
+   Decorations are absolute children of their own sections, never fixed to
+   the viewport, and never replace the original Divertin photographs.
    -------------------------------------------------------------------------- */
-.seasonal-moment {
-  --seasonal-accent: #e74791;
-  --seasonal-accent-deep: #a83d78;
+.site-page {
   position: relative;
   isolation: isolate;
-  color: #514956;
 }
-.seasonal-moment--carnaval {
-  --seasonal-accent: #e74791;
-  --seasonal-accent-deep: #a43b7c;
-}
-.seasonal-moment--pascoa {
-  --seasonal-accent: #d780a6;
-  --seasonal-accent-deep: #a45a80;
-}
-.seasonal-moment__photo-wrap {
-  position: relative;
-  min-width: 0;
-  overflow: hidden;
-  border-radius: 22px;
-  background: #f7e8ef;
-  box-shadow: 0 13px 32px rgba(59,43,57,.13);
-}
-.seasonal-moment__photo {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .45s ease;
-}
-.seasonal-moment__photo-wrap:hover .seasonal-moment__photo {
-  transform: scale(1.045);
-}
-.seasonal-moment__photo-credit {
+
+/* Easter: rabbits and eggs peek from behind the original content/cards. */
+.easter-section-decor {
   position: absolute;
-  right: .65rem;
-  bottom: .6rem;
-  z-index: 4;
-  max-width: calc(100% - 1.3rem);
-  padding: .28rem .56rem;
-  border: 1px solid rgba(255,255,255,.22);
-  border-radius: 999px;
-  background: rgba(34,27,37,.58);
-  color: rgba(255,255,255,.96);
-  font-size: .58rem;
-  font-weight: 750;
-  line-height: 1.25;
-  text-decoration: none;
-  backdrop-filter: blur(7px);
-  transition: background .2s ease, transform .2s ease;
-}
-.seasonal-moment__photo-credit:hover { background: rgba(34,27,37,.82); transform: translateY(-2px); }
-.seasonal-moment__photo-credit:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-.seasonal-moment__copy { min-width: 0; }
-.seasonal-moment__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: .42rem;
-  color: var(--seasonal-accent-deep);
-  font-size: .67rem;
-  font-weight: 950;
-  letter-spacing: .13em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-.seasonal-moment__eyebrow::before {
-  width: 1.2rem;
-  height: 3px;
-  border-radius: 999px;
-  background: var(--seasonal-accent);
-  content: "";
-}
-.seasonal-moment__copy h3 {
-  margin: .55rem 0 0;
-  color: #443746;
-  font-family: inherit;
-  font-size: clamp(1.18rem, 2vw, 1.75rem);
-  font-weight: 950;
-  letter-spacing: -.035em;
-  line-height: 1.12;
-}
-.seasonal-moment__copy p {
-  margin: .65rem 0 0;
-  color: #716874;
-  font-size: .88rem;
-  line-height: 1.7;
-}
-.seasonal-moment--hero {
-  position: absolute;
-  z-index: 14;
-  top: 31%;
-  right: max(2rem, calc((100vw - 72rem) / 2));
-  display: grid;
-  width: min(20rem, 28vw);
-  gap: .9rem;
-  padding: .72rem;
-  border: 1px solid rgba(255,255,255,.24);
-  border-radius: 27px;
-  background: rgba(255,250,248,.13);
-  box-shadow: 0 22px 52px rgba(29,18,36,.23);
-  color: white;
-  backdrop-filter: blur(12px);
-  transform: rotate(1.5deg);
-  transition: transform .35s ease, background .35s ease;
-}
-.seasonal-moment--hero:hover { background: rgba(255,250,248,.19); transform: rotate(0deg) translateY(-4px); }
-.seasonal-moment--hero .seasonal-moment__photo-wrap { height: 178px; border-radius: 19px; box-shadow: none; }
-.seasonal-moment--hero .seasonal-moment__photo { min-height: 178px; }
-.seasonal-moment--hero .seasonal-moment__copy { padding: 0 .35rem .28rem; }
-.seasonal-moment--hero .seasonal-moment__eyebrow { color: #ffe7a0; }
-.seasonal-moment--hero .seasonal-moment__eyebrow::before { background: #ffca50; }
-.seasonal-moment--hero .seasonal-moment__copy h3 { color: white; font-size: 1.2rem; }
-.seasonal-moment--hero .seasonal-moment__copy p { color: rgba(255,255,255,.86); font-size: .75rem; }
-.seasonal-moment--hero .seasonal-moment__photo-credit { font-size: .52rem; }
-.seasonal-moment:not(.seasonal-moment--hero) {
-  display: grid;
-  grid-template-columns: minmax(230px,.82fr) minmax(0,1fr);
-  align-items: center;
-  gap: clamp(1.25rem,3vw,2.35rem);
-  width: min(100%, 960px);
-  margin: 3.25rem auto 0;
-  padding: clamp(.8rem,2vw,1.1rem);
+  z-index: 0;
+  inset: 0;
   overflow: visible;
-  border: 1px solid rgba(170,137,166,.17);
-  border-radius: 29px;
-  background: linear-gradient(112deg, rgba(255,255,255,.98), rgba(255,250,246,.94));
-  box-shadow: 0 15px 42px rgba(59,43,57,.075);
+  pointer-events: none;
+  user-select: none;
 }
-.seasonal-moment:not(.seasonal-moment--hero) .seasonal-moment__photo-wrap { height: 220px; }
-.seasonal-moment:not(.seasonal-moment--hero) .seasonal-moment__copy { padding: .75rem clamp(.5rem,2vw,1.2rem) .75rem 0; }
-.seasonal-moment--team { width: min(100%, 900px) !important; margin-top: 2.8rem !important; grid-template-columns: minmax(0,1fr) minmax(230px,.82fr); }
-.seasonal-moment--team .seasonal-moment__photo-wrap { grid-column: 2; grid-row: 1; }
-.seasonal-moment--team .seasonal-moment__copy { grid-column: 1; grid-row: 1; padding: .75rem 0 .75rem clamp(.5rem,2vw,1.2rem); }
-.seasonal-moment--principles { border-radius: 22px !important; }
-.seasonal-moment--principles .seasonal-moment__photo-wrap { border-radius: 16px 42px 16px 42px; }
-.seasonal-moment--contact { width: min(100%, 900px) !important; background-image: linear-gradient(108deg,rgba(255,255,255,.98),rgba(255,247,239,.94)); }
-.seasonal-moment--contact .seasonal-moment__photo-wrap { border-radius: 44px 18px 44px 18px; }
-.seasonal-moment--reviews { width: min(100%, 960px) !important; margin-top: 2.8rem !important; margin-bottom: 2rem !important; }
-.seasonal-moment--reviews .seasonal-moment__photo-wrap { height: 205px; }
-.seasonal-moment--carnaval:not(.seasonal-moment--hero) {
-  border-color: rgba(231,71,145,.2);
-  background: linear-gradient(112deg, #fff9fc 0%, #fff9f1 53%, #f4fbf7 100%);
+.easter-section-decor img {
+  position: absolute;
+  display: block;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 7px 8px rgba(77, 55, 66, .12));
 }
-.seasonal-moment--pascoa:not(.seasonal-moment--hero) {
-  border-color: rgba(181,143,167,.2);
-  background: linear-gradient(112deg, #fff9fb 0%, #fffdf5 52%, #f3faf5 100%);
+.easter-section-decor__bunny {
+  width: clamp(76px, 10vw, 142px);
+  max-height: 170px;
+  opacity: .94;
 }
-.seasonal-moment--carnaval .seasonal-moment__photo-wrap { outline: 4px solid rgba(245,190,67,.38); outline-offset: -4px; }
-.seasonal-moment--pascoa .seasonal-moment__photo-wrap { outline: 4px solid rgba(199,229,212,.62); outline-offset: -4px; }
-.seasonal-moment__ribbon {
+.easter-section-decor__bunny--line { width: clamp(78px, 9vw, 128px); filter: drop-shadow(0 6px 7px rgba(77, 55, 66, .1)); }
+.easter-section-decor__egg {
+  width: clamp(27px, 3.2vw, 43px);
+  opacity: .94;
+}
+.easter-section-decor__egg--1 { width: clamp(31px, 3.8vw, 49px); }
+.easter-section-decor__egg--2 { width: clamp(25px, 3vw, 38px); }
+.easter-section-decor__egg--3 { width: clamp(22px, 2.6vw, 34px); }
+
+/* Home hero: keep the seasonal art on the far edge, clear of the headline. */
+.easter-section-decor--home-hero .easter-section-decor__bunny { right: 1.2%; bottom: 7%; width: clamp(82px, 9vw, 126px); }
+.easter-section-decor--home-hero .easter-section-decor__egg--1 { right: 15%; bottom: 12%; transform: rotate(18deg); }
+.easter-section-decor--home-hero .easter-section-decor__egg--2 { right: 11%; bottom: 8%; transform: rotate(-19deg); }
+.easter-section-decor--home-intro .easter-section-decor__egg--1 { top: 5%; right: 11%; transform: rotate(18deg) translateY(38%); }
+.easter-section-decor--home-intro .easter-section-decor__egg--2 { top: 10%; right: 7%; transform: rotate(-17deg) translateY(40%); }
+.easter-section-decor--home-features .easter-section-decor__bunny { left: -2.5%; top: 42%; transform: rotate(-8deg); }
+.easter-section-decor--home-features .easter-section-decor__egg--1 { left: 10%; top: 14%; transform: rotate(-13deg); }
+.easter-section-decor--home-features .easter-section-decor__egg--2 { right: 7%; top: 49%; transform: rotate(17deg); }
+.easter-section-decor--home-features .easter-section-decor__egg--3 { right: 12%; bottom: 8%; transform: rotate(-14deg); }
+.easter-section-decor--reviews .easter-section-decor__bunny { right: 1%; top: 4%; width: clamp(68px, 8vw, 112px); transform: rotate(7deg); }
+.easter-section-decor--reviews .easter-section-decor__egg--1 { left: 8%; bottom: 8%; transform: rotate(-15deg); }
+.easter-section-decor--reviews .easter-section-decor__egg--2 { right: 13%; bottom: 11%; transform: rotate(16deg); }
+
+/* About page: ornaments are tucked behind cards and section edges. */
+.easter-section-decor--about-hero .easter-section-decor__bunny { right: 1%; bottom: 4%; width: clamp(78px, 9vw, 126px); transform: rotate(7deg); }
+.easter-section-decor--about-hero .easter-section-decor__egg--1 { left: 14%; bottom: 10%; transform: rotate(-15deg); }
+.easter-section-decor--about-hero .easter-section-decor__egg--2 { left: 18%; bottom: 7%; transform: rotate(16deg); }
+.easter-section-decor--about-care .easter-section-decor__bunny { left: 1%; bottom: 4%; width: clamp(78px, 9vw, 126px); transform: rotate(-7deg); }
+.easter-section-decor--about-care .easter-section-decor__egg--1 { right: 13%; top: 12%; transform: rotate(16deg); }
+.easter-section-decor--about-care .easter-section-decor__egg--2 { right: 9%; top: 17%; transform: rotate(-16deg); }
+.easter-section-decor--team .easter-section-decor__bunny { right: 1.5%; top: 8%; width: clamp(72px, 8vw, 118px); transform: rotate(8deg); }
+.easter-section-decor--team .easter-section-decor__egg--1 { left: 8%; bottom: 14%; transform: rotate(-18deg); }
+.easter-section-decor--team .easter-section-decor__egg--2 { left: 12%; bottom: 11%; transform: rotate(13deg); }
+.easter-section-decor--team .easter-section-decor__egg--3 { right: 15%; bottom: 6%; transform: rotate(12deg); }
+.easter-section-decor--clinic .easter-section-decor__bunny { left: 0; top: 22%; width: clamp(65px, 7vw, 100px); transform: rotate(-9deg); }
+.easter-section-decor--clinic .easter-section-decor__egg--1 { right: 8%; top: 8%; transform: rotate(16deg); }
+.easter-section-decor--clinic .easter-section-decor__egg--2 { right: 12%; top: 13%; transform: rotate(-13deg); }
+.easter-section-decor--clinic .easter-section-decor__egg--3 { left: 16%; bottom: 7%; transform: rotate(14deg); }
+.easter-section-decor--cta .easter-section-decor__bunny { right: 2%; bottom: -3%; width: clamp(70px, 8vw, 110px); transform: rotate(7deg); }
+.easter-section-decor--cta .easter-section-decor__egg--1 { left: 12%; top: 8%; transform: rotate(-15deg); }
+.easter-section-decor--cta .easter-section-decor__egg--2 { left: 16%; top: 13%; transform: rotate(16deg); }
+
+/* Services and individual service pages. */
+.easter-section-decor--services-hero .easter-section-decor__bunny { right: 1%; bottom: 5%; width: clamp(78px, 8vw, 118px); }
+.easter-section-decor--services-hero .easter-section-decor__egg--1 { right: 13%; bottom: 11%; transform: rotate(18deg); }
+.easter-section-decor--services-hero .easter-section-decor__egg--2 { right: 9%; bottom: 7%; transform: rotate(-18deg); }
+.easter-section-decor--services-grid .easter-section-decor__egg--1 { left: 8%; top: 5%; transform: rotate(-16deg); }
+.easter-section-decor--services-grid .easter-section-decor__egg--2 { right: 7%; top: 31%; transform: rotate(17deg); }
+.easter-section-decor--services-grid .easter-section-decor__egg--3 { right: 12%; bottom: 8%; transform: rotate(-12deg); }
+.easter-section-decor--principles .easter-section-decor__bunny { right: 2%; top: 12%; width: clamp(72px, 8vw, 116px); transform: rotate(8deg); }
+.easter-section-decor--principles .easter-section-decor__egg--1 { left: 9%; top: 22%; transform: rotate(-15deg); }
+.easter-section-decor--principles .easter-section-decor__egg--2 { left: 13%; top: 26%; transform: rotate(15deg); }
+.easter-section-decor--principles .easter-section-decor__egg--3 { right: 15%; bottom: 8%; transform: rotate(-14deg); }
+.easter-section-decor--service-detail .easter-section-decor__bunny { left: -1%; bottom: 3%; width: clamp(76px, 8vw, 118px); transform: rotate(-8deg); }
+.easter-section-decor--service-detail .easter-section-decor__egg--1 { right: 8%; top: 10%; transform: rotate(15deg); }
+.easter-section-decor--service-detail .easter-section-decor__egg--2 { right: 12%; top: 15%; transform: rotate(-13deg); }
+
+/* Contact page: small touches near the image/card edges, not over fields. */
+.easter-section-decor--contact-hero .easter-section-decor__egg--1 { right: 18%; bottom: 12%; transform: rotate(16deg); }
+.easter-section-decor--contact-hero .easter-section-decor__egg--2 { right: 14%; bottom: 8%; transform: rotate(-15deg); }
+.easter-section-decor--contact-band .easter-section-decor__egg--1 { left: 7%; top: 7%; transform: rotate(-14deg); }
+.easter-section-decor--contact-band .easter-section-decor__egg--2 { right: 9%; bottom: 9%; transform: rotate(16deg); }
+.easter-section-decor--location .easter-section-decor__bunny { left: 1%; top: 10%; width: clamp(70px, 8vw, 114px); transform: rotate(-8deg); }
+.easter-section-decor--location .easter-section-decor__egg--1 { right: 10%; top: 10%; transform: rotate(14deg); }
+.easter-section-decor--location .easter-section-decor__egg--2 { right: 14%; top: 15%; transform: rotate(-15deg); }
+.easter-section-decor--contact-form .easter-section-decor__egg--1 { left: 5%; bottom: 8%; transform: rotate(-16deg); }
+.easter-section-decor--contact-form .easter-section-decor__egg--2 { right: 5%; top: 8%; transform: rotate(16deg); }
+
+/* Carnival: scroll-triggered illustrators are absolutely positioned in the
+   document flow's page root. Nothing is fixed/sticky and pointer events pass. */
+.carnival-scroll-layer {
+  position: absolute;
+  z-index: 18;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  user-select: none;
+}
+.carnival-scroll-person {
   position: absolute;
   z-index: 2;
-  width: 74px;
-  height: 74px;
-  border: 5px solid transparent;
-  border-radius: 50%;
-  pointer-events: none;
-  transition: transform .4s ease;
+  width: clamp(72px, 8.5vw, 126px);
+  aspect-ratio: 3 / 4;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: carnival-folio-entry 5.8s cubic-bezier(.2,.74,.24,1) both;
 }
-.seasonal-moment__ribbon--one { top: -13px; right: 13%; border-top-color: #f4bf45; border-right-color: #f4bf45; transform: rotate(23deg); }
-.seasonal-moment__ribbon--two { bottom: -17px; left: 8%; width: 58px; height: 58px; border-bottom-color: #e74791; border-left-color: #2aae9b; transform: rotate(-30deg); }
-.seasonal-moment__photo-wrap:hover .seasonal-moment__ribbon--one { transform: rotate(85deg) scale(1.08); }
-.seasonal-moment__photo-wrap:hover .seasonal-moment__ribbon--two { transform: rotate(35deg) scale(1.1); }
-.seasonal-moment__confetti { position: absolute; inset: 0; z-index: 2; overflow: visible; pointer-events: none; }
-.seasonal-moment__confetti i { position: absolute; width: 8px; height: 13px; border-radius: 3px; background: #e74791; opacity: 0; transform: translateY(7px) rotate(27deg); }
-.seasonal-moment__confetti i:nth-child(1) { top: 8%; right: 7%; }
-.seasonal-moment__confetti i:nth-child(2) { top: 78%; right: 19%; background: #f5be43; transform: rotate(-42deg); }
-.seasonal-moment__confetti i:nth-child(3) { top: 26%; left: 4%; width: 7px; height: 7px; border-radius: 50%; background: #2aae9b; }
-.seasonal-moment__confetti i:nth-child(4) { bottom: 9%; left: 18%; background: #9b63b8; transform: rotate(64deg); }
-.seasonal-moment__confetti i:nth-child(5) { top: 48%; right: -1.5%; background: #f5be43; }
-.seasonal-moment__confetti i:nth-child(6) { bottom: 4%; right: 40%; width: 6px; height: 6px; border-radius: 50%; background: #e74791; }
-.seasonal-moment:hover .seasonal-moment__confetti i,
-.seasonal-moment:focus-within .seasonal-moment__confetti i { animation: seasonal-confetti-drift .9s cubic-bezier(.15,.7,.25,1) both; }
-@keyframes seasonal-confetti-drift { 0% { opacity: 0; transform: translateY(8px) rotate(0); } 20% { opacity: .9; } 100% { opacity: 0; transform: translateY(-25px) rotate(145deg); } }
-.seasonal-moment__photo-beat { position: absolute; top: 1rem; left: 1rem; display: flex; align-items: center; gap: 4px; height: 32px; padding: 0 .55rem; border: 1px solid rgba(255,255,255,.4); border-radius: 999px; background: rgba(44,31,54,.28); backdrop-filter: blur(6px); opacity: .76; }
-.seasonal-moment__photo-beat i { display: block; width: 3px; height: 9px; border-radius: 4px; background: #fff; transition: height .2s ease, background .2s ease; }
-.seasonal-moment__photo-beat i:nth-child(2) { height: 17px; background: #ffda75; }
-.seasonal-moment__photo-beat i:nth-child(3) { height: 12px; background: #f8a4ca; }
-.seasonal-moment:hover .seasonal-moment__photo-beat i,
-.seasonal-moment:focus-within .seasonal-moment__photo-beat i { animation: seasonal-bass-beat .56s ease-in-out 2 alternate; }
-@keyframes seasonal-bass-beat { to { height: 23px; background: #fff; } }
-.seasonal-moment-action-wrap { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; margin-top: 1.05rem; }
-.seasonal-moment-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: .45rem;
-  min-height: 38px;
-  padding: .55rem .9rem;
-  border: 0;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: .72rem;
-  font-weight: 900;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.seasonal-moment-action:hover { transform: translateY(-2px); }
-.seasonal-moment-action:focus-visible,
-.seasonal-easter-egg__button:focus-visible { outline: 3px solid #f1b643; outline-offset: 4px; }
-.seasonal-moment-action--carnival { background: linear-gradient(100deg,#e74791,#9b63b8 58%,#168b78); color: white; box-shadow: 0 7px 18px rgba(183,65,139,.21); }
-.seasonal-moment-action--carnival span { font-size: 1rem; }
-.seasonal-moment-feedback { color: #8b6884; font-size: .68rem; line-height: 1.45; }
-.seasonal-burst { position: absolute; left: 7.4rem; top: -1.6rem; width: 84px; height: 84px; pointer-events: none; }
-.seasonal-burst i { position: absolute; left: 50%; top: 50%; width: 7px; height: 13px; border-radius: 2px; background: #e74791; animation: seasonal-confetti-burst .85s cubic-bezier(.12,.72,.2,1) both; }
-.seasonal-burst i:nth-child(3n+1) { background: #f5be43; }
-.seasonal-burst i:nth-child(3n+2) { background: #2aae9b; }
-.seasonal-burst i:nth-child(1) { --x: -34px; --y: -29px; }
-.seasonal-burst i:nth-child(2) { --x: 29px; --y: -31px; }
-.seasonal-burst i:nth-child(3) { --x: 39px; --y: 5px; }
-.seasonal-burst i:nth-child(4) { --x: 21px; --y: 34px; }
-.seasonal-burst i:nth-child(5) { --x: -27px; --y: 31px; }
-.seasonal-burst i:nth-child(6) { --x: -40px; --y: 2px; }
-.seasonal-burst i:nth-child(7) { --x: -7px; --y: -42px; }
-.seasonal-burst i:nth-child(8) { --x: 4px; --y: 40px; }
-.seasonal-burst i:nth-child(9) { --x: 47px; --y: -22px; }
-.seasonal-burst i:nth-child(10) { --x: -47px; --y: -20px; }
-.seasonal-burst i:nth-child(11) { --x: 43px; --y: 31px; }
-.seasonal-burst i:nth-child(12) { --x: -39px; --y: 36px; }
-@keyframes seasonal-confetti-burst {
-  0% { opacity: 0; transform: translate(-50%,-50%) scale(.2) rotate(0deg); }
-  18% { opacity: 1; }
-  100% { opacity: 0; transform: translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1) rotate(190deg); }
-}
-.seasonal-easter-progress { display: flex; align-items: center; gap: .58rem; margin-top: 1rem; color: #856a7e; font-size: .7rem; font-weight: 850; }
-.seasonal-easter-progress__eggs { display: flex; align-items: center; gap: .2rem; }
-.seasonal-easter-progress__eggs i { display: block; width: 13px; height: 17px; border: 1.5px solid #c5a5b8; border-radius: 50% 50% 46% 46%; background: #fff; transform: rotate(-12deg); }
-.seasonal-easter-progress__eggs i:nth-child(2) { transform: rotate(9deg); background: #fff9eb; }
-.seasonal-easter-progress__eggs i:nth-child(3) { transform: rotate(-4deg); background: #f7edf5; }
-.seasonal-easter-progress__eggs i.is-found { border-color: #75a98c; background: linear-gradient(135deg,#e9b7cd,#c7e5d4); box-shadow: inset 0 0 0 2px rgba(255,255,255,.7); }
-.seasonal-easter-egg { position: absolute; z-index: 5; width: 36px; height: 43px; }
-.seasonal-easter-egg--home { top: 22%; right: 17%; }
-.seasonal-easter-egg--team { bottom: 16%; left: 25%; }
-.seasonal-easter-egg--principles { top: 36%; left: 13%; }
-.seasonal-easter-egg__button {
-  position: relative;
-  display: grid;
-  width: 28px;
-  height: 36px;
-  place-items: center;
-  padding: 0;
-  border: 2px solid rgba(164,111,144,.52);
-  border-radius: 51% 51% 48% 48% / 60% 60% 40% 40%;
-  background: linear-gradient(145deg,#fff8d9 0%,#e9b7cd 48%,#b9ddc8 100%);
-  box-shadow: 0 3px 9px rgba(92,61,79,.13);
-  cursor: pointer;
-  opacity: .7;
-  transform: rotate(-17deg) translateY(7px) scale(.84);
-  transition: transform .3s ease, filter .3s ease, opacity .3s ease, box-shadow .3s ease;
-}
-.seasonal-easter-egg__button::before,
-.seasonal-easter-egg__button::after { position: absolute; left: 50%; content: ""; transform: translateX(-50%); }
-.seasonal-easter-egg__button::before { top: 9px; width: 17px; height: 5px; border-top: 2px dotted rgba(164,90,128,.68); border-bottom: 2px dotted rgba(164,90,128,.68); }
-.seasonal-easter-egg__button::after { top: 20px; width: 4px; height: 4px; border-radius: 50%; background: #fff; box-shadow: -6px 0 #fff, 6px 0 #fff; }
-.seasonal-easter-egg:hover .seasonal-easter-egg__button,
-.seasonal-easter-egg__button:focus-visible { opacity: 1; box-shadow: 0 0 0 5px rgba(255,255,255,.58), 0 6px 16px rgba(92,61,79,.24); transform: rotate(0deg) translateY(-3px) scale(1.08); }
-.seasonal-easter-egg__button.is-found { border-color: #75a98c; filter: saturate(.82); opacity: 1; transform: rotate(0deg) translateY(0) scale(.95); }
-.seasonal-easter-egg__note { position: absolute; right: 2.35rem; top: 50%; width: min(225px, 58vw); padding: .58rem .75rem; border: 1px solid #e8d9e4; border-radius: 12px; background: #fffdf8; color: #75576d; box-shadow: 0 9px 24px rgba(65,44,62,.16); font-size: .68rem; font-weight: 750; line-height: 1.4; transform: translateY(-50%); animation: seasonal-note-in .28s ease both; }
-@keyframes seasonal-note-in { from { opacity: 0; transform: translate(6px,-50%); } to { opacity: 1; transform: translate(0,-50%); } }
-.seasonal-reviews-slot { padding: 0 1.5rem; }
-.seasonal-contact-story-slot { padding: 0 1.5rem 2.5rem; background: #fff; }
-
-/* Carnival: a palette that carries through the existing Divertin components. */
-html[data-site-theme="carnaval"] .site-hero-eyebrow { color: #ffe7a0; }
-html[data-site-theme="carnaval"] .site-eyebrow--pink { color: #b83c82; }
-html[data-site-theme="carnaval"] .site-eyebrow--green { color: #167b6b; }
-html[data-site-theme="carnaval"] .site-eyebrow--orange { color: #b75e25; }
-html[data-site-theme="carnaval"] .site-section-title { text-decoration-color: rgba(231,71,145,.22); }
-html[data-site-theme="carnaval"] .site-action { box-shadow: 0 9px 22px rgba(183,65,139,.16); }
-html[data-site-theme="carnaval"] .site-contact-card--whatsapp { border-color: #f2d5e5; background: linear-gradient(145deg,#fff2f8,#fff8e9 58%,#edf8f2); }
-html[data-site-theme="carnaval"] .site-feature-card { border-color: rgba(231,71,145,.16); background: linear-gradient(145deg,#fffafd,#fffaf2 56%,#f6fbf8); }
-html[data-site-theme="carnaval"] .site-feature-card:hover { box-shadow: 0 18px 44px rgba(183,65,139,.13); }
-html[data-site-theme="carnaval"] .site-principles { background: linear-gradient(135deg,#fff4f8,#fff8e9 55%,#eef8f2); }
-html[data-site-theme="carnaval"] .site-contact-band { background: linear-gradient(135deg,#fff3f8,#fff8e9 55%,#eff8f3); }
-html[data-site-theme="carnaval"] .seasonal-moment--hero { border-color: rgba(255,255,255,.34); }
-
-/* Easter: spring pastels, soft botanical light and chocolate-brown details. */
-html[data-site-theme="pascoa"] .site-hero-eyebrow { color: #ffedbf; }
-html[data-site-theme="pascoa"] .site-eyebrow--pink { color: #a45a80; }
-html[data-site-theme="pascoa"] .site-eyebrow--green { color: #648f75; }
-html[data-site-theme="pascoa"] .site-eyebrow--orange { color: #a56b49; }
-html[data-site-theme="pascoa"] .site-action { box-shadow: 0 9px 22px rgba(161,111,151,.13); }
-html[data-site-theme="pascoa"] .site-contact-card--whatsapp { border-color: #dceade; background: linear-gradient(145deg,#f5f0f8,#fff7eb 58%,#edf7ef); }
-html[data-site-theme="pascoa"] .site-feature-card { border-color: rgba(191,151,174,.2); background: linear-gradient(145deg,#fffafd,#fffdf6 56%,#f1f8f2); }
-html[data-site-theme="pascoa"] .site-feature-card:hover { box-shadow: 0 18px 44px rgba(161,111,151,.12); }
-html[data-site-theme="pascoa"] .site-principles { background: linear-gradient(135deg,#fff5f8,#fffbf1 52%,#eff8f0); }
-html[data-site-theme="pascoa"] .site-contact-band { background: linear-gradient(135deg,#fff5f8,#fffbf1 52%,#eff8f0); }
-html[data-site-theme="pascoa"] .seasonal-moment--hero { border-color: rgba(255,255,255,.38); }
-
-@media (max-width: 1150px) {
-  .seasonal-moment--hero {
-    position: relative;
-    top: auto;
-    right: auto;
-    width: min(calc(100% - 2rem), 36rem);
-    grid-template-columns: minmax(112px,.78fr) minmax(0,1fr);
-    align-items: center;
-    gap: .8rem;
-    margin: -2.5rem auto 4.5rem;
-    transform: none;
-  }
-  .seasonal-moment--hero:hover { transform: translateY(-2px); }
-  .seasonal-moment--hero .seasonal-moment__photo-wrap { height: 142px; border-radius: 16px; }
-  .seasonal-moment--hero .seasonal-moment__photo { min-height: 142px; }
-  .seasonal-moment--hero .seasonal-moment__copy h3 { font-size: clamp(.9rem,2.1vw,1.1rem); }
-  .seasonal-moment--hero .seasonal-moment__copy p { font-size: .65rem; line-height: 1.45; }
-  .seasonal-moment--hero .seasonal-moment__eyebrow { font-size: .52rem; letter-spacing: .08em; }
-  .seasonal-moment--hero .seasonal-moment__photo-credit { font-size: .48rem; right: .35rem; bottom: .35rem; }
-}
-@media (max-width: 430px) {
-  .seasonal-moment--hero { width: calc(100% - 1.25rem); grid-template-columns: 106px minmax(0,1fr); gap: .65rem; padding: .55rem; margin-top: -1.6rem; }
-  .seasonal-moment--hero .seasonal-moment__photo-wrap,
-  .seasonal-moment--hero .seasonal-moment__photo { height: 132px; min-height: 132px; }
-  .seasonal-moment--hero .seasonal-moment__copy h3 { font-size: .9rem; }
-  .seasonal-moment--hero .seasonal-moment__copy p { font-size: .61rem; }
-}
-@media (max-width: 760px) {
-  .seasonal-moment:not(.seasonal-moment--hero) { grid-template-columns: 1fr; gap: 1rem; margin-top: 2.2rem; border-radius: 23px; }
-  .seasonal-moment:not(.seasonal-moment--hero) .seasonal-moment__photo-wrap { height: clamp(165px, 48vw, 230px); }
-  .seasonal-moment:not(.seasonal-moment--hero) .seasonal-moment__copy { padding: .35rem .35rem .6rem; }
-  .seasonal-moment__copy h3 { font-size: 1.27rem; }
-  .seasonal-moment__copy p { font-size: .82rem; }
-  .seasonal-moment--team .seasonal-moment__photo-wrap,
-  .seasonal-moment--team .seasonal-moment__copy { grid-column: 1; grid-row: auto; }
-  .seasonal-moment--team .seasonal-moment__copy { padding: .35rem .35rem .6rem; }
-  .seasonal-easter-egg__note { right: 2rem; width: min(190px, 52vw); }
-  .seasonal-moment-action-wrap { align-items: flex-start; flex-direction: column; }
-  .seasonal-contact-story-slot { padding-inline: 1rem; }
-  .seasonal-reviews-slot { padding-inline: 1rem; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .seasonal-moment *, .seasonal-moment *::before, .seasonal-moment *::after,
-  .seasonal-easter-egg *, .seasonal-easter-egg *::before, .seasonal-easter-egg *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
-  }
-}
-
-
-/* Seasonal hero photos: replace the original static hero artwork only while
-   Carnaval/Páscoa is active. The layer stays inside each page's hero section. */
-.seasonal-hero-backdrop {
-  position: absolute;
-  z-index: 4;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  isolation: isolate;
-  background: #463248;
-}
-.seasonal-hero-backdrop__image {
-  position: absolute;
-  inset: 0;
+.carnival-scroll-person--left { left: 0; --person-tilt: -5deg; }
+.carnival-scroll-person--right { right: 0; --person-tilt: 5deg; animation-name: carnival-folio-entry-right; }
+.carnival-scroll-person__image {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 38%;
-  transform: scale(1.015);
-  animation: seasonal-hero-photo-in .8s ease both;
-  filter: saturate(1.08) contrast(1.02);
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 8px 9px rgba(58,39,61,.2));
 }
-.seasonal-hero-backdrop__shade {
+@keyframes carnival-folio-entry {
+  0% { opacity: 0; transform: translateX(var(--person-entry-x)) rotate(var(--person-tilt)) scale(.78); }
+  15% { opacity: 1; transform: translateX(-3%) rotate(0) scale(1); }
+  26% { opacity: 1; transform: translateX(2%) rotate(-2deg) scale(1.035); }
+  39% { opacity: 1; transform: translateX(0) rotate(0) scale(1); }
+  78% { opacity: .98; transform: translateX(0) rotate(0) scale(1); }
+  100% { opacity: 0; transform: translateX(var(--person-exit-x)) rotate(var(--person-tilt)) scale(.9); }
+}
+@keyframes carnival-folio-entry-right {
+  0% { opacity: 0; transform: translateX(var(--person-entry-x)) rotate(var(--person-tilt)) scale(.78); }
+  15% { opacity: 1; transform: translateX(3%) rotate(0) scale(1); }
+  26% { opacity: 1; transform: translateX(-2%) rotate(2deg) scale(1.035); }
+  39% { opacity: 1; transform: translateX(0) rotate(0) scale(1); }
+  78% { opacity: .98; transform: translateX(0) rotate(0) scale(1); }
+  100% { opacity: 0; transform: translateX(var(--person-exit-x)) rotate(var(--person-tilt)) scale(.9); }
+}
+.carnival-scroll-confetti {
   position: absolute;
   z-index: 1;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(44,27,49,.91) 0%, rgba(57,31,54,.72) 43%, rgba(58,35,55,.34) 100%), linear-gradient(0deg, rgba(39,25,43,.46), transparent 48%);
-}
-.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__shade {
-  background: linear-gradient(90deg, rgba(49,22,54,.91) 0%, rgba(73,31,66,.71) 43%, rgba(79,38,67,.27) 100%), linear-gradient(0deg, rgba(45,24,48,.48), transparent 52%);
-}
-.seasonal-hero-backdrop--pascoa .seasonal-hero-backdrop__shade {
-  background: linear-gradient(90deg, rgba(50,37,57,.88) 0%, rgba(75,53,74,.67) 44%, rgba(77,60,78,.28) 100%), linear-gradient(0deg, rgba(45,35,52,.42), transparent 54%);
-}
-.seasonal-hero-backdrop__accent {
-  position: absolute;
-  z-index: 2;
-  top: 20%;
-  right: 7%;
-  width: clamp(100px, 15vw, 210px);
-  height: clamp(100px, 15vw, 210px);
-  opacity: .92;
-  transition: transform .55s ease;
-}
-.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i {
-  position: absolute;
+  top: 0;
   display: block;
-  width: 5px;
-  height: 34px;
-  border-radius: 99px;
-  background: #f6c64e;
-  box-shadow: 0 0 14px rgba(255,255,255,.18);
+  width: 8px;
+  height: 13px;
+  border-radius: 2px;
+  opacity: 0;
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: carnival-paper-fall var(--paper-duration, 12s) linear var(--paper-delay, 0ms) both;
 }
-.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i:nth-child(1) { top: 9%; left: 50%; transform: rotate(35deg); }
-.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i:nth-child(2) { top: 34%; left: 72%; background: #e95a9e; transform: rotate(78deg); }
-.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i:nth-child(3) { top: 60%; left: 53%; background: #4bc09e; transform: rotate(-24deg); }
-.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i:nth-child(4) { top: 18%; left: 23%; background: #e95a9e; transform: rotate(-46deg); }
-.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i:nth-child(5) { top: 72%; left: 18%; background: #fff0ad; transform: rotate(48deg); }
-.seasonal-hero-backdrop--carnaval .seasonal-hero-backdrop__accent i:nth-child(6) { top: 45%; left: 5%; height: 23px; background: #4bc09e; transform: rotate(92deg); }
-.seasonal-hero-backdrop--pascoa .seasonal-hero-backdrop__accent i {
-  position: absolute;
-  display: block;
-  width: 27px;
-  height: 36px;
-  border: 2px solid rgba(255,255,255,.86);
-  border-radius: 50% 50% 48% 48% / 58% 58% 42% 42%;
-  background: linear-gradient(145deg, #f9d7e7, #f1d98e 55%, #b8dec8);
-  box-shadow: 0 8px 18px rgba(40,24,47,.2);
+.carnival-scroll-confetti--dot { width: 7px; height: 7px; border-radius: 50%; }
+.carnival-scroll-confetti--streamer { width: 5px; height: 25px; border-radius: 5px; }
+@keyframes carnival-paper-fall {
+  0% { opacity: 0; transform: translate3d(0,-18px,0) rotate(0deg); }
+  7% { opacity: .94; }
+  100% { opacity: .74; transform: translate3d(var(--paper-drift, 60px),var(--paper-fall-distance, 1800px),0) rotate(var(--paper-spin, 560deg)); }
 }
-.seasonal-hero-backdrop--pascoa .seasonal-hero-backdrop__accent i:nth-child(1) { top: 16%; left: 42%; transform: rotate(-18deg) scale(1.08); }
-.seasonal-hero-backdrop--pascoa .seasonal-hero-backdrop__accent i:nth-child(2) { top: 48%; left: 66%; background: linear-gradient(145deg,#e6d9f4,#f8e7b1 58%,#f2bfd2); transform: rotate(17deg); }
-.seasonal-hero-backdrop--pascoa .seasonal-hero-backdrop__accent i:nth-child(3) { top: 58%; left: 20%; background: linear-gradient(145deg,#c5e5d1,#fff0b9 58%,#e9c4da); transform: rotate(-9deg) scale(.86); }
-.seasonal-hero-backdrop__credit {
-  position: absolute;
-  z-index: 3;
-  right: 1.2rem;
-  bottom: 1.1rem;
-  max-width: calc(100% - 2.4rem);
-  padding: .35rem .65rem;
-  border: 1px solid rgba(255,255,255,.25);
-  border-radius: 999px;
-  background: rgba(34,25,39,.4);
-  color: rgba(255,255,255,.94);
-  font-size: .62rem;
-  font-weight: 750;
-  line-height: 1.3;
-  text-decoration: none;
-  backdrop-filter: blur(8px);
-  pointer-events: auto;
-}
-.seasonal-hero-backdrop__credit:hover { background: rgba(34,25,39,.72); }
-@keyframes seasonal-hero-photo-in {
-  from { opacity: .72; transform: scale(1.06); }
-  to { opacity: 1; transform: scale(1.015); }
-}
-html[data-site-theme="carnaval"] .site-hero-eyebrow { color: #ffe7a0; }
-html[data-site-theme="pascoa"] .site-hero-eyebrow { color: #fff0c8; }
+
+/* Theme colors harmonize existing buttons, cards and section accents without
+   changing the site's original media, layouts or typography. */
+html[data-site-theme="carnaval"] .site-hero-glow { opacity: .74; }
+html[data-site-theme="carnaval"] .site-section-title::after { background: linear-gradient(90deg,#e74791,#f4be48,#28a88d); }
+html[data-site-theme="carnaval"] .site-footer { background-image: linear-gradient(110deg,rgba(231,71,145,.08),rgba(244,190,72,.07),rgba(40,168,141,.08)); }
+html[data-site-theme="pascoa"] .site-hero-glow { opacity: .66; }
+html[data-site-theme="pascoa"] .site-section-title::after { background: linear-gradient(90deg,#d780a6,#a89bcf,#78a98e); }
+html[data-site-theme="pascoa"] .site-footer { background-image: linear-gradient(110deg,rgba(215,128,166,.08),rgba(168,155,207,.07),rgba(120,169,142,.08)); }
+
 @media (max-width: 760px) {
-  .seasonal-hero-backdrop__image { object-position: center; }
-  .seasonal-hero-backdrop__shade { background: linear-gradient(90deg, rgba(44,27,49,.87), rgba(57,31,54,.49)), linear-gradient(0deg, rgba(39,25,43,.34), transparent 55%); }
-  .seasonal-hero-backdrop__accent { top: 15%; right: 3%; transform: scale(.72); transform-origin: top right; }
-  .seasonal-hero-backdrop__credit { right: .7rem; bottom: .75rem; font-size: .54rem; }
+  .easter-section-decor__bunny { width: 72px; }
+  .easter-section-decor__egg { width: 27px; }
+  .easter-section-decor--home-hero .easter-section-decor__bunny,
+  .easter-section-decor--services-hero .easter-section-decor__bunny,
+  .easter-section-decor--contact-hero .easter-section-decor__bunny { width: 68px; right: 1%; bottom: 4%; }
+  .easter-section-decor--home-features .easter-section-decor__bunny,
+  .easter-section-decor--about-care .easter-section-decor__bunny,
+  .easter-section-decor--service-detail .easter-section-decor__bunny { left: -10px; width: 62px; }
+  .easter-section-decor--team .easter-section-decor__bunny,
+  .easter-section-decor--clinic .easter-section-decor__bunny,
+  .easter-section-decor--principles .easter-section-decor__bunny,
+  .easter-section-decor--location .easter-section-decor__bunny { width: 62px; }
+  .easter-section-decor--home-intro .easter-section-decor__egg--1 { right: 5%; }
+  .easter-section-decor--home-intro .easter-section-decor__egg--2 { right: 1%; }
+  .carnival-scroll-person { width: clamp(54px, 17vw, 82px); }
+  .carnival-scroll-person--left { left: -3px; }
+  .carnival-scroll-person--right { right: -3px; }
+  .carnival-scroll-confetti { width: 6px; height: 10px; }
+  .carnival-scroll-confetti--streamer { height: 17px; }
+}
+@media (max-width: 390px) {
+  .carnival-scroll-person { width: 52px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .seasonal-hero-backdrop__image { animation: none; }
+  .carnival-scroll-layer { display: none !important; }
+  .easter-section-decor img { filter: none; }
 }
