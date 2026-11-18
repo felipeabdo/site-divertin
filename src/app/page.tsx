@@ -8,6 +8,7 @@ import Cloud from '@/components/Cloud';
 import Arrow from '@/components/quem-somos/Arrow';
 import { CONTATO } from '@/data/contatoData';
 import StaticGoogleReviewsSection from '@/components/home/StaticGoogleReviewsSection';
+import { SeasonalHeroMoment, SeasonalSectionMoment } from '@/components/seasonal/SeasonalMoments';
 
 const FEATURES = [
   {
@@ -67,6 +68,7 @@ export default function Home() {
           </div>
         </div>
 
+        <SeasonalHeroMoment />
         <Cloud position="bottom" color="#FFFFFF" />
       </section>
 
@@ -109,9 +111,13 @@ export default function Home() {
             </article>
           ))}
         </div>
+        <SeasonalSectionMoment placement="home-features" />
         <Cloud position="bottom" color="#FFF4E8" />
       </section>
 
+      <div className="seasonal-reviews-slot">
+        <SeasonalSectionMoment placement="reviews" />
+      </div>
       <StaticGoogleReviewsSection />
       <Footer />
     </div>

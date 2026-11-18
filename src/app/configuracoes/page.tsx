@@ -201,13 +201,13 @@ export default function SettingsPage() {
                 <label className={`divertin-theme-option ${theme === 'carnaval' ? 'is-selected' : ''}`}>
                   <input type="radio" name="site-theme" value="carnaval" checked={theme === 'carnaval'} onChange={() => setThemeDraft('carnaval')} />
                   <span className="divertin-theme-preview divertin-theme-preview--carnival"><i>🎭</i><i>🎊</i><i>🎺</i></span>
-                  <span className="divertin-theme-option-copy"><strong>Carnaval</strong><small>Confetes, serpentinas e instrumentos em uma festa de cores</small></span>
+                  <span className="divertin-theme-option-copy"><strong>Carnaval</strong><small>Fotografias reais, referências à bateria e confetes acionados nas seções</small></span>
                   {theme === 'carnaval' && <span className="divertin-theme-selected">Selecionado</span>}
                 </label>
                 <label className={`divertin-theme-option ${theme === 'pascoa' ? 'is-selected' : ''}`}>
                   <input type="radio" name="site-theme" value="pascoa" checked={theme === 'pascoa'} onChange={() => setThemeDraft('pascoa')} />
                   <span className="divertin-theme-preview divertin-theme-preview--easter"><i>🐰</i><i>🥚</i><i>🍫</i></span>
-                  <span className="divertin-theme-option-copy"><strong>Páscoa</strong><small>Coelhinhos, ovos decorados e detalhes de chocolate</small></span>
+                  <span className="divertin-theme-option-copy"><strong>Páscoa</strong><small>Fotografias reais, símbolos de renovação e caça aos ovos pelas seções</small></span>
                   {theme === 'pascoa' && <span className="divertin-theme-selected">Selecionado</span>}
                 </label>
               </div>

@@ -2,6 +2,7 @@ import { Dashes } from "./Decor";
 import TeamCard from "./TeamCard";
 import { H2, PAL, TEAM } from "./data";
 import Cloud from "@/components/Cloud";
+import { SeasonalSectionMoment } from "@/components/seasonal/SeasonalMoments";
 
 export default function TeamSection() {
   return (
@@ -21,6 +22,7 @@ export default function TeamSection() {
         {TEAM.map((member) => <TeamCard key={member.name} member={member} />)}
       </div>
       </div>
+      <SeasonalSectionMoment placement="team" />
       <Cloud position="bottom" color="#FFF9FC" />
     </section>
   );

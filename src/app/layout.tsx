@@ -4,7 +4,7 @@ import DeferredAnalytics from "@/components/DeferredAnalytics";
 import DeferredScreenSaver from "@/components/DeferredScreenSaver";
 import OfflineExperience from "@/components/offline/OfflineExperience";
 import ScrollRevealController from "@/components/ScrollRevealController";
-import SeasonalDecorations from "@/components/SeasonalDecorations";
+import SeasonalExperienceProvider from "@/components/seasonal/SeasonalExperienceProvider";
 import SiteExperienceProvider from "@/components/auth/SiteExperienceProvider";
 import "./globals.css";
 
@@ -36,6 +36,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col">
         
       <SiteExperienceProvider>
+      <SeasonalExperienceProvider>
       <OfflineExperience>
         <DeferredScreenSaver
           sources={[
@@ -47,10 +48,10 @@ export default function RootLayout({
           idleMinutes={5}
         />
         {children}
-        <SeasonalDecorations />
         <ScrollRevealController />
         <DeferredAnalytics gaId="G-14VEB6PD4R" />
       </OfflineExperience>
+      </SeasonalExperienceProvider>
       </SiteExperienceProvider>
       </body>
     </html>

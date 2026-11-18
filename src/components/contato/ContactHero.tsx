@@ -6,6 +6,7 @@ import { CONTATO } from "@/data/contatoData";
 import Arrow from "../quem-somos/Arrow";
 import Logo from "@/components/Logo";
 import SantaHat from "@/components/SantaHat";
+import { SeasonalHeroMoment } from "@/components/seasonal/SeasonalMoments";
 
 export default function ContactHero() {
   return (
@@ -53,6 +54,7 @@ export default function ContactHero() {
         <SantaHat className="divertin-santa-hat--contact" />
       </div>
 
+      <SeasonalHeroMoment />
       <Cloud position="bottom" color="#FFF4E8" />
     </section>
   );

@@ -1,6 +1,7 @@
 import SectionDashes from "./SectionDashes";
 import ScrollReveal from "./ScrollReveal";
 import Cloud from "@/components/Cloud";
+import { SeasonalSectionMoment } from "@/components/seasonal/SeasonalMoments";
 
 const PRINCIPLES = [
   {
@@ -74,6 +75,7 @@ export default function ServicePrinciples() {
             </ScrollReveal>
           ))}
         </div>
+        <SeasonalSectionMoment placement="principles" />
       </div>
       <Cloud position="bottom" color="#ffbdde" />
     </section>

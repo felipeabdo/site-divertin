@@ -39,6 +39,7 @@ export default function HeroSection() {
         </div>
       </div>
 
+      <SeasonalHeroMoment />
       <Cloud position="bottom" color="#FFF4E8" />
     </section>
   );

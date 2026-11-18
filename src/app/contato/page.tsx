@@ -6,6 +6,7 @@ import ContactHero from "@/components/contato/ContactHero";
 import HoursCard from "@/components/contato/HoursCard";
 import LocationSection from "@/components/contato/LocationSection";
 import WhatsAppCard from "@/components/contato/WhatsAppCard";
+import { SeasonalSectionMoment } from "@/components/seasonal/SeasonalMoments";
 
 export const metadata: Metadata = {
   title: "Contato | Divertin",
@@ -26,6 +27,9 @@ export default function ContatoPage() {
         <Cloud position="bottom" color="#FFFFFF" />
       </section>
 
+      <section className="seasonal-contact-story-slot">
+        <SeasonalSectionMoment placement="contact" />
+      </section>
       <LocationSection />
       <ContactForm />
       <Footer />

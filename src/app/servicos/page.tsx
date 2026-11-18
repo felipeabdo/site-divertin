@@ -9,6 +9,7 @@ import ServicePrinciples from "@/components/servicos/ServicePrinciples";
 import SectionDashes from "@/components/servicos/SectionDashes";
 import ScrollReveal from "@/components/servicos/ScrollReveal";
 import { SERVICOS } from "@/data/servicosData";
+import { SeasonalHeroMoment } from "@/components/seasonal/SeasonalMoments";
 
 export const metadata: Metadata = {
   title: "Especialidades | Divertin",
@@ -41,6 +42,7 @@ export default function ServicosPage() {
           </ScrollReveal>
         </div>
 
+        <SeasonalHeroMoment />
         <SectionDashes color="#FDD5A5" className="bottom-20 right-[8%] rotate-45" />
         <Cloud position="bottom" color="#FFFFFF" />
       </section>
