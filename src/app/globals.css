@@ -1714,6 +1714,10 @@ html.reveal-on [data-reveal] {
   transform: translate3d(0, 0, 0);
   transition: transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* Só promove para a GPU os elementos que estão em movimento neste instante. */
+html.reveal-on [data-reveal][data-reveal-animating] {
   will-change: transform;
 }
 
@@ -2048,4 +2052,58 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
   html { scroll-behavior: auto; }
   .site-feature-card, .site-principle-card, .site-action { transition-duration: .01ms; }
   .site-feature-card:hover, .site-principle-card:hover, .site-action:hover { transform: none; }
+}
+
+
+/* Item de conta no menu mobile: segue a mesma linguagem dos demais atalhos. */
+@media (max-width: 1300px) {
+  .divertin-account-action--mobile {
+    gap: calc(var(--pill-h, 56px) * .26) !important;
+    background: #fbdcea;
+    color: #1f2a37;
+  }
+
+  .divertin-account-action--mobile .divertin-account-action__icon-wrap {
+    display: flex;
+    width: calc(var(--pill-h, 56px) * .68);
+    height: calc(var(--pill-h, 56px) * .68);
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--pill-h, 56px) * .15);
+    border-radius: 50%;
+    background: #e8408a;
+  }
+
+  .divertin-account-action--mobile .divertin-account-action__menu-icon {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #fff;
+    stroke: currentColor;
+  }
+
+  .divertin-account-action--mobile .divertin-account-action__menu-label {
+    display: block;
+    min-width: 0;
+    flex: 1;
+    text-transform: capitalize;
+  }
+
+  .divertin-account-action--mobile .divertin-account-action__menu-arrow {
+    display: block !important;
+    width: calc(var(--pill-h, 56px) * .26);
+    height: calc(var(--pill-h, 56px) * .26);
+    flex: 0 0 auto;
+    margin-left: auto;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #e8408a;
+    stroke: currentColor;
+  }
 }

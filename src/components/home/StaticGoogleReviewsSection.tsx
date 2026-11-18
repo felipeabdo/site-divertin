@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Cloud from "@/components/Cloud";
 import { GOOGLE_REVIEWS_PUBLIC_URL, STATIC_GOOGLE_REVIEWS } from "@/data/staticGoogleReviews";
 
@@ -150,13 +151,16 @@ export default function StaticGoogleReviewsSection() {
       }
     };
 
-    const previousOverflow = document.body.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousRootOverflow = document.documentElement.style.overflow;
 
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     window.addEventListener("keydown", handleEscape);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousRootOverflow;
       window.removeEventListener("keydown", handleEscape);
     };
   }, [selectedReview]);
@@ -366,9 +370,10 @@ export default function StaticGoogleReviewsSection() {
       </div>
 
       {/* POPUP DE AVALIAÇÃO COMPLETA */}
-      {selectedReview && (
+      {selectedReview && createPortal(
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#30251F]/60 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[2147483000] flex items-center justify-center bg-[#30251F]/60 p-4 backdrop-blur-sm"
+          role="presentation"
           onClick={() => setSelectedReview(null)}
         >
           <div
@@ -459,7 +464,8 @@ export default function StaticGoogleReviewsSection() {
               </p>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
       <Cloud position="bottom" color="#ffbdde" />
     </section>
