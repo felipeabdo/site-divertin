@@ -1039,9 +1039,23 @@ html[data-site-theme="natal"] .divertin-account-action--desktop {
     background: linear-gradient(110deg, #e2efe5, #fff7e7) !important;
     color: #174d39;
   }
-  html[data-site-theme="natal"] .divertin-account-action--mobile svg {
-    background: #176b4a;
-    color: #fff;
+
+  /*
+   * O link de conta tem dois SVGs diferentes: o avatar dentro do círculo
+   * e a seta de navegação. Aplicar o fundo natalino a todo `svg` criava
+   * dois quadrados verdes (um sobre o círculo e outro no lugar da seta).
+   * A cor de fundo pertence ao invólucro circular, nunca aos SVGs.
+   */
+  html[data-site-theme="natal"] .divertin-account-action--mobile .divertin-account-action__icon-wrap {
+    background: #176b4a !important;
+  }
+  html[data-site-theme="natal"] .divertin-account-action--mobile .divertin-account-action__menu-icon {
+    background: transparent !important;
+    color: #fff !important;
+  }
+  html[data-site-theme="natal"] .divertin-account-action--mobile .divertin-account-action__menu-arrow {
+    background: transparent !important;
+    color: #176b4a !important;
   }
   html[data-site-theme="natal"] .divertin-account-action--mobile::after {
     color: #176b4a;
