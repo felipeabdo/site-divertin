@@ -1,4 +1,5 @@
 import { upload } from '@vercel/blob/client';
+import { contactAttachmentMimeType, MAX_ATTACHMENTS, MAX_TOTAL_ATTACHMENT_SIZE } from '@/lib/contactFileTypes';
 
 export type ContactPayload = {
   nome: string;
@@ -24,14 +25,6 @@ export type QueuedContact = {
 const DB_NAME = 'divertin-offline';
 const DB_VERSION = 1;
 const STORE_NAME = 'pending-contact';
-const MAX_TOTAL_ATTACHMENT_SIZE = 17 * 1024 * 1024;
-const MAX_ATTACHMENTS = 10;
-
-const ALLOWED_TYPES: Record<string, string> = {
-  pdf: 'application/pdf',
-  doc: 'application/msword',
-  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-};
 
 function openQueueDatabase(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
@@ -125,9 +118,10 @@ function safeUploadFilename(filename: string): string {
 }
 
 function fileMimeType(file: File): string {
-  const extension = file.name.split('.').pop()?.toLowerCase() || '';
-  const mimeType = ALLOWED_TYPES[extension];
-  if (!mimeType) throw new Error('Anexe somente arquivos PDF, DOC ou DOCX.');
+  const mimeType = contactAttachmentMimeType(file.name);
+  if (!mimeType) {
+    throw new Error(`O arquivo \"${file.name}\" não pode ser enviado por e-mail. Formatos executáveis ou bloqueados pelo Titan não são aceitos.`);
+  }
   return mimeType;
 }
 

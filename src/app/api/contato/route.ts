@@ -2,17 +2,11 @@ import { del, get, head } from '@vercel/blob';
 import nodemailer from 'nodemailer';
 import { NextResponse } from 'next/server';
 import { hasSameOrigin } from '@/lib/contactSecurity';
+import { contactAttachmentMimeType, MAX_ATTACHMENTS, MAX_TOTAL_ATTACHMENT_SIZE } from '@/lib/contactFileTypes';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
-const MAX_TOTAL_ATTACHMENT_SIZE = 17 * 1024 * 1024;
-const MAX_ATTACHMENTS = 10;
-const ALLOWED_TYPES: Record<string, string> = {
-  pdf: 'application/pdf',
-  doc: 'application/msword',
-  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-};
 
 type SubmittedAttachment = {
   pathname: string;
@@ -66,8 +60,7 @@ function safeFilename(value: string): string {
 }
 
 function expectedMimeType(filename: string): string | null {
-  const extension = filename.split('.').pop()?.toLowerCase();
-  return extension ? ALLOWED_TYPES[extension] ?? null : null;
+  return contactAttachmentMimeType(filename);
 }
 
 function isValidAttachmentPath(pathname: string): boolean {
@@ -84,7 +77,9 @@ function hasExpectedFileSignature(buffer: Buffer, extension: string): boolean {
   if (extension === 'docx') {
     return buffer.subarray(0, 4).equals(Buffer.from([0x50, 0x4b, 0x03, 0x04]));
   }
-  return false;
+  // Other accepted formats (audio, video, spreadsheets, text, images and archives)
+  // are treated as opaque attachments. They are never executed by the server.
+  return true;
 }
 
 function getMailer() {
@@ -138,7 +133,7 @@ async function loadPrivateAttachments(items: SubmittedAttachment[]): Promise<Mai
     const filename = safeFilename(textValue(item.name));
     const expectedType = expectedMimeType(filename);
     if (!expectedType) {
-      throw new Error('Anexe somente arquivos PDF, DOC ou DOCX.');
+      throw new Error('Um dos anexos possui um formato não permitido ou bloqueado pelo Titan.');
     }
 
     const metadata = await head(item.pathname);
@@ -308,7 +303,7 @@ export async function POST(request: Request) {
       rejectedErrors: details?.rejectedErrors,
     });
     return NextResponse.json(
-      { message: error instanceof Error && /anexo|arquivo|17 MB|PDF|DOC/i.test(error.message)
+      { message: error instanceof Error && /anexo|arquivo|17 MB|formato|Titan/i.test(error.message)
         ? error.message
         : 'Não foi possível enviar sua mensagem agora. Seus dados continuam preenchidos; tente novamente em instantes.' },
       { status: 502, headers: { 'Cache-Control': 'no-store' } },

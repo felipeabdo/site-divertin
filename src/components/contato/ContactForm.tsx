@@ -9,6 +9,7 @@ import type { ContactPayload } from '@/lib/offlineQueue';
 import Arrow from '../quem-somos/Arrow';
 import Cloud from '@/components/Cloud';
 import EasterSectionDecor from '@/components/seasonal/EasterSectionDecor';
+import { contactAttachmentMimeType, MAX_ATTACHMENTS, MAX_TOTAL_ATTACHMENT_SIZE } from '@/lib/contactFileTypes';
 
 const initialForm = {
   nome: '',
@@ -18,9 +19,6 @@ const initialForm = {
   mensagem: '',
 };
 
-const MAX_TOTAL_ATTACHMENT_SIZE = 17 * 1024 * 1024;
-const MAX_ATTACHMENTS = 10;
-const ALLOWED_EXTENSIONS = new Set(['pdf', 'doc', 'docx']);
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'queued' | 'error';
 
@@ -54,10 +52,9 @@ export default function ContactForm() {
 
     const nextFiles = [...arquivos];
     for (const file of selected) {
-      const extension = file.name.split('.').pop()?.toLowerCase() || '';
-      if (!ALLOWED_EXTENSIONS.has(extension)) {
+      if (!contactAttachmentMimeType(file.name)) {
         setStatus('error');
-        setFeedback(`O arquivo "${file.name}" não é permitido. Utilize PDF, DOC ou DOCX.`);
+        setFeedback(`O arquivo "${file.name}" não pode ser enviado por e-mail. Formatos executáveis ou bloqueados pelo Titan não são aceitos. Se necessário, compacte-o em ZIP.`);
         return;
       }
       if (file.size <= 0) {
@@ -237,13 +234,12 @@ export default function ContactForm() {
 
           <div className="mt-5">
             <label className="block text-sm font-extrabold text-[#514956]" htmlFor="contact-attachments">
-              Anexar currículo ou documentos (opcional)
+              Anexar documentos, áudios, vídeos ou imagens (opcional)
             </label>
             <input
               id="contact-attachments"
               type="file"
               name="anexos"
-              accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
               multiple
               onChange={handleFileChange}
               className="mt-3 block w-full text-sm text-gray-500
@@ -255,7 +251,7 @@ export default function ContactForm() {
                 cursor-pointer file:cursor-pointer"
             />
             <p className="mt-2 text-xs leading-relaxed text-gray-500">
-              PDF, DOC ou DOCX. Até {MAX_ATTACHMENTS} arquivos, com limite total de 17 MB.
+              Aceita documentos, planilhas, textos, imagens, áudios e vídeos. Até {MAX_ATTACHMENTS} arquivos, com limite total de 17 MB por envio. Formatos executáveis bloqueados pelo Titan não são aceitos.
             </p>
 
             {arquivos.length > 0 && (

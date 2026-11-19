@@ -2,21 +2,17 @@ import { setTtl } from '@vercel/blob';
 import { handleUpload, type HandleUploadBody } from '@vercel/blob/client';
 import { NextResponse } from 'next/server';
 import { hasSameOrigin, hasValidContactUploadSession, reserveContactUploadBytes } from '@/lib/contactSecurity';
+import { CONTACT_ATTACHMENT_MIME_TYPES, contactAttachmentMimeType, MAX_TOTAL_ATTACHMENT_SIZE } from '@/lib/contactFileTypes';
 
 export const runtime = 'nodejs';
 
-const MAX_FILE_SIZE = 17 * 1024 * 1024;
-const ALLOWED_TYPES: Record<string, string> = {
-  pdf: 'application/pdf',
-  doc: 'application/msword',
-  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-};
+const MAX_FILE_SIZE = MAX_TOTAL_ATTACHMENT_SIZE;
+const ALLOWED_CONTENT_TYPES = [...new Set([...Object.values(CONTACT_ATTACHMENT_MIME_TYPES), 'application/octet-stream'])];
 
 function isAllowedPath(pathname: string, batchId: string): boolean {
   const match = /^contact-attachments\/([0-9a-f-]{36})\/([A-Za-z0-9._-]{1,120})$/i.exec(pathname);
   if (!match || match[1] !== batchId) return false;
-  const extension = match[2].split('.').pop()?.toLowerCase();
-  return Boolean(extension && ALLOWED_TYPES[extension]);
+  return Boolean(contactAttachmentMimeType(match[2]));
 }
 
 export async function POST(request: Request) {
@@ -50,7 +46,7 @@ export async function POST(request: Request) {
         if (!withinBatchSize) throw new Error('A soma dos anexos ultrapassa o limite de 17 MB.');
 
         return {
-          allowedContentTypes: Object.values(ALLOWED_TYPES),
+          allowedContentTypes: ALLOWED_CONTENT_TYPES,
           maximumSizeInBytes: declaredSize,
           addRandomSuffix: true,
           validUntil: Date.now() + 15 * 60 * 1000,
