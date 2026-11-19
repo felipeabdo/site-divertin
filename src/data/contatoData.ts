@@ -4,7 +4,7 @@ export const CONTATO = {
   phoneDigits: '5561995005162',
   whatsappUrl:
     'https://wa.me/5561995005162?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20Divertin.',
-  email: 'secretaria.divertin@gmail.com',
+  email: 'secretaria@clinicadivertin.com.br',
   address:
     'SRTVS Qd. 701 Multiempresarial, Bloco O, Sala 203 - Asa Sul, Brasília - DF, 70340-000',
   routeUrl:
