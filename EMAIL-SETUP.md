@@ -11,7 +11,7 @@ SMTP_SECURE=true
 SMTP_USER=secretaria@clinicadivertin.com.br
 SMTP_PASS=COLOQUE_A_SENHA_DA_CAIXA_TITAN
 CONTACT_FROM=secretaria@clinicadivertin.com.br
-CONTACT_TO=secretaria.divertin@gmail.com
+CONTACT_TO=secretaria@clinicadivertin.com.br, secretaria.divertin@gmail.com
 ```
 
 O armazenamento Vercel Blob privado precisa estar conectado ao projeto e criar a variável `BLOB_READ_WRITE_TOKEN`. O fluxo de upload direto no navegador usa esse token exclusivamente no servidor, nunca no bundle do cliente.
