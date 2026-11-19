@@ -94,63 +94,6 @@ function clientAddress(request: Request): string {
 }
 
 /**
- * Lightweight fixed-window rate limiter backed by the project's existing Upstash Redis.
- * In local development it is skipped when Redis credentials are not present.
- */
-export async function enforceContactRateLimit(
-  request: Request,
-  scope: 'upload' | 'submit',
-  limit: number,
-  windowSeconds: number,
-): Promise<boolean> {
-  const url = process.env.UPSTASH_REDIS_REST_URL?.replace(/\/$/, '');
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
-
-  if (!url || !token) {
-    if (process.env.NODE_ENV !== 'production') return true;
-    throw new Error('O controle de segurança do formulário não está disponível.');
-  }
-
-  const addressHash = createHash('sha256')
-    .update(`${sessionSecret()}:${clientAddress(request)}`)
-    .digest('hex');
-  const key = `divertin:contact:rate:${scope}:${addressHash}`;
-
-  const incrementResponse = await fetch(`${url}/pipeline`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify([['INCR', key]]),
-    cache: 'no-store',
-  });
-
-  if (!incrementResponse.ok) throw new Error('Não foi possível validar a solicitação.');
-  const incrementResult = await incrementResponse.json() as Array<{ result?: number | string; error?: string }>;
-  if (incrementResult[0]?.error) throw new Error('Não foi possível validar a solicitação.');
-
-  const count = Number(incrementResult[0]?.result);
-  if (!Number.isFinite(count)) throw new Error('Não foi possível validar a solicitação.');
-
-  if (count === 1) {
-    const expiryResponse = await fetch(`${url}/pipeline`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify([['EXPIRE', key, windowSeconds]]),
-      cache: 'no-store',
-    });
-    if (!expiryResponse.ok) throw new Error('Não foi possível validar a solicitação.');
-  }
-
-  return count <= limit;
-}
-
-
-/**
  * Reserves the declared size of an attachment against a per-IP upload batch.
  * The signed Blob token is capped to this same size, so a client cannot reserve
  * 1 byte and then upload a larger file. The Lua script makes the batch budget

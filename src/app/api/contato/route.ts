@@ -1,7 +1,7 @@
 import { del, get, head } from '@vercel/blob';
 import nodemailer from 'nodemailer';
 import { NextResponse } from 'next/server';
-import { enforceContactRateLimit, hasSameOrigin } from '@/lib/contactSecurity';
+import { hasSameOrigin } from '@/lib/contactSecurity';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
@@ -93,10 +93,21 @@ function getMailer() {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   const from = process.env.CONTACT_FROM || user;
-  const to = process.env.CONTACT_TO;
+  // Accept comma-, semicolon- or line-break-separated recipients. Passing an
+  // explicit array avoids depending on address-string parsing in the mailer.
+  const recipients = [...new Set(
+    (process.env.CONTACT_TO || '')
+      .split(/[,;\r\n]+/)
+      .map((address) => address.trim())
+      .filter(Boolean)
+      .map((address) => address.toLowerCase()),
+  )];
 
-  if (!host || !Number.isInteger(port) || port < 1 || port > 65535 || !user || !pass || !from || !to) {
+  if (!host || !Number.isInteger(port) || port < 1 || port > 65535 || !user || !pass || !from || recipients.length === 0) {
     throw new Error('O serviço de e-mail ainda não foi configurado por completo.');
+  }
+  if (recipients.some((address) => !isValidEmail(address))) {
+    throw new Error('A lista de destinatários do formulário contém um endereço inválido.');
   }
 
   return {
@@ -111,7 +122,7 @@ function getMailer() {
       tls: { minVersion: 'TLSv1.2' },
     }),
     from,
-    to,
+    recipients,
   };
 }
 
@@ -203,15 +214,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: `É possível anexar até ${MAX_ATTACHMENTS} arquivos por mensagem.` }, { status: 400 });
   }
 
-  let rateLimitPassed: boolean;
-  try {
-    rateLimitPassed = await enforceContactRateLimit(request, 'submit', 6, 60 * 60);
-  } catch {
-    return NextResponse.json({ message: 'O formulário está temporariamente indisponível. Tente novamente em alguns minutos.' }, { status: 503 });
-  }
-  if (!rateLimitPassed) {
-    return NextResponse.json({ message: 'Muitas mensagens foram enviadas desta conexão. Aguarde um pouco antes de tentar novamente.' }, { status: 429 });
-  }
+  // Não aplicamos limite de quantidade de mensagens por IP/conexão.
+  // A proteção contra abuso continua com validação de origem, honeypot,
+  // tempo mínimo de preenchimento, validação dos campos e arquivos.
 
   const pathsToDelete = [...new Set(
     submittedAttachments
@@ -221,7 +226,7 @@ export async function POST(request: Request) {
 
   try {
     const attachments = await loadPrivateAttachments(submittedAttachments);
-    const { transporter, from, to } = getMailer();
+    const { transporter, from, recipients } = getMailer();
     const safeNome = nome.replace(/[\r\n]+/g, ' ');
     const safeAssunto = assunto.replace(/[\r\n]+/g, ' ').slice(0, 160);
     const subject = `[Contato site] ${safeAssunto || 'Nova mensagem'} — ${safeNome}`;
@@ -252,9 +257,9 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    await transporter.sendMail({
+    const mailInfo = await transporter.sendMail({
       from: { name: 'Clínica Divertin — Site', address: from },
-      to,
+      to: recipients,
       replyTo: { name: safeNome, address: email },
       subject,
       text,
@@ -262,13 +267,46 @@ export async function POST(request: Request) {
       attachments,
     });
 
+    // Nodemailer resolves sendMail when at least one recipient is accepted.
+    // Do not tell the visitor that the whole contact was delivered unless every
+    // configured mailbox was accepted by the SMTP server.
+    const accepted = new Set(mailInfo.accepted.map((address) => String(address).toLowerCase()));
+    const notAccepted = recipients.filter((address) => !accepted.has(address));
+    if (notAccepted.length > 0 || mailInfo.rejected.length > 0) {
+      console.error('[contato] O servidor SMTP não aceitou todos os destinatários:', {
+        accepted: mailInfo.accepted,
+        rejected: mailInfo.rejected,
+        notAccepted,
+        response: mailInfo.response,
+      });
+      return NextResponse.json(
+        { message: 'O servidor de e-mail não confirmou o recebimento por todas as caixas da secretaria. Uma delas pode já ter recebido a mensagem; confira antes de reenviar.' },
+        { status: 502, headers: { 'Cache-Control': 'no-store' } },
+      );
+    }
+
+    console.info('[contato] SMTP aceitou todos os destinatários configurados:', {
+      accepted: mailInfo.accepted,
+      messageId: mailInfo.messageId,
+      response: mailInfo.response,
+    });
+
     return NextResponse.json(
       { message: 'Mensagem enviada com sucesso! A secretaria da Clínica Divertin recebeu seus dados.' },
       { status: 200, headers: { 'Cache-Control': 'no-store' } },
     );
   } catch (error) {
-    // O detalhe técnico fica apenas nos logs do servidor; nunca devolvemos credenciais ao navegador.
-    console.error('[contato] Falha no processamento do formulário:', error instanceof Error ? error.name : 'erro desconhecido');
+    // Log SMTP diagnostics without logging credentials or the visitor's message.
+    const details = error && typeof error === 'object'
+      ? error as { name?: unknown; code?: unknown; response?: unknown; rejected?: unknown; rejectedErrors?: unknown }
+      : null;
+    console.error('[contato] Falha no processamento do formulário:', {
+      name: details?.name,
+      code: details?.code,
+      response: details?.response,
+      rejected: details?.rejected,
+      rejectedErrors: details?.rejectedErrors,
+    });
     return NextResponse.json(
       { message: error instanceof Error && /anexo|arquivo|17 MB|PDF|DOC/i.test(error.message)
         ? error.message

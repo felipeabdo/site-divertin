@@ -1,7 +1,7 @@
 import { setTtl } from '@vercel/blob';
 import { handleUpload, type HandleUploadBody } from '@vercel/blob/client';
 import { NextResponse } from 'next/server';
-import { enforceContactRateLimit, hasSameOrigin, hasValidContactUploadSession, reserveContactUploadBytes } from '@/lib/contactSecurity';
+import { hasSameOrigin, hasValidContactUploadSession, reserveContactUploadBytes } from '@/lib/contactSecurity';
 
 export const runtime = 'nodejs';
 
@@ -43,8 +43,8 @@ export async function POST(request: Request) {
           throw new Error('Arquivo não permitido.');
         }
 
-        const withinLimit = await enforceContactRateLimit(request, 'upload', 30, 60 * 60);
-        if (!withinLimit) throw new Error('Muitos anexos enviados. Aguarde um pouco e tente novamente.');
+        // Não há limite de uploads por hora/conexão. O tamanho total do lote
+        // continua limitado a 17 MiB por segurança e compatibilidade com e-mail.
 
         const withinBatchSize = await reserveContactUploadBytes(request, batchId, declaredSize, MAX_FILE_SIZE, 60 * 60);
         if (!withinBatchSize) throw new Error('A soma dos anexos ultrapassa o limite de 17 MB.');
