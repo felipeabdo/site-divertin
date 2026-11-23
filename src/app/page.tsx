@@ -54,7 +54,7 @@ export default function Home() {
         <div className="site-hero-inner relative z-10 mx-auto flex min-h-[760px] w-full max-w-6xl items-end px-6 pb-28 pt-36 lg:min-h-[820px] lg:pb-32">
           <div data-reveal-load className="site-hero-copy relative z-10 max-w-[720px] text-white">
             <Logo className="mb-7" />
-            <p className="site-hero-eyebrow">Fonoaudiologia infantil e pediatria</p>
+            {/* <p className="site-hero-eyebrow">Fonoaudiologia infantil e pediatria</p> */}
             <h1 className="site-hero-title mt-4 font-avenir">
               Diversa em cuidado, única em conexão.
             </h1>
