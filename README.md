@@ -1,119 +1,138 @@
-# Clínica Divertin — código-fonte revisado
+# Divertin
 
-Este pacote contém a pasta `src/` do site da Clínica Divertin, revisada para facilitar a manutenção e o estudo do código. A organização atual usa o **App Router do Next.js**, componentes React/TypeScript, Tailwind CSS e uma separação simples entre apresentação e dados.
+Site institucional da Divertin, desenvolvido com Next.js, React, TypeScript e Tailwind CSS.
 
-> **Importante sobre este ZIP:** o arquivo original enviado continha apenas `src/`. Ele não incluía `package.json`, arquivo de lock, configuração TypeScript/Tailwind nem a pasta `public/`. Portanto, este pacote é o código-fonte revisado, não uma cópia autossuficiente do projeto inteiro. Para executar o site, mantenha os arquivos de configuração, dependências e imagens do projeto original.
+## Tecnologias e serviços
 
-## Como aplicar ao projeto original
+- Next.js 16 com App Router.
+- React 19 e TypeScript.
+- Tailwind CSS 4.
+- Upstash Redis REST para persistência de dados administrativos, autenticação e cache de avaliações.
+- Nodemailer para envio de mensagens por SMTP.
+- Integração com Google Business Profile para sincronização de avaliações.
+- Rotas de upload de arquivos para o formulário de contato.
 
-1. Faça uma cópia de segurança do projeto que já funciona.
-2. Extraia este ZIP e substitua a pasta `src/` do projeto original pela pasta `src/` deste pacote.
-3. **Mantenha a pasta `public/` original.** As páginas referenciam imagens e GIFs que não estavam presentes no ZIP recebido.
-4. Na raiz do projeto original, instale as dependências conforme o gerenciador e o arquivo de lock já usados pelo projeto.
-5. Execute os comandos de verificação que já existirem nos scripts do `package.json` — normalmente desenvolvimento, lint, TypeScript e build de produção.
+## Funcionalidades
 
-Não substitua o `package.json` nem crie configurações de versões arbitrárias: eles não fizeram parte do arquivo enviado e podem conter decisões importantes do projeto real.
+### Site público
 
-## Estrutura do código
+- Página inicial.
+- Página Quem somos.
+- Serviços e páginas individuais de serviços.
+- Formulário de contato.
+- Temas visuais sazonais.
 
-```text
-src/
-├── app/
-│   ├── api/contato/route.ts     # Endpoint POST do formulário
-│   ├── contato/page.tsx         # Página de contato
-│   ├── quem-somos/page.tsx      # Página institucional
-│   ├── servicos/
-│   │   ├── page.tsx             # Catálogo de especialidades
-│   │   └── [slug]/page.tsx      # Detalhe de cada especialidade
-│   ├── globals.css              # Tailwind e tokens de cor/fontes
-│   ├── layout.tsx               # Layout raiz, metadados, descanso e Analytics
-│   └── page.tsx                 # Home
-├── components/
-│   ├── contato/                 # Seções e formulário de contato
-│   ├── quem-somos/              # Equipe, galeria, modal e conteúdo institucional
-│   ├── servicos/                # Cards e seções de especialidades
-│   ├── Botao.tsx                # Botão/link visual reutilizável
-│   ├── Cloud.tsx                # Divisor decorativo de nuvens
-│   ├── NavBar.tsx               # Navegação responsiva e animada
-│   ├── PageLoader.tsx            # Loading opcional, não ativado no layout atual
-│   └── ScreenSaver.tsx          # Descanso de tela por inatividade
-└── data/
-    ├── contatoData.ts           # Telefone, WhatsApp, endereço e horários
-    └── servicosData.ts          # Catálogo tipado de especialidades e áreas
-```
+### Autenticação e administração
 
-## Decisões de manutenção desta revisão
+- Acesso pela página `/login`.
+- Configurações globais pela página `/configuracoes`.
+- Perfis de acesso `admin` e `user`.
+- Rotas para autenticação, consulta de sessão, perfil e gestão de usuários.
+- Senhas armazenadas com hash `scrypt` e salt individual.
+- Sessões assinadas com HMAC-SHA256.
+- Cookie de sessão HttpOnly, com `SameSite=Lax` e atributo `Secure` em produção.
+- Persistência dos dados de usuários no Upstash Redis.
 
-- Remoção de imports que não eram usados (`Link`, `PageLoader` no layout e `Cloud` na seção de princípios).
-- Remoção de `components/Cloud copy.tsx`: era uma cópia não referenciada de `Cloud.tsx`. A versão mantida também permite personalizar o caminho da imagem.
-- Tipagem explícita do conteúdo do layout e das propriedades do botão reutilizável.
-- Botões sem link agora têm `type="button"` por padrão, evitando envios acidentais caso o componente seja usado futuramente dentro de um formulário. É possível escolher `type="submit"` quando isso for desejado.
-- Links abertos em nova aba recebem a proteção `noopener`.
-- Limpeza de um valor de margem negativa inválido no rodapé (`mt-[-45px]`).
-- Limpeza do listener de `load` e do temporizador de pré-carregamento do GIF no `ScreenSaver` quando o componente é desmontado.
-- Tratamento separado para JSON malformado e para corpos de requisição que não sejam objetos no endpoint de contato.
-- Campos de formulário com `name` e `autoComplete`, e feedback de erro anunciado como alerta para tecnologias assistivas.
-- Comentários didáticos adicionados aos pontos em que o fluxo de dados e as decisões de implementação são menos óbvios.
+O primeiro administrador é provisionado com `DIVERTIN_ADMIN_EMAIL` e `DIVERTIN_ADMIN_PASSWORD`. O e-mail é opcional; se não for definido, a aplicação utiliza o endereço padrão configurado internamente. A senha inicial deve ter pelo menos 10 caracteres.
 
-As alterações foram intencionalmente conservadoras: não foi redesenhada nenhuma página nem reestruturado o fluxo de navegação.
+`AUTH_SESSION_SECRET` deve ser um segredo aleatório com pelo menos 32 caracteres.
 
-## Comportamentos e limitações já existentes
+### Configurações globais do site
 
-### O formulário ainda não envia e-mail
+As configurações são armazenadas no Redis e incluem os temas `padrao`, `natal`, `carnaval` e `pascoa`, além de um aviso global com título, mensagem e controle de ativação. A leitura é disponibilizada pela API; a alteração exige uma sessão autenticada com perfil de administrador.
 
-A rota `POST /api/contato` valida os campos e retorna **HTTP 501** porque a integração com um serviço de e-mail ainda não foi configurada. Isso significa que o formulário não conclui o envio automático hoje. Esta revisão manteve esse comportamento para não fingir um envio que não existe.
+### Integrações
 
-Para habilitar o envio real, será necessário escolher e configurar um provedor (por exemplo, Resend ou SMTP/Nodemailer), usar variáveis de ambiente para credenciais e implementar o envio dentro de `src/app/api/contato/route.ts`. Nunca coloque senhas ou chaves privadas no código do navegador.
+**Google Business Profile**
 
-### Imagens e arquivos públicos
+A rota `/api/google-reviews/sync` sincroniza avaliações usando credenciais OAuth 2.0 e os identificadores da conta e da localização. O projeto também utiliza Upstash Redis para armazenar o cache das avaliações. `CRON_SECRET` protege a rota de sincronização.
 
-O código referencia imagens e GIFs como `/bg-hero.webp`, `/logo (1).webp`, `/Jessica.webp`, `/cloud (1).webp`, `/descanso.gif` e outras. Esses arquivos devem existir no diretório `public/` do projeto original. Como não vieram no ZIP, não foram inventados nem substituídos. A varredura encontrou estas referências a assets:
+**Formulário de contato**
 
-`/arrow_forward.svg`, `/bg-hero.webp`, `/card_ana.webp`, `/Fernanda.webp`, `/card_rafaela.webp`, `/cloud (1).webp`, `/cloud (6).webp`, `/cloud bottom.webp`, `/descanso.gif`, `/Group 1.svg`, `/Group 1 (1).svg`, `/Group 1 (2).svg`, `/img1.webp` a `/img5.webp`, `/Jessica.jpeg`, `/jessica-full.webp`, `/loading.gif`, `/logo (1).webp`, `/logo-compartilhamento.webp` e `/mascote-divertin-contato.webp`. O caminho `/equipe/ana.jpg` aparece em uma instrução de comentário para cadastrar fotos da equipe, não como imagem ativa nesta configuração.
+O envio de mensagens utiliza SMTP. Há rotas específicas para o envio de mensagens, criação de sessão de upload e upload de arquivos.
 
-### Google Analytics
+## Rotas de API
 
-O layout conserva o identificador `G-14VEB6PD4R` que já existia no fonte recebido. Antes de publicar em outro domínio/propriedade, confira se esse identificador é o correto.
+| Rota | Finalidade |
+|---|---|
+| `/api/auth/login` | Autenticação |
+| `/api/auth/logout` | Encerramento da sessão |
+| `/api/auth/me` | Consulta da sessão atual |
+| `/api/auth/profile` | Operações do perfil |
+| `/api/admin/users` | Gestão de usuários |
+| `/api/admin/users/[id]` | Operações sobre um usuário |
+| `/api/site-settings` | Leitura e atualização das configurações globais |
+| `/api/contato` | Envio de mensagens |
+| `/api/contato/upload-session` | Criação de sessão de upload |
+| `/api/contato/upload` | Upload de arquivos |
+| `/api/google-reviews/sync` | Sincronização de avaliações |
+| `/api/health` | Verificação de disponibilidade |
 
-## Verificações possíveis nesta cópia
+## Configuração do ambiente
 
-- Análise sintática dos arquivos TypeScript/TSX.
-- Verificação de resolução dos imports locais.
-- Inspeção de imports sem uso e de dependências/arquivos duplicados.
+O arquivo `.env.example` lista as variáveis utilizadas pelas integrações. Para desenvolvimento local, crie `.env.local` a partir dele e preencha os valores necessários:
 
-Não foi possível executar um build real do Next.js nem testar o site visualmente porque faltam os arquivos de dependências/configuração e `public/`. Consulte `RELATORIO_DE_REVISAO.md` para os resultados objetivos e os próximos passos. =
-x   
-## Login, painel de configurações e temas
+    cp .env.example .env.local
 
-O projeto agora inclui autenticação de usuários e administradores, painel em `/configuracoes` e tela de acesso em `/login`. A persistência usa o **mesmo Upstash Redis REST** já utilizado pelo cache das avaliações do Google; não foi criado armazenamento local de servidor, que seria volátil em ambientes serverless.
+### Autenticação e Upstash Redis
 
-### Variáveis obrigatórias para ativar o login
+- `UPSTASH_REDIS_REST_URL`: endereço REST do banco Upstash Redis.
+- `UPSTASH_REDIS_REST_TOKEN`: token de acesso ao Redis.
+- `AUTH_SESSION_SECRET`: segredo aleatório com pelo menos 32 caracteres.
+- `DIVERTIN_ADMIN_EMAIL`: e-mail do primeiro administrador (opcional; há um padrão interno).
+- `DIVERTIN_ADMIN_PASSWORD`: senha inicial do administrador, com pelo menos 10 caracteres.
 
-Configure no ambiente de produção (por exemplo, em Vercel → Settings → Environment Variables) e também no `.env.local` durante desenvolvimento:
+Gere um segredo para `AUTH_SESSION_SECRET` com:
 
-- `UPSTASH_REDIS_REST_URL` e `UPSTASH_REDIS_REST_TOKEN`: credenciais do Redis Upstash já usado pelo projeto.
-- `AUTH_SESSION_SECRET`: segredo aleatório com pelo menos 32 caracteres. Gere um novo segredo, não use o texto de exemplo (por exemplo: `openssl rand -base64 48`).
-- `DIVERTIN_ADMIN_EMAIL`: e-mail do primeiro administrador. O padrão já está definido como `jehdelcorso@gmail.com`.
-- `DIVERTIN_ADMIN_PASSWORD`: senha inicial do administrador definida pelo responsável do projeto. Cadastre-a diretamente nas variáveis de ambiente, nunca no código nem em um repositório Git.
+    openssl rand -base64 48
 
-Ao primeiro acesso ao endpoint de login, o sistema cria automaticamente o administrador inicial no Redis caso ele ainda não exista. Se o e-mail já estiver cadastrado, a conta é garantida como administradora sem redefinir sua senha. Depois de fazer o primeiro acesso, altere a senha na seção **Minha conta**.
+### Google Business Profile
 
-**Atenção:** sem as variáveis de ambiente acima, o site público continua navegável, mas o login não será ativado. O ZIP não contém credenciais privadas nem arquivos `.env` de produção. Para não expor a senha de administrador, ela precisa ser inserida no ambiente de hospedagem pelo proprietário do projeto.
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_CLIENT_SECRET`
+- `GOOGLE_REFRESH_TOKEN`
+- `GOOGLE_BUSINESS_ACCOUNT_ID`
+- `GOOGLE_BUSINESS_LOCATION_ID`
+- `CRON_SECRET`
 
-### Recursos incluídos
+Configure as credenciais OAuth 2.0 e os identificadores correspondentes à conta e à localização do Google Business Profile. Use um segredo forte para `CRON_SECRET`.
 
-- Login/logout com cookie de sessão HttpOnly, assinatura HMAC, validade de sete dias e proteção contra excesso de tentativas.
-- Senhas armazenadas como hash `scrypt` com salt individual; a senha nunca é enviada de volta à interface.
-- Perfis `admin` e `user`; apenas administradores podem criar contas, promover outros administradores, alterar o status de acesso ou gerenciar o tema global.
-- Proteção para que o último administrador ativo não seja removido/suspenso e para que um administrador não suspenda o próprio acesso pela interface.
-- Usuários podem atualizar nome e senha; administradores podem gerenciar contas em `/configuracoes`.
-- Tema **Padrão** e tema **Natal**. O tema Padrão continua selecionado por padrão; Natal só entra em vigor quando um administrador o aplica. A configuração é global e armazenada no Redis, sendo exibida também a visitantes não autenticados.
-- A estrutura do site e os assets originais foram preservados. O tema Natal usa decoração CSS sazonal e mantém os mesmos textos, imagens de conteúdo e organização de páginas; não substitui fotos institucionais ou logotipos.
+### E-mail e formulário de contato
 
-### Rotas novas
+- `SMTP_HOST`: servidor SMTP.
+- `SMTP_PORT`: porta SMTP; o padrão no código é `465`.
+- `SMTP_USER`: usuário de autenticação.
+- `SMTP_PASS`: senha de autenticação.
+- `CONTACT_FROM`: remetente; quando não informado, utiliza `SMTP_USER`.
+- `CONTACT_TO`: destinatário das mensagens do formulário.
+- `SMTP_SECURE`: quando não informado, a conexão é considerada segura se a porta for `465`.
 
-- `/login` — acesso à conta.
-- `/configuracoes` — perfil pessoal e, para administradores, usuários e temas.
-- `/api/auth/*` — autenticação e perfil.
-- `/api/admin/users` — gestão de usuários, restrita a administradores.
-- `/api/site-settings` — leitura pública e alteração administrativa das configurações visuais.
+Nunca versione `.env.local`, senhas, tokens ou credenciais reais.
+
+## Desenvolvimento local
+
+Instale as dependências:
+
+    npm install
+
+Inicie o servidor de desenvolvimento:
+
+    npm run dev
+
+Por padrão, o Next.js disponibiliza o site em `http://localhost:3000`.
+
+## Verificação e build
+
+Os scripts definidos no `package.json` são:
+
+    npm run lint
+    npm run typecheck
+    npm run build
+
+Para iniciar a versão de produção localmente depois de gerar o build:
+
+    npm run start
+
+## Produção
+
+Configure as variáveis necessárias na plataforma de hospedagem antes de publicar o projeto. Mantenha credenciais e segredos nos ambientes seguros da hospedagem e nunca em arquivos versionados.
