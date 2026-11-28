@@ -37,7 +37,7 @@ const FEATURES = [
 
 export default function Home() {
   return (
-    <div className="site-page relative isolate min-h-screen overflow-x-hidden bg-white">
+    <div className="site-page relative isolate min-h-screen overflow-x-clip bg-white">
       <section data-carnival-section="home-hero" className="site-hero site-hero--home relative isolate min-h-[760px] w-full lg:min-h-[820px]">
         <div className="absolute inset-0">
           <HeroBackground />
