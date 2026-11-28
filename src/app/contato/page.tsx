@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function ContatoPage() {
   return (
-    <div className="site-page relative isolate min-h-screen overflow-x-hidden bg-white">
+    <div className="site-page relative isolate min-h-screen overflow-x-clip bg-white">
       <ContactHero />
 
       <section data-carnival-section="contact-band" className="site-contact-band relative isolate bg-[#FFF4E8] pb-28 pt-20 md:pb-32 md:pt-24">

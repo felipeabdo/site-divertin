@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "Quem Somos | Divertin" };
 
 export default function QuemSomosPage() {
   return (
-    <div className="site-page relative isolate min-h-screen overflow-x-hidden bg-white">
+    <div className="site-page relative isolate min-h-screen overflow-x-clip bg-white">
       <HeroSection />
       <CuidarSection />
       <TeamSection />

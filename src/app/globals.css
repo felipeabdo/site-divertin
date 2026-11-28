@@ -2438,3 +2438,10 @@ html[data-site-theme="pascoa"] .site-footer { background-image: linear-gradient(
   .carnival-scroll-layer { display: none !important; }
   .easter-section-decor img { filter: none; }
 }
+
+
+/* DIVERTIN_SITE_PAGE_SINGLE_SCROLLPORT */
+.site-page {
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+}

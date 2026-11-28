@@ -34,7 +34,7 @@ export default async function ServicoDetalhePage({ params }: PageProps) {
   if (!service) notFound();
 
   return (
-    <div className="site-page relative isolate min-h-screen overflow-x-hidden bg-white">
+    <div className="site-page relative isolate min-h-screen overflow-x-clip bg-white">
       <ServiceDetailHero service={service} />
       <AreaGrid service={service} />
       <ServiceCTA accent={service.accent} />

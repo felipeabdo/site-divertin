@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function ServicosPage() {
   return (
-    <div className="site-page relative isolate min-h-screen overflow-x-hidden bg-white">
+    <div className="site-page relative isolate min-h-screen overflow-x-clip bg-white">
       <section data-carnival-section="services-hero" className="site-hero relative isolate min-h-[700px] overflow-visible lg:min-h-[760px]">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -inset-6">
